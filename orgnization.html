@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        white: '#ffffff',
+                        primary: '#21295B',
+                        secondary: '#91193B',
+                        black: '#000000'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="assets/css/org.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style type="text/tailwindcss">
+        .fc-header-toolbar {
+    
+    padding-top: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+
+        .container-in {@apply mx-auto max-w-[1400px] px-4;} 
+        .nav{@apply flex flex-col items-center gap-4}
+        .menu{@apply m-0 p-0 lg:flex hidden gap-3 items-center; justify-content: center;
+            li{
+                a{
+                    @apply text-white font-medium;
+                }
+                &.active,
+                &:hover{
+                    a{
+                        @apply text-secondary;
+                    }
+                }
+            }
+        }
+        .btn-blue{
+            @apply bg-secondary md:h-10 h-8 flex gap-2 text-white items-center lg:px-4 px-2 text-sm md:text-base rounded-lg border-2 border-white font-semibold;
+        } 
+        .btn-white{
+            @apply bg-white md:h-10 h-8 flex gap-2 text-secondary items-center lg:px-4 px-2 text-sm md:text-base rounded-lg border-2 border-secondary font-semibold;
+        } 
+        .news-wrapper{
+            background: url(assets/imgs/u.png) no-repeat right #fff;
+        }
+        body{
+            @apply bg-primary;
+        }
+        .content-modal{
+            h3{@apply text-xl font-semibold text-black/75 mb-4; }
+            strong{
+                @apply text-lg font-medium text-black/75;
+            }
+            p{
+                @apply text-black/75 mb-4 mt-0 text-sm;
+            }
+            ul{
+                padding-left: 1.5rem;
+                list-style: disc;
+                margin-bottom: 1rem;
+                li{font-size: 14px;
+                    strong{
+                        @apply text-sm;
+                    }
+                }
+                &>ul{
+                    padding-left: 1rem;
+                    list-style: lower-alpha;
+                }
+            }
+        }
+
+        /* Calendar */
+        .fc {
+            .fc-toolbar.fc-header-toolbar{
+            @apply bg-secondary text-white px-3 py-2;
+                .fc-toolbar-title{
+                    @apply font-bold text-2xl;
+                }
+            }
+            .fc-button-primary{
+                --fc-button-bg-color: transparent;
+                --fc-button-border-color: #fff;
+                --fc-button-text-color: #fff;
+                border-radius: 50%;
+                border-width: 2px;
+                padding: 3px;
+            }
+        }
+      </style>
+    <title>Orginazation Chart</title>
+</head>
+
+<body>
+    <header class="py-6">
+        <div class="container-in">
+            <div class="flex justify-between items-center lg:flex-nowrap flex-wrap gap-2 lg:gap-0">
+                <div class="logo">
+                    <a href="">
+                        <img src="assets/imgs/logo.svg" class="lg:max-h-20 max-h-12" alt="">
+                    </a>
+                </div>
+                <div class="nav">
+                    <ul class="menu order-2 lg:order-1" id="menu">
+                        <li><a href="index.html">Home</a></li>
+                        <li class="active"><a href="orgnization.html">Organization</a></li>
+                        <li><a href="our-mission.html">Our mission </a></li>
+                        <li><a href="board-members.html">Board Members</a></li>
+                        <li><a href="usefull-contacts.html">Useful Contacts </a></li>
+                    </ul>
+                    <div class="search relative order-1 lg:order-2">
+                        <span class="absolute top-2 left-3">
+                            <img src="assets/imgs/search.svg" alt="">
+                        </span>
+                        <input type="text"
+                            class="h-[39px] w-[380px] bg-transparent pl-12 text-white border-2 border-white rounded-3xl"
+                            placeholder="Search Directory">
+                    </div>
+                </div>
+                <div class="flex gap-2 items-center">
+                    <a class="btn-blue" href="download-center.html">
+                        <img src="assets/imgs/download.svg" alt="">
+                        <span>Download Center</span>
+                    </a>
+                    <a href="#menu" class="nav-menu-link lg:hidden text-white text-xl">
+                        <i class="fa-solid fa-bars"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </header>
+    <div class="bg-bubble bg-primary">
+        <div class="max-w-[1100px] mx-auto">
+            <div class="header-title h-40 flex flex-col items-center justify-center items-center text-center px-4">
+                <h2 class="font-bold md:text-5xl text-3xl  text-white">Our Hierarchical Layout</h2>
+                <p class="text-white/75 font-medium md:text-lg text-base mt-2">A Visual Guide to Our Structure and
+                    Leadership</p>
+            </div>
+        </div>
+        <div class="py-8">
+            <div class="container-in">
+                <h1 class="level-1 rectangle">
+                    <img src="assets/imgs/ali.jpg" alt="">
+                    CEO <span>VP of Engineering</span>
+                </h1>
+                <ol class="level-2-wrapper">
+                    <li>
+                        <h2 class="level-2 rectangle">
+                            <img src="assets/imgs/ali.jpg" alt="">
+                            CEO <span>VP of Engineering</span>
+                        </h2>
+                        <ol class="level-3-wrapper">
+                            <li>
+                                <h3 class="level-3 rectangle">
+                                    <img src="assets/imgs/ali.jpg" alt="">
+                                    CEO <span>VP of Engineering</span>
+                                </h3>
+                                <ol class="level-4-wrapper">
+                                    <li>
+                                        <h4 class="level-4 rectangle">
+                                            <img src="assets/imgs/ali.jpg" alt="">
+                                            CEO <span>VP of Engineering</span>
+                                        </h4>
+                                    </li>
+                                    <li>
+                                        <h4 class="level-4 rectangle">
+                                            <img src="assets/imgs/ali.jpg" alt="">
+                                            CEO <span>VP of Engineering</span>
+                                        </h4>
+                                    </li>
+                                </ol>
+                            </li>
+                            <li>
+                                <h3 class="level-3 rectangle">
+                                    <img src="assets/imgs/ali.jpg" alt="">
+                                    CEO <span>VP of Engineering</span>
+                                </h3>
+                                <ol class="level-4-wrapper">
+                                    <li>
+                                        <h4 class="level-4 rectangle">
+                                            <img src="assets/imgs/ali.jpg" alt="">
+                                            CEO <span>VP of Engineering</span>
+                                        </h4>
+                                    </li>
+                                    <li>
+                                        <h4 class="level-4 rectangle">
+                                            <img src="assets/imgs/ali.jpg" alt="">
+                                            CEO <span>VP of Engineering</span>
+                                        </h4>
+                                    </li>
+
+                                </ol>
+                            </li>
+                        </ol>
+                    </li>
+                    <li>
+                        <h2 class="level-2 rectangle">
+                            <img src="assets/imgs/ali.jpg" alt="">
+                            CEO <span>VP of Engineering</span>
+                        </h2>
+                        <ol class="level-3-wrapper">
+                            <li>
+                                <h3 class="level-3 rectangle">
+                                    <img src="assets/imgs/ali.jpg" alt="">
+                                    CEO <span>VP of Engineering</span>
+                                </h3>
+                                <ol class="level-4-wrapper">
+                                    <li>
+                                        <h4 class="level-4 rectangle">
+                                            <img src="assets/imgs/ali.jpg" alt="">
+                                            CEO <span>VP of Engineering</span>
+                                        </h4>
+                                    </li>
+                                    <li>
+                                        <h4 class="level-4 rectangle">
+                                            <img src="assets/imgs/ali.jpg" alt="">
+                                            CEO <span>VP of Engineering</span>
+                                        </h4>
+                                    </li>
+
+                                </ol>
+                            </li>
+                            <li>
+                                <h3 class="level-3 rectangle">
+                                    <img src="assets/imgs/ali.jpg" alt="">
+                                    CEO <span>VP of Engineering</span>
+                                </h3>
+                                <ol class="level-4-wrapper">
+                                    <li>
+                                        <h4 class="level-4 rectangle">
+                                            <img src="assets/imgs/ali.jpg" alt="">
+                                            CEO <span>VP of Engineering</span>
+                                        </h4>
+                                    </li>
+                                    <li>
+                                        <h4 class="level-4 rectangle">
+                                            <img src="assets/imgs/ali.jpg" alt="">
+                                            CEO <span>VP of Engineering</span>
+                                        </h4>
+                                    </li>
+
+                                </ol>
+                            </li>
+                        </ol>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <footer class="py-4 bg-secondary">
+        <div class="container-in">
+            <div class="flex flex-wrap sm:flex-nowrap gap-2 sm:justify-between justify-center text-white">
+                <div class="">&copy; Copyright All Right Reserved, Jusour Co</div>
+                <div class="flex gap-4 flex-wrap sm:flex-nowrap justify-center items-center">
+                    <div>
+                        <i class="fa-regular fa-envelope"></i>
+                        info@jusour.qa
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-phone"></i>
+                        +974 987654321
+                    </div>
+                    <div class="flex text-white gap-2 text-xl">
+                        <a href=""><i class="fa-brands fa-facebook"></i></a>
+                        <a href=""><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href=""><i class="fa-brands fa-linkedin"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script>
+        $('.nav-menu-link').on('click', function (e) {
+            e.preventDefault()
+            var id = $(this).attr('href')
+
+            $(id).slideToggle();
+        })
+    </script>
+</body>
+
+</html>

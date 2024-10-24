@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        white: '#ffffff',
+                        primary: '#21295B',
+                        secondary: '#91193B',
+                        black: '#000000'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style type="text/tailwindcss">
+
+        .fc-header-toolbar {
+    
+    padding-top: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+
+        .container-in {@apply mx-auto max-w-[1400px] px-4;} 
+        .nav{@apply flex flex-col items-center gap-4}
+        .menu{@apply m-0 p-0 lg:flex hidden gap-3 items-center; justify-content: center;
+            li{
+                a{
+                    @apply text-white font-medium;
+                }
+                &.active,
+                &:hover{
+                    a{
+                        @apply text-secondary;
+                    }
+                }
+            }
+        }
+        .btn-blue{
+            @apply bg-secondary md:h-10 h-8 flex gap-2 text-white items-center lg:px-4 px-2 text-sm md:text-base rounded-lg border-2 border-white font-semibold;
+        } 
+        .btn-white{
+            @apply bg-white md:h-10 h-8 flex gap-2 text-secondary items-center lg:px-4 px-2 text-sm md:text-base rounded-lg border-2 border-secondary font-semibold;
+        } 
+        .news-wrapper{
+            background: url(assets/imgs/u.png) no-repeat right #fff;
+        }
+        body{
+            @apply bg-primary;
+        }
+        .content-modal{
+            h3{@apply text-xl font-semibold text-black/75 mb-4; }
+            strong{
+                @apply text-lg font-medium text-black/75;
+            }
+            p{
+                @apply text-black/75 mb-4 mt-0 text-sm;
+            }
+            ul{
+                padding-left: 1.5rem;
+                list-style: disc;
+                margin-bottom: 1rem;
+                li{font-size: 14px;
+                    strong{
+                        @apply text-sm;
+                    }
+                }
+                &>ul{
+                    padding-left: 1rem;
+                    list-style: lower-alpha;
+                }
+            }
+        }
+
+        /* Calendar */
+        .fc {
+            .fc-toolbar.fc-header-toolbar{
+            @apply bg-secondary text-white px-3 py-2;
+                .fc-toolbar-title{
+                    @apply font-bold text-2xl;
+                }
+            }
+            .fc-button-primary{
+                --fc-button-bg-color: transparent;
+                --fc-button-border-color: #fff;
+                --fc-button-text-color: #fff;
+                border-radius: 50%;
+                border-width: 2px;
+                padding: 3px;
+            }
+        }
+      </style>
+    <title>Intranet</title>
+</head>
+
+<body>
+    <div class="header-home bg-[#21295B]">
+        <header class="py-6">
+            <div class="container-in">
+                <div class="flex justify-between items-center lg:flex-nowrap flex-wrap gap-2 lg:gap-0">
+                    <div class="logo">
+                        <a href="">
+                            <img src="assets/imgs/logo.svg" class="lg:max-h-20 max-h-12" alt="">
+                        </a>
+                    </div>
+                    <div class="nav">
+                        <ul class="menu order-2 lg:order-1" id="menu">
+                            <li class="active"><a href="index.html">Home</a></li>
+                            <li><a href="orgnization.html">Organization</a></li>
+                            <li><a href="our-mission.html">Our mission </a></li>
+                            <li><a href="board-members.html">Board Members</a></li>
+                            <li><a href="usefull-contacts.html">Useful Contacts </a></li>
+                        </ul>
+                        <div class="search relative order-1 lg:order-2">
+                            <span class="absolute top-2 left-3">
+                                <img src="assets/imgs/search.svg" alt="">
+                            </span>
+                            <input type="text"
+                                class="h-[39px] w-[380px] bg-transparent pl-12 text-white border-2 border-white rounded-3xl"
+                                placeholder="Search Directory">
+                        </div>
+                    </div>
+                    <div class="flex gap-2 items-center">
+                        <a class="btn-blue" href="download-center.html">
+                            <img src="assets/imgs/download.svg" alt="">
+                            <span>Download Center</span>
+                        </a>
+                        <a href="#menu" class="nav-menu-link lg:hidden text-white text-xl">
+                            <i class="fa-solid fa-bars"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </header>
+        <div class="container-in lg:mt-14">
+            <div class="flex md:justify-between md:items-end flex-col md:flex-row gap-4 mb-4 md:gap-0 lg:mb-0">
+                <div class="md:w-[60%] md:max-w-[500px] flex flex-col items-start text-white self-center">
+                    <h1 class="lg:text-5xl text-2xl font-bold"><u class="text-secondary">CEO</u> Message</h1>
+                    <P class="mt-6 lg:text-lg">The selection of our new company name, Jusour, indicates the essence of
+                        our
+                        purpose. Alongside
+                        our partners, we seek to build innovative and sustainable bridges...</P>
+                    <a class="btn-blue mt-4" href="">
+                        <span>Read More</span>
+                        <img src="assets/imgs/double-arrrow.svg" alt="">
+                    </a>
+                </div>
+                <div class="md:max-w-[415px] w-[30%] hidden lg:block">
+                    <img src="assets/imgs/ceo.png" class="max-w-[80%]" alt="">
+                </div>
+                <div class="lg:max-w-[415px] md:max-w-[300px] md:w-[50%] relative min-h-[340px]">
+                    <div class="bg-white rounded-lg max-w-[400px] md:ml-auto  mx-auto md:absolute top-20">
+                        <div class="c-header px-4 py-2">
+                            <div class="font-semibold text-2xl">Announcement</div>
+                            <div class="bg-secondary rounded-xl px-2 py-1 text-white text-sm">
+                                <i class="fa-solid fa-circle-info"></i>
+                                Announcement from admin or leader
+                            </div>
+                        </div>
+                        <div class="c-body flex flex-col gap-2 px-4 py-2 overflow-auto max-h-[500px]">
+                            <div class="c-list flex gap-2 px-2 py-1 rounded-lg shadow-md">
+                                <div class="l-img ">
+                                    <img src="assets/imgs/qoutes.svg" class="min-w-[48px]" alt="">
+                                </div>
+                                <div class="l-content">
+                                    <div class="font-semibold">🎉 New Joinee</div>
+                                    <div class="text-sm">Please join us in welcoming them to the IT Department! Abdullah
+                                        Mahroz</div>
+                                    <div class="text-xs mt-2">Dec 21, 2024</div>
+                                </div>
+                            </div>
+                            <div class="c-list flex gap-2 px-2 py-1 rounded-lg shadow-md">
+                                <div class="l-img ">
+                                    <img src="assets/imgs/qoutes.svg" class="min-w-[48px]" alt="">
+                                </div>
+                                <div class="l-content">
+                                    <div class="font-semibold">🎉 New Joinee</div>
+                                    <div class="text-sm">Please join us in welcoming them to the IT Department! Abdullah
+                                        Mahroz</div>
+                                    <div class="text-xs mt-2">Dec 21, 2024</div>
+                                </div>
+                            </div>
+                            <div class="c-list flex gap-2 px-2 py-1 rounded-lg shadow-md">
+                                <div class="l-img ">
+                                    <img src="assets/imgs/qoutes.svg" class="min-w-[48px]" alt="">
+                                </div>
+                                <div class="l-content">
+                                    <div class="font-semibold">🎉 New Joinee</div>
+                                    <div class="text-sm">Please join us in welcoming them to the IT Department! Abdullah
+                                        Mahroz</div>
+                                    <div class="text-xs mt-2">Dec 21, 2024</div>
+                                </div>
+                            </div>
+                            <div class="c-list flex gap-2 px-2 py-1 rounded-lg shadow-md">
+                                <div class="l-img ">
+                                    <img src="assets/imgs/qoutes.svg" class="min-w-[48px]" alt="">
+                                </div>
+                                <div class="l-content">
+                                    <div class="font-semibold">🎉 New Joinee</div>
+                                    <div class="text-sm">Please join us in welcoming them to the IT Department! Abdullah
+                                        Mahroz</div>
+                                    <div class="text-xs mt-2">Dec 21, 2024</div>
+                                </div>
+                            </div>
+                            <div class="c-list flex gap-2 px-2 py-1 rounded-lg shadow-md">
+                                <div class="l-img ">
+                                    <img src="assets/imgs/qoutes.svg" class="min-w-[48px]" alt="">
+                                </div>
+                                <div class="l-content">
+                                    <div class="font-semibold">🎉 New Joinee</div>
+                                    <div class="text-sm">Please join us in welcoming them to the IT Department! Abdullah
+                                        Mahroz</div>
+                                    <div class="text-xs mt-2">Dec 21, 2024</div>
+                                </div>
+                            </div>
+                            <div class="c-list flex gap-2 px-2 py-1 rounded-lg shadow-md">
+                                <div class="l-img ">
+                                    <img src="assets/imgs/qoutes.svg" class="min-w-[48px]" alt="">
+                                </div>
+                                <div class="l-content">
+                                    <div class="font-semibold">🎉 New Joinee</div>
+                                    <div class="text-sm">Please join us in welcoming them to the IT Department! Abdullah
+                                        Mahroz</div>
+                                    <div class="text-xs mt-2">Dec 21, 2024</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="news-wrapper">
+        <div class="container-in">
+            <div class="news py-4">
+                <div class="flex justify-between px-2">
+                    <div>
+                        <h3 class="text-2xl font-semibold mb-0">Jusour news</h3>
+                        <p class="text-sm text-[#666666]">Navigating News with Insight and Integrity</p>
+                    </div>
+                    <div class="flex ">
+                        <button class="prev">
+                            <img src="assets/imgs/nav.svg" alt="">
+                        </button>
+                        <button class="next">
+                            <img src="assets/imgs/nav.svg" class="rotate-180" alt="">
+                        </button>
+                    </div>
+                </div>
+                <div class="news-carousel">
+                    <div class="cl-item p-2">
+                        <div class="rounded-lg shadow-md">
+                            <div class="img">
+                                <img src="assets/imgs/news-1.jpg" alt="">
+                            </div>
+                            <div class="cl-content px-4 py-2 bg-white">
+                                <span class="text-secondary font-bold text-xs">Sep 22, 2024</span>
+                                <div class="font-semibold leading-4">Jusour, in partnership with Mada - Qatar Assistive
+                                    Technology
+                                    Center</div>
+                                <a href="" class="mt-1 text-secondary text-sm font-medium flex items-center gap-2">
+                                    <span>Read More</span>
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cl-item p-2">
+                        <div class="rounded-lg shadow-md">
+                            <div class="img">
+                                <img src="assets/imgs/news-1.jpg" alt="">
+                            </div>
+                            <div class="cl-content px-4 py-2 bg-white">
+                                <span class="text-secondary font-bold text-xs">Sep 22, 2024</span>
+                                <div class="font-semibold leading-4">Jusour, in partnership with Mada - Qatar Assistive
+                                    Technology
+                                    Center</div>
+                                <a href="" class="mt-1 text-secondary text-sm font-medium flex items-center gap-2">
+                                    <span>Read More</span>
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cl-item p-2">
+                        <div class="rounded-lg shadow-md">
+                            <div class="img">
+                                <img src="assets/imgs/news-1.jpg" alt="">
+                            </div>
+                            <div class="cl-content px-4 py-2 bg-white">
+                                <span class="text-secondary font-bold text-xs">Sep 22, 2024</span>
+                                <div class="font-semibold leading-4">Jusour, in partnership with Mada - Qatar Assistive
+                                    Technology
+                                    Center</div>
+                                <a href="" class="mt-1 text-secondary text-sm font-medium flex items-center gap-2">
+                                    <span>Read More</span>
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cl-item p-2">
+                        <div class="rounded-lg shadow-md">
+                            <div class="img">
+                                <img src="assets/imgs/news-1.jpg" alt="">
+                            </div>
+                            <div class="cl-content px-4 py-2 bg-white">
+                                <span class="text-secondary font-bold text-xs">Sep 22, 2024</span>
+                                <div class="font-semibold leading-4">Jusour, in partnership with Mada - Qatar Assistive
+                                    Technology
+                                    Center</div>
+                                <a href="" class="mt-1 text-secondary text-sm font-medium flex items-center gap-2">
+                                    <span>Read More</span>
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cl-item p-2">
+                        <div class="rounded-lg shadow-md">
+                            <div class="img">
+                                <img src="assets/imgs/news-1.jpg" alt="">
+                            </div>
+                            <div class="cl-content px-4 py-2 bg-white">
+                                <span class="text-secondary font-bold text-xs">Sep 22, 2024</span>
+                                <div class="font-semibold leading-4">Jusour, in partnership with Mada - Qatar Assistive
+                                    Technology
+                                    Center</div>
+                                <a href="" class="mt-1 text-secondary text-sm font-medium flex items-center gap-2">
+                                    <span>Read More</span>
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="py-8 bg-about">
+        <div class="container-in">
+            <div class="flex flex-wrap lg:flex-nowrap gap-6">
+                <div class="usefull-links lg:max-w-[40%] shrink-0 grow-0 w-full">
+                    <h3 class="text-2xl text-white font-semibold">Useful Links</h3>
+                    <p class="text-white">Lorem ipsum dollar</p>
+                    <div class="u-links grid gap-4 sm:grid-cols-2 mt-4">
+                        <div class="link bg-white rounded-lg px-2 py-3">
+
+                            <div class="flex justify-between items-center ">
+                                <div class="font-semibold text-lg">Jusour Co</div>
+                                <i class="fa-solid fa-angles-right text-secondary"></i>
+                            </div>
+                            <a href="Links: https://jusour.qa/" class="text-secondary font-semibold">Links:
+                                https://services.jusour.qa</a>
+
+                        </div>
+                        <div class="link bg-white rounded-lg px-2 py-3">
+
+                            <div class="flex justify-between items-center">
+                                <div class="font-semibold text-lg">Jusour Co</div>
+                                <i class="fa-solid fa-angles-right text-secondary"></i>
+                            </div>
+                            <a href="Links: https://jusour.qa/" class="text-secondary font-semibold">Links:
+                                https://services.jusour.qa</a>
+
+                        </div>
+                        <div class="link bg-white rounded-lg px-2 py-3">
+
+                            <div class="flex justify-between items-center">
+                                <div class="font-semibold text-lg">Jusour Co</div>
+                                <i class="fa-solid fa-angles-right text-secondary"></i>
+                            </div>
+                            <a href="Links: https://jusour.qa/" class="text-secondary font-semibold">Links:
+                                https://services.jusour.qa</a>
+
+                        </div>
+                        <div class="link bg-white rounded-lg px-2 py-3">
+
+                            <div class="flex justify-between items-center">
+                                <div class="font-semibold text-lg">Jusour Co</div>
+                                <i class="fa-solid fa-angles-right text-secondary"></i>
+                            </div>
+                            <a href="Links: https://jusour.qa/" class="text-secondary font-semibold">Links:
+                                https://services.jusour.qa</a>
+
+                        </div>
+                        <div class="link bg-white rounded-lg px-2 py-3">
+
+                            <div class="flex justify-between items-center">
+                                <div class="font-semibold text-lg">Jusour Co</div>
+                                <i class="fa-solid fa-angles-right text-secondary"></i>
+                            </div>
+                            <a href="Links: https://jusour.qa/" class="text-secondary font-semibold">Links:
+                                https://services.jusour.qa</a>
+
+                        </div>
+                        <div class="link bg-white rounded-lg px-2 py-3">
+
+                            <div class="flex justify-between items-center">
+                                <div class="font-semibold text-lg">Jusour Co</div>
+                                <i class="fa-solid fa-angles-right text-secondary"></i>
+                            </div>
+                            <a href="Links: https://jusour.qa/" class="text-secondary font-semibold">Links:
+                                https://services.jusour.qa</a>
+
+                        </div>
+                    </div>
+                </div>
+                <div id='calendar-container'
+                    class="shrink-0 grow-0 w-full lg:max-w-[57%] bg-white rounded-lg text-sm overflow-hidden min-h-[300px]">
+                    <div id='calendar'></div>
+                    <!-- <div id="events"></div> -->
+                </div>
+            </div>
+            <div class="mt-8">
+                <h3 class="text-white text-2xl font-semibold mb-4">Explore Our Offers</h3>
+                <div class="relative">
+                    <button class="0prev text-white text-2xl px-2 absolute left-0 top-0 bottom-0"><i
+                            class="fa-solid fa-chevron-left"></i></button>
+                    <div class="carousel-offer w-full px-8">
+                        <div class="offer-item relative">
+                            <img src="assets/imgs/img-1.png" class="max-w-full" alt="">
+                            <div
+                                class="cap-layer bg-primary/25 absolute top-0 bottom-0 left-0 right-0 p-4 flex items-end max-w-full h-full pb-6">
+                                <span class="relative font-bold text-lg text-white ">Shakespeare International
+                                    Academy</span>
+                            </div>
+                        </div>
+                        <div class="offer-item relative">
+                            <img src="assets/imgs/img-1.png" class="max-w-full" alt="">
+                            <div
+                                class="cap-layer bg-primary/25 absolute top-0 bottom-0 left-0 right-0 p-4 flex items-end max-w-full h-full pb-6">
+                                <span class="relative font-bold text-lg text-white ">Shakespeare International
+                                    Academy</span>
+                            </div>
+                        </div>
+                        <div class="offer-item relative">
+                            <img src="assets/imgs/img-1.png" class="max-w-full" alt="">
+                            <div
+                                class="cap-layer bg-primary/25 absolute top-0 bottom-0 left-0 right-0 p-4 flex items-end max-w-full h-full pb-6">
+                                <span class="relative font-bold text-lg text-white ">Shakespeare International
+                                    Academy</span>
+                            </div>
+                        </div>
+                        <div class="offer-item relative">
+                            <img src="assets/imgs/img-1.png" class="max-w-full" alt="">
+                            <div
+                                class="cap-layer bg-primary/25 absolute top-0 bottom-0 left-0 right-0 p-4 flex items-end max-w-full h-full pb-6">
+                                <span class="relative font-bold text-lg text-white ">Shakespeare International
+                                    Academy</span>
+                            </div>
+                        </div>
+                        <div class="offer-item relative">
+                            <img src="assets/imgs/img-1.png" class="max-w-full" alt="">
+                            <div
+                                class="cap-layer bg-primary/25 absolute top-0 bottom-0 left-0 right-0 p-4 flex items-end max-w-full h-full pb-6">
+                                <span class="relative font-bold text-lg text-white ">Shakespeare International
+                                    Academy</span>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="onext text-white text-2xl px-2 absolute right-0 top-0 bottom-0"><i
+                            class="fa-solid fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="weather py-8">
+        <div class="container-in">
+            <div class="flex flex-wrap md:flex-nowrap justify-between gap-4 text-white">
+                <div class="md:max-w-[530px] md:w-[40%] w-full">
+                    <div class="flex bg-black/25 p-4 rounded-lg gap-6">
+                        <div>
+                            <span>Partly Cloudy</span>
+                            <img src="assets/imgs/cloud.png" alt="">
+                        </div>
+                        <div class="font-bold">
+                            <div class="big flex text-3xl ">32 <div
+                                    class="deg h-[10px] w-[10px] border-2 border-white rounded-full"></div>
+                            </div>
+                            Doha, Qatar
+                            <span class="block font-normal">Sunday</span>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <h3 class="text-2xl font-bold">Muslim Prayers Time</h3>
+                        <p class="font-medium">in Doha, Qatar (GMT+3)</p>
+                        <div class="grid md:grid-cols-5 sm:grid-cols-3 grid-cols-2 gap-2 mt-4">
+                            <div class="bg-white/75 rounded-xl text-lg p-2 py-2 text-black leading-6">
+                                <span>Fajr</span>
+                                <strong class="block"> 4:07 AM</strong>
+                            </div>
+                            <div class="bg-white/75 rounded-xl text-lg p-2 py-2 text-black leading-6">
+                                <span>Fajr</span>
+                                <strong class="block"> 4:07 AM</strong>
+                            </div>
+                            <div class="bg-white/75 rounded-xl text-lg p-2 py-2 text-black leading-6">
+                                <span>Fajr</span>
+                                <strong class="block"> 4:07 AM</strong>
+                            </div>
+                            <div class="bg-white/75 rounded-xl text-lg p-2 py-2 text-black leading-6">
+                                <span>Fajr</span>
+                                <strong class="block"> 4:07 AM</strong>
+                            </div>
+                            <div class="bg-white/75 rounded-xl text-lg p-2 py-2 text-black leading-6">
+                                <span>Fajr</span>
+                                <strong class="block"> 4:07 AM</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:max-w-[870px] md:w-[60%] w-full bg-black/25 p-4 rounded-lg flex flex-col gap-4">
+                    <h3 class="sm:text-4xl text-2xl font-semibold sm:max-w-[80%]">Upload of Jusour policies and
+                        procedures</h3>
+                    <p class="sm:max-w-[80%]">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis erat
+                        sed
+                        nulla tempus luctus
+                        sit amet id elit Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis erat sed
+                        nulla tempus luctus sit amet id elit</p>
+                    <div class="flex gap-2 self-end">
+                        <a href="#policyModal" class="btn-white modal-in">Policies</a>
+                        <a href="#Procedure" class="btn-blue modal-in">Procedures</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="py-4">
+        <div class="container-in">
+            <div class="flex flex-wrap sm:flex-nowrap gap-2 sm:justify-between justify-center text-white">
+                <div class="">&copy; Copyright All Right Reserved, Jusour Co</div>
+                <div class="flex gap-4 flex-wrap sm:flex-nowrap justify-center items-center">
+                    <div>
+                        <i class="fa-regular fa-envelope"></i>
+                        info@jusour.qa
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-phone"></i>
+                        +974 987654321
+                    </div>
+                    <div class="flex text-white gap-2 text-xl">
+                        <a href=""><i class="fa-brands fa-facebook"></i></a>
+                        <a href=""><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href=""><i class="fa-brands fa-linkedin"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal for Policies -->
+    <div class="fixed left-0 right-0 top-0 bottom-0 h-full w-full bg-black/50 overflow-x-hidden overflow-y-auto hidden"
+        id="policyModal">
+        <div class="overlay-modal fixed left-0 right-0 top-0 bottom-0 h-full w-full bg-black/50"></div>
+        <div class="max-w-[700px] w-full mx-auto rounded-lg overflow-hidden relative ">
+            <div class="bg-secondary relative text-center font-semibold text-2xl flex justify-center p-2 text-white">
+                Policies <a class="text-white absolute right-4 close-in" href="#policyModal"><i
+                        class="fa-solid fa-xmark"></i></a></div>
+            <div class="bg-[#D9D9D9]">
+                <div class="px-8 py-4 content-modal">
+                    <h3>Policies</h3>
+
+                    <p>At Jusour, our policies are designed to ensure a safe, respectful, and productive environment for
+                        all employees, partners, and stakeholders. Our commitment to ethical practices and compliance
+                        with
+                        regulations is fundamental to our mission.</p>
+
+                    <strong>Code of Conduct</strong>
+
+                    <p>
+                        We uphold the highest standards of integrity and professionalism. All employees are expected to
+                        act
+                        in a manner that reflects our values and fosters a positive work environment. Discrimination,
+                        harassment, or any form of misconduct will not be tolerated.
+                    </p>
+
+
+                    <strong>Equal Employment Opportunity</strong>
+
+                    <p>We are dedicated to providing equal employment opportunities for all individuals, regardless of
+                        race, color, religion, gender, sexual orientation, age, disability, or any other protected
+                        characteristic. We believe in diversity and inclusion as essential components of our success.
+                    </p>
+
+
+                    <strong>Confidentiality</strong>
+
+                    <p>All employees must respect the confidentiality of sensitive information. This includes
+                        proprietary
+                        data, employee records, and client information. Breaches of confidentiality may result in
+                        disciplinary action.</p>
+
+
+                    <strong>Health and Safety</strong>
+
+                    <p>We prioritize the health and safety of our employees and stakeholders. Compliance with safety
+                        regulations and protocols is mandatory. Employees are encouraged to report unsafe conditions and
+                        practices.</p>
+
+
+                    <strong>Leave of Absence</strong>
+
+                    <p>Our leave policy provides guidelines for various types of leave, including medical, parental, and
+                        personal leave. Employees are encouraged to familiarize themselves with these provisions and
+                        submit
+                        requests in advance when possible.</p>
+                </div>
+                <div class="border-t border-t-black/25 px-8 py-2 flex justify-end">
+                    <a class="btn-white close-in" href="#policyModal">Close</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Policies -->
+    <div class="fixed left-0 right-0 top-0 bottom-0 h-full w-full bg-black/50 overflow-x-hidden overflow-y-auto hidden"
+        id="Procedure">
+        <div class="overlay-modal fixed left-0 right-0 top-0 bottom-0 h-full w-full bg-black/50"></div>
+        <div class="max-w-[700px] w-full mx-auto rounded-lg overflow-hidden relative ">
+            <div class="bg-secondary relative text-center font-semibold text-2xl flex justify-center p-2 text-white">
+                Procedure <a class="text-white absolute right-4 close-in" href="#Procedure"><i
+                        class="fa-solid fa-xmark"></i></a></div>
+            <div class="bg-[#D9D9D9]">
+                <div class="px-8 py-4 content-modal">
+                    <h3>Procedures</h3>
+                    <p>At Jusour, our procedures provide clear guidelines for carrying out essential processes and tasks
+                        efficiently and effectively. Adhering to these procedures ensures consistency, accountability,
+                        and
+                        compliance across all areas of our organization.</p>
+
+
+                    <strong>1. Onboarding Process</strong>
+                    <ul>
+                        <li><strong>Objective:</strong> To integrate new employees smoothly into the organization.</li>
+                        <li><strong>Steps:</strong></li>
+                        <ul>
+                            <li>Complete necessary paperwork (employment contract, tax forms, etc.).</li>
+                            <li>Schedule orientation sessions covering company policies, culture, and benefits.</li>
+                            <li>Assign a mentor or buddy to assist the new hire during the first month.</li>
+                            <li>Provide necessary training and resources for their role.</li>
+                        </ul>
+                    </ul>
+
+
+
+                    <strong>2. Performance Review Process</strong>
+
+                    <ul>
+                        <li><strong>Objective:</strong> To evaluate employee performance and provide feedback for
+                            professional development.</li>
+                        <li><strong>Steps:</strong></li>
+                        <ul>
+                            <li>Schedule performance reviews annually or biannually.</li>
+                            <li>Employees complete a self-assessment prior to the review meeting.</li>
+                            <li>Managers assess performance based on predefined criteria.</li>
+                            <li>Conduct a one-on-one meeting to discuss feedback and set goals.</li>
+                            <li>Document the review and share it with HR.</li>
+                        </ul>
+                    </ul>
+
+                    <strong>3. Leave Request Procedure</strong>
+                    <ul>
+                        <li><strong>Objective:</strong> To manage employee leave requests fairly and efficiently.</li>
+                        <li><strong>Steps:</strong></li>
+                        <ul>
+                            <li>Employees submit a leave request form at least [X days/weeks] in advance.</li>
+                            <li>Direct supervisors review and approve the request based on staffing needs.</li>
+                            <li>HR updates the leave records and informs the employee of the approval status.</li>
+                            <li>For emergency leave, employees should notify their supervisor as soon as possible.</li>
+                        </ul>
+                    </ul>
+
+                    <strong>4. Expense Reimbursement Procedure</strong>
+                    <ul>
+                        <li><strong>Objective: </strong> To facilitate the reimbursement of business-related expenses
+                            incurred by employees.</li>
+                        <li><strong>Steps:</strong></li>
+                        <ul>
+                            <li>Employees complete an expense reimbursement form, attaching receipts.</li>
+                            <li>Employees complete an expense reimbursement form, attaching receipts.</li>
+                            <li>Submit the form to the direct supervisor for approval.</li>
+                            <li>Approved forms are sent to the finance department for processing.</li>
+                            <li>Reimbursements are issued within [X days] of approval.</li>
+                        </ul>
+                    </ul>
+
+
+                    <strong>5. Incident Reporting Procedure</strong>
+
+                    <ul>
+                        <li><strong>Objective:</strong> To ensure timely reporting and handling of workplace incidents.
+                        </li>
+                        <li>Steps:</li>
+                        <ol>
+                            <li>Employees report incidents to their supervisor or HR immediately.</li>
+                            <li>Complete an incident report form detailing the incident.</li>
+                            <li>HR investigates the incident and documents findings.</li>
+                            <li>Follow-up actions are taken as needed, and employees are informed of the outcome.</li>
+                        </ol>
+                    </ul>
+
+                    <strong>6. Training and Development Procedure</strong>
+                    <ul>
+                        <li><strong>Objective:</strong> To promote continuous learning and professional growth.</li>
+                        <li>Steps:</li>
+                        <ul>
+                            <li>Identify training needs through performance reviews or employee requests.</li>
+                            <li>Submit a training request to HR with details of the desired training.</li>
+                            <li>HR evaluates and approves training requests based on budget and relevance.</li>
+                            <li>Employees complete the training and provide feedback to HR.</li>
+                        </ul>
+                    </ul>
+                </div>
+                <div class="border-t border-t-black/25 px-8 py-2 flex justify-end">
+                    <a class="btn-white close-in" href="#Procedure">Close</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js'></script>
+    <script>
+        var offers = $('.carousel-offer').slick({
+            infinite: true,
+            slidesToShow: 4,
+            slidesToScroll: 4,
+            arrows: false,
+            responsive: [
+                {
+                    breakpoint: 1200,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 3,
+                    }
+                },
+                {
+                    breakpoint: 992,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 2
+                    }
+                },
+                {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                },
+
+            ]
+        });
+        var slick = $('.news-carousel').slick({
+            infinite: true,
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            arrows: false,
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 2,
+                    }
+                },
+                {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                },
+
+            ]
+        });
+        $('.prev').on('click', function () {
+            slick.slick('slickPrev');
+        });
+
+        $('.next').on('click', function () {
+            slick.slick('slickNext');
+        });
+
+        $('.oprev').on('click', function () {
+            offers.slick('slickPrev');
+        });
+
+        $('.onext').on('click', function () {
+            offers.slick('slickNext');
+        });
+        $('.modal-in').on('click', function () {
+            var id = $(this).attr('href')
+            $('body').css('overflow', 'hidden')
+            $(id).show();
+        })
+        $('.close-in').on('click', function () {
+            var id = $(this).attr('href')
+            $('body').css('overflow', 'auto')
+            $(id).hide();
+        })
+        $('.nav-menu-link').on('click', function (e) {
+            e.preventDefault()
+            var id = $(this).attr('href')
+
+            $(id).slideToggle();
+        })
+        // document.addEventListener('DOMContentLoaded', function () {
+        //     var calendarEl = document.getElementById('calendar');
+        //     var calendar = new FullCalendar.Calendar(calendarEl, {
+        //         initialView: 'dayGridMonth'
+        //     });
+        //     calendar.render();
+        // });
+    </script>
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var calendarEl = document.getElementById('calendar');
+            const eventsDiv = document.getElementById('events');
+
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                dateClick: function (info) {
+                    alert('Date: ' + info.dateStr);
+                },
+                eventClick: function (info) {
+                    // Prevent the default click action
+                    info.jsEvent.preventDefault();
+
+                    // Show event details in the custom div
+                    eventsDiv.innerHTML = `<h3>${info.event.title}</h3>
+                                           <p>Start: ${info.event.start.toISOString()}</p>
+                                           <p>End: ${info.event.end ? info.event.end.toISOString() : 'N/A'}</p>`;
+                },
+                height: '100%',
+                expandRows: true,
+                slotMinTime: '08:00',
+                slotMaxTime: '20:00',
+                headerToolbar: {
+                    left: 'prev',
+                    center: 'title',
+                    right: 'next'
+                },
+                initialView: 'dayGridMonth',
+                initialDate: '2023-01-12',
+                navLinks: true, // can click day/week names to navigate views
+                editable: true,
+                selectable: true,
+                nowIndicator: true,
+                dayMaxEvents: true, // allow "more" link when too many events
+                events: [
+                    {
+                        title: 'All Day Event',
+                        start: '2023-01-01',
+                    },
+                    {
+                        title: 'Long Event',
+                        start: '2023-01-07',
+                        end: '2023-01-10'
+                    },
+                    {
+                        groupId: 999,
+                        title: 'Repeating Event',
+                        start: '2023-01-09T16:00:00'
+                    },
+                    {
+                        groupId: 999,
+                        title: 'Repeating Event',
+                        start: '2023-01-16T16:00:00'
+                    },
+                    {
+                        title: 'Conference',
+                        start: '2023-01-11',
+                        end: '2023-01-13'
+                    },
+                    {
+                        title: 'Meeting',
+                        start: '2023-01-12T10:30:00',
+                        end: '2023-01-12T12:30:00'
+                    },
+                    {
+                        title: 'Lunch',
+                        start: '2023-01-12T12:00:00'
+                    },
+                    {
+                        title: 'Meeting',
+                        start: '2023-01-12T14:30:00'
+                    },
+                    {
+                        title: 'Happy Hour',
+                        start: '2023-01-12T17:30:00'
+                    },
+                    {
+                        title: 'Dinner',
+                        start: '2023-01-12T20:00:00'
+                    },
+                    {
+                        title: 'Birthday Party',
+                        start: '2023-01-13T07:00:00'
+                    },
+                    {
+                        title: 'Click for Google',
+                        url: 'http://google.com/',
+                        start: '2023-01-28'
+                    }
+                ]
+            });
+
+            calendar.render();
+        });
+
+    </script>
+
+
+</body>
+
+</html>
