@@ -14,8 +14,8 @@ body {
     font-style: normal;
 }
 
-.header-home {
-    @apply bg-[#21295B];
+.header-home {  
+    background: url(../imgs/header-pattern.png) #21295B no-repeat bottom center;
 }
 
 .container {
@@ -24,6 +24,8 @@ body {
 }
 
 .news {
+    width: 100%;
+
     @media screen and (min-width: 768px) {
         width: calc(100% - 300px);
     }
@@ -32,7 +34,7 @@ body {
         width: calc(100% - 400px);
     }
 
-    width: 100%;
+
 
 }
 
@@ -73,15 +75,16 @@ header {
             .menu {
                 background-color: #fff;
                 width: 100%;
-                
+
                 li {
                     a {
                         padding: 5px 10px;
                         display: block;
                         color: #000
                     }
-                    &.active{
-                        a{
+
+                    &.active {
+                        a {
                             background-color: #91193b;
                             color: #fff;
                         }
