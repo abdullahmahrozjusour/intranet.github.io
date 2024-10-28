@@ -359,7 +359,8 @@
                                 <div class="font-semibold text-lg">Jusour Co</div>
                                 <i class="fa-solid fa-angles-right text-secondary"></i>
                             </div>
-                            <a href="https://jusour.qa/" target="_blank" class="text-secondary text-sm font-semibold">Links:
+                            <a href="https://jusour.qa/" target="_blank"
+                                class="text-secondary text-sm font-semibold">Links:
                                 https://services.jusour.qa</a>
 
                         </div>
@@ -369,7 +370,8 @@
                                 <div class="font-semibold text-lg">Services Jusour</div>
                                 <i class="fa-solid fa-angles-right text-secondary"></i>
                             </div>
-                            <a href="https://services.jusour.qa" target="_blank" class="text-secondary text-sm font-semibold">Links:
+                            <a href="https://services.jusour.qa" target="_blank"
+                                class="text-secondary text-sm font-semibold">Links:
                                 https://services.jusour.qa</a>
 
                         </div>
@@ -379,7 +381,8 @@
                                 <div class="font-semibold text-lg">Oracle Fusion</div>
                                 <i class="fa-solid fa-angles-right text-secondary"></i>
                             </div>
-                            <a href="https://iaifgs.fa.ocs.oraclecloud.com/" target="_blank" class="text-secondary text-sm font-semibold">Links:
+                            <a href="https://iaifgs.fa.ocs.oraclecloud.com/" target="_blank"
+                                class="text-secondary text-sm font-semibold">Links:
                                 https://iaifgs.fa.ocs.oraclecloud.com/</a>
 
                         </div>
@@ -491,8 +494,8 @@
                     <div class="mt-4">
                         <h3 class="text-2xl font-bold">Muslim Prayers Time</h3>
                         <p class="font-medium">in Doha, Qatar (GMT+3)</p>
-                        <div class="grid md:grid-cols-5 sm:grid-cols-3 grid-cols-2 gap-2 mt-4">
-                            <div class="bg-white/75 rounded-xl text-lg p-2 py-2 text-black leading-6">
+                        <div id="prayer-times" class="grid md:grid-cols-5 sm:grid-cols-3 grid-cols-2 gap-2 mt-4">
+                            <!-- <div class="bg-white/75 rounded-xl text-lg p-2 py-2 text-black leading-6">
                                 <span>Fajr</span>
                                 <strong class="block"> 4:07 AM</strong>
                             </div>
@@ -511,7 +514,7 @@
                             <div class="bg-white/75 rounded-xl text-lg p-2 py-2 text-black leading-6">
                                 <span>Fajr</span>
                                 <strong class="block"> 4:07 AM</strong>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -920,7 +923,69 @@
 
     </script>
 
+    <script>
+        const city = "Doha";
+        const country = "Qatar"; 
+        const apiUrl = `http://api.aladhan.com/v1/timingsByCity?city=${city}&country=${country}`;
 
+        function formatTime24to12(time) {
+            const [hour, minute] = time.split(':');
+            const hour12 = hour % 12 || 12;
+            const ampm = hour >= 12 ? 'PM' : 'AM';
+            return `${hour12}:${minute} ${ampm}`;
+        }
+
+        function getNextPrayer(prayerTimes) {
+            const now = new Date();
+            const currentTime = now.toTimeString().slice(0, 5); 
+            const prayers = [
+                { name: 'Fajr', time: prayerTimes.Fajr },
+                { name: 'Dhuhr', time: prayerTimes.Dhuhr },
+                { name: 'Asr', time: prayerTimes.Asr },
+                { name: 'Maghrib', time: prayerTimes.Maghrib },
+                { name: 'Isha', time: prayerTimes.Isha }
+            ];
+
+            for (const prayer of prayers) {
+                if (prayer.time > currentTime) {
+                    return prayer.name;
+                }
+            }
+            return null; 
+        }
+
+        fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+                const timings = data.data.timings;
+                console.log(timings)
+                const nextPrayer = getNextPrayer(timings);
+                document.getElementById('prayer-times').innerHTML = ` 
+
+                <div class="${nextPrayer === 'Fajr' ? 'bg-secondary text-white' : 'bg-white/75 text-black'} border border-white rounded-xl text-lg p-2 py-2  leading-6">
+                    <span>Fajr</span>
+                    <strong class="block"> ${formatTime24to12(timings.Fajr)}</strong>
+                </div>
+                <div class="${nextPrayer === 'Dhuhr' ? 'bg-secondary text-white' : 'bg-white/75 text-black'} border border-white rounded-xl text-lg p-2 py-2  leading-6">
+                    <span>Dhuhr</span>
+                    <strong class="block"> ${formatTime24to12(timings.Dhuhr)}</strong>
+                </div>
+                <div class="${nextPrayer === 'Asr' ? 'bg-secondary text-white' : 'bg-white/75 text-black'} border border-white rounded-xl text-lg p-2 py-2  leading-6">
+                    <span>Asr</span>
+                    <strong class="block"> ${formatTime24to12(timings.Asr)}</strong>
+                </div>
+                <div class="${nextPrayer === 'Maghrib' ? 'bg-secondary text-white' : 'bg-white/75 text-black'} border border-white rounded-xl text-lg p-2 py-2  leading-6">
+                    <span>Maghrib</span>
+                    <strong class="block"> ${formatTime24to12(timings.Maghrib)}</strong>
+                </div>
+                <div class="${nextPrayer === 'Isha' ? 'bg-secondary text-white' : 'bg-white/75 text-black'} border border-white rounded-xl text-lg p-2 py-2  leading-6">
+                    <span>Isha</span>
+                    <strong class="block"> ${formatTime24to12(timings.Isha)}</strong>
+                </div>
+            `;
+            })
+            .catch(error => console.error('Error fetching prayer times:', error));
+    </script>
 </body>
 
 </html>
