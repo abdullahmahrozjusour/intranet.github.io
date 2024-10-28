@@ -926,7 +926,7 @@
             ];
 
             for (const prayer of prayers) {
-                if (prayer.time > currentTime) {
+                if (prayer.time >= currentTime) { 
                     return prayer.name;
                 }
             }
@@ -940,23 +940,23 @@
                 const nextPrayer = getNextPrayer(timings);
                 document.getElementById('prayer-times').innerHTML = ` 
 
-                <div class="${nextPrayer === 'Fajr' ? 'bg-secondary text-white' : 'bg-white/75 text-black'} border border-white rounded-xl text-lg p-2 py-2  leading-6">
+                <div class="${nextPrayer === 'Fajr' ? 'bg-secondary text-white lg:scale-[1.35] text-center' : 'bg-white/75 text-black'} border-2 border-white rounded-xl text-lg p-2 py-2  leading-6">
                     <span>Fajr</span>
                     <strong class="block"> ${formatTime24to12(timings.Fajr)}</strong>
                 </div>
-                <div class="${nextPrayer === 'Dhuhr' ? 'bg-secondary text-white' : 'bg-white/75 text-black'} border border-white rounded-xl text-lg p-2 py-2  leading-6">
+                <div class="${nextPrayer === 'Dhuhr' ? 'bg-secondary text-white lg:scale-[1.35] text-center' : 'bg-white/75 text-black'} border-2 border-white rounded-xl text-lg p-2 py-2  leading-6">
                     <span>Dhuhr</span>
                     <strong class="block"> ${formatTime24to12(timings.Dhuhr)}</strong>
                 </div>
-                <div class="${nextPrayer === 'Asr' ? 'bg-secondary text-white' : 'bg-white/75 text-black'} border border-white rounded-xl text-lg p-2 py-2  leading-6">
+                <div class="${nextPrayer === 'Asr' ? 'bg-secondary text-white lg:scale-[1.35] text-center' : 'bg-white/75 text-black'} border-2 border-white rounded-xl text-lg p-2 py-2  leading-6">
                     <span>Asr</span>
                     <strong class="block"> ${formatTime24to12(timings.Asr)}</strong>
                 </div>
-                <div class="${nextPrayer === 'Maghrib' ? 'bg-secondary text-white' : 'bg-white/75 text-black'} border border-white rounded-xl text-lg p-2 py-2  leading-6">
+                <div class="${nextPrayer === 'Maghrib' ? 'bg-secondary text-white lg:scale-[1.35] text-center' : 'bg-white/75 text-black'} border-2 border-white rounded-xl text-lg p-2 py-2  leading-6">
                     <span>Maghrib</span>
                     <strong class="block"> ${formatTime24to12(timings.Maghrib)}</strong>
                 </div>
-                <div class="${nextPrayer === 'Isha' ? 'bg-secondary text-white' : 'bg-white/75 text-black'} border border-white rounded-xl text-lg p-2 py-2  leading-6">
+                <div class="${nextPrayer === 'Isha' ? 'bg-secondary text-white lg:scale-[1.35] text-center' : 'bg-white/75 text-black'} border-2 border-white rounded-xl text-lg p-2 py-2  leading-6">
                     <span>Isha</span>
                     <strong class="block"> ${formatTime24to12(timings.Isha)}</strong>
                 </div>
