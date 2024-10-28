@@ -937,7 +937,6 @@
             .then(response => response.json())
             .then(data => {
                 const timings = data.data.timings;
-                console.log(timings)
                 const nextPrayer = getNextPrayer(timings);
                 document.getElementById('prayer-times').innerHTML = ` 
 
@@ -969,15 +968,12 @@
         const url = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}`;
         const date = new Date(); // Current date
         const options = { weekday: 'long' }; // Options to get full weekday name
-        const dayName = date.toLocaleString('en-US', options); // Get day name
-
-        
+        const dayName = date.toLocaleString('en-US', options); // Get day name 
 
         fetch(url)
             .then(response => response.json())
             .then(data => {
-                console.log(data)
-                const weather = `<div>
+                 const weather = `<div>
                                     <span>${data.current.condition.text}</span>
                                     <img src="https:${data.current.condition.icon}" class="h-28" alt="">
                                 </div>
