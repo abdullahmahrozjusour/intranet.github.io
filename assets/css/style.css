@@ -22,7 +22,15 @@ body {
     max-width: 1440px;
     margin: 0 auto;
 }
-
+.suggestions {
+    z-index: 1;
+}
+.suggestion-item{
+    padding: 7px 15px;
+    border-bottom: 1px solid rgba(0,0,0,0.2); 
+    font-size: 12px;
+    line-height: 14px;
+}
 .news {
     width: 100%;
 
@@ -32,10 +40,7 @@ body {
 
     @media screen and (min-width: 1024px) {
         width: calc(100% - 400px);
-    }
-
-
-
+    } 
 }
 
 .weather {

@@ -120,13 +120,14 @@
                             <li><a href="directors.html">Board of Directors</a></li>
                             <li><a href="usefull-contacts.html">Useful Contacts </a></li>
                         </ul>
-                        <div class="search relative order-1 lg:order-2">
+                        <div class="search relative order-1 lg:order-2 autocomplete-container">
                             <span class="absolute top-2 left-3">
                                 <img src="assets/imgs/search.svg" alt="">
                             </span>
-                            <input type="text"
+                            <input type="text" id="autocomplete-input"
                                 class="h-[39px] w-[380px] bg-transparent pl-12 text-white border-2 border-white rounded-3xl"
                                 placeholder="Search Directory">
+                            <div id="suggestions" class="suggestions bg-white absolute top-full  w-full left-0 right-0"></div>
                         </div>
                     </div>
                     <div class="flex gap-2 items-center">
@@ -439,40 +440,40 @@
                     <div class="carousel-offer w-full px-8">
                         <div class="offer-item relative">
                             <img src="assets/imgs/img-1.png" class="max-w-full" alt="">
-                            <div
+                            <a
                                 class="cap-layer bg-primary/25 absolute top-0 bottom-0 left-0 right-0 p-4 flex items-end max-w-full h-full pb-6">
                                 <span class="relative font-bold text-lg text-white ">Shakespeare International
                                     Academy</span>
-                            </div>
+                            </a>
                         </div>
                         <div class="offer-item relative">
                             <img src="assets/imgs/al-ahli.jpg" class="max-w-full" alt="">
-                            <div
+                            <a href="" target="_blank"
                                 class="cap-layer bg-primary/25 absolute top-0 bottom-0 left-0 right-0 p-4 flex items-end max-w-full h-full pb-6">
                                 <span class="relative font-bold text-lg text-white ">Al-Ahli Hospital</span>
-                            </div>
+                            </a>
                         </div>
                         <div class="offer-item relative">
                             <img src="assets/imgs/doha-climic.jpg" class="max-w-full" alt="">
-                            <div
+                            <a href="" target="_blank"
                                 class="cap-layer bg-primary/25 absolute top-0 bottom-0 left-0 right-0 p-4 flex items-end max-w-full h-full pb-6">
                                 <span class="relative font-bold text-lg text-white ">Doha Clinic Hospital</span>
-                            </div>
+                            </a>
                         </div>
                         <div class="offer-item relative">
                             <img src="assets/imgs/qshield.jpg" class="max-w-full" alt="">
-                            <div
+                            <a href="" target="_blank"
                                 class="cap-layer bg-primary/25 absolute top-0 bottom-0 left-0 right-0 p-4 flex items-end max-w-full h-full pb-6">
                                 <span class="relative font-bold text-lg text-white ">QShield</span>
-                            </div>
+                            </a>
                         </div>
                         <div class="offer-item relative">
                             <img src="assets/imgs/img-1.png" class="max-w-full" alt="">
-                            <div
+                            <a href="" target="_blank"
                                 class="cap-layer bg-primary/25 absolute top-0 bottom-0 left-0 right-0 p-4 flex items-end max-w-full h-full pb-6">
                                 <span class="relative font-bold text-lg text-white ">Shakespeare International
                                     Academy</span>
-                            </div>
+                            </a>
                         </div>
                     </div>
                     <button class="onext text-white text-2xl px-2 absolute right-0 top-0 bottom-0"><i
@@ -766,6 +767,7 @@
         integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js'></script>
+    <script type="text/javascript" src="assets/js/script.js"></script>
     <script>
         var offers = $('.carousel-offer').slick({
             infinite: true,
@@ -1095,6 +1097,7 @@
             })
             .catch(error => console.error('Error fetching weather data:', error));
     </script>
+
 </body>
 
 </html>
