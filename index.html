@@ -440,7 +440,7 @@
                     <div class="carousel-offer w-full px-8">
                         <div class="offer-item relative">
                             <img src="assets/imgs/img-1.png" class="max-w-full" alt="">
-                            <a
+                            <a href="https://services.jusour.qa/en/service/shakespeare-international-academy" target="_blank"
                                 class="cap-layer bg-primary/25 absolute top-0 bottom-0 left-0 right-0 p-4 flex items-end max-w-full h-full pb-6">
                                 <span class="relative font-bold text-lg text-white ">Shakespeare International
                                     Academy</span>
@@ -448,28 +448,28 @@
                         </div>
                         <div class="offer-item relative">
                             <img src="assets/imgs/al-ahli.jpg" class="max-w-full" alt="">
-                            <a href="" target="_blank"
+                            <a href="https://services.jusour.qa/en/service/al-ahli-hospital" target="_blank"
                                 class="cap-layer bg-primary/25 absolute top-0 bottom-0 left-0 right-0 p-4 flex items-end max-w-full h-full pb-6">
                                 <span class="relative font-bold text-lg text-white ">Al-Ahli Hospital</span>
                             </a>
                         </div>
                         <div class="offer-item relative">
                             <img src="assets/imgs/doha-climic.jpg" class="max-w-full" alt="">
-                            <a href="" target="_blank"
+                            <a href="https://services.jusour.qa/en/service/doha-clinic-hospital" target="_blank"
                                 class="cap-layer bg-primary/25 absolute top-0 bottom-0 left-0 right-0 p-4 flex items-end max-w-full h-full pb-6">
                                 <span class="relative font-bold text-lg text-white ">Doha Clinic Hospital</span>
                             </a>
                         </div>
                         <div class="offer-item relative">
                             <img src="assets/imgs/qshield.jpg" class="max-w-full" alt="">
-                            <a href="" target="_blank"
+                            <a href="https://services.jusour.qa/en/service/qshield" target="_blank"
                                 class="cap-layer bg-primary/25 absolute top-0 bottom-0 left-0 right-0 p-4 flex items-end max-w-full h-full pb-6">
                                 <span class="relative font-bold text-lg text-white ">QShield</span>
                             </a>
                         </div>
                         <div class="offer-item relative">
                             <img src="assets/imgs/img-1.png" class="max-w-full" alt="">
-                            <a href="" target="_blank"
+                            <a href="https://services.jusour.qa/en/service/shakespeare-international-academy" target="_blank"
                                 class="cap-layer bg-primary/25 absolute top-0 bottom-0 left-0 right-0 p-4 flex items-end max-w-full h-full pb-6">
                                 <span class="relative font-bold text-lg text-white ">Shakespeare International
                                     Academy</span>
@@ -840,7 +840,8 @@
         $('.modal-in').on('click', function () {
             var id = $(this).attr('href')
             $('body').css('overflow', 'hidden')
-            $(id).show();
+            $(id).css("display", "flex");
+            $(id).css("align-items", "center");
         })
         $('.close-in').on('click', function () {
             var id = $(this).attr('href')

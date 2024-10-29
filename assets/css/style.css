@@ -60,7 +60,10 @@ body {
 .news-carousel .slick-slide img {
     width: 100%;
 }
-
+.content-modal {
+    max-height: calc(100vh - 200px);
+    overflow: auto;
+}
 header {
     @media screen and (max-width: 1023px) {
         flex-wrap: wrap;
