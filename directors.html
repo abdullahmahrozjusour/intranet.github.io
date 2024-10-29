@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        white: '#ffffff',
+                        primary: '#21295B',
+                        secondary: '#91193B',
+                        black: '#000000'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style type="text/tailwindcss">
+        .fc-header-toolbar {
+    
+    padding-top: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+
+        .container-in {@apply mx-auto max-w-[1400px] px-4;} 
+        .nav{@apply flex flex-col items-center gap-4}
+        .menu{@apply m-0 p-0 lg:flex hidden gap-3 items-center; justify-content: center;
+            li{
+                a{
+                    @apply text-white font-medium;
+                }
+                &.active,
+                &:hover{
+                    a{
+                        @apply text-secondary;
+                    }
+                }
+            }
+        }
+        .btn-blue{
+            @apply bg-secondary md:h-10 h-8 flex gap-2 text-white items-center lg:px-4 px-2 text-sm md:text-base rounded-lg border-2 border-white font-semibold;
+        } 
+        .btn-white{
+            @apply bg-white md:h-10 h-8 flex gap-2 text-secondary items-center lg:px-4 px-2 text-sm md:text-base rounded-lg border-2 border-secondary font-semibold;
+        } 
+        .news-wrapper{
+            background: url(assets/imgs/u.png) no-repeat right #fff;
+        }
+        body{
+            @apply bg-primary;
+        }
+        .content-modal{
+            h3{@apply text-xl font-semibold text-black/75 mb-4; }
+            strong{
+                @apply text-lg font-medium text-black/75;
+            }
+            p{
+                @apply text-black/75 mb-4 mt-0 text-sm;
+            }
+            ul{
+                padding-left: 1.5rem;
+                list-style: disc;
+                margin-bottom: 1rem;
+                li{font-size: 14px;
+                    strong{
+                        @apply text-sm;
+                    }
+                }
+                &>ul{
+                    padding-left: 1rem;
+                    list-style: lower-alpha;
+                }
+            }
+        }
+
+        /* Calendar */
+        .fc {
+            .fc-toolbar.fc-header-toolbar{
+            @apply bg-secondary text-white px-3 py-2;
+                .fc-toolbar-title{
+                    @apply font-bold text-2xl;
+                }
+            }
+            .fc-button-primary{
+                --fc-button-bg-color: transparent;
+                --fc-button-border-color: #fff;
+                --fc-button-text-color: #fff;
+                border-radius: 50%;
+                border-width: 2px;
+                padding: 3px;
+            }
+        }
+      </style>
+    <title>Board Members</title>
+</head>
+
+<body>
+    <header class="py-6">
+        <div class="container-in">
+            <div class="flex justify-between items-center lg:flex-nowrap flex-wrap gap-2 lg:gap-0">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="assets/imgs/logo.svg" class="lg:max-h-20 max-h-12" alt="">
+                    </a>
+                </div>
+                <div class="nav">
+                    <ul class="menu order-2 lg:order-1" id="menu">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="orgnization.html">Organization</a></li>
+                        <li><a href="our-mission.html">Our mission </a></li>
+                        <li class="active"><a href="directors.html">Board Members</a></li>
+                        <li><a href="usefull-contacts.html">Useful Contacts </a></li>
+                    </ul>
+                    <div class="search relative order-1 lg:order-2">
+                        <span class="absolute top-2 left-3">
+                            <img src="assets/imgs/search.svg" alt="">
+                        </span>
+                        <input type="text"
+                            class="h-[39px] w-[380px] bg-transparent pl-12 text-white border-2 border-white rounded-3xl"
+                            placeholder="Search Directory">
+                    </div>
+                </div>
+                <div class="flex gap-2 items-center">
+                    <a class="btn-blue" href="download-center.html">
+                        <img src="assets/imgs/download.svg" alt="">
+                        <span>Download Center</span>
+                    </a>
+                    <a href="#menu" class="nav-menu-link lg:hidden text-white text-xl">
+                        <i class="fa-solid fa-bars"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </header>
+    <div class="bg-primary">
+        <div class="container-in">
+            <div class="flex justify-between flex-wrap md:flex-nowrap items-center py-6">
+                <div class="md:max-w-[50%] text-white">
+                    <h3 class="text-3xl ">Board <strong class="font-semibold block">of Members</strong></h3>
+                    <p class="font-medium mt-2 texl-lg">Guiding Leadership and Strategic Direction</p>
+                </div>
+                <div class="md:max-w-[55%] text-white">
+                    The Board of Members is composed of dedicated individuals who bring diverse expertise and insights
+                    to guide our organization. Together, they are committed to fostering growth, ensuring
+                    accountability, and shaping the strategic vision that drives our mission forward. Their
+                    collaborative leadership plays a crucial role in steering our initiatives and enhancing our impact
+                    within the community.
+                </div>
+            </div>
+        </div>
+        <div class="py-6">
+            <div class="container-in">
+                <div class="grid lg:grid-cols-2 gap-8">
+                    <div class="flex gap-6 sm:flex-nowrap flex-wrap flex-row">
+                        <div
+                            class="border-2 border-secondary h-[200px] w-[200px] basis-[200px] grow-0 shrink-0 rounded-full overflow-hidden">
+                            <img src="assets/imgs/ali.jpg" class="h-full w-full object-cover object-center" alt="">
+                        </div>
+                        <div class="text-white">
+                            <span class="text-secondary font-bold">Ministry of Labour</span>
+                            <div class="text-xl font-medium mt-1">Dr. Ali bin Samikh Al Marri</div>
+                            <small class="text-sm font-medium">President</small>
+                            <p class="text-white/75 mt-3 text-sm">His Excellency Dr. Ali bin Saeed bin Smaikh Al Marri
+                                is a Qatari politician and human
+                                rights expert, born on November 30, 1972. He was appointed Minister of Labor of the
+                                State of Qatar on October 19, 2021, and is Jusour’s Chairman of the Board.</p>
+                            <a href="#ceoMsg"
+                                class="modal-in mt-1 text-secondary text-sm font-medium flex items-center gap-2">
+                                <span>Read More</span>
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="flex gap-6 sm:flex-nowrap flex-wrap flex-row">
+                        <div
+                            class="border-2 border-secondary h-[200px] w-[200px] basis-[200px] grow-0 shrink-0 rounded-full overflow-hidden">
+                            <img src="assets/imgs/ateeq.png" class="h-full w-full object-cover object-center" alt="">
+                        </div>
+                        <div class="text-white">
+                            <span class="text-secondary font-bold">Ministry of Interior Representative</span>
+                            <div class="text-xl font-medium mt-1">Mohammad Ahmad Al-Ateeq Al-Dosari</div>
+                            <small class="text-sm font-medium">Vice President</small>
+                            <!-- <a href="#ceoMsg"
+                                class="modal-in mt-1 text-secondary text-sm font-medium flex items-center gap-2">
+                                <span>Read More</span>
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </a> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="py-6 bg-black/25">
+            <div class="container-in">
+                <div class="grid lg:grid-cols-2 gap-8">
+                    <div class="flex gap-6 sm:flex-nowrap flex-wrap flex-row">
+                        <div
+                            class="border-2 border-secondary h-[200px] w-[200px] basis-[200px] grow-0 shrink-0 rounded-full overflow-hidden">
+                            <img src="assets/imgs/abdullah.jpg" class="h-full w-full object-cover object-center" alt="">
+                        </div>
+                        <div class="text-white">
+                            <span class="text-secondary font-bold">Qatar University Representative </span>
+                            <div class="text-xl font-medium mt-1">Dr. Omar Mohammad Abdullah Al-Ansari</div>
+                            <small class="text-sm font-medium">Member</small>
+                            <p class="text-white/75 mt-3 text-sm">Dr. Omar Al Ansari is President of Qatar University,
+                                and an academic leader with a distinguished career at Qatar University. After obtaining
+                                his PhD in Civil Engineering from Texas University in 1999, he began his journey at
+                                Qatar University as a faculty member in the Civil Engineering Department...
+                            </p>
+                            <a href="#qatarUni"
+                                class="modal-in  text-secondary text-sm font-medium flex items-center gap-2">
+                                <span>Read More</span>
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="flex gap-6 sm:flex-nowrap flex-wrap flex-row">
+                        <div
+                            class="border-2 border-secondary h-[200px] w-[200px] basis-[200px] grow-0 shrink-0 rounded-full overflow-hidden">
+                            <img src="assets/imgs/majid.jpeg" class="h-full w-full object-cover object-center" alt="">
+                        </div>
+                        <div class="text-white">
+                            <span class="text-secondary font-bold">Ministry of Commerce and Industry
+                                Representative</span>
+                            <div class="text-xl font-medium mt-1">His Excellency Mr. Saleh bin Majid Al-Khulaifi</div>
+                            <small class="text-sm font-medium">Member</small>
+                            <p class="text-white/75 mt-3 text-sm">Saleh Majid Al-Khulaifi is the Deputy Undersecretary
+                                for Industrial Affairs and Business Development at the Ministry of Commerce and Industry
+                                in Qatar. He is actively involved in driving industrial development, fostering
+                                entrepreneurship, and attracting foreign direct investment to shape Qatar's economic
+                                landscape.... </p>
+                            <a href="#commerce"
+                                class="modal-in text-secondary text-sm font-medium flex items-center gap-2">
+                                <span>Read More</span>
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="py-6">
+            <div class="container-in">
+                <div class="grid lg:grid-cols-2 gap-8">
+                    <div class="flex gap-6 sm:flex-nowrap flex-wrap flex-row">
+                        <div
+                            class="border-2 border-secondary h-[200px] w-[200px] basis-[200px] grow-0 shrink-0 rounded-full overflow-hidden">
+                            <img src="assets/imgs/hamad.png" class="h-full w-full object-cover object-center" alt="">
+                        </div>
+                        <div class="text-white">
+                            <span class="text-secondary font-bold">Member of the Board of Directors - Representative of
+                                Qatar Chamber
+                            </span>
+                            <div class="text-xl font-medium mt-1">Mr. Saleh bin Hamad Al Sharqi</div>
+                            <small class="text-sm font-medium">Member</small>
+                            <p class="text-white/75 mt-3 text-sm">Saleh bin Hamad bin Jaber Al Sharqi currently serves
+                                as the Director General of the Qatar Chamber of Commerce & Industry. <br> <br>
+
+                                Mr. Al Sharqi’s journey in the Qatar Chamber began on February 1, 1999. Throughout his
+                                tenure, Al Sharqi held various senior managerial and executive positions until he was
+                                appointed as the General Manager.<br> <br>
+
+                                Saleh is entrusted with various responsibilities that contribute to the Qatar Chamber’s
+                                success and the country's...
+
+                            </p>
+                            <a href="#chamber"
+                                class="modal-in text-secondary text-sm font-medium flex items-center gap-2">
+                                <span>Read More</span>
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="flex gap-6 sm:flex-nowrap flex-wrap flex-row">
+                        <div
+                            class="border-2 border-secondary h-[200px] w-[200px] basis-[200px] grow-0 shrink-0 rounded-full overflow-hidden">
+                            <img src="assets/imgs/khalifa.jpg" class="h-full w-full object-cover object-center" alt="">
+                        </div>
+                        <div class="text-white">
+                            <span class="text-secondary font-bold">Al Jazeera Network Representative</span>
+                            <div class="text-xl font-medium mt-1">
+                                Mr. Mohammed bin Abdullah Al Khalifa</div>
+                            <small class="text-sm font-medium">Member</small>
+                            <p class="text-white/75 mt-3 text-sm">Mohammed Abdulla Al-Khalifa currently holds the
+                                position of Director of General Services at Al Jazeera Media Network and is a member of
+                                the Board of WISA.
+                                <br> <br>
+                                Mr. Al-Khalifa earned a Bachelor's degree in Economy Management with a specialization in
+                                Accounting from the Faculty of Administration and Economy in Qatar in 1997.
+                                <br> <br>
+                                Mr. Al-Khalifa began his career as an Accounts Auditor and Financial Controller at...
+
+                            </p>
+                            <a href="#jazeera"
+                                class="modal-in text-secondary text-sm font-medium flex items-center gap-2">
+                                <span>Read More</span>
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="py-6 bg-black/25">
+            <div class="container-in">
+                <div class="grid lg:grid-cols-2 gap-8">
+                    <div class="flex gap-6 sm:flex-nowrap flex-wrap flex-row">
+                        <div
+                            class="border-2 border-secondary h-[200px] w-[200px] basis-[200px] grow-0 shrink-0 rounded-full overflow-hidden">
+                            <img src="assets/imgs/najwa.webp" class="h-full w-full object-cover object-center" alt="">
+                        </div>
+                        <div class="text-white">
+                            <span class="text-secondary font-bold">Member of the Board of Directors - Representative of
+                                the Ministry of labor
+                            </span>
+                            <div class="text-xl font-medium mt-1">Sheikha Najwa bint Abdulrahman Al-Thani</div>
+                            <small class="text-sm font-medium">Assistant Undersecretary for Migrant Labor Affairs at the
+                                Ministry of Labor
+
+                            </small>
+
+                            <!-- <a href="" class="mt-1 text-secondary text-sm font-medium flex items-center gap-2">
+                                <span>Read More</span>
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </a> -->
+                        </div>
+                    </div>
+                    <div class="flex gap-6 sm:flex-nowrap flex-wrap flex-row">
+                        <div
+                            class="border-2 border-secondary h-[200px] w-[200px] basis-[200px] grow-0 shrink-0 rounded-full overflow-hidden">
+                            <img src="assets/imgs/ghanem.jpg" class="h-full w-full object-cover object-center" alt="">
+                        </div>
+                        <div class="text-white">
+                            <span class="text-secondary font-bold">Ministry of Culture Representative </span>
+                            <div class="text-xl font-medium mt-1">His Excellency Dr. Ghanem bin Mubarak Al Ali</div>
+                            <small class="text-sm font-medium">Member</small>
+                            <p class="text-white/75 mt-3 text-sm">
+                                Assistant Undersecretary For Culture Affairs:
+                                <br><br>
+
+                                Dr. Ghanim bin Mubarak Al-Ali is the Assistant Undersecretary for Cultural Affairs at
+                                the Ministry of Culture / Qatar and is also the Director General of the Qatar Center for
+                                Cultural and Heritage Events, and the General supervisor of National day celebrations
+                                committee.
+                                <br><br>
+                                Dr. Ghanem has extensive experience in several fields such as culture, investment,
+                                banking, Information technology and has accumulated great experience...
+                                <br><br>
+
+                            </p>
+                            <a href="#culture"
+                                class="modal-in mt-1 text-secondary text-sm font-medium flex items-center gap-2">
+                                <span>Read More</span>
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="py-6 ">
+            <div class="container-in">
+                <div class="grid lg:grid-cols-2 gap-8">
+                    <div class="flex gap-6 sm:flex-nowrap flex-wrap flex-row">
+                        <div
+                            class="border-2 border-secondary h-[200px] w-[200px] basis-[200px] grow-0 shrink-0 rounded-full overflow-hidden">
+                            <img src="assets/imgs/mohsen.jpg" class="h-full w-full object-cover object-center" alt="">
+                        </div>
+                        <div class="text-white">
+                            <span class="text-secondary font-bold">Qatar Airways Representative
+
+                            </span>
+                            <div class="text-xl font-medium mt-1">Mohsen Alyafei</div>
+                            <small class="text-sm font-medium">Executive Vice President </small>
+
+                            <!-- <a href="" class="mt-1 text-secondary text-sm font-medium flex items-center gap-2">
+                                <span>Read More</span>
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </a> -->
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="py-4 bg-secondary">
+        <div class="container-in">
+            <div class="flex flex-wrap sm:flex-nowrap gap-2 sm:justify-between justify-center text-white">
+                <div class="">&copy; Copyright All Right Reserved, Jusour Co</div>
+                <div class="flex gap-4 flex-wrap sm:flex-nowrap justify-center items-center">
+                    <a href="mailto:fo@jusour.qa">
+                        <i class="fa-regular fa-envelope"></i>
+                        info@jusour.qa
+                    </a>
+                    <a href="tel:+974987654321">
+                        <i class="fa-solid fa-phone"></i>
+                        +974 987654321
+                    </a>
+                    <div class="flex text-white gap-2 text-xl">
+                        <a href=""><i class="fa-brands fa-facebook"></i></a>
+                        <a href=""><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href=""><i class="fa-brands fa-linkedin"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal for CEO -->
+    <div class="fixed left-0 right-0 top-0 bottom-0 h-full w-full bg-black/50 overflow-x-hidden overflow-y-auto hidden"
+        id="ceoMsg">
+        <div class="overlay-modal fixed left-0 right-0 top-0 bottom-0 h-full w-full bg-black/50"></div>
+        <div class="max-w-[700px] w-full mx-auto rounded-lg overflow-hidden relative ">
+            <div class="bg-secondary relative text-center font-semibold text-2xl flex justify-center p-2 text-white">
+                Dr. Ali bin Samikh Al Marri <a class="text-white absolute right-4 close-in" href="#ceoMsg"><i
+                        class="fa-solid fa-xmark"></i></a></div>
+            <div class="bg-[#D9D9D9]">
+                <div class="px-8 py-4 content-modal grid grid-cols-3 gap-4">
+                    <div>
+                        <img src="assets/imgs/ali.jpg" class="max-w-full h-auto" alt="">
+                    </div>
+                    <div class="col-span-2">
+                        <h3>Dr. Ali bin Samikh Al Marri</h3>
+                        <strong>Ministry of Labour</strong>
+
+                        <p>His Excellency Dr. Ali bin Saeed bin Smaikh Al Marri is a Qatari politician and human rights
+                            expert,
+                            born on November 30, 1972. He was appointed Minister of Labor of the State of Qatar on
+                            October 19,
+                            2021, and is Jusour’s Chairman of the Board.</p>
+                    </div>
+                </div>
+                <div class="border-t border-t-black/25 px-8 py-2 flex justify-end">
+                    <a class="btn-white close-in" href="#ceoMsg">Close</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for qatarUni -->
+    <div class="fixed left-0 right-0 top-0 bottom-0 h-full w-full bg-black/50 overflow-x-hidden overflow-y-auto hidden"
+        id="qatarUni">
+        <div class="overlay-modal fixed left-0 right-0 top-0 bottom-0 h-full w-full bg-black/50"></div>
+        <div class="max-w-[700px] w-full mx-auto rounded-lg overflow-hidden relative ">
+            <div class="bg-secondary relative text-center font-semibold text-2xl flex justify-center p-2 text-white">
+                Dr. Omar Mohammad Abdullah Al-Ansari <a class="text-white absolute right-4 close-in" href="#qatarUni"><i
+                        class="fa-solid fa-xmark"></i></a></div>
+            <div class="bg-[#D9D9D9]">
+                <div class="px-8 py-4 content-modal grid grid-cols-3 gap-4">
+                    <div>
+                        <img src="assets/imgs/abdullah.jpg" class="max-w-full h-auto" alt="">
+                    </div>
+                    <div class="col-span-2">
+                        <h3>Dr. Omar Mohammad Abdullah Al-Ansari</h3>
+                        <strong>Member</strong>
+
+                        <p>
+                            Dr. Omar Al Ansari is President of Qatar University, and an academic leader with a
+                            distinguished
+                            career at Qatar University. After obtaining his PhD in Civil Engineering from Texas
+                            University
+                            in 1999, he began his journey at Qatar University as a faculty member in the Civil
+                            Engineering
+                            Department.
+                            <br> <br>
+                            Throughout his tenure, Dr. Al Ansari demonstrated exceptional leadership skills and was
+                            entrusted with various administrative roles. In 2003, he was appointed as the Dean of
+                            Student
+                            Affairs, assuming responsibility for shaping the student experience and fostering a
+                            supportive
+                            campus environment. Building on his success, he was promoted to the position of Assistant to
+                            the
+                            Vice President for Student Affairs in 2004, further expanding his impact on student-related
+                            initiatives.
+                            <br> <br>
+                            Dr. Al Ansari's served as the Vice President for Student Affairs from 2007 to 2015. During
+                            his
+                            tenure, he spearheaded transformative advancements in digital platform systems that managed
+                            student information. His approach and dedication to innovation led to the development of a
+                            robust information system for employees, positively influencing the overall efficiency and
+                            effectiveness of the university's administrative processes.
+                            <br> <br>
+                            In 2017, Dr. Omar Al Ansari was appointed Deputy to the University President for Academic
+                            Affairs, where he played a pivotal role in implementing university projects, including the
+                            development and execution of Qatar University's comprehensive academic plan. With a keen eye
+                            for
+                            organizational excellence, he reviewed and refined the academic sector's structure,
+                            culminating
+                            in the establishment of a deanship for general studies. Additionally, he created key
+                            positions
+                            such as Assistant to the Vice President for Academic Planning and Quality Assurance and
+                            Assistant to the Vice President for Faculty Affairs, further bolstering the university's
+                            commitment to academic excellence.
+                            <br> <br>
+                            Driven by his commitment to enhance teaching and learning practices, Dr. Al Ansari led the
+                            development process of the Center for Excellence in Teaching & Learning. His visionary
+                            leadership ensured that teaching methods aligned seamlessly with Qatar University's mission
+                            and
+                            strategy, fostering an environment of continuous improvement and academic distinction.
+                            <br> <br>
+                            Beyond his institutional contributions, Dr. Omar Al Ansari actively engages in national
+                            committees, lending his expertise to shape the future of education. He serves on committees
+                            such
+                            as the Advisory Committee for Higher Education, the Advisory Council for Qatar Leadership
+                            Academy, and the Advisory Council for the PhD program at the Doha Institute for Graduate
+                            Studies. His membership in various associations and unions related to education and
+                            engineering
+                            fields further attests to his dedication to professional development and the advancement of
+                            these disciplines.
+                            <br> <br>
+                            As a distinguished representative of Qatar University, Dr. Al Ansari participates in
+                            numerous
+                            official and international forums. His presence in these gatherings ensures that Qatar
+                            University's vision, achievements, and expertise are recognized on a global scale.
+                            <br> <br>
+                            Dr. Omar Al Ansari's journey and commitment to academic excellence have made him a leader in
+                            the
+                            field of higher education. His contributions continue to shape the landscape of Qatar
+                            University, empower students and faculty, and elevate the nation's educational standing.
+
+                        </p>
+                    </div>
+                </div>
+                <div class="border-t border-t-black/25 px-8 py-2 flex justify-end">
+                    <a class="btn-white close-in" href="#commerce">Close</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for commerce -->
+    <div class="fixed left-0 right-0 top-0 bottom-0 h-full w-full bg-black/50 overflow-x-hidden overflow-y-auto hidden"
+        id="commerce">
+        <div class="overlay-modal fixed left-0 right-0 top-0 bottom-0 h-full w-full bg-black/50"></div>
+        <div class="max-w-[700px] w-full mx-auto rounded-lg overflow-hidden relative ">
+            <div class="bg-secondary relative text-center font-semibold text-2xl flex justify-center p-2 text-white">
+                Mr. Saleh bin Majid Al-Khulaifi <a class="text-white absolute right-4 close-in" href="#commerce"><i
+                        class="fa-solid fa-xmark"></i></a></div>
+            <div class="bg-[#D9D9D9]">
+                <div class="px-8 py-4 content-modal grid grid-cols-3 gap-4">
+                    <div>
+                        <img src="assets/imgs/majid.jpeg" class="max-w-full h-auto" alt="">
+                    </div>
+                    <div class="col-span-2">
+                        <h3>Mr. Saleh bin Majid Al-Khulaifi</h3>
+                        <strong>Member</strong>
+
+                        <p>
+                            Saleh Majid Al-Khulaifi is the Deputy Undersecretary for Industrial Affairs and Business
+                            Development at the Ministry of Commerce and Industry in Qatar. He is actively involved in
+                            driving industrial development, fostering entrepreneurship, and attracting foreign direct
+                            investment to shape Qatar's economic landscape.
+
+                            <br> <br>
+
+                            Drawing on his extensive experience, Mr. Al-Khulaifi has held key positions in both the
+                            public and private sectors. Notably, he served as the Executive Director of Business
+                            Intelligence and Localization at Qatar Development Bank (QDB), where he spearheaded
+                            strategic initiatives aimed at strengthening domestic industries and promoting
+                            entrepreneurship.
+
+                            <br> <br>
+
+                            In addition to his role at QDB, Mr. Al-Khulaifi has made substantial contributions to
+                            several governmental boards, including the Investment Promotion Agency and Qatar Incubation
+                            Center. He also serves as the Chairman of the Qatari German Medical Devices company and is a
+                            Member of the Board of Directors for ELAN Media. Furthermore, Mr. Al-Khulaifi is an active
+                            participant of the World Economic Forum's Global Shaper program.
+
+                            <br> <br>
+
+                            Academically, Mr. Al-Khulaifi holds a Master of Science degree in Technology
+                            Entrepreneurship (MSc) from the University College London. He also completed his
+                            undergraduate studies at Carnegie Mellon University, earning a bachelor's degree in Business
+                            Administration.
+
+
+
+                        </p>
+                    </div>
+                </div>
+                <div class="border-t border-t-black/25 px-8 py-2 flex justify-end">
+                    <a class="btn-white close-in" href="#commerce">Close</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for commerce -->
+    <div class="fixed left-0 right-0 top-0 bottom-0 h-full w-full bg-black/50 overflow-x-hidden overflow-y-auto hidden"
+        id="chamber">
+        <div class="overlay-modal fixed left-0 right-0 top-0 bottom-0 h-full w-full bg-black/50"></div>
+        <div class="max-w-[700px] w-full mx-auto rounded-lg overflow-hidden relative ">
+            <div class="bg-secondary relative text-center font-semibold text-2xl flex justify-center p-2 text-white">
+                Mr. Saleh bin Hamad Al Sharqi
+                <a class="text-white absolute right-4 close-in" href="#chamber"><i class="fa-solid fa-xmark"></i></a>
+            </div>
+            <div class="bg-[#D9D9D9]">
+                <div class="px-8 py-4 content-modal grid grid-cols-3 gap-4">
+                    <div>
+                        <img src="assets/imgs/hamad.png" class="max-w-full h-auto" alt="">
+                    </div>
+                    <div class="col-span-2">
+                        <h3>Mr. Saleh bin Hamad Al Sharqi
+                        </h3>
+                        <strong>Member</strong>
+
+                        <p>
+                            Saleh bin Hamad bin Jaber Al Sharqi currently serves as the Director General of the Qatar
+                            Chamber of Commerce & Industry.
+                            <br> <br>
+                            Mr. Al Sharqi’s journey in the Qatar Chamber began on February 1, 1999. Throughout his
+                            tenure, Al Sharqi held various senior managerial and executive positions until he was
+                            appointed as the General Manager.
+                            <br> <br>
+                            Saleh is entrusted with various responsibilities that contribute to the Qatar Chamber’s
+                            success and the country's economic development. He formulates and implements effective
+                            strategies aligned with the economic environment and the country's development goals.
+                            <br> <br>
+                            Mr. Al Sharqi evaluates the impact of trade relations between Qatari business communities
+                            and their counterparts worldwide, facilitating the growth of international business
+                            opportunities in Qatar. Moreover, he manages financial resources and human capital within
+                            the Qatar Chamber, ensuring their development and reporting requirements to the Board of
+                            Directors and the General Assembly.
+                            <br> <br>
+                            As a representative of the private sector, Saleh fosters close relationships with government
+                            authorities and relevant stakeholders, working to incorporate private sector requirements in
+                            legislation and policy development. He also actively contributes to official conferences and
+                            events, advocating for the interests of the business community.
+                            <br> <br>
+                            <strong>Additional Official Positions</strong>
+                            <br> <br>
+                            In addition to his role as the General Manager of the Qatar Chamber, Saleh holds several
+                            other high-level positions. He is the Chairman of the “Made in Qatar” Exhibition Committee ,
+                            Chairman of the Resources and Events Committee, Vice President of the Board of Directors of
+                            the GCC Commercial Arbitration Center, and the Deputy Chairman of the Board of Directors of
+                            the Commercial Arbitration Center for the GCC Arab Gulf Countries.
+                            <br> <br>
+                            He also serves as a Member to the Board of Directors for several entities, including:
+                        <ul>
+                            <li>Al Dar for Exchange Works</li>
+                            <li>
+                                Thye Arab-German Joint Chamber</li>
+                            <li>
+                                Joint Arab-British Chamber,</li>
+                        </ul>
+                        Saleh Al Sharqi is also a Member of the Executive Leadership Committee of the Federation of
+                        GCC Chambers, and a Member of the Minimum Wage Committee.
+                        <br> <br>
+                        Mr. Al Sharqi also spearheaded two editions of the "Made in China" expo, strengthening
+                        economic and trade relations between Qatar and China.
+                        <br> <br>
+                        Through his strategic vision, dedication, and commitment to promoting economic growth, Saleh
+                        continues to shape the future of commerce and industry in Qatar.
+
+                        <strong>Academia</strong>
+
+                        Academically, Saleh holds a bachelor’s degree in business administration, which he obtained
+                        in 2012. In 2014, he earned a master’s degree in business administration.
+                        </p>
+                    </div>
+                </div>
+                <div class="border-t border-t-black/25 px-8 py-2 flex justify-end">
+                    <a class="btn-white close-in" href="#chamber">Close</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for commerce -->
+    <div class="fixed left-0 right-0 top-0 bottom-0 h-full w-full bg-black/50 overflow-x-hidden overflow-y-auto hidden"
+        id="jazeera">
+        <div class="overlay-modal fixed left-0 right-0 top-0 bottom-0 h-full w-full bg-black/50"></div>
+        <div class="max-w-[700px] w-full mx-auto rounded-lg overflow-hidden relative ">
+            <div class="bg-secondary relative text-center font-semibold text-2xl flex justify-center p-2 text-white">
+                Mr. Mohammed bin Abdullah Al Khalifa
+                <a class="text-white absolute right-4 close-in" href="#jazeera"><i class="fa-solid fa-xmark"></i></a>
+            </div>
+            <div class="bg-[#D9D9D9]">
+                <div class="px-8 py-4 content-modal grid grid-cols-3 gap-4">
+                    <div>
+                        <img src="assets/imgs/khalifa.jpg" class="max-w-full h-auto" alt="">
+                    </div>
+                    <div class="col-span-2">
+                        <h3>Mr. Mohammed bin Abdullah Al Khalifa
+                        </h3>
+                        <strong>Member</strong>
+                        <p>
+                            Mohammed Abdulla Al-Khalifa currently holds the position of Director of General Services at
+                            Al Jazeera Media Network and is a member of the Board of WISA.
+                            <br><br>
+                            Mr. Al-Khalifa earned a Bachelor's degree in Economy Management with a specialization in
+                            Accounting from the Faculty of Administration and Economy in Qatar in 1997.
+                            <br><br>
+                            Mr. Al-Khalifa began his career as an Accounts Auditor and Financial Controller at the Audit
+                            Bureau, where he served from August 1998 to September 2006.
+                            <br><br>
+                            Following this, Mr. Al-Khalifa took on the role of Chief Financial Officer of the Qatar
+                            Project for the Reconstruction of Southern Lebanon from September 2006 to August 2007. He
+                            then served as the Financial Controller of the Seventh Doha Cultural Festival from September
+                            2007 to July 2008.
+                            <br><br>
+                            From July 2008 to August 2009, Mr. Al-Khalifa assumed the role of Manager of Administrative
+                            and Financial Affairs at the Institute of Administrative Development. Subsequently, he
+                            became the Director of Administrative and Financial Projects of the institute from September
+                            2009 to February 2010.
+                            <br><br>
+                            From February 2010 to March 2011, Al-Khalifa held the position of Manager of Planning and
+                            Development at the Institute of Administrative Development. He then served as the Director
+                            of Human and Financial Resources at the institute from March 2011 to October 2013.
+                            <br><br>
+                            In August 2013, Mr. Al-Khalifa joined Al Jazeera Media Network as the Manager of Human
+                            Resources Services. Since July 2014, he has been serving as the Director of General Services
+                            at Al Jazeera Media Network.
+                            <br><br>
+                            Mr. Al-Khalifa's extensive experience and dedication have contributed significantly to the
+                            success and growth of the organizations he has been associated with. His expertise in
+                            financial management, administrative affairs, and human resources has been instrumental in
+                            ensuring the smooth operations of Al Jazeera Media Network.
+                        </p>
+
+                    </div>
+                </div>
+                <div class="border-t border-t-black/25 px-8 py-2 flex justify-end">
+                    <a class="btn-white close-in" href="#jazeera">Close</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for CEO -->
+    <div class="fixed left-0 right-0 top-0 bottom-0 h-full w-full bg-black/50 overflow-x-hidden overflow-y-auto hidden"
+        id="culture">
+        <div class="overlay-modal fixed left-0 right-0 top-0 bottom-0 h-full w-full bg-black/50"></div>
+        <div class="max-w-[700px] w-full mx-auto rounded-lg overflow-hidden relative ">
+            <div class="bg-secondary relative text-center font-semibold text-2xl flex justify-center p-2 text-white">
+                His Excellency Dr. Ghanem bin Mubarak Al Ali <a class="text-white absolute right-4 close-in"
+                    href="#culture"><i class="fa-solid fa-xmark"></i></a></div>
+            <div class="bg-[#D9D9D9]">
+                <div class="px-8 py-4 content-modal grid grid-cols-3 gap-4">
+                    <div>
+                        <img src="assets/imgs/ghanem.jpg" class="max-w-full h-auto" alt="">
+                    </div>
+                    <div class="col-span-2">
+                        <h3>His Excellency Dr. Ghanem bin Mubarak Al Ali</h3>
+                        <strong>Member</strong>
+
+                        <p>
+                            Assistant Undersecretary For Culture Affairs:
+                            <br><br>
+
+                            Dr. Ghanim bin Mubarak Al-Ali is the Assistant Undersecretary for Cultural Affairs at the
+                            Ministry of Culture / Qatar and is also the Director General of the Qatar Center for
+                            Cultural and Heritage Events, and the General supervisor of National day celebrations
+                            committee.
+                            <br><br>
+                            Dr. Ghanem has extensive experience in several fields such as culture, investment, banking,
+                            Information technology and has accumulated great experience in policymaking and strategies
+                            development related to governance and sustainability.
+                            <br><br>
+                            He held several active positions during his career, including a cultural advisor at the
+                            Ministry of Culture, Director of Marketing And human recourses at Qatar Media Corporation,
+                            Investment Consultant at Aspire and Katara, H.H Representative Office in the Amiri Diwan, in
+                            addition to chairing several committees, as he served in several positions in the State
+                            Audit Bureau.
+                            <br><br>
+                            He obtained several certificates during his educational career, a doctorate in management
+                            and Higher Education, In addition to a master’s degree in accounting from the United
+                            Kingdom.and a bachelor’s degree in economics and accounting from Qatar University.
+                        </p>
+                    </div>
+                </div>
+                <div class="border-t border-t-black/25 px-8 py-2 flex justify-end">
+                    <a class="btn-white close-in" href="#culture">Close</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script>
+        $('.nav-menu-link').on('click', function (e) {
+            e.preventDefault()
+            var id = $(this).attr('href')
+
+            $(id).slideToggle();
+        })
+        $('.modal-in').on('click', function () {
+            var id = $(this).attr('href')
+            $('body').css('overflow', 'hidden')
+            $(id).show();
+        })
+        $('.close-in').on('click', function () {
+            var id = $(this).attr('href')
+            $('body').css('overflow', 'auto')
+            $(id).hide();
+        })
+    </script>
+</body>
+
+</html>

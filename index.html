@@ -117,7 +117,7 @@
                             <li class="active"><a href="index.html">Home</a></li>
                             <li><a href="orgnization.html">Organization</a></li>
                             <li><a href="our-mission.html">Our mission </a></li>
-                            <li><a href="board-members.html">Board Members</a></li>
+                            <li><a href="directors.html">Board of Directors</a></li>
                             <li><a href="usefull-contacts.html">Useful Contacts </a></li>
                         </ul>
                         <div class="search relative order-1 lg:order-2">
@@ -149,7 +149,7 @@
                         our
                         purpose. Alongside
                         our partners, we seek to build innovative and sustainable bridges...</P>
-                    <a class="btn-blue mt-4" href="">
+                    <a class="btn-blue mt-4 modal-in" href="#ceoMsg">
                         <span>Read More</span>
                         <img src="assets/imgs/double-arrrow.svg" alt="">
                     </a>
@@ -421,11 +421,18 @@
                 <div id='calendar-container'
                     class="shrink-0 grow-0 w-full lg:max-w-[57%] bg-white rounded-lg text-sm overflow-hidden min-h-[300px]">
                     <div id='calendar'></div>
-                    <!-- <div id="events"></div> -->
+                    <div id="current-events">
+                        <h2>Current Events</h2>
+                        <ul id="current-events-list"></ul>
+                    </div>
+                    <div id="upcoming-events">
+                        <h2>Upcoming Events</h2>
+                        <ul id="upcoming-events-list"></ul>
+                    </div>
                 </div>
             </div>
             <div class="mt-8">
-                <h3 class="text-white text-2xl font-semibold mb-4">Explore Our Offers</h3>
+                <h3 class="text-white text-2xl font-semibold mb-4">Explore our Special Offers</h3>
                 <div class="relative">
                     <button class="onprev text-white text-2xl px-2 absolute left-0 top-0 bottom-0 z-10"><i
                             class="fa-solid fa-chevron-left"></i></button>
@@ -477,7 +484,7 @@
     <div class="weather py-8">
         <div class="container-in">
             <div class="flex flex-wrap md:flex-nowrap justify-between gap-4 text-white">
-                <div class="md:max-w-[530px] md:w-[40%] w-full">
+                <div class="md:max-w-[700px] md:w-[45%] w-full">
                     <div id="weather" class="flex bg-black/25 p-4 rounded-lg gap-6">
                         <div>
                             <span>Partly Cloudy</span>
@@ -497,10 +504,10 @@
                         <div id="prayer-times" class="grid md:grid-cols-5 sm:grid-cols-3 grid-cols-2 gap-2 mt-4"> </div>
                     </div>
                 </div>
-                <div class="md:max-w-[870px] md:w-[60%] w-full bg-black/25 p-4 rounded-lg flex flex-col gap-4">
-                    <h3 class="sm:text-4xl text-2xl font-semibold sm:max-w-[80%]">Upload of Jusour policies and
+                <div class="md:max-w-[870px] md:w-[55%] w-full bg-black/25 p-4 rounded-lg flex flex-col gap-4">
+                    <h3 class="sm:text-4xl text-2xl font-semibold sm:max-w-[80%]">View of Jusour policies and
                         procedures</h3>
-                    <p class="sm:max-w-[80%]">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis erat
+                    <p class=" ">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis erat
                         sed
                         nulla tempus luctus
                         sit amet id elit Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis erat sed
@@ -516,20 +523,22 @@
     <footer class="py-4">
         <div class="container-in">
             <div class="flex flex-wrap sm:flex-nowrap gap-2 sm:justify-between justify-center text-white">
-                <div class="">&copy; Copyright All Right Reserved, Jusour Co</div>
+                <div class="text-sm">&copy; 2024 Qatar Manpower Solutions Company (Jusour), All Right Reserved</div>
                 <div class="flex gap-4 flex-wrap sm:flex-nowrap justify-center items-center">
                     <a href="mailto:fo@jusour.qa">
                         <i class="fa-regular fa-envelope"></i>
                         info@jusour.qa
                     </a>
-                    <a href="tel:+974987654321">
+                    <a href="tel:+97444011044">
                         <i class="fa-solid fa-phone"></i>
-                        +974 987654321
+                        +974 44011044
                     </a>
                     <div class="flex text-white gap-2 text-xl">
-                        <a href=""><i class="fa-brands fa-facebook"></i></a>
-                        <a href=""><i class="fa-brands fa-x-twitter"></i></a>
-                        <a href=""><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="https://www.facebook.com/jusourqatar" target="_blank"><i
+                                class="fa-brands fa-facebook"></i></a>
+                        <a href="https://x.com/Jusour_qa" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="https://www.linkedin.com/in/jusourqa" target="_blank"><i
+                                class="fa-brands fa-linkedin"></i></a>
                     </div>
                 </div>
 
@@ -706,6 +715,53 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal for Policies -->
+    <div class="fixed left-0 right-0 top-0 bottom-0 h-full w-full bg-black/50 overflow-x-hidden overflow-y-auto hidden"
+        id="ceoMsg">
+        <div class="overlay-modal fixed left-0 right-0 top-0 bottom-0 h-full w-full bg-black/50"></div>
+        <div class="max-w-[700px] w-full mx-auto rounded-lg overflow-hidden relative ">
+            <div class="bg-secondary relative text-center font-semibold text-2xl flex justify-center p-2 text-white">
+                Message from CEO
+                <a class="text-white absolute right-4 close-in" href="#ceoMsg"><i class="fa-solid fa-xmark"></i></a>
+            </div>
+            <div class="bg-[#D9D9D9]">
+                <div class="px-8 py-4 content-modal">
+                    <h3>Message from CEO
+                    </h3>
+                    <p>
+                        The selection of our new company name, Jusour, indicates the essence of our purpose. Alongside
+                        our
+                        partners, we seek to build innovative and sustainable bridges to connect employers and
+                        prospective
+                        employees. We want to transform dreams to opportunities and aspirations to accomplishments.</p>
+
+                    <p> It is my pleasure, alongside my colleagues at Jusour, to contribute to this exceptional
+                        opportunity
+                        to impact our nation’s Vision 2030.</p>
+
+                    <p> Our success at Jusour rests on innovative ideas and adaptive solutions. For this reason, we
+                        worked
+                        with our partners to develop employment programs using platform technology solutions to identify
+                        distinguishing professional skills and experiences, referencing international best practices to
+                        consider the rights of all parties, and recognizing the importance of robust and effective
+                        legislations to address market challenges.</p>
+
+                    <p>We invite you all to be our partners in our efforts to develop and advance, building bridges
+                        towards
+                        our aspiration and working together for an inclusive and dynamic labour market. We are certain
+                        that
+                        our collective efforts will have a positive impact towards our collective goals.</p>
+
+                    <p>Let us work together to build our common future, unifying against challenges with unprecedented
+                        determination and passion.</p>
+                </div>
+                <div class="border-t border-t-black/25 px-8 py-2 flex justify-end">
+                    <a class="btn-white close-in" href="#ceoMsg">Close</a>
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="https://code.jquery.com/jquery-3.7.1.js"
         integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
@@ -809,20 +865,66 @@
         document.addEventListener('DOMContentLoaded', function () {
             var calendarEl = document.getElementById('calendar');
             const eventsDiv = document.getElementById('events');
-
+            const eventsData = [
+                {
+                    title: 'All Day Event',
+                    start: '2024-10-29',
+                    Description: 'lorem ipsum dollar'
+                },
+                {
+                    title: 'Long Event',
+                    start: '2024-10-07',
+                    end: '2023-01-10'
+                },
+                {
+                    groupId: 999,
+                    title: 'Repeating Event',
+                    start: '2024-10-09T16:00:00'
+                },
+                {
+                    groupId: 999,
+                    title: 'Repeating Event',
+                    start: '2024-10-16T16:00:00'
+                },
+                {
+                    title: 'Conference',
+                    start: '2024-10-11',
+                    end: '2024-10-13'
+                },
+                {
+                    title: 'Meeting',
+                    start: '2024-10-12T10:30:00',
+                    end: '2024-10-12T12:30:00'
+                },
+                {
+                    title: 'Lunch',
+                    start: '2024-10-12T12:00:00'
+                },
+                {
+                    title: 'Meeting',
+                    start: '2024-10-12T14:30:00'
+                },
+                {
+                    title: 'Happy Hour',
+                    start: '2024-10-12T17:30:00'
+                },
+                {
+                    title: 'Dinner',
+                    start: '2024-10-12T20:00:00'
+                },
+                {
+                    title: 'Birthday Party',
+                    start: '2024-10-13T07:00:00'
+                },
+                {
+                    title: 'Click for Google',
+                    url: 'http://google.com/',
+                    start: '2024-10-28'
+                }
+            ];
+            const date = new Date();
+            const formattedDate = date.toISOString().split('T')[0];
             var calendar = new FullCalendar.Calendar(calendarEl, {
-                dateClick: function (info) {
-                    alert('Date: ' + info.dateStr);
-                },
-                eventClick: function (info) {
-                    // Prevent the default click action
-                    info.jsEvent.preventDefault();
-
-                    // Show event details in the custom div
-                    eventsDiv.innerHTML = `<h3>${info.event.title}</h3>
-                                           <p>Start: ${info.event.start.toISOString()}</p>
-                                           <p>End: ${info.event.end ? info.event.end.toISOString() : 'N/A'}</p>`;
-                },
                 height: '100%',
                 expandRows: true,
                 slotMinTime: '08:00',
@@ -833,71 +935,75 @@
                     right: 'next'
                 },
                 initialView: 'dayGridMonth',
-                initialDate: '2023-01-12',
+                initialDate: formattedDate,
                 navLinks: true, // can click day/week names to navigate views
                 editable: true,
                 selectable: true,
                 nowIndicator: true,
-                dayMaxEvents: true, // allow "more" link when too many events
-                events: [
-                    {
-                        title: 'All Day Event',
-                        start: '2023-01-01',
-                    },
-                    {
-                        title: 'Long Event',
-                        start: '2023-01-07',
-                        end: '2023-01-10'
-                    },
-                    {
-                        groupId: 999,
-                        title: 'Repeating Event',
-                        start: '2023-01-09T16:00:00'
-                    },
-                    {
-                        groupId: 999,
-                        title: 'Repeating Event',
-                        start: '2023-01-16T16:00:00'
-                    },
-                    {
-                        title: 'Conference',
-                        start: '2023-01-11',
-                        end: '2023-01-13'
-                    },
-                    {
-                        title: 'Meeting',
-                        start: '2023-01-12T10:30:00',
-                        end: '2023-01-12T12:30:00'
-                    },
-                    {
-                        title: 'Lunch',
-                        start: '2023-01-12T12:00:00'
-                    },
-                    {
-                        title: 'Meeting',
-                        start: '2023-01-12T14:30:00'
-                    },
-                    {
-                        title: 'Happy Hour',
-                        start: '2023-01-12T17:30:00'
-                    },
-                    {
-                        title: 'Dinner',
-                        start: '2023-01-12T20:00:00'
-                    },
-                    {
-                        title: 'Birthday Party',
-                        start: '2023-01-13T07:00:00'
-                    },
-                    {
-                        title: 'Click for Google',
-                        url: 'http://google.com/',
-                        start: '2023-01-28'
-                    }
-                ]
+                dayMaxEvents: true, // allow "more" link when too many events 
+                events: eventsData,
+                datesSet: function () {
+                    // Highlight the cells after the calendar has been rendered
+                    highlightDaysWithEvents();
+                },
+                moreLinkContent: function (dayInfo) {
+                    const eventCount = dayInfo.event?.count || 0;
+                    return `${dayInfo.num} events`;
+                },
+
             });
+            function highlightDaysWithEvents() {
+                // Get all day cells
+                const dayCells = document.querySelectorAll('.fc-daygrid-day');
+
+                dayCells.forEach(cell => {
+                    const date = cell.getAttribute('data-date');
+
+                    // Check if there are any events on this date
+                    const hasEvents = eventsData.some(event => {
+                        const eventStart = event.start.split('T')[0]; // Get just the date part
+                        const eventEnd = event.end ? event.end.split('T')[0] : eventStart; // Handle all-day events
+                        return date >= eventStart && date <= eventEnd;
+                    });
+
+                    // Add highlighted class if events are found
+                    if (hasEvents) {
+                        cell.classList.add('bg-secondary/25');
+                    }
+                });
+            }
 
             calendar.render();
+
+            // Filter events
+            const currentEvents = [];
+            const upcomingEvents = [];
+
+            calendar.getEvents().forEach(event => {
+                const eventStart = new Date(event.start);
+
+                if (eventStart < date) {
+                    currentEvents.push(event);
+                } else {
+                    upcomingEvents.push(event);
+                }
+            });
+
+            // Populate current events
+            const currentEventsList = document.getElementById('current-events-list');
+            currentEvents.forEach(event => {
+                const li = document.createElement('li');
+                li.innerText = `${event.title} - ${event.start.toLocaleDateString()} - ${event.extendedProps.details}`;
+                currentEventsList.appendChild(li);
+            });
+
+            // Populate upcoming events
+            const upcomingEventsList = document.getElementById('upcoming-events-list');
+            upcomingEvents.forEach(event => {
+                const li = document.createElement('li');
+                li.innerText = `${event.title} - ${event.start.toLocaleDateString()} - ${event.extendedProps.details}`;
+                upcomingEventsList.appendChild(li);
+            });
         });
 
     </script>
@@ -926,7 +1032,7 @@
             ];
 
             for (const prayer of prayers) {
-                if (prayer.time >= currentTime) { 
+                if (prayer.time >= currentTime) {
                     return prayer.name;
                 }
             }
@@ -940,23 +1046,23 @@
                 const nextPrayer = getNextPrayer(timings);
                 document.getElementById('prayer-times').innerHTML = ` 
 
-                <div class="${nextPrayer === 'Fajr' ? 'bg-secondary text-white lg:scale-[1.35] text-center' : 'bg-white/75 text-black'} border-2 border-white rounded-xl text-lg p-2 py-2  leading-6">
+                <div class="${nextPrayer === 'Fajr' ? 'bg-secondary text-white lg:scale-[1.35] ' : 'bg-white/75 text-black'} text-center border-2 border-white rounded-xl text-lg p-2 py-2  leading-6">
                     <span>Fajr</span>
                     <strong class="block"> ${formatTime24to12(timings.Fajr)}</strong>
                 </div>
-                <div class="${nextPrayer === 'Dhuhr' ? 'bg-secondary text-white lg:scale-[1.35] text-center' : 'bg-white/75 text-black'} border-2 border-white rounded-xl text-lg p-2 py-2  leading-6">
+                <div class="${nextPrayer === 'Dhuhr' ? 'bg-secondary text-white lg:scale-[1.35] ' : 'bg-white/75 text-black'} text-center border-2 border-white rounded-xl text-lg p-2 py-2  leading-6">
                     <span>Dhuhr</span>
                     <strong class="block"> ${formatTime24to12(timings.Dhuhr)}</strong>
                 </div>
-                <div class="${nextPrayer === 'Asr' ? 'bg-secondary text-white lg:scale-[1.35] text-center' : 'bg-white/75 text-black'} border-2 border-white rounded-xl text-lg p-2 py-2  leading-6">
+                <div class="${nextPrayer === 'Asr' ? 'bg-secondary text-white lg:scale-[1.35] ' : 'bg-white/75 text-black'} text-center border-2 border-white rounded-xl text-lg p-2 py-2  leading-6">
                     <span>Asr</span>
                     <strong class="block"> ${formatTime24to12(timings.Asr)}</strong>
                 </div>
-                <div class="${nextPrayer === 'Maghrib' ? 'bg-secondary text-white lg:scale-[1.35] text-center' : 'bg-white/75 text-black'} border-2 border-white rounded-xl text-lg p-2 py-2  leading-6">
+                <div class="${nextPrayer === 'Maghrib' ? 'bg-secondary text-white lg:scale-[1.35] ' : 'bg-white/75 text-black'} text-center border-2 border-white rounded-xl text-lg p-2 py-2  leading-6">
                     <span>Maghrib</span>
                     <strong class="block"> ${formatTime24to12(timings.Maghrib)}</strong>
                 </div>
-                <div class="${nextPrayer === 'Isha' ? 'bg-secondary text-white lg:scale-[1.35] text-center' : 'bg-white/75 text-black'} border-2 border-white rounded-xl text-lg p-2 py-2  leading-6">
+                <div class="${nextPrayer === 'Isha' ? 'bg-secondary text-white lg:scale-[1.35] ' : 'bg-white/75 text-black'} text-center border-2 border-white rounded-xl text-lg p-2 py-2  leading-6">
                     <span>Isha</span>
                     <strong class="block"> ${formatTime24to12(timings.Isha)}</strong>
                 </div>
@@ -973,7 +1079,7 @@
         fetch(url)
             .then(response => response.json())
             .then(data => {
-                 const weather = `<div>
+                const weather = `<div>
                                     <span>${data.current.condition.text}</span>
                                     <img src="https:${data.current.condition.icon}" class="h-28" alt="">
                                 </div>
