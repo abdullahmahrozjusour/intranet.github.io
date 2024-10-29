@@ -102,40 +102,38 @@
 </head>
 <body>
     <header class="py-6 bg-primary">
-        <div class="container-in">
-            <div class="flex justify-between items-center lg:flex-nowrap flex-wrap gap-2 lg:gap-0">
-                <div class="logo">
-                    <a href="index.html">
-                        <img src="assets/imgs/logo.svg" class="lg:max-h-20 max-h-12" alt="">
-                    </a>
+        <div class="flex justify-between  lg:flex-nowrap flex-wrap gap-2 lg:gap-0">
+            <div class="logo">
+                <a href="">
+                    <img src="assets/imgs/logo.png" class="lg:max-h-14 max-h-12" alt="">
+                </a>
+            </div>
+            <div class="nav">
+                <ul class="menu order-2 lg:order-1" id="menu">
+                    <li ><a href="index.html">Home</a></li>
+                    <li><a href="orgnization.html">Organization</a></li>
+                    <li><a href="our-mission.html">Our mission </a></li>
+                    <li><a href="directors.html">Board of Directors</a></li>
+                    <li><a href="usefull-contacts.html">Useful Contacts </a></li>
+                </ul>
+                <div class="search relative order-1 lg:order-2 autocomplete-container">
+                    <span class="absolute top-2 left-3">
+                        <img src="assets/imgs/search.svg" alt="">
+                    </span>
+                    <input type="text" id="autocomplete-input"
+                        class="h-[39px] w-[380px] bg-transparent pl-12 text-white border-2 border-white rounded-3xl"
+                        placeholder="Search Directory">
+                    <div id="suggestions" class="suggestions bg-white absolute top-full  w-full left-0 right-0"></div>
                 </div>
-                <div class="nav">
-                    <ul class="menu order-2 lg:order-1" id="menu">
-                        <li ><a href="index.html">Home</a></li>
-                        <li><a href="orgnization.html">Organization</a></li>
-                        <li><a href="our-mission.html">Our mission </a></li>
-                        <li><a href="directors.html">Board of Directors</a></li>
-                        <li><a href="usefull-contacts.html">Useful Contacts </a></li>
-                    </ul>
-                    <div class="search relative order-1 lg:order-2 autocomplete-container">
-                        <span class="absolute top-2 left-3">
-                            <img src="assets/imgs/search.svg" alt="">
-                        </span>
-                        <input type="text" id="autocomplete-input"
-                            class="h-[39px] w-[380px] bg-transparent pl-12 text-white border-2 border-white rounded-3xl"
-                            placeholder="Search Directory">
-                        <div id="suggestions" class="suggestions bg-white absolute top-full  w-full left-0 right-0"></div>
-                    </div>
-                </div>
-                <div class="flex gap-2 items-center">
-                    <a class="btn-blue" href="download-center.html">
-                        <img src="assets/imgs/download.svg" alt="">
-                        <span>Download Center</span>
-                    </a>
-                    <a href="#menu" class="nav-menu-link lg:hidden text-white text-xl">
-                        <i class="fa-solid fa-bars"></i>
-                    </a>
-                </div>
+            </div>
+            <div class="flex gap-2 ">
+                <a class="btn-blue" href="download-center.html">
+                    <img src="assets/imgs/download.svg" alt="">
+                    <span>Download Center</span>
+                </a>
+                <a href="#menu" class="nav-menu-link lg:hidden text-white text-xl">
+                    <i class="fa-solid fa-bars"></i>
+                </a>
             </div>
         </div>
     </header>
