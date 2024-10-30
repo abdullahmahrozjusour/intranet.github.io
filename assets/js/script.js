@@ -51,3 +51,12 @@ document.addEventListener('click', (event) => {
         suggestionsContainer.style.display = 'none';
     }
 });
+
+$(document).ready(function(){
+    $('.nav-menu-link').on('click', function (e) {
+        e.preventDefault()
+        var id = $(this).attr('href')
+
+        $(id).slideToggle();
+    })
+})
