@@ -59,4 +59,11 @@ $(document).ready(function(){
 
         $(id).slideToggle();
     })
+
+    $('.toggle-button').on('click', function(e){
+        e.preventDefault()
+        var id = $(this).attr('href') 
+        $(this).find('.fa-chevron-down').toggleClass('rotate-180')
+        $(id).slideToggle('fast');
+    })
 })
