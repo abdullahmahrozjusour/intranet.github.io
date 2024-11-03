@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -384,7 +385,7 @@
         </div>
     </div>
     <div class="py-8 bg-about lg:min-h-[800px]">
-        <div class="container-in">
+        <div class="container-in flex flex-col justify-evenly">
             <div class="flex flex-wrap lg:flex-nowrap gap-6">
                 <div class="usefull-links lg:max-w-[40%] shrink-0 grow-0 w-full">
                     <h3 class="text-2xl text-white font-semibold">Useful Links</h3>
@@ -420,7 +421,7 @@
                 </div>
                 <div id='calendar-container'
                     class="shrink-0 grow-0 w-full lg:max-w-[57%] bg-white rounded-lg text-sm overflow-hidden min-h-[300px]">
-                    <div id='calendar'></div>
+                    <!-- <div id='calendar'></div> -->
                     <div id="current-events">
                         <h2>Current Events</h2>
                         <ul id="current-events-list"></ul>
@@ -431,7 +432,7 @@
                     </div>
                 </div>
             </div>
-            <div class="mt-8">
+            <div class="lg:mt-16 mt-4">
                 <h3 class="text-white text-2xl font-semibold mb-4">Explore our Special Offers</h3>
                 <div class="relative">
                     <button class="onprev text-white text-2xl px-2 absolute left-0 top-0 bottom-0 z-10"><i
@@ -441,60 +442,57 @@
                             <div class="offer-item relative">
                                 <img src="https://services.jusour.qa/storage/images/service/JSR-1710690601-65f7112927177.png"
                                     class="max-w-full" alt="">
-                                
+
                             </div>
                             <a href="https://services.jusour.qa/en/service/shakespeare-international-academy"
-                                    target="_blank"
-                                    class="cap-layer">
-                                    <span class="relative font-bold text-lg ">Shakespeare International
-                                        Academy</span>
-                                </a>
+                                target="_blank" class="cap-layer">
+                                <span class="relative font-bold text-lg ">Shakespeare International
+                                    Academy</span>
+                            </a>
                         </div>
                         <div class="px-4">
                             <div class="offer-item relative">
                                 <img src="https://services.jusour.qa/storage/images/service/JSR-1710691080-65f7130801895.png"
                                     class="max-w-full" alt="">
-                                
+
                             </div>
                             <a href="https://services.jusour.qa/en/service/al-ahli-hospital" target="_blank"
-                                    class="cap-layer ">
-                                    <span class="relative font-bold text-lg ">Al-Ahli Hospital</span>
-                                </a>
+                                class="cap-layer ">
+                                <span class="relative font-bold text-lg ">Al-Ahli Hospital</span>
+                            </a>
                         </div>
                         <div class="px-4">
                             <div class="offer-item relative">
                                 <img src="https://services.jusour.qa/storage/images/service/JSR-1710691051-65f712eb9ea71.jpeg"
                                     class="max-w-full" alt="">
-                                
+
                             </div>
                             <a href="https://services.jusour.qa/en/service/doha-clinic-hospital" target="_blank"
-                                    class="cap-layer ">
-                                    <span class="relative font-bold text-lg ">Doha Clinic Hospital</span>
-                                </a>
+                                class="cap-layer ">
+                                <span class="relative font-bold text-lg ">Doha Clinic Hospital</span>
+                            </a>
                         </div>
                         <div class="px-4">
                             <div class="offer-item relative">
                                 <img src="https://services.jusour.qa/storage/images/service/JSR-1710690996-65f712b45519c.jpg"
                                     class="max-w-full" alt="">
-                                
+
                             </div>
-                            <a href="https://services.jusour.qa/en/service/qshield" target="_blank"
-                                    class="cap-layer ">
-                                    <span class="relative font-bold text-lg ">QShield</span>
-                                </a>
+                            <a href="https://services.jusour.qa/en/service/qshield" target="_blank" class="cap-layer ">
+                                <span class="relative font-bold text-lg ">QShield</span>
+                            </a>
                         </div>
                         <div class="px-4">
                             <div class="offer-item relative">
                                 <img src="https://services.jusour.qa/storage/images/service/JSR-1710691080-65f7130801895.png"
                                     class="max-w-full" alt="">
-                                
+
                             </div>
                             <a href="https://services.jusour.qa/en/service/shakespeare-international-academy"
-                                    target="_blank"
-                                    class="cap-layer ">
-                                    <span class="relative font-bold text-lg ">Shakespeare International
-                                        Academy</span>
-                                </a>
+                                target="_blank" class="cap-layer ">
+                                <span class="relative font-bold text-lg ">Shakespeare International
+                                    Academy</span>
+                            </a>
                         </div>
                     </div>
                     <button class="onext text-white text-2xl px-2 absolute right-0 top-0 bottom-0"><i
@@ -788,6 +786,7 @@
     <script src="https://code.jquery.com/jquery-3.7.1.js"
         integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js'></script>
     <script type="text/javascript" src="assets/js/script.js"></script>
     <script>
@@ -1021,6 +1020,9 @@
     </script>
 
     <script>
+        $(function () {
+            $("#datepicker").datepicker();
+        });
         const city = "Doha";
         const country = "Qatar";
         const apiUrl = `https://api.aladhan.com/v1/timingsByCity?city=${city}&country=${country}`;
