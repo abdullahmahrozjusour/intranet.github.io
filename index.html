@@ -420,16 +420,62 @@
                     </div>
                 </div>
                 <div id='calendar-container'
-                    class="shrink-0 grow-0 w-full lg:max-w-[57%] bg-white rounded-lg text-sm overflow-hidden min-h-[300px]">
+                    class=" w-full lg:max-w-[57%] bg-white rounded-lg text-sm overflow-hidden min-h-[200px]">
+                    <div class="font-bold bg-secondary py-2 text-center text-white text-lg">Event Calendar</div>
                     <!-- <div id='calendar'></div> -->
-                    <div id="current-events">
-                        <h2>Current Events</h2>
-                        <ul id="current-events-list"></ul>
+                    <div class="flex gap-4 p-4 shrink-0 grow-0 w-full">
+                        <div id="datepicker"></div>
+                        <div id="current-events" class="w-full">
+                            <!-- <h2>Current Events</h2> -->
+                            <ul id="current-events-list">
+                                <li class="flex gap-2 p-1 border border-[#E6E6E6] items-center rounded-lg ">
+                                    <div class="border-[#E6E6E6] border overflow-hidde w-16 rounded-lg">
+                                        <div class="bg-[#FF7437] py-1 text-white text-center text-xs">MAY</div>
+                                        <div class="bg-white text-center font-semibold">24</div>
+                                    </div>
+                                    <div class="w-full">
+                                        <div class="uppercase font-bold">Eid ul fitr 2025</div>
+                                        <div id="ev1" class="text-black/75 hidden text-sm">Lorem ipsum dollar Lorem
+                                            ipsum dollar Lorem ipsum dollar Lorem ipsum dollar </div>
+                                    </div>
+                                    <a href="#ev1" class="font-semibold flex justify-between toggle-button">
+                                        <span class="fa-solid fa-chevron-down"></span>
+                                    </a>
+                                </li>
+                                <li class="flex gap-2 p-1 border border-[#E6E6E6] items-center rounded-lg mt-2">
+                                    <div class="border-[#E6E6E6] border overflow-hidde w-16 rounded-lg">
+                                        <div class="bg-[#FF7437] py-1 text-white text-center text-xs">MAY</div>
+                                        <div class="bg-white text-center font-semibold">24</div>
+                                    </div>
+                                    <div class="w-full">
+                                        <div class="uppercase font-bold">Eid ul fitr 2025</div>
+                                        <div id="ev2" class="text-black/75 hidden text-sm">Lorem ipsum dollar Lorem
+                                            ipsum dollar Lorem ipsum dollar Lorem ipsum dollar </div>
+                                    </div>
+                                    <a href="#ev2" class="font-semibold flex justify-between toggle-button">
+                                        <span class="fa-solid fa-chevron-down"></span>
+                                    </a>
+                                </li>
+                                <li class="flex gap-2 p-1 border border-[#E6E6E6] items-center rounded-lg mt-2">
+                                    <div class="border-[#E6E6E6] border overflow-hidde w-16 rounded-lg">
+                                        <div class="bg-[#FF7437] py-1 text-white text-center text-xs">MAY</div>
+                                        <div class="bg-white text-center font-semibold">24</div>
+                                    </div>
+                                    <div class="w-full">
+                                        <div class="uppercase font-bold">Eid ul fitr 2025</div>
+                                        <div id="ev3" class="text-black/75 hidden text-sm">Lorem ipsum dollar Lorem
+                                            ipsum dollar Lorem ipsum dollar Lorem ipsum dollar </div>
+                                    </div>
+                                    <a href="#ev3" class="font-semibold flex justify-between toggle-button">
+                                        <span class="fa-solid fa-chevron-down"></span>
+                                    </a>
+                                </li>
+
+
+                            </ul>
+                        </div>
                     </div>
-                    <div id="upcoming-events">
-                        <h2>Upcoming Events</h2>
-                        <ul id="upcoming-events-list"></ul>
-                    </div>
+
                 </div>
             </div>
             <div class="lg:mt-16 mt-4">
@@ -505,7 +551,16 @@
         <div class="container-in">
             <div class="flex flex-wrap md:flex-nowrap justify-between gap-4 text-white">
                 <div class="md:max-w-[700px] md:w-[45%] w-full">
-                    <div id="weather" class="flex bg-black/25 p-4 rounded-lg gap-6">
+
+                    <div class="mt-4">
+                        <h3 class="text-2xl font-bold">Muslim Prayers Time</h3>
+                        <p class="font-medium" id="location">in Doha, Qatar (GMT+3)</p>
+                        <div id="prayer-times" class="grid md:grid-cols-5 sm:grid-cols-3 grid-cols-2 gap-2 mt-4"> </div>
+                    </div>
+                </div>
+                <div class="md:max-w-[870px] md:w-[55%] w-full bg-black/25 p-4 rounded-lg gap-4 grid grid-cols-2">
+                    <h3 class="sm:text-2xl text-xl col-span-2 font-semibold">View of Jusour policies and procedures</h3>
+                    <div id="weather" class="flex p-4 rounded-lg gap-6">
                         <div>
                             <span>Partly Cloudy</span>
                             <img src="assets/imgs/cloud.png" alt="">
@@ -518,21 +573,7 @@
                             <span class="block font-normal">Sunday</span>
                         </div>
                     </div>
-                    <div class="mt-4">
-                        <h3 class="text-2xl font-bold">Muslim Prayers Time</h3>
-                        <p class="font-medium" id="location">in Doha, Qatar (GMT+3)</p>
-                        <div id="prayer-times" class="grid md:grid-cols-5 sm:grid-cols-3 grid-cols-2 gap-2 mt-4"> </div>
-                    </div>
-                </div>
-                <div class="md:max-w-[870px] md:w-[55%] w-full bg-black/25 p-4 rounded-lg flex flex-col gap-4">
-                    <h3 class="sm:text-4xl text-2xl font-semibold sm:max-w-[80%]">View of Jusour policies and
-                        procedures</h3>
-                    <p class=" ">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis erat
-                        sed
-                        nulla tempus luctus
-                        sit amet id elit Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis erat sed
-                        nulla tempus luctus sit amet id elit</p>
-                    <div class="flex gap-2 self-end">
+                    <div class="flex gap-2 self-center justify-end">
                         <a href="#policyModal" class="btn-white modal-in">Policies</a>
                         <a href="#Procedure" class="btn-blue modal-in">Procedures</a>
                     </div>
@@ -575,7 +616,7 @@
             <div class="bg-secondary relative text-center font-semibold text-2xl flex justify-center p-2 text-white">
                 Policies <a class="text-white absolute right-4 close-in" href="#policyModal"><i
                         class="fa-solid fa-xmark"></i></a></div>
-            <div class="bg-[#D9D9D9]">
+            <div class="bg-modal">
                 <div class="px-8 py-4 content-modal">
                     <h3>Policies</h3>
 
@@ -639,7 +680,7 @@
             <div class="bg-secondary relative text-center font-semibold text-2xl flex justify-center p-2 text-white">
                 Procedure <a class="text-white absolute right-4 close-in" href="#Procedure"><i
                         class="fa-solid fa-xmark"></i></a></div>
-            <div class="bg-[#D9D9D9]">
+            <div class="bg-modal">
                 <div class="px-8 py-4 content-modal">
                     <h3>Procedures</h3>
                     <p>At Jusour, our procedures provide clear guidelines for carrying out essential processes and tasks
@@ -746,7 +787,7 @@
                 Message from CEO
                 <a class="text-white absolute right-4 close-in" href="#ceoMsg"><i class="fa-solid fa-xmark"></i></a>
             </div>
-            <div class="bg-[#D9D9D9]">
+            <div class="bg-modal">
                 <div class="px-8 py-4 content-modal">
                     <h3>Message from CEO
                     </h3>
@@ -1095,7 +1136,7 @@
             .then(data => {
                 const weather = `<div>
                                     <span>${data.current.condition.text}</span>
-                                    <img src="https:${data.current.condition.icon}" class="h-28" alt="">
+                                    <img src="https:${data.current.condition.icon}" class="h-24" alt="">
                                 </div>
                                 <div class="font-bold">
                                     <div class="big flex text-5xl ">${data.current.temp_c}<div class="deg h-[10px] w-[10px] border-2 border-white rounded-full"></div>
