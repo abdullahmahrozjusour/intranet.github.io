@@ -424,8 +424,8 @@
                     <div class="font-bold bg-secondary py-2 text-center text-white text-lg">Event Calendar</div>
                     <!-- <div id='calendar'></div> -->
                     <div class="flex gap-4 p-4 shrink-0 grow-0 w-full">
-                        <div id="datepicker"></div>
-                        <div id="current-events" class="w-full">
+                        <div id="datepicker" class="w-[280px] h-[200px] shrink-0 grow-0 "></div>
+                        <div id="current-events" class="w-full  ">
                             <!-- <h2>Current Events</h2> -->
                             <ul id="current-events-list">
                                 <li class="flex gap-2 p-1 border border-[#E6E6E6] items-center rounded-lg ">
@@ -1049,7 +1049,9 @@
 
     <script>
         $(function () {
-            $("#datepicker").datepicker();
+            $("#datepicker").datepicker({
+                changeYear: true
+            });
         });
         const city = "Doha";
         const country = "Qatar";
