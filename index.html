@@ -434,13 +434,10 @@
                                         <div class="bg-white text-center font-semibold">24</div>
                                     </div>
                                     <div class="w-full">
-                                        <div class="uppercase font-bold">Eid ul fitr 2025</div>
+                                        <a href="#ev1" class="flex justify-between toggle-button uppercase font-bold">Eid ul fitr 2025 <span class="fa-solid fa-chevron-down"></span></a>
                                         <div id="ev1" class="text-black/75 hidden text-sm">Lorem ipsum dollar Lorem
                                             ipsum dollar Lorem ipsum dollar Lorem ipsum dollar </div>
-                                    </div>
-                                    <a href="#ev1" class="font-semibold flex justify-between toggle-button">
-                                        <span class="fa-solid fa-chevron-down"></span>
-                                    </a>
+                                    </div> 
                                 </li>
                                 <li class="flex gap-2 p-1 border border-[#E6E6E6] items-center rounded-lg mt-2">
                                     <div class="border-[#E6E6E6] border overflow-hidde w-16 rounded-lg">
@@ -448,13 +445,10 @@
                                         <div class="bg-white text-center font-semibold">24</div>
                                     </div>
                                     <div class="w-full">
-                                        <div class="uppercase font-bold">Eid ul fitr 2025</div>
+                                        <a href="#ev2" class="uppercase font-bold flex justify-between toggle-button">Eid ul fitr 2025 <span class="fa-solid fa-chevron-down"></span></a>
                                         <div id="ev2" class="text-black/75 hidden text-sm">Lorem ipsum dollar Lorem
                                             ipsum dollar Lorem ipsum dollar Lorem ipsum dollar </div>
-                                    </div>
-                                    <a href="#ev2" class="font-semibold flex justify-between toggle-button">
-                                        <span class="fa-solid fa-chevron-down"></span>
-                                    </a>
+                                    </div> 
                                 </li>
                                 <li class="flex gap-2 p-1 border border-[#E6E6E6] items-center rounded-lg mt-2">
                                     <div class="border-[#E6E6E6] border overflow-hidde w-16 rounded-lg">
@@ -462,13 +456,10 @@
                                         <div class="bg-white text-center font-semibold">24</div>
                                     </div>
                                     <div class="w-full">
-                                        <div class="uppercase font-bold">Eid ul fitr 2025</div>
+                                        <a href="#ev3" class="uppercase font-bold flex justify-between toggle-button">Eid ul fitr 2025 <span class="fa-solid fa-chevron-down"></span></a>
                                         <div id="ev3" class="text-black/75 hidden text-sm">Lorem ipsum dollar Lorem
                                             ipsum dollar Lorem ipsum dollar Lorem ipsum dollar </div>
-                                    </div>
-                                    <a href="#ev3" class="font-semibold flex justify-between toggle-button">
-                                        <span class="fa-solid fa-chevron-down"></span>
-                                    </a>
+                                    </div> 
                                 </li>
                             </ul>
                         </div>
@@ -1121,14 +1112,14 @@
             })
             .catch(error => console.error('Error fetching prayer times:', error));
 
-        const apiKey = '89b83bc0e8bb4da582c81012242810';
+        const apiKey = '89b83bc0e8bb4da582c81012242810';`
         const url = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}`;
         const date = new Date(); // Current date
         const options = { weekday: 'long' }; // Options to get full weekday name
         const dayName = date.toLocaleString('en-US', options); // Get day name 
 
         fetch(url)
-            .then(response => response.json())
+            .then(response => response.json())  
             .then(data => {
                 const weather = `<div>
                                     <span>${data.current.condition.text}</span>
