@@ -199,9 +199,22 @@ html .ui-button.ui-state-disabled:active {
 }
 
 .c-blink {
-    animation-name: blink;
+    /* animation-name: blink;
     animation-duration: 0.4s;
-    animation-iteration-count: infinite;
+    animation-iteration-count: infinite; */
+    position: relative;
+    box-shadow: none !important;
+    &::before{
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+        animation: rotation 0.7s linear 0.2s infinite;
+        background: linear-gradient(var(--gradient-angle), #91193b, #3f0012, #91193b91);
+        border-radius: 0.55rem;
+    }
 }
 
 @keyframes blink {
@@ -229,4 +242,23 @@ html .ui-button.ui-state-disabled:active {
         background-color: #91193B;
         color: white;
     }
+} 
+
+@keyframes rotation 
+{
+    0%
+    {
+        --gradient-angle: 0deg;
+    }
+    100%
+    {
+        --gradient-angle: 360deg;
+    }    
 }
+@property --gradient-angle
+{
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+ 
