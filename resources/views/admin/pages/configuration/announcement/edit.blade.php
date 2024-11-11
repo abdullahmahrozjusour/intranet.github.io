@@ -31,7 +31,7 @@
                             <form action="{{ route('admin.configuration.announcement.update',[$data->id]) }}" method="post" class="form d-flex flex-column flex-lg-row fv-plugins-bootstrap5 fv-plugins-framework">
                                 @csrf
                                 @method('PUT')
-                                @include('admin.pages.configuration.announcement.form',['data'=>$data])
+                                @include('admin.pages.configuration.announcement.form',['data'=>$data, 'head'=>'Edit'])
                             </form>
                         </div>
                         <!--end: Card Body-->

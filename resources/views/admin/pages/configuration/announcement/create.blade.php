@@ -30,7 +30,7 @@
                         <div class="card-body pt-6">
                             <form action="{{ route('admin.configuration.announcement.store') }}" method="post" class="form d-flex flex-column flex-lg-row fv-plugins-bootstrap5 fv-plugins-framework">
                                 @csrf
-                                @include('admin.pages.configuration.announcement.form',['data'=>[]])
+                                @include('admin.pages.configuration.announcement.form',['data'=>[], 'head'=>'Add'])
                             </form>
                         </div>
                         <!--end: Card Body-->

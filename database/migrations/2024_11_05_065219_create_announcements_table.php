@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('announcements', function (Blueprint $table) {
             $table->id();
             $table->string('titleEn');
-            $table->string('titleAr');
+            $table->string('titleAr')->nullable();
             $table->longText('descEn')->nullable();
             $table->longText('descAr')->nullable();
             $table->string('status')->default('Active');

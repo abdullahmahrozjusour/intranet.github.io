@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="ar" data-theme="light">
 
 <head>
@@ -73,6 +74,10 @@
     <script src="{{ asset('theme/js/scripts.bundle.js') }}" nonce="intranet"></script>
     <script src="{{ asset('theme/js/jquery.min.js') }}" nonce="intranet"></script>
     <script src="{{ asset('theme/js/select2.min.js') }}" nonce="intranet"></script>
+    <script src="{{ asset('theme/js/tinymce.min.js') }}"></script>
+    <script src="{{ asset('theme/js/tinymce.min.js') }}"></script>
+    <script src="{{ asset('theme/js/tinymce-jquery.min.js') }}"></script>
+    <script src="{{ asset('theme/js/index.js') }}"></script>
     <script>
         $(document).ready(function() {
             $('.select2').select2();

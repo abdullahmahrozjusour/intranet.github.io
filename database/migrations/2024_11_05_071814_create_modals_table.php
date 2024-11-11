@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pages', function (Blueprint $table) {
+        Schema::create('modals', function (Blueprint $table) {
             $table->id();
-            $table->string('nameEn');
-            $table->string('nameAr');
+            $table->string('titleEn');
+            $table->string('titleAr')->nullable();
             $table->longText('descEn')->nullable();
             $table->longText('descAr')->nullable();
             $table->string('status')->default('Active');
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pages');
+        Schema::dropIfExists('modals');
     }
 };

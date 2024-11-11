@@ -206,100 +206,35 @@
                                         </div>
                                         <!--end:Menu content-->
                                     </div>
-                                    <!--end:Menu item-->
-                                    <!--begin:Menu item-->
-                                    {{-- <div class="menu-item">
+                                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link  " href="https://admintest.tadweer.qa/operation/company">
-
-                                            <span class="menu-icon">
-                                                <span class="svg-icon svg-icon-2">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                        height="24" viewBox="0 0 24 24">
-                                                        <path opacity="0.3"
-                                                            d="M19 2H9c-1.103 0-2 .897-2 2v6H5c-1.103 0-2 .897-2 2v9a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V4c0-1.103-.897-2-2-2zM5 12h6v8H5v-8zm14 8h-6v-8c0-1.103-.897-2-2-2H9V4h10v16z"
-                                                            fill="currentColor"></path>
-                                                        <path
-                                                            d="M11 6h2v2h-2zm4 0h2v2h-2zm0 4.031h2V12h-2zM15 14h2v2h-2zm-8 .001h2v2H7z"
-                                                            fill="currentColor"></path>
-                                                    </svg>
-                                                </span>
-                                                <!--end::Svg Icon-->
-                                            </span>
-                                            <span class="menu-title">Companies</span>
-                                        </a>
-                                        <!--end:Menu link-->
+                                            <div class="menu-item">
+                                                <!--begin:Menu link-->
+                                                <a class="menu-link" href="{{ route('admin.operation.missionVision.index') }}">
+                                                    <span class="menu-icon">
+                                                        <i class="fa-solid fa-person-circle-question"></i>
+                                                    </span>
+                                                    <span class="menu-title">Missions & Visions</span>
+                                                </a>
+                                                <!--end:Menu link-->
+                                            </div>
+                                        <!--end:Menu item-->
                                     </div>
-                                    <div class="menu-item">
+                                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link  "
-                                            href="https://admintest.tadweer.qa/operation/employee/index">
-
-                                            <span class="menu-icon">
-                                                <span class="svg-icon svg-icon-2">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                        height="24" viewBox="0 0 24 24">
-                                                        <path opacity="0.3"
-                                                            d="M19 2H9c-1.103 0-2 .897-2 2v6H5c-1.103 0-2 .897-2 2v9a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V4c0-1.103-.897-2-2-2zM5 12h6v8H5v-8zm14 8h-6v-8c0-1.103-.897-2-2-2H9V4h10v16z"
-                                                            fill="currentColor"></path>
-                                                        <path
-                                                            d="M11 6h2v2h-2zm4 0h2v2h-2zm0 4.031h2V12h-2zM15 14h2v2h-2zm-8 .001h2v2H7z"
-                                                            fill="currentColor"></path>
-                                                    </svg>
-                                                </span>
-                                                <!--end::Svg Icon-->
-                                            </span>
-                                            <span class="menu-title">Employees</span>
-                                        </a>
-                                        <!--end:Menu link-->
+                                            <div class="menu-item">
+                                                <!--begin:Menu link-->
+                                                <a class="menu-link" href="{{ route('admin.operation.director.index') }}">
+                                                    <span class="menu-icon">
+                                                        <i class="fa-solid fa-user-secret">
+                                                        </i>
+                                                    </span>
+                                                    <span class="menu-title">Board of Directors</span>
+                                                </a>
+                                                <!--end:Menu link-->
+                                            </div>
+                                        <!--end:Menu item-->
                                     </div>
-                                    <div class="menu-item">
-                                        <!--begin:Menu link-->
-                                        <a class="menu-link  "
-                                            href="https://admintest.tadweer.qa/operation/employee/pool">
-
-                                            <span class="menu-icon">
-                                                <span class="svg-icon svg-icon-2">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                        height="24" viewBox="0 0 24 24">
-                                                        <path opacity="0.3"
-                                                            d="M19 2H9c-1.103 0-2 .897-2 2v6H5c-1.103 0-2 .897-2 2v9a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V4c0-1.103-.897-2-2-2zM5 12h6v8H5v-8zm14 8h-6v-8c0-1.103-.897-2-2-2H9V4h10v16z"
-                                                            fill="currentColor"></path>
-                                                        <path
-                                                            d="M11 6h2v2h-2zm4 0h2v2h-2zm0 4.031h2V12h-2zM15 14h2v2h-2zm-8 .001h2v2H7z"
-                                                            fill="currentColor"></path>
-                                                    </svg>
-                                                </span>
-                                                <!--end::Svg Icon-->
-                                            </span>
-                                            <span class="menu-title">Employees Pool</span>
-                                        </a>
-                                        <!--end:Menu link-->
-                                    </div>
-                                    <div class="menu-item">
-                                        <!--begin:Menu link-->
-                                        <a class="menu-link  "
-                                            href="https://admintest.tadweer.qa/operation/workforce_request">
-
-                                            <span class="menu-icon">
-                                                <span class="svg-icon svg-icon-2">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                        height="24" viewBox="0 0 24 24">
-                                                        <path opacity="0.3"
-                                                            d="M19 2H9c-1.103 0-2 .897-2 2v6H5c-1.103 0-2 .897-2 2v9a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V4c0-1.103-.897-2-2-2zM5 12h6v8H5v-8zm14 8h-6v-8c0-1.103-.897-2-2-2H9V4h10v16z"
-                                                            fill="currentColor"></path>
-                                                        <path
-                                                            d="M11 6h2v2h-2zm4 0h2v2h-2zm0 4.031h2V12h-2zM15 14h2v2h-2zm-8 .001h2v2H7z"
-                                                            fill="currentColor"></path>
-                                                    </svg>
-                                                </span>
-                                                <!--end::Svg Icon-->
-                                            </span>
-                                            <span class="menu-title">Workforce Requests</span>
-                                        </a>
-                                        <!--end:Menu link-->
-                                    </div> --}}
-                                    <!--end:Menu item-->
                                 </div>
                             </div>
                             <!--end::Menu-->
@@ -319,13 +254,13 @@
                                         </div>
                                         <!--end:Menu content-->
                                     </div>
-                                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion mb-1">
+                                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                                         <!--begin:Menu link-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
                                                 <a class="menu-link" href="{{ route('admin.configuration.announcement.index') }}">
                                                     <span class="menu-icon">
-                                                        <i class="fa-solid fa-calendar-check">
+                                                        <i class="fa-solid fa-bullhorn">
                                                         </i>
                                                     </span>
                                                     <span class="menu-title">Announcements</span>
@@ -334,7 +269,7 @@
                                             </div>
                                         <!--end:Menu item-->
                                     </div>
-                                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion mb-1">
+                                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                                         <!--begin:Menu link-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
@@ -344,6 +279,66 @@
                                                         </i>
                                                     </span>
                                                     <span class="menu-title">Links</span>
+                                                </a>
+                                                <!--end:Menu link-->
+                                            </div>
+                                        <!--end:Menu item-->
+                                    </div>
+                                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                                        <!--begin:Menu link-->
+                                            <div class="menu-item">
+                                                <!--begin:Menu link-->
+                                                <a class="menu-link" href="{{ route('admin.configuration.event.index') }}">
+                                                    <span class="menu-icon">
+                                                        <i class="fa-solid fa-calendar-days">
+                                                        </i>
+                                                    </span>
+                                                    <span class="menu-title">Events</span>
+                                                </a>
+                                                <!--end:Menu link-->
+                                            </div>
+                                        <!--end:Menu item-->
+                                    </div>
+                                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                                        <!--begin:Menu link-->
+                                            <div class="menu-item">
+                                                <!--begin:Menu link-->
+                                                <a class="menu-link" href="{{ route('admin.configuration.modal.index') }}">
+                                                    <span class="menu-icon">
+                                                        <i class="fa-solid fa-file">
+                                                        </i>
+                                                    </span>
+                                                    <span class="menu-title">Modal Pages</span>
+                                                </a>
+                                                <!--end:Menu link-->
+                                            </div>
+                                        <!--end:Menu item-->
+                                    </div>
+                                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                                        <!--begin:Menu link-->
+                                            <div class="menu-item">
+                                                <!--begin:Menu link-->
+                                                <a class="menu-link" href="{{ route('admin.configuration.downloadCenter.index') }}">
+                                                    <span class="menu-icon">
+                                                        <i class="fa-solid fa-download">
+                                                        </i>
+                                                    </span>
+                                                    <span class="menu-title">Download Center</span>
+                                                </a>
+                                                <!--end:Menu link-->
+                                            </div>
+                                        <!--end:Menu item-->
+                                    </div>
+                                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                                        <!--begin:Menu link-->
+                                            <div class="menu-item">
+                                                <!--begin:Menu link-->
+                                                <a class="menu-link" href="{{ route('admin.configuration.organization.index') }}">
+                                                    <span class="menu-icon">
+                                                        <i class="fa-solid fa-sitemap">
+                                                        </i>
+                                                    </span>
+                                                    <span class="menu-title">Organizations</span>
                                                 </a>
                                                 <!--end:Menu link-->
                                             </div>
@@ -370,101 +365,51 @@
                                         </div>
                                         <!--end:Menu content-->
                                     </div>
-                                    <!--end:Menu item-->
-                                    <!--begin:Menu item-->
-                                    {{-- <div class="menu-item">
+                                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link  "
-                                            href="https://admintest.tadweer.qa/administration/users">
-
-                                            <span class="menu-icon">
-                                                <span class="svg-icon svg-icon-2">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                        height="24" viewBox="0 0 24 24">
-                                                        <path opacity="0.3"
-                                                            d="M19 2H9c-1.103 0-2 .897-2 2v6H5c-1.103 0-2 .897-2 2v9a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V4c0-1.103-.897-2-2-2zM5 12h6v8H5v-8zm14 8h-6v-8c0-1.103-.897-2-2-2H9V4h10v16z"
-                                                            fill="currentColor"></path>
-                                                        <path
-                                                            d="M11 6h2v2h-2zm4 0h2v2h-2zm0 4.031h2V12h-2zM15 14h2v2h-2zm-8 .001h2v2H7z"
-                                                            fill="currentColor"></path>
-                                                    </svg>
-                                                </span>
-                                                <!--end::Svg Icon-->
-                                            </span>
-                                            <span class="menu-title">Users</span>
-                                        </a>
-                                        <!--end:Menu link-->
+                                            <div class="menu-item">
+                                                <!--begin:Menu link-->
+                                                <a class="menu-link" href="{{ route('admin.administration.user.index') }}">
+                                                    <span class="menu-icon">
+                                                        <i class="fa-solid fa-users">
+                                                        </i>
+                                                    </span>
+                                                    <span class="menu-title">Users</span>
+                                                </a>
+                                                <!--end:Menu link-->
+                                            </div>
+                                        <!--end:Menu item-->
                                     </div>
-                                    <div class="menu-item">
+                                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link  "
-                                            href="https://admintest.tadweer.qa/administration/roles">
-
-                                            <span class="menu-icon">
-                                                <span class="svg-icon svg-icon-2">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                        height="24" viewBox="0 0 24 24">
-                                                        <path opacity="0.3"
-                                                            d="M19 2H9c-1.103 0-2 .897-2 2v6H5c-1.103 0-2 .897-2 2v9a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V4c0-1.103-.897-2-2-2zM5 12h6v8H5v-8zm14 8h-6v-8c0-1.103-.897-2-2-2H9V4h10v16z"
-                                                            fill="currentColor"></path>
-                                                        <path
-                                                            d="M11 6h2v2h-2zm4 0h2v2h-2zm0 4.031h2V12h-2zM15 14h2v2h-2zm-8 .001h2v2H7z"
-                                                            fill="currentColor"></path>
-                                                    </svg>
-                                                </span>
-                                                <!--end::Svg Icon-->
-                                            </span>
-                                            <span class="menu-title">Roles</span>
-                                        </a>
-                                        <!--end:Menu link-->
+                                            <div class="menu-item">
+                                                <!--begin:Menu link-->
+                                                <a class="menu-link" href="{{ route('admin.administration.usefulContact.index') }}">
+                                                    <span class="menu-icon">
+                                                        <i class="fa-solid fa-sitemap">
+                                                        </i>
+                                                    </span>
+                                                    <span class="menu-title">Useful Contacts</span>
+                                                </a>
+                                                <!--end:Menu link-->
+                                            </div>
+                                        <!--end:Menu item-->
                                     </div>
-                                    <div class="menu-item">
+                                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                                         <!--begin:Menu link-->
-                                        <a class="menu-link  "
-                                            href="https://admintest.tadweer.qa/administration/audit">
-
-                                            <span class="menu-icon">
-                                                <span class="svg-icon svg-icon-2">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                        height="24" viewBox="0 0 24 24">
-                                                        <path opacity="0.3"
-                                                            d="M19 2H9c-1.103 0-2 .897-2 2v6H5c-1.103 0-2 .897-2 2v9a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V4c0-1.103-.897-2-2-2zM5 12h6v8H5v-8zm14 8h-6v-8c0-1.103-.897-2-2-2H9V4h10v16z"
-                                                            fill="currentColor"></path>
-                                                        <path
-                                                            d="M11 6h2v2h-2zm4 0h2v2h-2zm0 4.031h2V12h-2zM15 14h2v2h-2zm-8 .001h2v2H7z"
-                                                            fill="currentColor"></path>
-                                                    </svg>
-                                                </span>
-                                                <!--end::Svg Icon-->
-                                            </span>
-                                            <span class="menu-title">Audits</span>
-                                        </a>
-                                        <!--end:Menu link-->
+                                            <div class="menu-item">
+                                                <!--begin:Menu link-->
+                                                <a class="menu-link" href="{{ route('admin.administration.contact.index') }}">
+                                                    <span class="menu-icon">
+                                                        <i class="fa-solid fa-sitemap">
+                                                        </i>
+                                                    </span>
+                                                    <span class="menu-title">Contacts</span>
+                                                </a>
+                                                <!--end:Menu link-->
+                                            </div>
+                                        <!--end:Menu item-->
                                     </div>
-                                    <div class="menu-item">
-                                        <!--begin:Menu link-->
-                                        <a class="menu-link  "
-                                            href="https://admintest.tadweer.qa/administration/history">
-
-                                            <span class="menu-icon">
-                                                <span class="svg-icon svg-icon-2">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                        height="24" viewBox="0 0 24 24">
-                                                        <path opacity="0.3"
-                                                            d="M19 2H9c-1.103 0-2 .897-2 2v6H5c-1.103 0-2 .897-2 2v9a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V4c0-1.103-.897-2-2-2zM5 12h6v8H5v-8zm14 8h-6v-8c0-1.103-.897-2-2-2H9V4h10v16z"
-                                                            fill="currentColor"></path>
-                                                        <path
-                                                            d="M11 6h2v2h-2zm4 0h2v2h-2zm0 4.031h2V12h-2zM15 14h2v2h-2zm-8 .001h2v2H7z"
-                                                            fill="currentColor"></path>
-                                                    </svg>
-                                                </span>
-                                                <!--end::Svg Icon-->
-                                            </span>
-                                            <span class="menu-title">History</span>
-                                        </a>
-                                        <!--end:Menu link-->
-                                    </div> --}}
-                                    <!--end:Menu item-->
                                 </div>
                             </div>
                             <!--end::Menu-->

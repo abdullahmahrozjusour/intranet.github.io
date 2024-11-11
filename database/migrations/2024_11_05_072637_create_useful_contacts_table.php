@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('useful_contacts', function (Blueprint $table) {
             $table->id();
             $table->string('nameEn');
-            $table->string('nameAr');
+            $table->string('nameAr')->nullable();
             $table->string('addressEn');
             $table->string('addressAr')->nullable();
             $table->string('phone');

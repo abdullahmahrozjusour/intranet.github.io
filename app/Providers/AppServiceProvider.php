@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -16,6 +17,16 @@ class AppServiceProvider extends ServiceProvider
         $repoArray = [
             "Announcement" => ["Announcement"],
             "Link" => ["Link"],
+            "Event" => ["Event"],
+            "Modal" => ["Modal"],
+            "DownloadCenter" => ["DownloadCenter"],
+            "Organization" => ["Organization"],
+            "UsefulContact" => ["UsefulContact"],
+            "Contact" => ["Contact"],
+            "MissionVision" => ["MissionVision"],
+            "Director" => ["Director"],
+            "PageData" => ["PageData"],
+            "User" => ["User"],
         ];
         foreach ($repoArray as $_dir => $_names) {
             foreach ($_names as $_eachName) {
@@ -34,6 +45,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Paginator::useBootstrapFive();
     }
 }

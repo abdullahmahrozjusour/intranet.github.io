@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('events', function (Blueprint $table) {
             $table->id();
             $table->string('nameEn');
-            $table->string('nameAr');
+            $table->string('nameAr')->nullable();
             $table->longText('descEn')->nullable();
             $table->longText('descAr')->nullable();
-            $table->date('eventDate');
-            $table->time('eventTime');
+            $table->date('date');
+            $table->time('time');
             $table->string('status')->default('Active');
             $table->timestamps();
             $table->softDeletes();

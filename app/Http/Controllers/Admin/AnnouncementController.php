@@ -39,7 +39,7 @@ class AnnouncementController extends Controller
     {
         $request->validate([
             'titleEn'=>'required', //|alpha_num
-            'titleAr'=>'required', //|regex:/^[\p{Arabic}0-9\s-]+$/u
+            'titleAr'=>'nullable', //|regex:/^[\p{Arabic}0-9\s-]+$/u
             'status'=>'required',
             'descAr'=>'nullable', //|alpha_num
             'descAr'=>'nullable', //|regex:/^[\p{Arabic}0-9\s-]+$/u
@@ -77,7 +77,7 @@ class AnnouncementController extends Controller
     {
         $request->validate([
             'titleEn'=>'required', //|alpha_num
-            'titleAr'=>'required', //|regex:/^[\p{Arabic}0-9\s-]+$/u
+            'titleAr'=>'nullable', //|regex:/^[\p{Arabic}0-9\s-]+$/u
             'status'=>'required',
             'descAr'=>'nullable', //|alpha_num
             'descAr'=>'nullable', //|regex:/^[\p{Arabic}0-9\s-]+$/u

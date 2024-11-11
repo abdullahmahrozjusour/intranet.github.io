@@ -39,7 +39,7 @@ class LinkController extends Controller
     {
         $request->validate([
             'titleEn'=>'required', //|alpha_num
-            'titleAr'=>'required', //|regex:/^[\p{Arabic}0-9\s-]+$/u
+            'titleAr'=>'nullable', //|regex:/^[\p{Arabic}0-9\s-]+$/u
             'link'=>'required|url',
             'status'=>'required',
         ],
@@ -75,7 +75,7 @@ class LinkController extends Controller
     {
         $request->validate([
             'titleEn'=>'required', //|alpha_num
-            'titleAr'=>'required', //|regex:/^[\p{Arabic}0-9\s-]+$/u
+            'titleAr'=>'nullable', //|regex:/^[\p{Arabic}0-9\s-]+$/u
             'link'=>'required|url',
             'status'=>'required',
         ],

@@ -10,6 +10,6 @@ class DownloadCenter extends Model
 {
     use HasFactory;
     use SoftDeletes;
-    protected $table = 'download_center';
+    protected $table = 'download_centers';
     protected $guarded = [];
 }

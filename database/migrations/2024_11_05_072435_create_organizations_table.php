@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('organizations', function (Blueprint $table) {
             $table->id();
             $table->string('nameEn');
-            $table->string('nameAr');
+            $table->string('nameAr')->nullable();
             $table->string('designationEn');
             $table->string('designationAr')->nullable();
             $table->integer('parentId')->nullable();

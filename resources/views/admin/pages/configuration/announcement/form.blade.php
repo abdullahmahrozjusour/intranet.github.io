@@ -8,7 +8,7 @@
                 <!--begin::Card header-->
                 <div class="card-header">
                     <div class="card-title">
-                        <h2>Add</h2>
+                        <h2>{{ $head }}</h2>
                     </div>
                 </div>
                 <!--end::Card header-->
@@ -16,7 +16,7 @@
                 <!--begin::Card body-->
                 <div class="card-body pt-5">
                     <div class="row">
-                        <div class="col-md-4 col-12">
+                        <div class="col-sm-4 col-12">
                             <div class="mb-10 fv-row fv-plugins-icon-container">
                                 <label class="required form-label">Title (In English)</label>
                                 <input type="text" name="titleEn" class="form-control form-control-lg form-control-solid rounded" placeholder="Title (In English)" value="{{ $data['titleEn'] ?? old('titleEn') }}">
@@ -25,16 +25,16 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="col-md-4 col-12">
+                        <div class="col-sm-4 col-12">
                             <div class="mb-10 fv-row fv-plugins-icon-container">
-                                <label class="required form-label">Title (In Arabic)</label>
+                                <label class="form-label">Title (In Arabic) <span class="text-secondary">(Optional)</span></label>
                                 <input type="text" name="titleAr" class="form-control form-control-lg form-control-solid rounded text-end" placeholder="Title (In Arabic)" value="{{ $data['titleAr'] ?? old('titleAr') }}">
                                 @error('titleAr')
                                     <span class="text-danger">{{ $errors->first('titleAr') }}</span>
                                 @enderror
                             </div>
                         </div>
-                        <div class="col-md-4 col-12">
+                        <div class="col-sm-4 col-12">
                             <div class="mb-10 fv-row fv-plugins-icon-container">
                                 <label class="required form-label">Status</label>
                                 <select name="status" class="form-select form-select-solid form-select-lg fw-semibold select2">
@@ -52,7 +52,7 @@
                     <div class="row">
                         <div class="col-md-6 col-12">
                             <div class="mb-10 fv-row fv-plugins-icon-container">
-                                <label class="form-label">Description (In English)</label>
+                                <label class="form-label">Description (In English) <span class="text-secondary">(Optional)</span></label>
                                 <textarea name="descEn" id="" cols="30" rows="10" class="form-control form-control-lg form-control-solid rounded" placeholder="Description (In English)">{{ $data['descEn'] ?? old('descEn') }}</textarea>
                                 @error('descEn')
                                     <span class="text-danger">{{ $errors->first('descEn') }}</span>
@@ -61,7 +61,7 @@
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="mb-10 fv-row fv-plugins-icon-container">
-                                <label class="form-label">Description (In Arabic)</label>
+                                <label class="form-label">Description (In Arabic) <span class="text-secondary">(Optional)</span></label>
                                 <textarea name="descAr" id="" cols="30" rows="10" class="form-control form-control-lg form-control-solid rounded text-end" placeholder="Description (In Arabic)">{{ $data['descAr'] ?? old('descAr') }}</textarea>
                                 @error('descAr')
                                     <span class="text-danger">{{ $errors->first('descAr') }}</span>
@@ -77,7 +77,7 @@
 
         <div class="d-flex justify-content-end">
             <!--begin::Button-->
-            <a href="/seven-html-pro/apps/ecommerce/catalog/products.html" id="kt_ecommerce_add_product_cancel" class="btn btn-light me-5">
+            <a href="{{ request()->url() }}" id="kt_ecommerce_add_product_cancel" class="btn btn-light me-5">
                 Cancel
             </a>
             <!--end::Button-->

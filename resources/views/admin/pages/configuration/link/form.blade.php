@@ -8,7 +8,7 @@
                 <!--begin::Card header-->
                 <div class="card-header">
                     <div class="card-title">
-                        <h2>Add</h2>
+                        <h2>{{ $head }}</h2>
                     </div>
                 </div>
                 <!--end::Card header-->
@@ -27,7 +27,7 @@
                         </div>
                         <div class="col-sm-6 col-12">
                             <div class="mb-10 fv-row fv-plugins-icon-container">
-                                <label class="required form-label">Title (In Arabic)</label>
+                                <label class="form-label">Title (In Arabic) <span class="text-secondary">(Optional)</span></label>
                                 <input type="text" name="titleAr" class="form-control form-control-lg form-control-solid rounded text-end" placeholder="Title (In Arabic)" value="{{ $data['titleAr'] ?? old('titleAr') }}">
                                 @error('titleAr')
                                     <span class="text-danger">{{ $errors->first('titleAr') }}</span>
@@ -66,7 +66,7 @@
 
         <div class="d-flex justify-content-end">
             <!--begin::Button-->
-            <a href="/seven-html-pro/apps/ecommerce/catalog/products.html" id="kt_ecommerce_add_product_cancel" class="btn btn-light me-5">
+            <a href="{{ request()->url() }}" id="kt_ecommerce_add_product_cancel" class="btn btn-light me-5">
                 Cancel
             </a>
             <!--end::Button-->

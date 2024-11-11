@@ -14,10 +14,11 @@ return new class extends Migration
         Schema::create('download_centers', function (Blueprint $table) {
             $table->id();
             $table->string('nameEn');
-            $table->string('nameAr');
+            $table->string('nameAr')->nullable();
             $table->string('usernameEn');
             $table->string('usernameAr')->nullable();
             $table->longText('document');
+            $table->text('url');
             $table->string('extension',5);
             $table->string('status')->default('Active');
             $table->timestamps();

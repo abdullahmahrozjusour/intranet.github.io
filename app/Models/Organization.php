@@ -12,4 +12,9 @@ class Organization extends Model
     use SoftDeletes;
     protected $table = 'organizations';
     protected $guarded = [];
+
+    public function parent()
+    {
+        return $this->belongsTo(Organization::class,'parentId','id');
+    }
 }

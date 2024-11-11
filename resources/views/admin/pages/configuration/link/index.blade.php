@@ -49,11 +49,11 @@
                                         @foreach ($data as $key => $value)
 
                                             <tr>
-                                                <td class="text-start pe-0">
+                                                <td class="text-start ps-0">
                                                     <span class="text-gray-600 fw-bold fs-6">{{ $key + 1 }}</span>
                                                 </td>
 
-                                                <td class="text-start pe-0">
+                                                <td class="text-start ps-0">
                                                     <div class="d-flex align-items-center">
                                                         <div class="d-flex justify-content-start flex-column">
                                                             <a href="{{ $value->link }}" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">{{ $value->titleEn }}</a>
@@ -61,7 +61,7 @@
                                                     </div>
                                                 </td>
 
-                                                <td class="text-start pe-0">
+                                                <td class="text-start ps-0">
                                                     @php
                                                         $statusClass = '';
                                                         $statusText = $value->status;
@@ -83,13 +83,13 @@
                                                     <span class="badge py-3 px-4 fs-7 {{ $statusClass }}">{{ $statusText }}</span>
                                                 </td>
 
-                                                <td class="text-start pe-0">
+                                                <td class="text-start ps-0">
                                                     <span class="text-gray-600 fw-bold fs-6">
                                                         {{ \Carbon\Carbon::parse($value->created_at)->format('M,d Y h:i A') }}
                                                     </span>
                                                 </td>
 
-                                                <td class="text-end ps-0">
+                                                <td class="text-end pe-0">
                                                     <div class="me-0">
                                                         <button class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
                                                             <i class="fa-solid fa-ellipsis fs-1x"></i>                            </button>
@@ -134,6 +134,11 @@
                                 </table>
                             </div>
                             <!--end::Table-->
+                            <div class="row">
+                                <div class="col-12 mt-10">
+                                    {!! $data->links() !!}
+                                </div>
+                            </div>
                         </div>
                         <!--end: Card Body-->
                     </div>

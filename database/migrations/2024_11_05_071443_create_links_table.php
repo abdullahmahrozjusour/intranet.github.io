@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('links', function (Blueprint $table) {
             $table->id();
             $table->string('titleEn');
-            $table->string('titleAr');
+            $table->string('titleAr')->nullable();
             $table->text('link');
             $table->string('status')->default('Active');
             $table->timestamps();
