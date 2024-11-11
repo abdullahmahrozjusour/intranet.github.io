@@ -3,12 +3,22 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Repositories\Modal\ModalInterface;
 use Illuminate\Http\Request;
 
 class WebController extends Controller
 {
+    protected $modal;
+
+    public function __construct(ModalInterface $modal)
+    {
+        $this->modal = $modal;
+    }
+
     public function index(){
-        return view('pages.index');
+
+        $ceoMessage = $this->modal->getCeoMessage();
+        return view('pages.index',compact('ceoMessage'));
     }
 
     public function organization(){

@@ -6,10 +6,9 @@
                 <div class="md:w-[60%] md:max-w-[420px] flex flex-col items-start text-white self-center">
                     <h1 class="lg:text-5xl text-2xl font-bold"><u class="text-secondary font-extrabold">CEO</u> Message
                     </h1>
-                    <P class="mt-6 text-lg">The selection of our new company name, Jusour, indicates the essence of
-                        our
-                        purpose. Alongside
-                        our partners, we seek to build innovative and sustainable bridges...</P>
+                    <div class="mt-6 text-lg">
+                        {!! html_entity_decode(Str::words($ceoMessage->descEn, 26, '...')) !!}
+                    </div>
                     <a class="btn-blue mt-4 modal-in" href="#ceoMsg">
                         <span>Read More</span>
                         <img src="{{ asset('assets/imgs/double-arrrow.svg') }}" alt="">
@@ -434,5 +433,5 @@
             </div>
         </div>
     </div>
-    @include('components.web.modals')
+    @include('components.web.modals',['ceoMessage'=>$ceoMessage])
 @endsection

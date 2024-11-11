@@ -64,7 +64,7 @@
         </div>
     </div>
 
-    <!-- Modal for Policies -->
+    <!-- Modal for Procedure -->
     <div class="fixed left-0 right-0 top-0 bottom-0 h-full w-full bg-black/50 overflow-x-hidden overflow-y-auto hidden"
         id="Procedure">
         <div class="overlay-modal fixed left-0 right-0 top-0 bottom-0 h-full w-full bg-black/50"></div>
@@ -170,45 +170,20 @@
         </div>
     </div>
 
-    <!-- Modal for Policies -->
+    <!-- Modal for CEO Message -->
     <div class="fixed left-0 right-0 top-0 bottom-0 h-full w-full bg-black/50 overflow-x-hidden overflow-y-auto hidden"
         id="ceoMsg">
         <div class="overlay-modal fixed left-0 right-0 top-0 bottom-0 h-full w-full bg-black/50"></div>
         <div class="max-w-[700px] w-full mx-auto rounded-lg overflow-hidden relative ">
             <div class="bg-secondary relative text-center font-semibold text-2xl flex justify-center p-2 text-white">
-                Message from CEO
+                {{ $ceoMessage->titleEn }}
                 <a class="text-white absolute right-4 close-in" href="#ceoMsg"><i class="fa-solid fa-xmark"></i></a>
             </div>
             <div class="bg-modal">
                 <div class="px-8 py-4 content-modal">
-                    <h3>Message from CEO
+                    <h3>{{ $ceoMessage->titleEn }}
                     </h3>
-                    <p>
-                        The selection of our new company name, Jusour, indicates the essence of our purpose. Alongside
-                        our
-                        partners, we seek to build innovative and sustainable bridges to connect employers and
-                        prospective
-                        employees. We want to transform dreams to opportunities and aspirations to accomplishments.</p>
-
-                    <p> It is my pleasure, alongside my colleagues at Jusour, to contribute to this exceptional
-                        opportunity
-                        to impact our nation’s Vision 2030.</p>
-
-                    <p> Our success at Jusour rests on innovative ideas and adaptive solutions. For this reason, we
-                        worked
-                        with our partners to develop employment programs using platform technology solutions to identify
-                        distinguishing professional skills and experiences, referencing international best practices to
-                        consider the rights of all parties, and recognizing the importance of robust and effective
-                        legislations to address market challenges.</p>
-
-                    <p>We invite you all to be our partners in our efforts to develop and advance, building bridges
-                        towards
-                        our aspiration and working together for an inclusive and dynamic labour market. We are certain
-                        that
-                        our collective efforts will have a positive impact towards our collective goals.</p>
-
-                    <p>Let us work together to build our common future, unifying against challenges with unprecedented
-                        determination and passion.</p>
+                    {!! html_entity_decode($ceoMessage->descEn, 26, '...') !!}
                 </div>
                 <div class="border-t border-t-black/25 px-8 py-2 flex justify-end">
                     <a class="btn-white close-in" href="#ceoMsg">Close</a>

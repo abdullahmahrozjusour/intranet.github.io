@@ -113,7 +113,7 @@
                                                             <!--end::Menu item-->
 
                                                             <!--begin::Menu item-->
-                                                            <div class="menu-item px-3">
+                                                            {{-- <div class="menu-item px-3">
                                                                 <form action="{{ route('admin.configuration.modal.destroy',[$value->id]) }}" method="post" class="w-100">
                                                                     @method('DELETE')
                                                                     @csrf
@@ -121,7 +121,7 @@
                                                                         Delete
                                                                     </button>
                                                                 </form>
-                                                            </div>
+                                                            </div> --}}
                                                             <!--end::Menu item-->
                                                         </div>
                                                         <!--end::Menu 3-->
