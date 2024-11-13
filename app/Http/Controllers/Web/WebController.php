@@ -10,6 +10,7 @@ use App\Repositories\MissionVision\MissionVisionInterface;
 use App\Repositories\Announcement\AnnouncementInterface;
 use App\Repositories\Contact\ContactInterface;
 use App\Repositories\Director\DirectorInterface;
+use App\Repositories\DownloadCenter\DownloadCenterInterface;
 use App\Repositories\Event\EventInterface;
 use App\Repositories\Link\LinkInterface;
 use App\Repositories\Modal\ModalInterface;
@@ -27,6 +28,7 @@ class WebController extends Controller
     protected $director;
     protected $useful;
     protected $contact;
+    protected $download;
 
     public function __construct(
         ModalInterface $modal,
@@ -36,7 +38,8 @@ class WebController extends Controller
         MissionVisionInterface $missionVision,
         DirectorInterface $director,
         UsefulContactInterface $useful,
-        ContactInterface $contact
+        ContactInterface $contact,
+        DownloadCenterInterface $download
     )
     {
         $this->modal = $modal;
@@ -47,6 +50,7 @@ class WebController extends Controller
         $this->director = $director;
         $this->useful = $useful;
         $this->contact = $contact;
+        $this->download = $download;
     }
 
     public function index()
@@ -74,7 +78,8 @@ class WebController extends Controller
         return view('pages.index',compact('data'));
     }
 
-    public function organization(){
+    public function organization()
+    {
         return view('pages.organization');
     }
 
@@ -85,7 +90,8 @@ class WebController extends Controller
         return view('pages.our-mission',compact('data'));
     }
 
-    public function boardOfDirector(){
+    public function boardOfDirector()
+    {
         $relation = ['data'];
 
         $data = $this->director->getOurDirectorDataWithCount($relation,'data')->toArray();
@@ -95,7 +101,8 @@ class WebController extends Controller
         return view('pages.directors',compact('data'));
     }
 
-    public function usefulContacts(){
+    public function usefulContacts()
+    {
         $columnStatus = 'status';
         $statusActive = Status::STATUS_ACTIVE;
         $data['useful'] = $this->useful->where([$columnStatus=>$statusActive]);
@@ -103,15 +110,21 @@ class WebController extends Controller
         return view('pages.usefull-contacts',compact('data'));
     }
 
-    public function downloadCenter(){
-        return view('pages.download-center');
+    public function downloadCenter()
+    {
+        $columnStatus = 'status';
+        $statusActive = Status::STATUS_ACTIVE;
+        $data = $this->download->whereWithPaginateAndOrderByCreatedDESC([$columnStatus=>$statusActive],18);
+        return view('pages.download-center',compact('data'));
     }
 
-    public function contact(Request $request){
+    public function contact(Request $request)
+    {
         $request->validate([
             'name'=>'required|max:255',
             'email'=>'required|email|max:255',
             'phone'=>'required',
+            'subject'=>'nullable|max:255',
             'message'=>'required'
         ]);
 

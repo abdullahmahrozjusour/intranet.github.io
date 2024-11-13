@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Organization;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class OrganizationSeeder extends Seeder
 {
@@ -13,7 +14,7 @@ class OrganizationSeeder extends Seeder
      */
     public function run(): void
     {
-        Organization::where('id',1)->delete();
+        DB::table('organizations')->where('id',1)->delete();
         Organization::create([
             'id'=>1,
             'nameEn'=>'Eng. Abdul Hadi Burgan',

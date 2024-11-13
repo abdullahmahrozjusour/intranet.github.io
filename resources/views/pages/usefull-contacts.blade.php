@@ -10,6 +10,9 @@
         font-size: 12px !important;
         color: rgb(125, 125, 125, 1) !important;
     }
+    .for-group .text-secondary{
+        font-size: 12px !important;
+    }
 </style>
 @endsection
 
@@ -36,16 +39,25 @@
                                 <label for="" class="text-sm mb-1">Full Name <span class="text-secondary">*</span></label>
                                 <input type="text" placeholder="Insert Name" name="name"
                                     class="w-full border border-[#7D7D7D] text-sm rounded-lg h-10 px-2 text-[#7D7D7D]">
+                                @error('name')
+                                    <span class="text-secondary">{{ $errors->first('name') }}</span>
+                                @enderror
                             </div>
                             <div class=" for-group">
                                 <label for="" class="text-sm mb-1">Email <span class="text-secondary">*</span></label>
                                 <input type="email" placeholder="Insert Email" name="email"
                                     class="w-full border border-[#7D7D7D] text-sm rounded-lg h-10 px-2 text-[#7D7D7D]">
+                                @error('email')
+                                    <span class="text-secondary">{{ $errors->first('email') }}</span>
+                                @enderror
                             </div>
                             <div class=" for-group">
                                 <label for="" class="text-sm mb-1">Phone <span class="text-secondary">*</span></label>
                                 <input type="text" placeholder="Insert Phone" name="phone"
                                     class="w-full border border-[#7D7D7D] text-sm rounded-lg h-10 px-2 text-[#7D7D7D]">
+                                @error('phone')
+                                    <span class="text-secondary">{{ $errors->first('phone') }}</span>
+                                @enderror
                             </div>
                             <div class=" for-group">
                                 <label for="" class="text-sm mb-1">Country</label>
@@ -55,18 +67,22 @@
                                         <option value="{{ $item['name'] }}">{{ $item['name'] }}</option>
                                     @endforeach
                                 </select>
-                                {{-- <input type="text" placeholder="Insert Country"
-                                    class="w-full border border-[#7D7D7D] text-sm rounded-lg h-10 px-2 text-[#7D7D7D]"> --}}
                             </div>
                             <div class=" for-group">
                                 <label for="" class="text-sm mb-1">Subject</label>
                                 <input type="text" placeholder="Insert Subject" name="subject"
                                     class="w-full border border-[#7D7D7D] text-sm rounded-lg h-10 px-2 text-[#7D7D7D]">
+                                @error('subject')
+                                    <span class="text-secondary">{{ $errors->first('subject') }}</span>
+                                @enderror
                             </div>
                             <div class="col-span-2 for-group">
                                 <label for="" class="text-sm mb-1">Message <span class="text-secondary">*</span></label>
                                 <textarea name="message" id="" placeholder="Type Message" cols="4" rows="4"
                                     class="w-full border border-[#7D7D7D] text-sm rounded-lg px-2 text-[#7D7D7D]"></textarea>
+                                @error('message')
+                                    <span class="text-secondary">{{ $errors->first('message') }}</span>
+                                @enderror
                             </div>
                             <div>
                                 <button class="btn-blue whitespace-nowrap">Submit Request</button>

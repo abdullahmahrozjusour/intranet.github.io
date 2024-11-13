@@ -43,14 +43,19 @@
                             Dashboard
                         </a>
                     </li>
+                    <li class="breadcrumb-item text-muted">
+                        <a href="{{ request()->url() }}" class="text-muted text-capitalize">
+                            {{ \Request::segment(2) }}
+                        </a>
+                    </li>
                     @if(\Request::segment(4))
                         <li class="breadcrumb-item text-muted">
-                            <a href="{{ url('admin/'.\Request::segment(2).'/'.\Request::segment(3)) }}" class="text-muted">
+                            <a href="{{ url('admin/'.\Request::segment(2).'/'.\Request::segment(3)) }}" class="text-muted text-capitalize">
                                 {{ $name }}
                             </a>
                         </li>
                     @else
-                        <li class="breadcrumb-item text-dark">
+                        <li class="breadcrumb-item text-dark text-capitalize">
                             {{ $name }}
                         </li>
                     @endif
