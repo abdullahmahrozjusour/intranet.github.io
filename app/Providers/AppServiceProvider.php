@@ -45,6 +45,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Paginator::useBootstrapFive();
+        if(\Request::segment(1) == 'admin'){
+            Paginator::useBootstrapFive();
+        }
+        else{
+            Paginator::useTailwind();
+        }
     }
 }
