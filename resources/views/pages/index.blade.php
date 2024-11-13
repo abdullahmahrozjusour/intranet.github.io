@@ -1,20 +1,6 @@
 @extends('layouts.master_layout')
 
 @section('content')
-<<<<<<< HEAD
-        <div class="container-in lg:mt-14">
-            <div class="flex md:justify-between md:items-end flex-col md:flex-row gap-4 mb-4 md:gap-0 lg:mb-0">
-                <div class="md:w-[60%] md:max-w-[420px] flex flex-col items-start text-white self-center">
-                    <h1 class="lg:text-5xl text-2xl font-bold"><u class="text-secondary font-extrabold">CEO</u> Message
-                    </h1>
-                    <div class="mt-6 text-lg">
-                        {!! html_entity_decode(Str::words($data['ceoMessage'][0]['descEn'], 26, '...')) !!}
-                    </div>
-                    <a class="btn-blue mt-4 modal-in" href="#ceoMsg">
-                        <span>Read More</span>
-                        <img src="{{ asset('assets/imgs/double-arrrow.svg') }}" alt="">
-                    </a>
-=======
     <div class="container-in lg:mt-14">
         <div class="flex md:justify-between md:items-end flex-col md:flex-row gap-4 mb-4 md:gap-0 lg:mb-0">
             <div class="md:w-[60%] md:max-w-[420px] flex flex-col items-start text-white self-center">
@@ -22,7 +8,6 @@
                 </h1>
                 <div class="mt-6 text-lg">
                     {!! html_entity_decode(Str::words($data['Ceo Message']['descEn'], 26, '...')) !!}
->>>>>>> 7f515a3bf88c5c2166a516b8ffa1c178d86d8937
                 </div>
                 <a class="btn-blue mt-4 modal-in" href="#ceoMsg">
                     <span>Read More</span>
