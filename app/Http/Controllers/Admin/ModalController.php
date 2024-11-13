@@ -13,6 +13,11 @@ class ModalController extends Controller
     public function __construct(ModalInterface $modal)
     {
         $this->modal = $modal;
+        $this->middleware('auth');
+        $this->middleware('permission:view-modal-page', ['only' => ['index']]);
+        // $this->middleware('permission:create-modal-page', ['only' => ['create','store']]);
+        $this->middleware('permission:edit-modal-page', ['only' => ['edit','update']]);
+        // $this->middleware('permission:delete-modal-page', ['only' => ['destroy']]);
     }
 
     /**
@@ -20,7 +25,7 @@ class ModalController extends Controller
      */
     public function index()
     {
-        $data = $this->modal->paginateWithOrder('created_at','DESC',12);
+        $data = $this->modal->paginateWithOrderNotCEO('created_at','DESC',12);
         return view('admin.pages.configuration.modal.index',compact('data'));
     }
 
@@ -29,7 +34,7 @@ class ModalController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.configuration.modal.create');
+        // return view('admin.pages.configuration.modal.create');
     }
 
     /**

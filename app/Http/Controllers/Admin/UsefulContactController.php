@@ -14,6 +14,11 @@ class UsefulContactController extends Controller
     public function __construct(UsefulContactInterface $usefulContact)
     {
         $this->usefulContact = $usefulContact;
+        $this->middleware('auth');
+        $this->middleware('permission:view-useful-contact', ['only' => ['index']]);
+        $this->middleware('permission:create-useful-contact', ['only' => ['create','store']]);
+        $this->middleware('permission:edit-useful-contact', ['only' => ['edit','update']]);
+        $this->middleware('permission:delete-useful-contact', ['only' => ['destroy']]);
     }
 
     /**

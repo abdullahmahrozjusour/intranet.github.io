@@ -19,9 +19,11 @@
                             <!--end::Title-->
 
                             <!--begin::Toolbar-->
+                            @can('update-mission-and-vision')
                             <div class="card-toolbar">
-                                <button type="button" data-bs-toggle="modal" data-bs-target="#kt_modal_edit" class="btn btn-sm btn-light my-3">Edit Board of Director</button>
+                                <button type="button" data-bs-toggle="modal" data-bs-target="#kt_modal_edit" class="btn btn-sm btn-light my-3">Edit</button>
                             </div>
+                            @endcan
                             <!--end::Toolbar-->
                         </div>
                         <!--end::Header-->
@@ -47,9 +49,9 @@
                             <!--end::Wrapper-->
                             <hr class="my-15">
 
-                            <div class="text-end mb-10">
+                            {{-- <div class="text-end mb-10">
                                 <a href="{{ route('admin.operation.missionVision.create') }}" class="btn btn-sm btn-light my-3">Add New Mission & Vision</a>
-                            </div>
+                            </div> --}}
                             <!--begin::Table container-->
                             <div class="table-responsive">
                                 <!--begin::Table-->
@@ -143,14 +145,17 @@
                                                             <!--end::Heading-->
 
                                                             <!--begin::Menu item-->
+                                                            @can('edit-mission-and-vision')
                                                             <div class="menu-item px-3">
                                                                 <a href="{{ route('admin.operation.missionVision.edit',[$value->id]) }}" class="menu-link px-3">
                                                                     Edit
                                                                 </a>
                                                             </div>
+                                                            @endcan
                                                             <!--end::Menu item-->
 
                                                             <!--begin::Menu item-->
+                                                            @can('delete-mission-and-vision')
                                                             <div class="menu-item px-3">
                                                                 <form action="{{ route('admin.operation.missionVision.destroy',[$value->id]) }}" method="post" class="w-100">
                                                                     @method('DELETE')
@@ -160,6 +165,7 @@
                                                                     </button>
                                                                 </form>
                                                             </div>
+                                                            @endcan
                                                             <!--end::Menu item-->
                                                         </div>
                                                         <!--end::Menu 3-->

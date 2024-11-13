@@ -13,6 +13,11 @@ class LinkController extends Controller
     public function __construct(LinkInterface $link)
     {
         $this->link = $link;
+        $this->middleware('auth');
+        $this->middleware('permission:view-link', ['only' => ['index']]);
+        $this->middleware('permission:create-link', ['only' => ['create','store']]);
+        $this->middleware('permission:edit-link', ['only' => ['edit','update']]);
+        $this->middleware('permission:delete-link', ['only' => ['destroy']]);
     }
 
     /**

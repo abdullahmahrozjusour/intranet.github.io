@@ -13,6 +13,11 @@ class EventController extends Controller
     public function __construct(EventInterface $event)
     {
         $this->event = $event;
+        $this->middleware('auth');
+        $this->middleware('permission:view-event', ['only' => ['index']]);
+        $this->middleware('permission:create-event', ['only' => ['create','store']]);
+        $this->middleware('permission:edit-event', ['only' => ['edit','update']]);
+        $this->middleware('permission:delete-event', ['only' => ['destroy']]);
     }
 
     /**

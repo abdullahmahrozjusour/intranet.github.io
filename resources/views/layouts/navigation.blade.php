@@ -206,20 +206,39 @@
                                         </div>
                                         <!--end:Menu content-->
                                     </div>
-                                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                        <!--begin:Menu link-->
-                                            <div class="menu-item">
-                                                <!--begin:Menu link-->
-                                                <a class="menu-link" href="{{ route('admin.operation.missionVision.index') }}">
-                                                    <span class="menu-icon">
-                                                        <i class="fa-solid fa-person-circle-question"></i>
-                                                    </span>
-                                                    <span class="menu-title">Missions & Visions</span>
-                                                </a>
-                                                <!--end:Menu link-->
-                                            </div>
-                                        <!--end:Menu item-->
-                                    </div>
+                                    @can('view-ceo-message')
+                                        <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                                            <!--begin:Menu link-->
+                                                <div class="menu-item">
+                                                    <!--begin:Menu link-->
+                                                    <a class="menu-link" href="{{ route('admin.operation.ceoMessage.index') }}">
+                                                        <span class="menu-icon">
+                                                            <i class="fa-solid fa-message"></i>
+                                                        </span>
+                                                        <span class="menu-title">CEO Message</span>
+                                                    </a>
+                                                    <!--end:Menu link-->
+                                                </div>
+                                            <!--end:Menu item-->
+                                        </div>
+                                    @endcan
+                                    @can('view-mission-and-vision')
+                                        <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                                            <!--begin:Menu link-->
+                                                <div class="menu-item">
+                                                    <!--begin:Menu link-->
+                                                    <a class="menu-link" href="{{ route('admin.operation.missionVision.index') }}">
+                                                        <span class="menu-icon">
+                                                            <i class="fa-solid fa-person-circle-question"></i>
+                                                        </span>
+                                                        <span class="menu-title">Missions & Visions</span>
+                                                    </a>
+                                                    <!--end:Menu link-->
+                                                </div>
+                                            <!--end:Menu item-->
+                                        </div>
+                                    @endcan
+                                    @can('view-board-of-director')
                                     <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                                         <!--begin:Menu link-->
                                             <div class="menu-item">
@@ -235,6 +254,7 @@
                                             </div>
                                         <!--end:Menu item-->
                                     </div>
+                                    @endcan
                                 </div>
                             </div>
                             <!--end::Menu-->
@@ -254,6 +274,7 @@
                                         </div>
                                         <!--end:Menu content-->
                                     </div>
+                                    @can('view-announcement')
                                     <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                                         <!--begin:Menu link-->
                                             <div class="menu-item">
@@ -269,6 +290,8 @@
                                             </div>
                                         <!--end:Menu item-->
                                     </div>
+                                    @endcan
+                                    @can('view-link')
                                     <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                                         <!--begin:Menu link-->
                                             <div class="menu-item">
@@ -284,6 +307,8 @@
                                             </div>
                                         <!--end:Menu item-->
                                     </div>
+                                    @endcan
+                                    @can('view-event')
                                     <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                                         <!--begin:Menu link-->
                                             <div class="menu-item">
@@ -299,6 +324,8 @@
                                             </div>
                                         <!--end:Menu item-->
                                     </div>
+                                    @endcan
+                                    @can('view-modal-page')
                                     <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                                         <!--begin:Menu link-->
                                             <div class="menu-item">
@@ -314,6 +341,8 @@
                                             </div>
                                         <!--end:Menu item-->
                                     </div>
+                                    @endcan
+                                    @can('view-download-center')
                                     <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                                         <!--begin:Menu link-->
                                             <div class="menu-item">
@@ -329,6 +358,8 @@
                                             </div>
                                         <!--end:Menu item-->
                                     </div>
+                                    @endcan
+                                    @can('view-organization')
                                     <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                                         <!--begin:Menu link-->
                                             <div class="menu-item">
@@ -344,6 +375,7 @@
                                             </div>
                                         <!--end:Menu item-->
                                     </div>
+                                    @endcan
                                 </div>
                             </div>
                             <!--end::Menu-->
@@ -365,6 +397,7 @@
                                         </div>
                                         <!--end:Menu content-->
                                     </div>
+                                    @can('view-user')
                                     <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                                         <!--begin:Menu link-->
                                             <div class="menu-item">
@@ -380,6 +413,25 @@
                                             </div>
                                         <!--end:Menu item-->
                                     </div>
+                                    @endcan
+                                    @can('view-role')
+                                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                                        <!--begin:Menu link-->
+                                            <div class="menu-item">
+                                                <!--begin:Menu link-->
+                                                <a class="menu-link" href="{{ route('admin.administration.role.index') }}">
+                                                    <span class="menu-icon">
+                                                        <i class="fa-solid fa-user">
+                                                        </i>
+                                                    </span>
+                                                    <span class="menu-title">Roles</span>
+                                                </a>
+                                                <!--end:Menu link-->
+                                            </div>
+                                        <!--end:Menu item-->
+                                    </div>
+                                    @endcan
+                                    @can('view-useful-contact')
                                     <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                                         <!--begin:Menu link-->
                                             <div class="menu-item">
@@ -395,6 +447,8 @@
                                             </div>
                                         <!--end:Menu item-->
                                     </div>
+                                    @endcan
+                                    @can('view-contact')
                                     <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                                         <!--begin:Menu link-->
                                             <div class="menu-item">
@@ -410,6 +464,7 @@
                                             </div>
                                         <!--end:Menu item-->
                                     </div>
+                                    @endcan
                                 </div>
                             </div>
                             <!--end::Menu-->

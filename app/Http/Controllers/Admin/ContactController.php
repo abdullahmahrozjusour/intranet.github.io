@@ -14,6 +14,11 @@ class ContactController extends Controller
     public function __construct(ContactInterface $contact)
     {
         $this->contact = $contact;
+        $this->middleware('auth');
+        $this->middleware('permission:view-contact', ['only' => ['index']]);
+        // $this->middleware('permission:create-contact', ['only' => ['create','store']]);
+        // $this->middleware('permission:edit-contact', ['only' => ['edit','update']]);
+        $this->middleware('permission:delete-contact', ['only' => ['destroy']]);
     }
 
     /**

@@ -54,7 +54,7 @@
                                                 <td class="text-start ps-0">
                                                     <div class="d-flex align-items-center">
                                                         <div class="d-flex justify-content-start flex-column">
-                                                            <a href="#" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">{{ $value->nameEn }}</a>
+                                                            <a href="#" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">{{ $value->name }}</a>
                                                         </div>
                                                     </div>
                                                 </td>
@@ -135,6 +135,7 @@
                                                             <!--end::Heading-->
 
                                                             <!--begin::Menu item-->
+                                                            @can('delete-contact')
                                                             <div class="menu-item px-3">
                                                                 <form action="{{ route('admin.administration.contact.destroy',[$value->id]) }}" method="post" class="w-100">
                                                                     @method('DELETE')
@@ -144,6 +145,7 @@
                                                                     </button>
                                                                 </form>
                                                             </div>
+                                                            @endcan
                                                             <!--end::Menu item-->
                                                         </div>
                                                         <!--end::Menu 3-->

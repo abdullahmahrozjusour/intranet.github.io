@@ -31,7 +31,7 @@
                             <form action="{{ route('admin.administration.user.update',[$data->id]) }}" method="post" class="form d-flex flex-column flex-lg-row fv-plugins-bootstrap5 fv-plugins-framework" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
-                                @include('admin.pages.administration.user.form',['data'=>$data, 'head'=>'Edit', 'required'=>''])
+                                @include('admin.pages.administration.user.form',['data'=>$data, 'userPermissions'=>$userPermissions, 'permissions'=>$permissions, 'head'=>'Edit', 'required'=>''])
                             </form>
                         </div>
                         <!--end: Card Body-->

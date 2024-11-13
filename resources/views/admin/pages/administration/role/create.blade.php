@@ -2,7 +2,7 @@
 
 @section('section')
     <!--begin::Content-->
-    @include('components.header', ['name' => 'User'])
+    @include('components.header', ['name' => 'Role'])
     <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
         <!--begin::Container-->
         <div class="container-fluid" id="kt_content_container">
@@ -14,13 +14,13 @@
                         <div class="card-header pt-7">
                             <!--begin::Title-->
                             <h3 class="card-title align-items-start flex-column">
-                                <span class="card-label fw-bold text-gray-800">Add New User</span>
+                                <span class="card-label fw-bold text-gray-800">Add New Role</span>
                             </h3>
                             <!--end::Title-->
 
                             <!--begin::Toolbar-->
                             <div class="card-toolbar">
-                                <a href="{{ route('admin.administration.user.index') }}" class="btn btn-sm btn-light">Back</a>
+                                <a href="{{ route('admin.administration.role.index') }}" class="btn btn-sm btn-light">Back</a>
                             </div>
                             <!--end::Toolbar-->
                         </div>
@@ -28,9 +28,9 @@
 
                         <!--begin::Body-->
                         <div class="card-body pt-6">
-                            <form action="{{ route('admin.administration.user.store') }}" method="post" class="form d-flex flex-column flex-lg-row fv-plugins-bootstrap5 fv-plugins-framework" enctype="multipart/form-data">
+                            <form action="{{ route('admin.administration.role.store') }}" method="post" class="form d-flex flex-column flex-lg-row fv-plugins-bootstrap5 fv-plugins-framework" enctype="multipart/form-data">
                                 @csrf
-                                @include('admin.pages.administration.user.form',['data'=>[], 'userPermissions'=>[], 'permissions'=>$permissions, 'head'=>'Add', 'required'=>'required'])
+                                @include('admin.pages.administration.role.form',['role'=>[], 'rolePermissions'=>[], 'permissions'=>$permissions, 'head'=>'Add'])
                             </form>
                         </div>
                         <!--end: Card Body-->

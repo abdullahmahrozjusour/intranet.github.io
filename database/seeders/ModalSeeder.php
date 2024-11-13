@@ -168,41 +168,6 @@ class ModalSeeder extends Seeder
                 'created_at'=>now(),
                 'updated_at'=>now()
             ],
-            [
-                'id'=>3,
-                'titleEn'=>'Message from CEO',
-                'titleAr'=>'السياسات',
-                'descEn'=>'<p> The selection of our new company name, Jusour, indicates the essence of our purpose. Alongside
-                        our
-                        partners, we seek to build innovative and sustainable bridges to connect employers and
-                        prospective
-                        employees. We want to transform dreams to opportunities and aspirations to accomplishments.</p>
-
-                    <p> It is my pleasure, alongside my colleagues at Jusour, to contribute to this exceptional
-                        opportunity
-                        to impact our nation’s Vision 2030.</p>
-
-                    <p> Our success at Jusour rests on innovative ideas and adaptive solutions. For this reason, we
-                        worked
-                        with our partners to develop employment programs using platform technology solutions to identify
-                        distinguishing professional skills and experiences, referencing international best practices to
-                        consider the rights of all parties, and recognizing the importance of robust and effective
-                        legislations to address market challenges.</p>
-
-                    <p>We invite you all to be our partners in our efforts to develop and advance, building bridges
-                        towards
-                        our aspiration and working together for an inclusive and dynamic labour market. We are certain
-                        that
-                        our collective efforts will have a positive impact towards our collective goals.</p>
-
-                    <p>Let us work together to build our common future, unifying against challenges with unprecedented
-                        determination and passion.</p>',
-                'descAr'=>NULL,
-                'type'=>Type::TYPE_CEO_MESSAGE,
-                'status'=>'Active',
-                'created_at'=>now(),
-                'updated_at'=>now()
-            ]
         ];
         foreach ($data as $key => $value) {
             Modal::create($value);

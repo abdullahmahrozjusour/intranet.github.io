@@ -19,12 +19,14 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
         $this->call([
-            UserSeeder::class,
             PageSeeder::class,
             ModalSeeder::class,
             OrganizationSeeder::class,
             UsefulContactSeeder::class,
-            CountrySeeder::class
+            CountrySeeder::class,
+            PermissionSeeder::class,
+            RoleSeeder::class,
+            UserSeeder::class,
         ]);
     }
 }

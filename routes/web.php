@@ -40,9 +40,11 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin'], function () {
             include('admin/user.php');
             include('admin/usefulContact.php');
             include('admin/contact.php');
+            include('admin/role.php');
         });
 
         Route::group(['as' => 'operation.', 'prefix' => 'operation'], function () {
+            include('admin/ceoMessage.php');
             include('admin/missionVision.php');
             include('admin/director.php');
         });

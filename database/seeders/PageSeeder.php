@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Constants\Type;
 use App\Models\Page;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -23,7 +24,7 @@ class PageSeeder extends Seeder
                 'shortDescAr'=>NULL,
                 'descEn'=>'Our mission is to empower and inspire communities through innovative programs and sustainable initiatives that promote growth, education, and social equity. We are dedicated to fostering collaboration and driving positive change that enhances the quality of life for all individuals. We envision a world where every individual has access to opportunities that enable them to thrive—characterized by inclusivity, empowerment, and sustainable progress, where communities are resilient, vibrant, and connected.',
                 'descAr'=>'مهمتنا هي تمكين وإلهام المجتمعات من خلال البرامج المبتكرة والمبادرات المستدامة التي تعزز النمو والتعليم والعدالة الاجتماعية. نحن ملتزمون بتعزيز التعاون وقيادة التغيير الإيجابي الذي يعزز نوعية الحياة لجميع الأفراد. نحن نتصور عالمًا يتمتع فيه كل فرد بإمكانية الوصول إلى الفرص التي تمكنه من الازدهار - والتي تتميز بالشمولية والتمكين والتقدم المستدام، حيث تكون المجتمعات مرنة وحيوية ومتصلة.',
-                'type'=>'Mission Vision',
+                'type'=>Type::TYPE_MISSION_VISION,
                 'status'=>'Active',
                 'created_at'=>now(),
                 'updated_at'=>now(),
@@ -36,11 +37,48 @@ class PageSeeder extends Seeder
                 'shortDescAr'=>'توجيه القيادة والتوجيه الاستراتيجي',
                 'descEn'=>'The Board of Members is composed of dedicated individuals who bring diverse expertise and insights to guide our organization. Together, they are committed to fostering growth, ensuring accountability, and shaping the strategic vision that drives our mission forward. Their collaborative leadership plays a crucial role in steering our initiatives and enhancing our impact within the community.',
                 'descAr'=>'يتكون مجلس الأعضاء من أفراد متفانين يقدمون خبرات ورؤى متنوعة لتوجيه منظمتنا. وهم ملتزمون معًا بتعزيز النمو، وضمان المساءلة، وصياغة الرؤية الاستراتيجية التي تدفع مهمتنا إلى الأمام. تلعب قيادتهم التعاونية دورًا حاسمًا في توجيه مبادراتنا وتعزيز تأثيرنا داخل المجتمع.',
-                'type'=>'Director',
+                'type'=>Type::TYPE_DIRECTOR,
                 'status'=>'Active',
                 'created_at'=>now(),
                 'updated_at'=>now(),
             ],
+            [
+                'id'=>3,
+                'titleEn'=>'Message from CEO',
+                'titleAr'=>'السياسات',
+                'shortDescEn'=>NULL,
+                'shortDescAr'=>NULL,
+                'descEn'=>'<p> The selection of our new company name, Jusour, indicates the essence of our purpose. Alongside
+                        our
+                        partners, we seek to build innovative and sustainable bridges to connect employers and
+                        prospective
+                        employees. We want to transform dreams to opportunities and aspirations to accomplishments.</p>
+
+                    <p> It is my pleasure, alongside my colleagues at Jusour, to contribute to this exceptional
+                        opportunity
+                        to impact our nation’s Vision 2030.</p>
+
+                    <p> Our success at Jusour rests on innovative ideas and adaptive solutions. For this reason, we
+                        worked
+                        with our partners to develop employment programs using platform technology solutions to identify
+                        distinguishing professional skills and experiences, referencing international best practices to
+                        consider the rights of all parties, and recognizing the importance of robust and effective
+                        legislations to address market challenges.</p>
+
+                    <p>We invite you all to be our partners in our efforts to develop and advance, building bridges
+                        towards
+                        our aspiration and working together for an inclusive and dynamic labour market. We are certain
+                        that
+                        our collective efforts will have a positive impact towards our collective goals.</p>
+
+                    <p>Let us work together to build our common future, unifying against challenges with unprecedented
+                        determination and passion.</p>',
+                'descAr'=>NULL,
+                'type'=>Type::TYPE_CEO_MESSAGE,
+                'status'=>'Active',
+                'created_at'=>now(),
+                'updated_at'=>now()
+            ]
         ]);
         DB::table('page_data')->insert([
             [

@@ -25,6 +25,7 @@ class AppServiceProvider extends ServiceProvider
             "Contact" => ["Contact"],
             "MissionVision" => ["MissionVision"],
             "Director" => ["Director"],
+            "CeoMessage" => ["CeoMessage"],
             "PageData" => ["PageData"],
             "User" => ["User"],
         ];

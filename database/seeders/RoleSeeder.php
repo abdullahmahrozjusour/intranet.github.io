@@ -2,37 +2,24 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
+use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Schema;
 
-class UserSeeder extends Seeder
+class RoleSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        $admin = User::where('id',1)->first();
-
-        if(!isset($admin->id)){
-            $admin = User::create([
-                'id'=>1,
-                'nameEn'=>'Super',
-                'nameAr'=>'الفائق',
-                'lnameEn'=>'Admin',
-                'lnameAr'=>'المشرف',
-                'email' => 'admin@jusour.qa',
-                'phone'=>'00000000',
-                'password'=>Hash::make('jusour@2024'),
-                'status'=>'Active'
-            ]);
-        }else{
-            $admin->assignRole('');
-            $admin->givePermissionTo([]);
-        }
-        $admin->assignRole('Super Admin');
+        // Schema::disableForeignKeyConstraints();
+        // DB::table('model_has_roles')->where('model_id',1)->delete();
+        // Role::where('name', 'Super Admin')->delete();
+        $admin = Role::updateOrCreate(['name' => 'Super Admin']);
+        $admin->givePermissionTo([]);
         $admin->givePermissionTo([
             'view-ceo-message',
             'edit-ceo-message',

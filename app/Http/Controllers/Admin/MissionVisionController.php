@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Constants\Type;
 use App\Helpers\ImageHelper;
 use App\Http\Controllers\Controller;
 use App\Repositories\MissionVision\MissionVisionInterface;
@@ -17,6 +18,12 @@ class MissionVisionController extends Controller
     {
         $this->missionVision = $missionVision;
         $this->pageData = $pageData;
+        $this->middleware('auth');
+        $this->middleware('permission:view-mission-and-vision', ['only' => ['index']]);
+        // $this->middleware('permission:create-mission-and-vision', ['only' => ['create','store']]);
+        $this->middleware('permission:edit-mission-and-vision', ['only' => ['edit','update']]);
+        $this->middleware('permission:update-mission-and-vision', ['only' => ['updateData']]);
+        $this->middleware('permission:delete-mission-and-vision', ['only' => ['destroy']]);
     }
 
     /**
@@ -24,7 +31,7 @@ class MissionVisionController extends Controller
      */
     public function index()
     {
-        $collection = $this->missionVision->where(['type'=>'Mission Vision']);
+        $collection = $this->missionVision->where(['type'=>Type::TYPE_MISSION_VISION]);
         $collectionId = $collection[0]->id;
         $data = $this->pageData->paginateWithOrderWhere('created_at','DESC',12,'pageId',$collectionId);
         return view('admin.pages.operation.missionVision.index',compact('data','collection'));
@@ -36,7 +43,7 @@ class MissionVisionController extends Controller
     public function create()
     {
         $pageId = $this->missionVision->where(['type'=>'Mission Vision'])[0]->id;
-        return view('admin.pages.operation.missionVision.create',compact('pageId'));
+        // return view('admin.pages.operation.missionVision.create',compact('pageId'));
     }
 
     /**

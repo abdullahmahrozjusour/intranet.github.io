@@ -19,9 +19,11 @@
                             <!--end::Title-->
 
                             <!--begin::Toolbar-->
+                            @can('update-board-of-director')
                             <div class="card-toolbar">
-                                <button type="button" data-bs-toggle="modal" data-bs-target="#kt_modal_edit" class="btn btn-sm btn-light my-3">Edit Board of Director</button>
+                                <button type="button" data-bs-toggle="modal" data-bs-target="#kt_modal_edit" class="btn btn-sm btn-light my-3">Edit</button>
                             </div>
+                            @endcan
                             <!--end::Toolbar-->
                         </div>
                         <!--end::Header-->
@@ -51,9 +53,11 @@
                             <!--end::Wrapper-->
                             <hr class="mt-15 mb-5">
                             <!--begin::Toolbar-->
+                            @can('create-board-of-director')
                             <div class="text-end mb-10">
                                 <a href="{{ route('admin.operation.director.create') }}" class="btn btn-sm btn-light my-3">Add New Board of Director</a>
                             </div>
+                            @endcan
                             <!--end::Toolbar-->
                             <!--begin::Table container-->
                             <div class="table-responsive">
@@ -167,14 +171,17 @@
                                                             <!--end::Heading-->
 
                                                             <!--begin::Menu item-->
+                                                            @can('edit-board-of-director')
                                                             <div class="menu-item px-3">
                                                                 <a href="{{ route('admin.operation.director.edit',[$value->id]) }}" class="menu-link px-3">
                                                                     Edit
                                                                 </a>
                                                             </div>
+                                                            @endcan
                                                             <!--end::Menu item-->
 
                                                             <!--begin::Menu item-->
+                                                            @can('delete-board-of-director')
                                                             <div class="menu-item px-3">
                                                                 <form action="{{ route('admin.operation.director.destroy',[$value->id]) }}" method="post" class="w-100">
                                                                     @method('DELETE')
@@ -184,6 +191,7 @@
                                                                     </button>
                                                                 </form>
                                                             </div>
+                                                            @endcan
                                                             <!--end::Menu item-->
                                                         </div>
                                                         <!--end::Menu 3-->

@@ -19,9 +19,9 @@
                             <!--end::Title-->
 
                             <!--begin::Toolbar-->
-                            <div class="card-toolbar">
+                            {{-- <div class="card-toolbar">
                                 <a href="{{ route('admin.configuration.modal.create') }}" class="btn btn-sm btn-light">Add New Modal Page</a>
-                            </div>
+                            </div> --}}
                             <!--end::Toolbar-->
                         </div>
                         <!--end::Header-->
@@ -105,11 +105,13 @@
                                                             <!--end::Heading-->
 
                                                             <!--begin::Menu item-->
+                                                            @can('edit-modal-page')
                                                             <div class="menu-item px-3">
                                                                 <a href="{{ route('admin.configuration.modal.edit',[$value->id]) }}" class="menu-link px-3">
                                                                     Edit
                                                                 </a>
                                                             </div>
+                                                            @endcan
                                                             <!--end::Menu item-->
 
                                                             <!--begin::Menu item-->

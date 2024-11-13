@@ -14,6 +14,11 @@ class DownloadCenterController extends Controller
     public function __construct(DownloadCenterInterface $downloadCenter)
     {
         $this->downloadCenter = $downloadCenter;
+        $this->middleware('auth');
+        $this->middleware('permission:view-download-center', ['only' => ['index']]);
+        $this->middleware('permission:create-download-center', ['only' => ['create','store']]);
+        $this->middleware('permission:edit-download-center', ['only' => ['edit','update']]);
+        $this->middleware('permission:delete-download-center', ['only' => ['destroy']]);
     }
 
     /**

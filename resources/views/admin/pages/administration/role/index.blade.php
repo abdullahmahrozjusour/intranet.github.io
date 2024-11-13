@@ -2,7 +2,7 @@
 
 @section('section')
     <!--begin::Content-->
-    @include('components.header', ['name' => 'Announcements'])
+    @include('components.header', ['name' => 'Roles'])
     <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
         <!--begin::Container-->
         <div class="container-fluid" id="kt_content_container">
@@ -14,14 +14,14 @@
                         <div class="card-header pt-7">
                             <!--begin::Title-->
                             <h3 class="card-title align-items-start flex-column">
-                                <span class="card-label fw-bold text-gray-800">Announcements</span>
+                                <span class="card-label fw-bold text-gray-800">Roles</span>
                             </h3>
                             <!--end::Title-->
 
                             <!--begin::Toolbar-->
-                            @can('create-announcement')
+                            @can('create-role')
                             <div class="card-toolbar">
-                                <a href="{{ route('admin.configuration.announcement.create') }}" class="btn btn-sm btn-light">Add New Announcement</a>
+                                <a href="{{ route('admin.administration.role.create') }}" class="btn btn-sm btn-light">Add New Role</a>
                             </div>
                             @endcan
                             <!--end::Toolbar-->
@@ -38,9 +38,7 @@
                                     <thead>
                                         <tr class="fs-7 fw-bold text-gray-500 border-bottom-0">
                                             <th class="p-0 pb-3 min-w-50px text-start">#</th>
-                                            <th class="p-0 pb-3 min-w-175px text-start">TITLE</th>
-                                            <th class="p-0 pb-3 min-w-100px text-start">DESCRIPTION</th>
-                                            <th class="p-0 pb-3 min-w-175px text-start pe-12">STATUS</th>
+                                            <th class="p-0 pb-3 min-w-175px text-start">NAME</th>
                                             <th class="p-0 pb-3 min-w-175px text-start pe-12">CREATED AT</th>
                                             <th class="p-0 pb-3 w-50px text-end">ACTIONS</th>
                                         </tr>
@@ -49,7 +47,7 @@
 
                                     <!--begin::Table body-->
                                     <tbody>
-                                        @foreach ($data as $key => $value)
+                                        @foreach ($roles as $key => $value)
 
                                             <tr>
                                                 <td class="text-start ps-0">
@@ -59,35 +57,9 @@
                                                 <td class="text-start ps-0">
                                                     <div class="d-flex align-items-center">
                                                         <div class="d-flex justify-content-start flex-column">
-                                                            <a href="#" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">{{ $value->titleEn }}</a>
+                                                            <a href="#" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">{{ $value->name }}</a>
                                                         </div>
                                                     </div>
-                                                </td>
-
-                                                <td class="text-start ps-0">
-                                                    <span class="text-gray-600 fw-bold fs-6">{{ $value->descEn }}</span>
-                                                </td>
-
-                                                <td class="text-start ps-0">
-                                                    @php
-                                                        $statusClass = '';
-                                                        $statusText = $value->status;
-                                                        switch ($statusText) {
-                                                            case 'Pending':
-                                                                $statusClass = 'badge-light-warning';
-                                                                break;
-                                                            case 'Active':
-                                                                $statusClass = 'badge-light-success';
-                                                                break;
-                                                            case 'Deactive':
-                                                                $statusClass = 'badge-light-danger';
-                                                                break;
-                                                            default:
-                                                                // Handle any other cases here if needed
-                                                                break;
-                                                        }
-                                                    @endphp
-                                                    <span class="badge py-3 px-4 fs-7 {{ $statusClass }}">{{ $statusText }}</span>
                                                 </td>
 
                                                 <td class="text-start ps-0">
@@ -112,9 +84,9 @@
                                                             <!--end::Heading-->
 
                                                             <!--begin::Menu item-->
-                                                            @can('edit-announcement')
+                                                            @can('edit-role')
                                                             <div class="menu-item px-3">
-                                                                <a href="{{ route('admin.configuration.announcement.edit',[$value->id]) }}" class="menu-link px-3">
+                                                                <a href="{{ route('admin.administration.role.edit',[$value->id]) }}" class="menu-link px-3">
                                                                     Edit
                                                                 </a>
                                                             </div>
@@ -122,9 +94,9 @@
                                                             <!--end::Menu item-->
 
                                                             <!--begin::Menu item-->
-                                                            @can('delete-announcement')
+                                                            @can('delete-role')
                                                             <div class="menu-item px-3">
-                                                                <form action="{{ route('admin.configuration.announcement.destroy',[$value->id]) }}" method="post" class="w-100">
+                                                                <form action="{{ route('admin.administration.role.destroy',[$value->id]) }}" method="post" class="w-100">
                                                                     @method('DELETE')
                                                                     @csrf
                                                                     <button type="submit" class="menu-link px-3 w-100">
@@ -147,7 +119,7 @@
                             <!--end::Table-->
                             <div class="row">
                                 <div class="col-12 mt-10">
-                                    {!! $data->links() !!}
+                                    {!! $roles->links() !!}
                                 </div>
                             </div>
                         </div>

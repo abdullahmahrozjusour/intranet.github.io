@@ -7,7 +7,7 @@
                     <h1 class="lg:text-5xl text-2xl font-bold"><u class="text-secondary font-extrabold">CEO</u> Message
                     </h1>
                     <div class="mt-6 text-lg">
-                        {!! html_entity_decode(Str::words($data['Ceo Message']['descEn'], 26, '...')) !!}
+                        {!! html_entity_decode(Str::words($data['ceoMessage'][0]['descEn'], 26, '...')) !!}
                     </div>
                     <a class="btn-blue mt-4 modal-in" href="#ceoMsg">
                         <span>Read More</span>
@@ -311,5 +311,5 @@
             </div>
         </div>
     </div>
-    @include('components.web.modals',['ceoMessage'=>$data['Ceo Message'],'policies'=>$data['Policies'],'procedures'=>$data['Procedures']])
+    @include('components.web.modals',['ceoMessage'=>$data['ceoMessage'][0],'policies'=>$data['Policies'],'procedures'=>$data['Procedures']])
 @endsection

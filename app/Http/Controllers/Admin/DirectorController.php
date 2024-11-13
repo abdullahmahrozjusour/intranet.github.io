@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Constants\Type;
 use App\Helpers\ImageHelper;
 use App\Http\Controllers\Controller;
 use App\Repositories\Director\DirectorInterface;
@@ -17,6 +18,12 @@ class DirectorController extends Controller
     {
         $this->director = $director;
         $this->pageData = $pageData;
+        $this->middleware('auth');
+        $this->middleware('permission:view-board-of-director', ['only' => ['index']]);
+        $this->middleware('permission:create-board-of-director', ['only' => ['create','store']]);
+        $this->middleware('permission:edit-board-of-director', ['only' => ['edit','update']]);
+        $this->middleware('permission:update-board-of-director', ['only' => ['updateData']]);
+        $this->middleware('permission:delete-board-of-director', ['only' => ['destroy']]);
     }
 
     /**
@@ -24,7 +31,7 @@ class DirectorController extends Controller
      */
     public function index()
     {
-        $collection = $this->director->where(['type'=>'Director']);
+        $collection = $this->director->where(['type'=>Type::TYPE_DIRECTOR]);
         $collectionId = $collection[0]->id;
         $data = $this->pageData->paginateWithOrderWhere('created_at','DESC',12,'pageId',$collectionId);
         return view('admin.pages.operation.director.index',compact('data','collection'));

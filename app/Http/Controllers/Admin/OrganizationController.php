@@ -14,6 +14,11 @@ class OrganizationController extends Controller
     public function __construct(OrganizationInterface $organization)
     {
         $this->organization = $organization;
+        $this->middleware('auth');
+        $this->middleware('permission:view-organization', ['only' => ['index']]);
+        $this->middleware('permission:create-organization', ['only' => ['create','store']]);
+        $this->middleware('permission:edit-organization', ['only' => ['edit','update']]);
+        $this->middleware('permission:delete-organization', ['only' => ['destroy']]);
     }
 
     /**

@@ -19,9 +19,11 @@
                             <!--end::Title-->
 
                             <!--begin::Toolbar-->
+                            @can('create-useful-contact')
                             <div class="card-toolbar">
                                 <a href="{{ route('admin.administration.usefulContact.create') }}" class="btn btn-sm btn-light">Add New Useful Contact</a>
                             </div>
+                            @endcan
                             <!--end::Toolbar-->
                         </div>
                         <!--end::Header-->
@@ -132,14 +134,17 @@
                                                             <!--end::Heading-->
 
                                                             <!--begin::Menu item-->
+                                                            @can('edit-useful-contact')
                                                             <div class="menu-item px-3">
                                                                 <a href="{{ route('admin.administration.usefulContact.edit',[$value->id]) }}" class="menu-link px-3">
                                                                     Edit
                                                                 </a>
                                                             </div>
+                                                            @endcan
                                                             <!--end::Menu item-->
 
                                                             <!--begin::Menu item-->
+                                                            @can('delete-useful-contact')
                                                             <div class="menu-item px-3">
                                                                 <form action="{{ route('admin.administration.usefulContact.destroy',[$value->id]) }}" method="post" class="w-100">
                                                                     @method('DELETE')
@@ -149,6 +154,7 @@
                                                                     </button>
                                                                 </form>
                                                             </div>
+                                                            @endcan
                                                             <!--end::Menu item-->
                                                         </div>
                                                         <!--end::Menu 3-->

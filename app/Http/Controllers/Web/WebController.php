@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Web;
 
-use App\Constants\type;
+use App\Constants\Type;
 use App\Constants\Status;
 use App\Http\Controllers\Controller;
 use App\Models\Country;
 use App\Repositories\MissionVision\MissionVisionInterface;
 use App\Repositories\Announcement\AnnouncementInterface;
+use App\Repositories\CeoMessage\CeoMessageInterface;
 use App\Repositories\Contact\ContactInterface;
 use App\Repositories\Director\DirectorInterface;
 use App\Repositories\DownloadCenter\DownloadCenterInterface;
@@ -29,6 +30,7 @@ class WebController extends Controller
     protected $useful;
     protected $contact;
     protected $download;
+    protected $ceoMessage;
 
     public function __construct(
         ModalInterface $modal,
@@ -39,7 +41,8 @@ class WebController extends Controller
         DirectorInterface $director,
         UsefulContactInterface $useful,
         ContactInterface $contact,
-        DownloadCenterInterface $download
+        DownloadCenterInterface $download,
+        CeoMessageInterface $ceoMessage
     )
     {
         $this->modal = $modal;
@@ -51,17 +54,20 @@ class WebController extends Controller
         $this->useful = $useful;
         $this->contact = $contact;
         $this->download = $download;
+        $this->ceoMessage = $ceoMessage;
     }
 
     public function index()
     {
         $data = [];
 
-        $modalType = [type::TYPE_CEO_MESSAGE, type::TYPE_POLICIES, type::TYPE_PROCEDURES];
+        $modalType = [Type::TYPE_POLICIES, Type::TYPE_PROCEDURES];
         $columnType = 'type';
         foreach ($modalType as $key => $value) {
             $data[$value] = $this->modal->getModalPage($columnType,$value);
         }
+
+        $data['ceoMessage'] = $this->ceoMessage->where(['type'=>Type::TYPE_CEO_MESSAGE]);
 
         $columnStatus = 'status';
         $statusActive = Status::STATUS_ACTIVE;

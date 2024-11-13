@@ -4,18 +4,41 @@ namespace App\Http\Controllers\Admin;
 
 use App\Helpers\ImageHelper;
 use App\Http\Controllers\Controller;
+use App\Models\Role;
 use App\Repositories\User\UserInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
+use Spatie\Permission\Models\Permission;
 
 class UserController extends Controller
 {
+    public $arr = [
+        'ceo-message',
+        'mission-and-vision',
+        'board-of-director',
+        'announcement',
+        'link',
+        'event',
+        'modal-page',
+        'download-center',
+        'organization',
+        'user',
+        'role',
+        'useful-contact',
+        'contact',
+    ];
     protected $user;
 
     public function __construct(UserInterface $user)
     {
         $this->user = $user;
+        $this->middleware('auth');
+        $this->middleware('permission:view-user', ['only' => ['index']]);
+        $this->middleware('permission:create-user', ['only' => ['create','store']]);
+        $this->middleware('permission:edit-user', ['only' => ['edit','update']]);
+        $this->middleware('permission:delete-user', ['only' => ['destroy']]);
     }
 
     /**
@@ -32,7 +55,12 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.administration.user.create');
+        $permissions = [];
+        foreach($this->arr as $key => $value)
+        {
+            $permissions[$value] = Permission::where('value',$value)->get()->toArray();
+        }
+        return view('admin.pages.administration.user.create',['roles' => Role::pluck('name')->all(),'permissions'=>$permissions]);
     }
 
     /**
@@ -72,6 +100,11 @@ class UserController extends Controller
             'password'=>Hash::make($request->password)
         ];
         $data = $this->user->store($requestData);
+        $data->assignRole($request->roles);
+        if ($request->permissions) {
+            $permissions = Permission::whereIn('id', $request->permissions)->select('name')->get()->pluck('name')->toArray();
+            $data->givePermissionTo($permissions);
+        }
         return redirect()->route('admin.administration.user.index')->with('success','User created successfully.');
     }
 
@@ -89,7 +122,22 @@ class UserController extends Controller
     public function edit(string $id)
     {
         $data = $this->user->show($id);
-        return view('admin.pages.administration.user.edit',compact('data'));
+        $userPermissions = DB::table("model_has_permissions")->where("model_id",$data->id)
+        ->get()
+        ->pluck('permission_id')
+        ->toArray();
+        $permissions = [];
+        foreach($this->arr as $key => $value)
+        {
+            $permissions[$value] = Permission::where('value',$value)->get()->toArray();
+        }
+        return view('admin.pages.administration.user.edit', [
+            'data' => $data,
+            'roles' => Role::get()->pluck('name')->toArray(),
+            'userRoles' => $data->roles()->get()->pluck('name')->toArray(),
+            'permissions' => $permissions,
+            'userPermissions'=> $userPermissions
+        ]);
     }
 
     /**
@@ -134,6 +182,15 @@ class UserController extends Controller
             'password'=>$request->password ? Hash::make($request->password) : $data->password
         ];
         $data = $this->user->update($id,$requestData);
+        $data->syncRoles($request->roles);
+        if ($request->permissions) {
+            $permissions = Permission::whereIn('id', $request->permissions)->select('name')->get()->pluck('name')->toArray();
+            $data->syncPermissions($permissions);
+        }
+        else
+        {
+            $data->syncPermissions([]);
+        }
         return redirect()->route('admin.administration.user.index')->with('success','User updated successfully.');
     }
 
@@ -142,6 +199,14 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
+        $user = $this->user->show($id);
+        if ($user->hasRole('Super Admin'))
+        {
+            return back()->with('success','SUPER ADMIN ROLE USERS CAN NOT BE DELETED');
+        }
+
+        $user->syncRoles([]);
+        $user->syncPermissions([]);
         $this->user->destroy($id);
         return redirect()->route('admin.administration.user.index')->with('success','User deleted successfully.');
     }

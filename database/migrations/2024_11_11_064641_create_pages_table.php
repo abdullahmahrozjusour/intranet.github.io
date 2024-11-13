@@ -19,7 +19,7 @@ return new class extends Migration
             $table->text('shortDescAr')->nullable();
             $table->longText('descEn');
             $table->longText('descAr')->nullable();
-            $table->enum('type',['Mission Vision','Director']);
+            $table->enum('type',['Mission Vision','Director','Ceo Message']);
             $table->string('status')->default('Active');
             $table->timestamps();
             $table->softDeletes();

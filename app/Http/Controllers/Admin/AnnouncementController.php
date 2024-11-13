@@ -13,6 +13,11 @@ class AnnouncementController extends Controller
     public function __construct(AnnouncementInterface $announcement)
     {
         $this->announcement = $announcement;
+        $this->middleware('auth');
+        $this->middleware('permission:view-announcement', ['only' => ['index']]);
+        $this->middleware('permission:create-announcement', ['only' => ['create','store']]);
+        $this->middleware('permission:edit-announcement', ['only' => ['edit','update']]);
+        $this->middleware('permission:delete-announcement', ['only' => ['destroy']]);
     }
 
     /**

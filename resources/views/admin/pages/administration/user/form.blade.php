@@ -54,7 +54,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-4 col-12">
+                        <div class="col-md-3 col-sm-6 col-12">
                             <div class="mb-10 fv-row fv-plugins-icon-container">
                                 <label class="required form-label">Email</label>
                                 <input type="text" name="email" class="form-control form-control-lg form-control-solid rounded" placeholder="Email" value="{{ $data['email'] ?? old('email') }}">
@@ -63,7 +63,7 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="col-sm-4 col-12">
+                        <div class="col-md-3 col-sm-6 col-12">
                             <div class="mb-10 fv-row fv-plugins-icon-container">
                                 <label class="required form-label">Phone</label>
                                 <input type="text" name="phone" class="form-control form-control-lg form-control-solid rounded" placeholder="Phone" value="{{ $data['phone'] ?? old('phone') }}">
@@ -72,7 +72,7 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="col-sm-4 col-12">
+                        <div class="col-md-3 col-sm-6 col-12">
                             <div class="mb-10 fv-row fv-plugins-icon-container">
                                 <label class="required form-label">Status</label>
                                 <select name="status" class="form-select form-select-solid form-select-lg fw-semibold select2">
@@ -85,6 +85,19 @@
                             @error('status')
                                 <span class="text-danger">{{ $errors->first('status') }}</span>
                             @enderror
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-12">
+                            <label for="roles" class="required form-label">Roles </label>
+                            <select id="roles" class="form-select form-select-solid form-select-lg fw-semibold select2" name="roles[]">
+                                <option disabled value="">Select</option>
+                                @foreach($roles as $key => $val)
+                                    <option value="{{ $val }}"
+                                    {{ in_array($val, $userRoles) ? 'selected' : '' }}>{{ $val }}</option>
+                                @endforeach
+                            </select>
+                            @if ($errors->has('roles'))
+                                <div class="text-danger">{{ $errors->first('roles') }}</div>
+                            @endif
                         </div>
                     </div>
                     <div class="row">
@@ -105,6 +118,28 @@
                                     <span class="text-danger">{{ $errors->first('password_confirmation') }}</span>
                                 @enderror
                             </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 mt-2">
+                            @forelse ($permissions as $k => $v)
+                                <div class="row mt-3">
+                                    <h3 class="fs-4 fw-semibold mt-4 mb-2 text-capitalize">{{str_replace("-"," ",$k)}}:</h3>
+                                    @foreach($v as $key => $value )
+                                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 mb-3">
+                                            <div class="form-check">
+                                                    <input type="checkbox" name="permissions[]" value="{{ $value['id'] }}" id="permissions_{{$k}}_{{ $key }}" class="form-check-input mt-1"
+                                                    {{ in_array($value['id'], $userPermissions) ? 'checked' : '' }}>
+                                                    <label for="permissions_{{$k}}_{{ $key }}" class="form-check-label text-capitalize">{{ str_replace("-"," ",$value['name']) }}</label>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            @empty
+                            @endforelse
+                            @if ($errors->has('permissions'))
+                                <span class="text-danger">{{ $errors->first('permissions') }}</span>
+                            @endif
                         </div>
                     </div>
                 </div>
