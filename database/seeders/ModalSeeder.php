@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Constants\Type;
 use App\Models\Modal;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -65,6 +66,7 @@ class ModalSeeder extends Seeder
                         submit
                         requests in advance when possible.</p>',
                 'descAr'=>NULL,
+                'type'=>Type::TYPE_POLICIES,
                 'status'=>'Active',
                 'created_at'=>now(),
                 'updated_at'=>now()
@@ -161,6 +163,7 @@ class ModalSeeder extends Seeder
                         </ul>
                     </ul>',
                 'descAr'=>NULL,
+                'type'=>Type::TYPE_PROCEDURES,
                 'status'=>'Active',
                 'created_at'=>now(),
                 'updated_at'=>now()
@@ -195,6 +198,7 @@ class ModalSeeder extends Seeder
                     <p>Let us work together to build our common future, unifying against challenges with unprecedented
                         determination and passion.</p>',
                 'descAr'=>NULL,
+                'type'=>Type::TYPE_CEO_MESSAGE,
                 'status'=>'Active',
                 'created_at'=>now(),
                 'updated_at'=>now()
