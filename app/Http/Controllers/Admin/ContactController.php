@@ -27,7 +27,7 @@ class ContactController extends Controller
     public function index()
     {
         $data = $this->contact->paginateWithOrder('created_at','DESC',12);
-        return view('admin.pages.pages.contact.index',compact('data'));
+        return view('admin.pages.administration.contact.index',compact('data'));
     }
 
     /**
@@ -72,6 +72,6 @@ class ContactController extends Controller
     public function destroy(string $id)
     {
         $this->contact->destroy($id);
-        return redirect()->route('admin.pages.contact.index')->with('success','Contact deleted successfully.');
+        return redirect()->route('admin.administration.contact.index')->with('success','Contact deleted successfully.');
     }
 }

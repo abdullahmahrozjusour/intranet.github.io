@@ -405,23 +405,6 @@
                                         <!--end:Menu item-->
                                     </div>
                                     @endcan
-                                    @can('view-contact')
-                                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                        <!--begin:Menu link-->
-                                            <div class="menu-item">
-                                                <!--begin:Menu link-->
-                                                <a class="menu-link" href="{{ route('admin.pages.contact.index') }}">
-                                                    <span class="menu-icon">
-                                                        <i class="fa-solid fa-envelope">
-                                                        </i>
-                                                    </span>
-                                                    <span class="menu-title">Contacts</span>
-                                                </a>
-                                                <!--end:Menu link-->
-                                            </div>
-                                        <!--end:Menu item-->
-                                    </div>
-                                    @endcan
                                 </div>
                             </div>
                             <!--end::Menu-->
@@ -471,6 +454,23 @@
                                                         </i>
                                                     </span>
                                                     <span class="menu-title">Roles</span>
+                                                </a>
+                                                <!--end:Menu link-->
+                                            </div>
+                                        <!--end:Menu item-->
+                                    </div>
+                                    @endcan
+                                    @can('view-contact')
+                                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                                        <!--begin:Menu link-->
+                                            <div class="menu-item">
+                                                <!--begin:Menu link-->
+                                                <a class="menu-link" href="{{ route('admin.administration.contact.index') }}">
+                                                    <span class="menu-icon">
+                                                        <i class="fa-solid fa-envelope">
+                                                        </i>
+                                                    </span>
+                                                    <span class="menu-title">Contacts</span>
                                                 </a>
                                                 <!--end:Menu link-->
                                             </div>
