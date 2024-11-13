@@ -87,13 +87,14 @@
                                                     <div class="d-flex align-items-center">
                                                         <div class="d-flex justify-content-start flex-column">
                                                             <a href="#" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6 d-flex align-items-center">
-                                                            @if(file_exists(public_path('assets/imgs/'.$value->logo)))
-                                                                <img style="width:50px;height:50px;" class="rounded-circle bg-primary" src="{{ asset('assets/imgs/'.$value->logo) }}" alt="{{ $value->logo }}">
-                                                            @elseif(file_exists(public_path('storage/uploads/pages/'.$value->logo)))
-                                                                <img style="width:50px;height:50px;" class="rounded-circle bg-primary" src="{{ asset('storage/uploads/pages/'.$value->logo) }}" alt="{{ $value->logo }}">
-                                                            @else
-                                                                <img style="width:50px;height:50px;" class="rounded-circle bg-primary" src="{{ asset('assets/imgs/avatar.png') }}" alt="avatar.png">
-                                                            @endif</a>
+                                                                @if(file_exists(public_path('assets/imgs/'.$value->logo)))
+                                                                    <img style="width:50px;height:50px;" class="rounded-circle bg-primary" src="{{ asset('assets/imgs/'.$value->logo) }}" alt="{{ $value->logo }}">
+                                                                @elseif(file_exists(public_path('storage/uploads/pages/'.$value->logo)))
+                                                                    <img style="width:50px;height:50px;" class="rounded-circle bg-primary" src="{{ asset('storage/uploads/pages/'.$value->logo) }}" alt="{{ $value->logo }}">
+                                                                @else
+                                                                    <img style="width:50px;height:50px;" class="rounded-circle bg-primary" src="{{ asset('assets/imgs/avatar.png') }}" alt="avatar.png">
+                                                                @endif
+                                                            </a>
                                                         </div>
                                                     </div>
                                                 </td>

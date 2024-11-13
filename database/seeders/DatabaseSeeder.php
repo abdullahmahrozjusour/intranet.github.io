@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
             ModalSeeder::class,
             OrganizationSeeder::class,
             UsefulContactSeeder::class,
+            CountrySeeder::class
         ]);
     }
 }

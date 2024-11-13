@@ -11,14 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('modals', function (Blueprint $table) {
+        Schema::create('countries', function (Blueprint $table) {
             $table->id();
-            $table->string('titleEn');
-            $table->string('titleAr')->nullable();
-            $table->longText('descEn')->nullable();
-            $table->longText('descAr')->nullable();
-            $table->string('type',50)->nullable();
-            $table->string('status')->default('Active');
+            $table->text('name')->nullable();
+            $table->text('slug')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -29,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('modals');
+        Schema::dropIfExists('countries');
     }
 };

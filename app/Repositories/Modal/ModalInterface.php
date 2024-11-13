@@ -8,5 +8,5 @@ use App\Repositories\Core\CoreInterface;
 
 
 interface ModalInterface extends CoreInterface {
-    public function getCeoMessage();
+    public function getModalPage($column,$value);
 }

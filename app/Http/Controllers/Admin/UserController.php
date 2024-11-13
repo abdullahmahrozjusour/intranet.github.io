@@ -41,15 +41,16 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nameEn'=>'required', //|alpha_num
-            'nameAr'=>'nullable', //|regex:/^[\p{Arabic}0-9\s-]+$/u
-            'lnameEn'=>'required', //|alpha_num
-            'lnameAr'=>'nullable', //|regex:/^[\p{Arabic}0-9\s-]+$/u
-            'email'=>'required|email|unique:users,email',
-            'phone'=>'required',
+            'nameEn'=>'required|max:255', //|alpha_num
+            'nameAr'=>'nullable|max:255', //|regex:/^[\p{Arabic}0-9\s-]+$/u
+            'lnameEn'=>'required|max:255', //|alpha_num
+            'lnameAr'=>'nullable|max:255', //|regex:/^[\p{Arabic}0-9\s-]+$/u
+            'email'=>'required|email|unique:users,email|max:255',
+            'phone'=>'required|max:255',
             'status'=>'required',
             'password'=>['required','confirmed',
                 Password::min(8)
+                ->max(255)
                 ->letters()
                 ->mixedCase()
                 ->numbers()
@@ -101,6 +102,7 @@ class UserController extends Controller
         if($request->password){
             $password = ['sometimes','confirmed',
                 Password::min(8)
+                ->max(255)
                 ->letters()
                 ->mixedCase()
                 ->numbers()
@@ -108,12 +110,12 @@ class UserController extends Controller
             ];
         }
         $request->validate([
-            'nameEn'=>'required', //|alpha_num
-            'nameAr'=>'nullable', //|regex:/^[\p{Arabic}0-9\s-]+$/u
-            'lnameEn'=>'required', //|alpha_num
-            'lnameAr'=>'nullable', //|regex:/^[\p{Arabic}0-9\s-]+$/u
-            'email'=>'required|email|unique:users,email,'.$id,
-            'phone'=>'required',
+            'nameEn'=>'required|max:255', //|alpha_num
+            'nameAr'=>'nullable|max:255', //|regex:/^[\p{Arabic}0-9\s-]+$/u
+            'lnameEn'=>'required|max:255', //|alpha_num
+            'lnameAr'=>'nullable|max:255', //|regex:/^[\p{Arabic}0-9\s-]+$/u
+            'email'=>'required|max:255|email|unique:users,email,'.$id,
+            'phone'=>'required|max:255',
             'status'=>'required',
             'password'=>$password
         ],

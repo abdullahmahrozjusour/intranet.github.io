@@ -204,7 +204,8 @@ html .ui-button.ui-state-disabled:active {
     animation-iteration-count: infinite; */
     position: relative;
     box-shadow: none !important;
-    &::before{
+
+    &::before {
         content: '';
         position: absolute;
         left: 0;
@@ -242,23 +243,30 @@ html .ui-button.ui-state-disabled:active {
         background-color: #91193B;
         color: white;
     }
-} 
+}
 
-@keyframes rotation 
-{
-    0%
-    {
+@keyframes rotation {
+    0% {
         --gradient-angle: 0deg;
     }
-    100%
-    {
+
+    100% {
         --gradient-angle: 360deg;
-    }    
+    }
 }
-@property --gradient-angle
-{
+
+@property --gradient-angle {
     syntax: "<angle>";
     initial-value: 0deg;
     inherits: false;
 }
- 
+
+.ui-state-active,
+.ui-widget-content .ui-state-active,
+.ui-widget-header .ui-state-active,
+a.ui-button:active,
+.ui-button:active,
+.ui-button.ui-state-active:hover {
+    background-color: #91193B !important;
+    color: #fff !important;
+}

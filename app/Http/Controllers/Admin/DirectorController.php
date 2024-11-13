@@ -46,12 +46,12 @@ class DirectorController extends Controller
     {
         $request->validate([
             'pageId'=>'required',
-            'titleEn'=>'required', //|alpha_num
-            'titleAr'=>'nullable', //|regex:/^[\p{Arabic}0-9\s-]+$/u
-            'nameEn'=>'required', //|alpha_num
-            'nameAr'=>'nullable', //|regex:/^[\p{Arabic}0-9\s-]+$/u
-            'designationEn'=>'required', //|alpha_num
-            'designationAr'=>'nullable', //|regex:/^[\p{Arabic}0-9\s-]+$/u
+            'titleEn'=>'required|max:255', //|alpha_num
+            'titleAr'=>'nullable|max:255', //|regex:/^[\p{Arabic}0-9\s-]+$/u
+            'nameEn'=>'required|max:255', //|alpha_num
+            'nameAr'=>'nullable|max:255', //|regex:/^[\p{Arabic}0-9\s-]+$/u
+            'designationEn'=>'required|max:255', //|alpha_num
+            'designationAr'=>'nullable|max:255', //|regex:/^[\p{Arabic}0-9\s-]+$/u
             'status'=>'required',
             'descEn'=>'nullable', //|alpha_num
             'descAr'=>'nullable', //|regex:/^[\p{Arabic}0-9\s-]+$/u
@@ -113,12 +113,12 @@ class DirectorController extends Controller
 
         $request->validate([
             'pageId'=>'required',
-            'titleEn'=>'required', //|alpha_num
-            'titleAr'=>'nullable', //|regex:/^[\p{Arabic}0-9\s-]+$/u
-            'nameEn'=>'required', //|alpha_num
-            'nameAr'=>'nullable', //|regex:/^[\p{Arabic}0-9\s-]+$/u
-            'designationEn'=>'required', //|alpha_num
-            'designationAr'=>'nullable', //|regex:/^[\p{Arabic}0-9\s-]+$/u
+            'titleEn'=>'required|max:255', //|alpha_num
+            'titleAr'=>'nullable|max:255', //|regex:/^[\p{Arabic}0-9\s-]+$/u
+            'nameEn'=>'required|max:255', //|alpha_num
+            'nameAr'=>'nullable|max:255', //|regex:/^[\p{Arabic}0-9\s-]+$/u
+            'designationEn'=>'required|max:255', //|alpha_num
+            'designationAr'=>'nullable|max:255', //|regex:/^[\p{Arabic}0-9\s-]+$/u
             'status'=>'required',
             'descEn'=>'nullable', //|alpha_num
             'descAr'=>'nullable', //|regex:/^[\p{Arabic}0-9\s-]+$/u
@@ -168,8 +168,8 @@ class DirectorController extends Controller
         $request->validate([
             'titleEn'=>'required', //|alpha_num
             'titleAr'=>'nullable', //|regex:/^[\p{Arabic}0-9\s-]+$/u
-            'shortDescEn'=>'required', //|alpha_num
-            'shortDescAr'=>'nullable', //|regex:/^[\p{Arabic}0-9\s-]+$/u
+            'shortDescEn'=>'required|max:255', //|alpha_num
+            'shortDescAr'=>'nullable|max:255', //|regex:/^[\p{Arabic}0-9\s-]+$/u
             'descEn'=>'required', //|alpha_num
             'descAr'=>'nullable', //|regex:/^[\p{Arabic}0-9\s-]+$/u
         ],

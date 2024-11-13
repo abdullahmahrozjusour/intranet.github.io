@@ -227,7 +227,7 @@ document.addEventListener('DOMContentLoaded', function () {
 $(function () {
     $("#datepicker").datepicker({
         changeYear: true
-    });
+    }).datepicker("setDate", new Date())
 });
 const city = "Doha";
 const country = "Qatar";

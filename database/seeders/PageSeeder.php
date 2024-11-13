@@ -30,7 +30,7 @@ class PageSeeder extends Seeder
             ],
             [
                 'id'=>2,
-                'titleEn'=>'Board <br /> of Members',
+                'titleEn'=>'<p>Board</p><p><strong class="font-semibold">of Members</strong></p>',
                 'titleAr'=>'سبورة <br /> من الأعضاء',
                 'shortDescEn'=>'Guiding Leadership and Strategic Direction',
                 'shortDescAr'=>'توجيه القيادة والتوجيه الاستراتيجي',

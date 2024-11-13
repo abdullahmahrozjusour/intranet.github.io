@@ -59,10 +59,10 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="col-sm-6 col-12">
+                        <div class="col-sm-6 col-12 d-none">
                             <div class="mb-10 fv-row fv-plugins-icon-container">
                                 <label class="required form-label">Event Time</label>
-                                <input type="time" name="time" class="form-control form-control-lg form-control-solid rounded" placeholder="Event Time" value="{{ $data['time'] ?? old('time') }}">
+                                <input type="time" name="time" class="form-control form-control-lg form-control-solid rounded" placeholder="Event Time" value="00:00:00">
                                 @error('time')
                                     <span class="text-danger">{{ $errors->first('time') }}</span>
                                 @enderror
@@ -73,7 +73,7 @@
                         <div class="col-md-6 col-12">
                             <div class="mb-10 fv-row fv-plugins-icon-container">
                                 <label class="form-label">Description (In English) <span class="text-secondary">(Optional)</span></label>
-                                <textarea name="descEn" id="" cols="30" rows="10" class="form-control form-control-lg form-control-solid rounded" placeholder="Description (In English)">{{ $data['descEn'] ?? old('descEn') }}</textarea>
+                                <textarea name="descEn" cols="30" rows="3" class="form-control form-control-lg form-control-solid rounded" placeholder="Description (In English)">{{ $data['descEn'] ?? old('descEn') }}</textarea>
                                 @error('descEn')
                                     <span class="text-danger">{{ $errors->first('descEn') }}</span>
                                 @enderror
@@ -82,7 +82,7 @@
                         <div class="col-md-6 col-12">
                             <div class="mb-10 fv-row fv-plugins-icon-container">
                                 <label class="form-label">Description (In Arabic) <span class="text-secondary">(Optional)</span></label>
-                                <textarea name="descAr" id="" cols="30" rows="10" class="form-control form-control-lg form-control-solid rounded text-end" placeholder="Description (In Arabic)">{{ $data['descAr'] ?? old('descAr') }}</textarea>
+                                <textarea name="descAr" cols="30" rows="3" class="form-control form-control-lg form-control-solid rounded text-end" placeholder="Description (In Arabic)">{{ $data['descAr'] ?? old('descAr') }}</textarea>
                                 @error('descAr')
                                     <span class="text-danger">{{ $errors->first('descAr') }}</span>
                                 @enderror

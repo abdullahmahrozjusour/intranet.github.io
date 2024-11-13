@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('pages', function (Blueprint $table) {
             $table->id();
-            $table->string('titleEn');
-            $table->string('titleAr')->nullable();
+            $table->text('titleEn');
+            $table->text('titleAr')->nullable();
             $table->text('shortDescEn')->nullable();
             $table->text('shortDescAr')->nullable();
             $table->longText('descEn');

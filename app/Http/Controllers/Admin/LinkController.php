@@ -38,8 +38,8 @@ class LinkController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'titleEn'=>'required', //|alpha_num
-            'titleAr'=>'nullable', //|regex:/^[\p{Arabic}0-9\s-]+$/u
+            'titleEn'=>'required|max:255', //|alpha_num
+            'titleAr'=>'nullable|max:255', //|regex:/^[\p{Arabic}0-9\s-]+$/u
             'link'=>'required|url',
             'status'=>'required',
         ],
@@ -74,8 +74,8 @@ class LinkController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'titleEn'=>'required', //|alpha_num
-            'titleAr'=>'nullable', //|regex:/^[\p{Arabic}0-9\s-]+$/u
+            'titleEn'=>'required|max:255', //|alpha_num
+            'titleAr'=>'nullable|max:255', //|regex:/^[\p{Arabic}0-9\s-]+$/u
             'link'=>'required|url',
             'status'=>'required',
         ],

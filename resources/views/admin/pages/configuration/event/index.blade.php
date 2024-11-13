@@ -39,7 +39,7 @@
                                             <th class="p-0 pb-3 min-w-175px text-start">NAME</th>
                                             <th class="p-0 pb-3 min-w-175px text-start">DESCRIPTION</th>
                                             <th class="p-0 pb-3 min-w-175px text-start">DATE</th>
-                                            <th class="p-0 pb-3 min-w-175px text-start">TIME</th>
+                                            {{-- <th class="p-0 pb-3 min-w-175px text-start">TIME</th> --}}
                                             <th class="p-0 pb-3 min-w-175px text-start pe-12">STATUS</th>
                                             <th class="p-0 pb-3 min-w-175px text-start pe-12">CREATED AT</th>
                                             <th class="p-0 pb-3 w-50px text-end">ACTIONS</th>
@@ -72,9 +72,9 @@
                                                     <span class="text-gray-600 fw-bold fs-6">{{ \Carbon\Carbon::parse($value->date)->format('M,d Y') }}</span>
                                                 </td>
 
-                                                <td class="text-start ps-0">
+                                                {{-- <td class="text-start ps-0">
                                                     <span class="text-gray-600 fw-bold fs-6">{{ \Carbon\Carbon::parse($value->time)->format('h:i A') }}</span>
-                                                </td>
+                                                </td> --}}
 
                                                 <td class="text-start ps-0">
                                                     @php

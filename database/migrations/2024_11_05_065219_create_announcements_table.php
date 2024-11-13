@@ -15,8 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('titleEn');
             $table->string('titleAr')->nullable();
-            $table->longText('descEn')->nullable();
-            $table->longText('descAr')->nullable();
+            $table->string('descEn')->nullable();
+            $table->string('descAr')->nullable();
+            $table->date('date');
+            $table->string('type',50)->default('Important');
             $table->string('status')->default('Active');
             $table->timestamps();
             $table->softDeletes();

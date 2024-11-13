@@ -8,4 +8,5 @@ use App\Repositories\Core\CoreInterface;
 
 
 interface DirectorInterface extends CoreInterface {
+    public function getOurDirectorDataWithCount($relation,$value);
 }

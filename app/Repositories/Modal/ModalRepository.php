@@ -14,9 +14,9 @@ class ModalRepository extends CoreRepository implements ModalInterface
         parent::__construct($model);
     }
 
-    public function getCeoMessage()
+    public function getModalPage($column,$value)
     {
-        return $this->model()->where('id',3)->first();
+        return $this->model()->where($column,$value)->first();
     }
 }
 

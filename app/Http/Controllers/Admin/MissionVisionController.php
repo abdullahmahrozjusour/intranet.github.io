@@ -46,8 +46,8 @@ class MissionVisionController extends Controller
     {
         $request->validate([
             'pageId'=>'required',
-            'titleEn'=>'required', //|alpha_num
-            'titleAr'=>'nullable', //|regex:/^[\p{Arabic}0-9\s-]+$/u
+            'titleEn'=>'required|max:255', //|alpha_num
+            'titleAr'=>'nullable|max:255', //|regex:/^[\p{Arabic}0-9\s-]+$/u
             'status'=>'required',
             'descEn'=>'required', //|alpha_num
             'descAr'=>'nullable', //|regex:/^[\p{Arabic}0-9\s-]+$/u
@@ -105,8 +105,8 @@ class MissionVisionController extends Controller
 
         $request->validate([
             'pageId'=>'required',
-            'titleEn'=>'required', //|alpha_num
-            'titleAr'=>'nullable', //|regex:/^[\p{Arabic}0-9\s-]+$/u
+            'titleEn'=>'required|max:255', //|alpha_num
+            'titleAr'=>'nullable|max:255', //|regex:/^[\p{Arabic}0-9\s-]+$/u
             'status'=>'required',
             'descEn'=>'required', //|alpha_num
             'descAr'=>'nullable', //|regex:/^[\p{Arabic}0-9\s-]+$/u

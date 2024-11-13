@@ -16,7 +16,7 @@
                 <!--begin::Card body-->
                 <div class="card-body pt-5">
                     <div class="row">
-                        <div class="col-sm-4 col-12">
+                        <div class="col-sm-6 col-12">
                             <div class="mb-10 fv-row fv-plugins-icon-container">
                                 <label class="required form-label">Title (In English)</label>
                                 <input type="text" name="titleEn" class="form-control form-control-lg form-control-solid rounded" placeholder="Title (In English)" value="{{ $data['titleEn'] ?? old('titleEn') }}">
@@ -25,7 +25,7 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="col-sm-4 col-12">
+                        <div class="col-sm-6 col-12">
                             <div class="mb-10 fv-row fv-plugins-icon-container">
                                 <label class="form-label">Title (In Arabic) <span class="text-secondary">(Optional)</span></label>
                                 <input type="text" name="titleAr" class="form-control form-control-lg form-control-solid rounded text-end" placeholder="Title (In Arabic)" value="{{ $data['titleAr'] ?? old('titleAr') }}">
@@ -33,6 +33,30 @@
                                     <span class="text-danger">{{ $errors->first('titleAr') }}</span>
                                 @enderror
                             </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4 col-12">
+                            <div class="mb-10 fv-row fv-plugins-icon-container">
+                                <label class="required form-label">Date</label>
+                                <input type="date" name="date" class="form-control form-control-lg form-control-solid rounded" placeholder="Event Date" value="{{ $data['date'] ?? old('date') }}">
+                                @error('date')
+                                    <span class="text-danger">{{ $errors->first('date') }}</span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-sm-4 col-12">
+                            <div class="mb-10 fv-row fv-plugins-icon-container">
+                                <label class="required form-label">Type</label>
+                                <select name="type" class="form-select form-select-solid form-select-lg fw-semibold select2">
+                                    <option value="">Select</option>
+                                    <option value="Important" {{ (((isset($data['type']) && $data['type'] == 'Important') || old('type') == 'Important') ? 'selected' : '')  }}>Important</option>
+                                    <option value="Not Important" {{ (((isset($data['type']) && $data['type'] == 'Not Important') || old('type') == 'Not Important') ? 'selected' : '')  }}>Not Important</option>
+                                </select>
+                            </div>
+                            @error('status')
+                                <span class="text-danger">{{ $errors->first('status') }}</span>
+                            @enderror
                         </div>
                         <div class="col-sm-4 col-12">
                             <div class="mb-10 fv-row fv-plugins-icon-container">
@@ -53,7 +77,7 @@
                         <div class="col-md-6 col-12">
                             <div class="mb-10 fv-row fv-plugins-icon-container">
                                 <label class="form-label">Description (In English) <span class="text-secondary">(Optional)</span></label>
-                                <textarea name="descEn" id="" cols="30" rows="10" class="form-control form-control-lg form-control-solid rounded" placeholder="Description (In English)">{{ $data['descEn'] ?? old('descEn') }}</textarea>
+                                <textarea name="descEn" cols="30" rows="3" class="form-control form-control-lg form-control-solid rounded" placeholder="Description (In English)">{{ $data['descEn'] ?? old('descEn') }}</textarea>
                                 @error('descEn')
                                     <span class="text-danger">{{ $errors->first('descEn') }}</span>
                                 @enderror
@@ -62,7 +86,7 @@
                         <div class="col-md-6 col-12">
                             <div class="mb-10 fv-row fv-plugins-icon-container">
                                 <label class="form-label">Description (In Arabic) <span class="text-secondary">(Optional)</span></label>
-                                <textarea name="descAr" id="" cols="30" rows="10" class="form-control form-control-lg form-control-solid rounded text-end" placeholder="Description (In Arabic)">{{ $data['descAr'] ?? old('descAr') }}</textarea>
+                                <textarea name="descAr" cols="30" rows="3" class="form-control form-control-lg form-control-solid rounded text-end" placeholder="Description (In Arabic)">{{ $data['descAr'] ?? old('descAr') }}</textarea>
                                 @error('descAr')
                                     <span class="text-danger">{{ $errors->first('descAr') }}</span>
                                 @enderror

@@ -88,9 +88,17 @@
 <script type="text/javascript" src="{{ asset('assets/js/jquery.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/js/slick.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/js/jquery-ui.js') }}"></script>
+<script src="{{ asset('theme/js/select2.min.js') }}" nonce="intranet"></script>
 <script type="text/javascript" src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js'></script>
 <script type="text/javascript" src="{{ asset('assets/js/script.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/js/index.js') }}"></script>
+<script>
+    $(document).ready(function() {
+        $('.select2').select2({
+            placeholder: 'Select a country'
+        });
+    });
+</script>
 @yield('javaScript')
 
 </body>

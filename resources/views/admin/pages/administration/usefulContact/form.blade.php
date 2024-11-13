@@ -71,7 +71,7 @@
                         <div class="col-md-3 col-sm-6 col-12">
                             <div class="mb-10 fv-row fv-plugins-icon-container">
                                 <label class="required form-label">Email</label>
-                                <input type="text" name="email" class="form-control form-control-lg form-control-solid rounded" placeholder="Email" value="{{ $data['email'] ?? old('email') }}">
+                                <input type="email" name="email" class="form-control form-control-lg form-control-solid rounded" placeholder="Email" value="{{ $data['email'] ?? old('email') }}">
                                 @error('email')
                                     <span class="text-danger">{{ $errors->first('email') }}</span>
                                 @enderror

@@ -7,7 +7,7 @@
                     <h1 class="lg:text-5xl text-2xl font-bold"><u class="text-secondary font-extrabold">CEO</u> Message
                     </h1>
                     <div class="mt-6 text-lg">
-                        {!! html_entity_decode(Str::words($ceoMessage->descEn, 26, '...')) !!}
+                        {!! html_entity_decode(Str::words($data['Ceo Message']['descEn'], 26, '...')) !!}
                     </div>
                     <a class="btn-blue mt-4 modal-in" href="#ceoMsg">
                         <span>Read More</span>
@@ -17,7 +17,7 @@
                 <div class="md:max-w-[415px] w-[30%] hidden lg:block">
                     <img src="{{ asset('assets/imgs/ceo.png') }}" class="max-w-[80%]" alt="">
                 </div>
-                <div class="lg:max-w-[350px] md:max-w-[300px] md:w-[50%] relative min-h-[340px]">
+                <div class="lg:max-w-[350px] md:max-w-[300px] md:w-[50%] relative min-h-[370px]">
                     <div class="bg-white rounded-lg max-w-[350px] md:ml-auto w-full mx-auto md:absolute top-20">
                         <div class="c-header px-4 py-2">
                             <div class="font-semibold text-2xl">Announcement</div>
@@ -27,98 +27,22 @@
                             </div>
                         </div>
                         <div class="c-body flex flex-col gap-2 px-4 py-2 overflow-auto max-h-[500px]">
-                            <div class="c-list p-[2px] rounded-lg w-full c-blink">
-                                <div class="flex gap-2 px-2 py-1 rounded-lg  relative bg-white">
-                                    <div class="l-img ">
-                                        <i class="fa-brands fa-rocketchat"></i>
-                                    </div>
-                                    <div class="l-content w-full">
-                                        <a href="#ac1" class="font-semibold flex justify-between toggle-button">🎉
-                                            New
-                                            Joinee <span class="fa-solid fa-chevron-down"></span></a>
-                                        <div id="ac1" class="hidden">
-                                            <div class="text-sm">Please join us in welcoming them to the IT Department!
-                                                Abdullah
-                                                Mahroz</div>
-                                            <div class="text-xs mt-2">Dec 21, 2024</div>
+                            @foreach ($data['announcements'] as $key => $item)
+                                <div class="c-list p-[2px] rounded-lg w-full @if($item['type'] == \App\Constants\Type::TYPE_IMPORTANT) c-blink @else shadow-md @endif">
+                                    <div class="flex gap-2 px-2 py-1 rounded-lg  relative bg-white">
+                                        <div class="l-img">
+                                            <i class="fa-brands fa-rocketchat"></i>
+                                        </div>
+                                        <div class="l-content w-full">
+                                            <a href="#ac{{ $key }}" class="font-semibold flex justify-between toggle-button">{{ $item['titleEn'] }} <span class="fa-solid fa-chevron-down"></span></a>
+                                            <div id="ac{{ $key }}" class="hidden">
+                                                <div class="text-sm">{{ $item['descEn'] }}</div>
+                                                <div class="text-xs mt-2">{{ \Carbon\Carbon::parse($item['date'])->format('M d, Y') }}</div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="c-list p-[2px]  rounded-lg shadow-md w-full">
-                                <div class="flex gap-2 px-2 py-1 rounded-lg  relative bg-white">
-                                    <div class="l-img text-xl">
-                                        <i class="fa-brands fa-rocketchat"></i>
-                                    </div>
-                                    <div class="l-content w-full">
-                                        <a href="#ac2" class="font-semibold flex justify-between toggle-button">🎉
-                                            Milestone
-                                            Celebration! 🎉<span class="fa-solid fa-chevron-down"></span></a>
-                                        <div id="ac2" class="hidden">
-                                            <div class="text-sm">We’re excited to announce that Zaid has completed two
-                                                amazing years with ...</div>
-                                            <div class="text-xs mt-2">Dec 21, 2024</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="c-list p-[2px] rounded-lg shadow-md w-full">
-                                <div class="flex gap-2 px-2 py-1 rounded-lg  relative bg-white">
-                                    <div class="l-img text-xl">
-                                        <i class="fa-brands fa-rocketchat"></i>
-                                    </div>
-                                    <div class="l-content w-full">
-                                        <a href="#ac3" class="font-semibold flex justify-between toggle-button">🚀
-                                            Exciting
-                                            Update: Moawen Goes Live! <span
-                                                class="fa-solid fa-chevron-down"></span></a>
-                                        <div id="ac3" class="hidden">
-                                            <div class="text-sm">We're thrilled to announce that Moawen is officially
-                                                going
-                                                live!</div>
-                                            <div class="text-xs mt-2">Dec 21, 2024</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="c-list p-[2px] rounded-lg shadow-md w-full">
-                                <div class="flex gap-2 px-2 py-1 rounded-lg  relative bg-white">
-                                    <div class="l-img text-xl">
-                                        <i class="fa-brands fa-rocketchat"></i>
-                                    </div>
-                                    <div class="l-content w-full">
-                                        <a href="#ac3" class="font-semibold flex justify-between toggle-button">🚀
-                                            Exciting
-                                            Update: Moawen Goes Live! <span
-                                                class="fa-solid fa-chevron-down"></span></a>
-                                        <div id="ac3" class="hidden">
-                                            <div class="text-sm">We're thrilled to announce that Moawen is officially
-                                                going
-                                                live!</div>
-                                            <div class="text-xs mt-2">Dec 21, 2024</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="c-list p-[2px] rounded-lg shadow-md w-full">
-                                <div class="flex gap-2 px-2 py-1 rounded-lg  relative bg-white">
-                                    <div class="l-img text-xl">
-                                        <i class="fa-brands fa-rocketchat"></i>
-                                    </div>
-                                    <div class="l-content w-full">
-                                        <a href="#ac3" class="font-semibold flex justify-between toggle-button">🚀
-                                            Exciting
-                                            Update: Moawen Goes Live! <span
-                                                class="fa-solid fa-chevron-down"></span></a>
-                                        <div id="ac3" class="hidden">
-                                            <div class="text-sm">We're thrilled to announce that Moawen is officially
-                                                going
-                                                live!</div>
-                                            <div class="text-xs mt-2">Dec 21, 2024</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -244,33 +168,14 @@
                     <h3 class="text-2xl text-white font-semibold">Useful Links</h3>
                     <!-- <p class="text-white">Lorem ipsum dollar</p> -->
                     <div class="u-links grid gap-4 sm:grid-cols-2 mt-4">
-                        <div class="link bg-white rounded-lg px-2 py-3">
-
-                            <a href="https://jusour.qa/" class="flex justify-between items-center ">
-                                <div class="font-semibold text-lg">Jusour Co</div>
-                                <i class="fa-solid fa-angles-right text-secondary"></i>
-                            </a>
-
-
-                        </div>
-                        <div class="link bg-white rounded-lg px-2 py-3">
-
-                            <a href="https://services.jusour.qa" class="flex justify-between items-center">
-                                <div class="font-semibold text-lg">Jusour Services</div>
-                                <i class="fa-solid fa-angles-right text-secondary"></i>
-                            </a>
-
-
-                        </div>
-                        <div class="link bg-white rounded-lg px-2 py-3">
-
-                            <a href="https://iaifgs.fa.ocs.oraclecloud.com/"
-                                class="flex justify-between items-center">
-                                <div class="font-semibold text-lg">Oracle Fusion</div>
-                                <i class="fa-solid fa-angles-right text-secondary"></i>
-                            </a>
-
-                        </div>
+                        @foreach ($data['links'] as $item)
+                            <div class="link bg-white rounded-lg px-2 py-3">
+                                <a href="{{ $item['link'] }}" class="flex justify-between items-center ">
+                                    <div class="font-semibold text-lg">{{ $item['titleEn'] }}</div>
+                                    <i class="fa-solid fa-angles-right text-secondary"></i>
+                                </a>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
                 <div id='calendar-container'
@@ -282,48 +187,21 @@
                         <div id="current-events" class="w-full  ">
                             <!-- <h2>Current Events</h2> -->
                             <ul id="current-events-list">
-                                <li class="flex gap-2 p-1 border border-[#E6E6E6] items-center rounded-lg ">
-                                    <div class="border-[#E6E6E6] border overflow-hidde w-16 rounded-lg">
-                                        <div class="bg-[#FF7437] py-1 text-white text-center text-xs">MAY</div>
-                                        <div class="bg-white text-center font-semibold">24</div>
-                                    </div>
-                                    <div class="w-full">
-                                        <a href="#ev1"
-                                            class="flex justify-between toggle-button uppercase font-bold">Eid ul fitr
-                                            2025 <span class="fa-solid fa-chevron-down"></span></a>
-                                        <div id="ev1" class="text-black/75 hidden text-sm">Lorem ipsum dollar
-                                            Lorem
-                                            ipsum dollar Lorem ipsum dollar Lorem ipsum dollar </div>
-                                    </div>
-                                </li>
-                                <li class="flex gap-2 p-1 border border-[#E6E6E6] items-center rounded-lg mt-2">
-                                    <div class="border-[#E6E6E6] border overflow-hidde w-16 rounded-lg">
-                                        <div class="bg-[#FF7437] py-1 text-white text-center text-xs">MAY</div>
-                                        <div class="bg-white text-center font-semibold">24</div>
-                                    </div>
-                                    <div class="w-full">
-                                        <a href="#ev2"
-                                            class="uppercase font-bold flex justify-between toggle-button">Eid ul fitr
-                                            2025 <span class="fa-solid fa-chevron-down"></span></a>
-                                        <div id="ev2" class="text-black/75 hidden text-sm">Lorem ipsum dollar
-                                            Lorem
-                                            ipsum dollar Lorem ipsum dollar Lorem ipsum dollar </div>
-                                    </div>
-                                </li>
-                                <li class="flex gap-2 p-1 border border-[#E6E6E6] items-center rounded-lg mt-2">
-                                    <div class="border-[#E6E6E6] border overflow-hidde w-16 rounded-lg">
-                                        <div class="bg-[#FF7437] py-1 text-white text-center text-xs">MAY</div>
-                                        <div class="bg-white text-center font-semibold">24</div>
-                                    </div>
-                                    <div class="w-full">
-                                        <a href="#ev3"
-                                            class="uppercase font-bold flex justify-between toggle-button">Eid ul fitr
-                                            2025 <span class="fa-solid fa-chevron-down"></span></a>
-                                        <div id="ev3" class="text-black/75 hidden text-sm">Lorem ipsum dollar
-                                            Lorem
-                                            ipsum dollar Lorem ipsum dollar Lorem ipsum dollar </div>
-                                    </div>
-                                </li>
+                                @foreach ($data['events'] as $key => $item)
+                                    <li class="flex gap-2 p-1 border border-[#E6E6E6] items-center rounded-lg ">
+                                        <div class="border-[#E6E6E6] border overflow-hidde w-16 rounded-lg">
+                                            <div class="bg-[#FF7437] py-1 text-white text-center text-xs">{{ \Carbon\Carbon::parse($item['date'])->format('M') }}</div>
+                                            <div class="bg-white text-center font-semibold">{{ \Carbon\Carbon::parse($item['date'])->format('d') }}</div>
+                                        </div>
+                                        <div class="w-full">
+                                            <a href="#ev{{ $key }}"
+                                                class="flex justify-between toggle-button uppercase font-bold">{{ $item['nameEn'] }} {{ \Carbon\Carbon::parse($item['date'])->format('Y') }} <span class="fa-solid fa-chevron-down"></span></a>
+                                            <div id="ev{{ $key }}" class="text-black/75 hidden text-sm">
+                                                {{ $item['descEn'] }}
+                                            </div>
+                                        </div>
+                                    </li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
@@ -426,12 +304,12 @@
                         </div>
                     </div>
                     <div class="flex gap-2 self-center justify-end">
-                        <a href="#policyModal" class="btn-white modal-in">Policies</a>
-                        <a href="#Procedure" class="btn-blue modal-in">Procedures</a>
+                        <a href="#policyModal" class="btn-white modal-in">{{ $data['Policies']['titleEn'] }}</a>
+                        <a href="#Procedure" class="btn-blue modal-in">{{ $data['Procedures']['titleEn'] }}</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    @include('components.web.modals',['ceoMessage'=>$ceoMessage])
+    @include('components.web.modals',['ceoMessage'=>$data['Ceo Message'],'policies'=>$data['Policies'],'procedures'=>$data['Procedures']])
 @endsection

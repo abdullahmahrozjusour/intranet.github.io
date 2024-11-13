@@ -53,7 +53,7 @@
                         <div class="col-md-6 col-12">
                             <div class="mb-10 fv-row fv-plugins-icon-container">
                                 <label class="required form-label">Description (In English)</label>
-                                <textarea name="descEn" id="descEn" cols="30" rows="10" class="form-control form-control-lg form-control-solid rounded" placeholder="Description (In English)">{{ $data['descEn'] ?? old('descEn') }}</textarea>
+                                <textarea name="descEn" cols="30" rows="10" class="form-control form-control-lg form-control-solid rounded" placeholder="Description (In English)">{{ $data['descEn'] ?? old('descEn') }}</textarea>
                                 @error('descEn')
                                     <span class="text-danger">{{ $errors->first('descEn') }}</span>
                                 @enderror
@@ -62,7 +62,7 @@
                         <div class="col-md-6 col-12">
                             <div class="mb-10 fv-row fv-plugins-icon-container">
                                 <label class="form-label">Description (In Arabic) <span class="text-secondary">(Optional)</span></label>
-                                <textarea name="descAr" id="descAr" cols="30" rows="10" class="form-control form-control-lg form-control-solid rounded text-end" placeholder="Description (In Arabic)">{{ $data['descAr'] ?? old('descAr') }}</textarea>
+                                <textarea name="descAr" cols="30" rows="10" class="form-control form-control-lg form-control-solid rounded text-end" placeholder="Description (In Arabic)">{{ $data['descAr'] ?? old('descAr') }}</textarea>
                                 @error('descAr')
                                     <span class="text-danger">{{ $errors->first('descAr') }}</span>
                                 @enderror

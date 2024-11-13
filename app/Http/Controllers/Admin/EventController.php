@@ -38,13 +38,13 @@ class EventController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nameEn'=>'required', //|alpha_num
-            'nameAr'=>'nullable', //|regex:/^[\p{Arabic}0-9\s-]+$/u
+            'nameEn'=>'required|max:255', //|alpha_num
+            'nameAr'=>'nullable|max:255', //|regex:/^[\p{Arabic}0-9\s-]+$/u
             'status'=>'required',
             'date'=>'required',
             'time'=>'required',
-            'descAr'=>'nullable', //|alpha_num
-            'descAr'=>'nullable', //|regex:/^[\p{Arabic}0-9\s-]+$/u
+            'descAr'=>'nullable|max:255', //|alpha_num
+            'descAr'=>'nullable|max:255', //|regex:/^[\p{Arabic}0-9\s-]+$/u
         ],
         // [
         //     'nameAr.regex'=>'The name ar field must only contain arabic letters and numbers.',
@@ -78,13 +78,13 @@ class EventController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'nameEn'=>'required', //|alpha_num
-            'nameAr'=>'nullable', //|regex:/^[\p{Arabic}0-9\s-]+$/u
+            'nameEn'=>'required|max:255', //|alpha_num
+            'nameAr'=>'nullable|max:255', //|regex:/^[\p{Arabic}0-9\s-]+$/u
             'status'=>'required',
             'date'=>'required',
             'time'=>'required',
-            'descAr'=>'nullable', //|alpha_num
-            'descAr'=>'nullable', //|regex:/^[\p{Arabic}0-9\s-]+$/u
+            'descAr'=>'nullable|max:255', //|alpha_num
+            'descAr'=>'nullable|max:255', //|regex:/^[\p{Arabic}0-9\s-]+$/u
         ],
         // [
         //     'nameAr.regex'=>'The name ar field must only contain arabic letters and numbers.',

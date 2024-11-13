@@ -2,42 +2,120 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\Constants\type;
+use App\Constants\Status;
 use App\Http\Controllers\Controller;
+use App\Models\Country;
+use App\Repositories\MissionVision\MissionVisionInterface;
+use App\Repositories\Announcement\AnnouncementInterface;
+use App\Repositories\Contact\ContactInterface;
+use App\Repositories\Director\DirectorInterface;
+use App\Repositories\Event\EventInterface;
+use App\Repositories\Link\LinkInterface;
 use App\Repositories\Modal\ModalInterface;
+use App\Repositories\UsefulContact\UsefulContactInterface;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class WebController extends Controller
 {
     protected $modal;
+    protected $link;
+    protected $event;
+    protected $announcement;
+    protected $missionVision;
+    protected $director;
+    protected $useful;
+    protected $contact;
 
-    public function __construct(ModalInterface $modal)
+    public function __construct(
+        ModalInterface $modal,
+        LinkInterface $link,
+        EventInterface $event,
+        AnnouncementInterface $announcement,
+        MissionVisionInterface $missionVision,
+        DirectorInterface $director,
+        UsefulContactInterface $useful,
+        ContactInterface $contact
+    )
     {
         $this->modal = $modal;
+        $this->link = $link;
+        $this->event = $event;
+        $this->announcement = $announcement;
+        $this->missionVision = $missionVision;
+        $this->director = $director;
+        $this->useful = $useful;
+        $this->contact = $contact;
     }
 
-    public function index(){
+    public function index()
+    {
+        $data = [];
 
-        $ceoMessage = $this->modal->getCeoMessage();
-        return view('pages.index',compact('ceoMessage'));
+        $modalType = [type::TYPE_CEO_MESSAGE, type::TYPE_POLICIES, type::TYPE_PROCEDURES];
+        $columnType = 'type';
+        foreach ($modalType as $key => $value) {
+            $data[$value] = $this->modal->getModalPage($columnType,$value);
+        }
+
+        $columnStatus = 'status';
+        $statusActive = Status::STATUS_ACTIVE;
+        $data['links'] = $this->link->where([$columnStatus=>$statusActive]);
+
+        $columnDate = 'date';
+        $columnTime = 'time';
+        $currentDate = Carbon::now()->format('Y-m-d');
+        $currentTime = Carbon::now()->format('H:i:s');
+        $data['events'] = $this->event->getUpComingEvents($columnDate,$currentDate,$columnTime,$currentTime,$columnStatus,$statusActive);
+
+        $data['announcements'] = $this->announcement->getUpComingAnnouncements($columnDate,$currentDate,$columnStatus,$statusActive,$columnType);
+
+        return view('pages.index',compact('data'));
     }
 
     public function organization(){
         return view('pages.organization');
     }
 
-    public function ourMission(){
-        return view('pages.our-mission');
+    public function ourMission()
+    {
+        $relation = ['data'];
+        $data = $this->missionVision->getOurMissionVisionData($relation);
+        return view('pages.our-mission',compact('data'));
     }
 
     public function boardOfDirector(){
-        return view('pages.directors');
+        $relation = ['data'];
+
+        $data = $this->director->getOurDirectorDataWithCount($relation,'data')->toArray();
+
+        $data['data'] = array_chunk($data['data'], 2);
+
+        return view('pages.directors',compact('data'));
     }
 
     public function usefulContacts(){
-        return view('pages.usefull-contacts');
+        $columnStatus = 'status';
+        $statusActive = Status::STATUS_ACTIVE;
+        $data['useful'] = $this->useful->where([$columnStatus=>$statusActive]);
+        $data['countries'] = Country::orderBy('name','ASC')->get()->toArray();
+        return view('pages.usefull-contacts',compact('data'));
     }
 
     public function downloadCenter(){
         return view('pages.download-center');
+    }
+
+    public function contact(Request $request){
+        $request->validate([
+            'name'=>'required|max:255',
+            'email'=>'required|email|max:255',
+            'phone'=>'required',
+            'message'=>'required'
+        ]);
+
+        $data = $this->contact->store($request->all());
+        return back()->with('success','General Inquiry submitted successfully');
     }
 }

@@ -10,3 +10,4 @@ Route::get('/ourMission', [WebController::class, 'ourMission'])->name('ourMissio
 Route::get('/boardOfDirector', [WebController::class, 'boardOfDirector'])->name('boardOfDirector');
 Route::get('/usefulContacts', [WebController::class, 'usefulContacts'])->name('usefulContacts');
 Route::get('/downloadCenter', [WebController::class, 'downloadCenter'])->name('downloadCenter');
+Route::post('/contact/store', [WebController::class, 'contact'])->name('contact.store');
