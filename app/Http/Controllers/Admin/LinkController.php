@@ -26,7 +26,7 @@ class LinkController extends Controller
     public function index()
     {
         $data = $this->link->paginateWithOrder('created_at','DESC',12);
-        return view('admin.pages.configuration.link.index',compact('data'));
+        return view('admin.pages.home.link.index',compact('data'));
     }
 
     /**
@@ -34,7 +34,7 @@ class LinkController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.configuration.link.create');
+        return view('admin.pages.home.link.create');
     }
 
     /**
@@ -53,7 +53,7 @@ class LinkController extends Controller
         // ]
         );
         $data = $this->link->store($request->all());
-        return redirect()->route('admin.configuration.link.index')->with('success','Link created successfully.');
+        return redirect()->route('admin.home.link.index')->with('success','Link created successfully.');
     }
 
     /**
@@ -70,7 +70,7 @@ class LinkController extends Controller
     public function edit(string $id)
     {
         $data = $this->link->show($id);
-        return view('admin.pages.configuration.link.edit',compact('data'));
+        return view('admin.pages.home.link.edit',compact('data'));
     }
 
     /**
@@ -89,7 +89,7 @@ class LinkController extends Controller
         // ]
         );
         $data = $this->link->update($id,$request->all());
-        return redirect()->route('admin.configuration.link.index')->with('success','Link updated successfully.');
+        return redirect()->route('admin.home.link.index')->with('success','Link updated successfully.');
     }
 
     /**
@@ -98,6 +98,6 @@ class LinkController extends Controller
     public function destroy(string $id)
     {
         $this->link->destroy($id);
-        return redirect()->route('admin.configuration.link.index')->with('success','Link deleted successfully.');
+        return redirect()->route('admin.home.link.index')->with('success','Link deleted successfully.');
     }
 }

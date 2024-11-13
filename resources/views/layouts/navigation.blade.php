@@ -27,7 +27,7 @@
            active">
 
                             <!--begin::Svg Icon | path: /var/www/preview.keenthemes.com/kt-products/docs/metronic/html/releases/2023-07-10-101904/core/html/src/media/icons/duotune/general/gen024.svg-->
-                            <span class="svg-icon svg-icon-muted svg-icon-2x">
+                            {{-- <span class="svg-icon svg-icon-muted svg-icon-2x">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px"
                                     viewBox="0 0 24 24">
                                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -41,6 +41,9 @@
                                             fill="currentColor" opacity="0.3"></rect>
                                     </g>
                                 </svg>
+                            </span> --}}
+                            <span class="menu-icon">
+                                <i class="fa-solid fa-dashboard fs-1"></i>
                             </span>
                             <!--end::Svg Icon-->
                         </a>
@@ -53,7 +56,7 @@
                             class="nav-link btn btn-icon btn-active-color-primary btn-color-gray-400 btn-active-light
             ">
                             <!--begin::Svg Icon | path: /var/www/preview.keenthemes.com/kt-products/docs/metronic/html/releases/2023-07-10-101904/core/html/src/media/icons/duotune/files/fil003.svg-->
-                            <span class="svg-icon svg-icon-muted svg-icon-2x"><svg width="24" height="24"
+                            {{-- <span class="svg-icon svg-icon-muted svg-icon-2x"><svg width="24" height="24"
                                     viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path opacity="0.3"
                                         d="M19 22H5C4.4 22 4 21.6 4 21V3C4 2.4 4.4 2 5 2H14L20 8V21C20 21.6 19.6 22 19 22Z"
@@ -61,6 +64,9 @@
                                     <path d="M15 8H20L14 2V7C14 7.6 14.4 8 15 8Z" fill="currentColor">
                                     </path>
                                 </svg>
+                            </span> --}}
+                            <span class="menu-icon">
+                                <i class="fa-solid fa-home fs-1"></i>
                             </span>
                             <!--end::Svg Icon-->
                         </a>
@@ -72,7 +78,7 @@
                             class="nav-link btn btn-icon btn-active-color-primary btn-color-gray-400 btn-active-light
             ">
                             <!--begin::Svg Icon | path: /var/www/preview.keenthemes.com/kt-products/docs/metronic/html/releases/2023-07-10-101904/core/html/src/media/icons/duotune/coding/cod001.svg-->
-                            <span class="svg-icon svg-icon-muted svg-icon-2x">
+                            {{-- <span class="svg-icon svg-icon-muted svg-icon-2x">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path opacity="0.3"
@@ -82,6 +88,9 @@
                                         d="M17.1 12.1C17.1 14.9 14.9 17.1 12.1 17.1C9.30001 17.1 7.10001 14.9 7.10001 12.1C7.10001 9.29998 9.30001 7.09998 12.1 7.09998C14.9 7.09998 17.1 9.29998 17.1 12.1ZM12.1 10.1C11 10.1 10.1 11 10.1 12.1C10.1 13.2 11 14.1 12.1 14.1C13.2 14.1 14.1 13.2 14.1 12.1C14.1 11 13.2 10.1 12.1 10.1Z"
                                         fill="currentColor"></path>
                                 </svg>
+                            </span> --}}
+                            <span class="menu-icon">
+                                <i class="fa-solid fa-book fs-1"></i>
                             </span>
                             <!--end::Svg Icon-->
                         </a>
@@ -93,13 +102,16 @@
                             class="nav-link btn btn-icon btn-active-color-primary btn-color-gray-400 btn-active-light
             ">
                             <!--begin::Svg Icon | path: /var/www/preview.keenthemes.com/kt-products/docs/metronic/html/releases/2023-07-10-101904/core/html/src/media/icons/duotune/general/gen062.svg-->
-                            <span class="svg-icon svg-icon-muted svg-icon-2x">
+                            {{-- <span class="svg-icon svg-icon-muted svg-icon-2x">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" clip-rule="evenodd"
                                         d="M1.34375 3.9463V15.2178C1.34375 16.119 2.08105 16.8563 2.98219 16.8563H8.65093V19.4594H6.15702C5.38853 19.4594 4.75981 19.9617 4.75981 20.5757V21.6921H19.2403V20.5757C19.2403 19.9617 18.6116 19.4594 17.8431 19.4594H15.3492V16.8563H21.0179C21.919 16.8563 22.6562 16.119 22.6562 15.2178V3.9463C22.6562 3.04516 21.9189 2.30786 21.0179 2.30786H2.98219C2.08105 2.30786 1.34375 3.04516 1.34375 3.9463ZM12.9034 9.9016C13.241 9.98792 13.5597 10.1216 13.852 10.2949L15.0393 9.4353L15.9893 10.3853L15.1297 11.5727C15.303 11.865 15.4366 12.1837 15.523 12.5212L16.97 12.7528V13.4089H13.9851C13.9766 12.3198 13.0912 11.4394 12 11.4394C10.9089 11.4394 10.0235 12.3198 10.015 13.4089H7.03006V12.7528L8.47712 12.5211C8.56345 12.1836 8.69703 11.8649 8.87037 11.5727L8.0107 10.3853L8.96078 9.4353L10.148 10.2949C10.4404 10.1215 10.759 9.98788 11.0966 9.9016L11.3282 8.45467H12.6718L12.9034 9.9016ZM16.1353 7.93758C15.6779 7.93758 15.3071 7.56681 15.3071 7.1094C15.3071 6.652 15.6779 6.28122 16.1353 6.28122C16.5926 6.28122 16.9634 6.652 16.9634 7.1094C16.9634 7.56681 16.5926 7.93758 16.1353 7.93758ZM2.71385 14.0964V3.90518C2.71385 3.78023 2.81612 3.67796 2.94107 3.67796H21.0589C21.1839 3.67796 21.2861 3.78023 21.2861 3.90518V14.0964C15.0954 14.0964 8.90462 14.0964 2.71385 14.0964Z"
                                         fill="currentColor"></path>
                                 </svg>
+                            </span> --}}
+                            <span class="menu-icon">
+                                <i class="fa-brands fa-black-tie fs-1"></i>
                             </span>
                             <!--end::Svg Icon-->
                         </a>
@@ -202,7 +214,7 @@
                                     <div class="menu-item pt-5">
                                         <!--begin:Menu content-->
                                         <div class="menu-content">
-                                            <span class="menu-heading fw-bold text-uppercase fs-7">Operation</span>
+                                            <span class="menu-heading fw-bold text-uppercase fs-7">Home</span>
                                         </div>
                                         <!--end:Menu content-->
                                     </div>
@@ -211,7 +223,7 @@
                                             <!--begin:Menu link-->
                                                 <div class="menu-item">
                                                     <!--begin:Menu link-->
-                                                    <a class="menu-link" href="{{ route('admin.operation.ceoMessage.index') }}">
+                                                    <a class="menu-link" href="{{ route('admin.home.ceoMessage.index') }}">
                                                         <span class="menu-icon">
                                                             <i class="fa-solid fa-message"></i>
                                                         </span>
@@ -222,33 +234,68 @@
                                             <!--end:Menu item-->
                                         </div>
                                     @endcan
-                                    @can('view-mission-and-vision')
-                                        <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                            <!--begin:Menu link-->
-                                                <div class="menu-item">
-                                                    <!--begin:Menu link-->
-                                                    <a class="menu-link" href="{{ route('admin.operation.missionVision.index') }}">
-                                                        <span class="menu-icon">
-                                                            <i class="fa-solid fa-person-circle-question"></i>
-                                                        </span>
-                                                        <span class="menu-title">Missions & Visions</span>
-                                                    </a>
-                                                    <!--end:Menu link-->
-                                                </div>
-                                            <!--end:Menu item-->
-                                        </div>
-                                    @endcan
-                                    @can('view-board-of-director')
+                                    @can('view-announcement')
                                     <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                                         <!--begin:Menu link-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="{{ route('admin.operation.director.index') }}">
+                                                <a class="menu-link" href="{{ route('admin.home.announcement.index') }}">
                                                     <span class="menu-icon">
-                                                        <i class="fa-solid fa-user-secret">
+                                                        <i class="fa-solid fa-bullhorn">
                                                         </i>
                                                     </span>
-                                                    <span class="menu-title">Board of Directors</span>
+                                                    <span class="menu-title">Announcements</span>
+                                                </a>
+                                                <!--end:Menu link-->
+                                            </div>
+                                        <!--end:Menu item-->
+                                    </div>
+                                    @endcan
+                                    @can('view-link')
+                                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                                        <!--begin:Menu link-->
+                                            <div class="menu-item">
+                                                <!--begin:Menu link-->
+                                                <a class="menu-link" href="{{ route('admin.home.link.index') }}">
+                                                    <span class="menu-icon">
+                                                        <i class="fa-solid fa-link">
+                                                        </i>
+                                                    </span>
+                                                    <span class="menu-title">Links</span>
+                                                </a>
+                                                <!--end:Menu link-->
+                                            </div>
+                                        <!--end:Menu item-->
+                                    </div>
+                                    @endcan
+                                    @can('view-event')
+                                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                                        <!--begin:Menu link-->
+                                            <div class="menu-item">
+                                                <!--begin:Menu link-->
+                                                <a class="menu-link" href="{{ route('admin.home.event.index') }}">
+                                                    <span class="menu-icon">
+                                                        <i class="fa-solid fa-calendar-days">
+                                                        </i>
+                                                    </span>
+                                                    <span class="menu-title">Events</span>
+                                                </a>
+                                                <!--end:Menu link-->
+                                            </div>
+                                        <!--end:Menu item-->
+                                    </div>
+                                    @endcan
+                                    @can('view-modal-page')
+                                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                                        <!--begin:Menu link-->
+                                            <div class="menu-item">
+                                                <!--begin:Menu link-->
+                                                <a class="menu-link" href="{{ route('admin.home.modal.index') }}">
+                                                    <span class="menu-icon">
+                                                        <i class="fa-solid fa-file">
+                                                        </i>
+                                                    </span>
+                                                    <span class="menu-title">Modal Pages</span>
                                                 </a>
                                                 <!--end:Menu link-->
                                             </div>
@@ -270,72 +317,37 @@
                                     <div class="menu-item pt-5">
                                         <!--begin:Menu content-->
                                         <div class="menu-content">
-                                            <span class="menu-heading fw-bold text-uppercase fs-7">Configuration</span>
+                                            <span class="menu-heading fw-bold text-uppercase fs-7">Pages</span>
                                         </div>
                                         <!--end:Menu content-->
                                     </div>
-                                    @can('view-announcement')
-                                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                        <!--begin:Menu link-->
-                                            <div class="menu-item">
-                                                <!--begin:Menu link-->
-                                                <a class="menu-link" href="{{ route('admin.configuration.announcement.index') }}">
-                                                    <span class="menu-icon">
-                                                        <i class="fa-solid fa-bullhorn">
-                                                        </i>
-                                                    </span>
-                                                    <span class="menu-title">Announcements</span>
-                                                </a>
-                                                <!--end:Menu link-->
-                                            </div>
-                                        <!--end:Menu item-->
-                                    </div>
+                                    @can('view-mission-and-vision')
+                                        <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                                            <!--begin:Menu link-->
+                                                <div class="menu-item">
+                                                    <!--begin:Menu link-->
+                                                    <a class="menu-link" href="{{ route('admin.pages.missionVision.index') }}">
+                                                        <span class="menu-icon">
+                                                            <i class="fa-solid fa-person-circle-question"></i>
+                                                        </span>
+                                                        <span class="menu-title">Missions & Visions</span>
+                                                    </a>
+                                                    <!--end:Menu link-->
+                                                </div>
+                                            <!--end:Menu item-->
+                                        </div>
                                     @endcan
-                                    @can('view-link')
+                                    @can('view-board-of-director')
                                     <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                                         <!--begin:Menu link-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="{{ route('admin.configuration.link.index') }}">
+                                                <a class="menu-link" href="{{ route('admin.pages.director.index') }}">
                                                     <span class="menu-icon">
-                                                        <i class="fa-solid fa-link">
+                                                        <i class="fa-solid fa-user-secret">
                                                         </i>
                                                     </span>
-                                                    <span class="menu-title">Links</span>
-                                                </a>
-                                                <!--end:Menu link-->
-                                            </div>
-                                        <!--end:Menu item-->
-                                    </div>
-                                    @endcan
-                                    @can('view-event')
-                                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                        <!--begin:Menu link-->
-                                            <div class="menu-item">
-                                                <!--begin:Menu link-->
-                                                <a class="menu-link" href="{{ route('admin.configuration.event.index') }}">
-                                                    <span class="menu-icon">
-                                                        <i class="fa-solid fa-calendar-days">
-                                                        </i>
-                                                    </span>
-                                                    <span class="menu-title">Events</span>
-                                                </a>
-                                                <!--end:Menu link-->
-                                            </div>
-                                        <!--end:Menu item-->
-                                    </div>
-                                    @endcan
-                                    @can('view-modal-page')
-                                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                        <!--begin:Menu link-->
-                                            <div class="menu-item">
-                                                <!--begin:Menu link-->
-                                                <a class="menu-link" href="{{ route('admin.configuration.modal.index') }}">
-                                                    <span class="menu-icon">
-                                                        <i class="fa-solid fa-file">
-                                                        </i>
-                                                    </span>
-                                                    <span class="menu-title">Modal Pages</span>
+                                                    <span class="menu-title">Board of Directors</span>
                                                 </a>
                                                 <!--end:Menu link-->
                                             </div>
@@ -347,7 +359,7 @@
                                         <!--begin:Menu link-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="{{ route('admin.configuration.downloadCenter.index') }}">
+                                                <a class="menu-link" href="{{ route('admin.pages.downloadCenter.index') }}">
                                                     <span class="menu-icon">
                                                         <i class="fa-solid fa-download">
                                                         </i>
@@ -364,12 +376,46 @@
                                         <!--begin:Menu link-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link-->
-                                                <a class="menu-link" href="{{ route('admin.configuration.organization.index') }}">
+                                                <a class="menu-link" href="{{ route('admin.pages.organization.index') }}">
                                                     <span class="menu-icon">
                                                         <i class="fa-solid fa-sitemap">
                                                         </i>
                                                     </span>
                                                     <span class="menu-title">Organizations</span>
+                                                </a>
+                                                <!--end:Menu link-->
+                                            </div>
+                                        <!--end:Menu item-->
+                                    </div>
+                                    @endcan
+                                    @can('view-useful-contact')
+                                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                                        <!--begin:Menu link-->
+                                            <div class="menu-item">
+                                                <!--begin:Menu link-->
+                                                <a class="menu-link" href="{{ route('admin.pages.usefulContact.index') }}">
+                                                    <span class="menu-icon">
+                                                        <i class="fa-solid fa-question">
+                                                        </i>
+                                                    </span>
+                                                    <span class="menu-title">Useful Contacts</span>
+                                                </a>
+                                                <!--end:Menu link-->
+                                            </div>
+                                        <!--end:Menu item-->
+                                    </div>
+                                    @endcan
+                                    @can('view-contact')
+                                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                                        <!--begin:Menu link-->
+                                            <div class="menu-item">
+                                                <!--begin:Menu link-->
+                                                <a class="menu-link" href="{{ route('admin.pages.contact.index') }}">
+                                                    <span class="menu-icon">
+                                                        <i class="fa-solid fa-envelope">
+                                                        </i>
+                                                    </span>
+                                                    <span class="menu-title">Contacts</span>
                                                 </a>
                                                 <!--end:Menu link-->
                                             </div>
@@ -421,44 +467,10 @@
                                                 <!--begin:Menu link-->
                                                 <a class="menu-link" href="{{ route('admin.administration.role.index') }}">
                                                     <span class="menu-icon">
-                                                        <i class="fa-solid fa-user">
+                                                        <i class="fa-solid fa-user-shield">
                                                         </i>
                                                     </span>
                                                     <span class="menu-title">Roles</span>
-                                                </a>
-                                                <!--end:Menu link-->
-                                            </div>
-                                        <!--end:Menu item-->
-                                    </div>
-                                    @endcan
-                                    @can('view-useful-contact')
-                                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                        <!--begin:Menu link-->
-                                            <div class="menu-item">
-                                                <!--begin:Menu link-->
-                                                <a class="menu-link" href="{{ route('admin.administration.usefulContact.index') }}">
-                                                    <span class="menu-icon">
-                                                        <i class="fa-solid fa-sitemap">
-                                                        </i>
-                                                    </span>
-                                                    <span class="menu-title">Useful Contacts</span>
-                                                </a>
-                                                <!--end:Menu link-->
-                                            </div>
-                                        <!--end:Menu item-->
-                                    </div>
-                                    @endcan
-                                    @can('view-contact')
-                                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                        <!--begin:Menu link-->
-                                            <div class="menu-item">
-                                                <!--begin:Menu link-->
-                                                <a class="menu-link" href="{{ route('admin.administration.contact.index') }}">
-                                                    <span class="menu-icon">
-                                                        <i class="fa-solid fa-sitemap">
-                                                        </i>
-                                                    </span>
-                                                    <span class="menu-title">Contacts</span>
                                                 </a>
                                                 <!--end:Menu link-->
                                             </div>

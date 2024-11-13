@@ -34,7 +34,7 @@ class DirectorController extends Controller
         $collection = $this->director->where(['type'=>Type::TYPE_DIRECTOR]);
         $collectionId = $collection[0]->id;
         $data = $this->pageData->paginateWithOrderWhere('created_at','DESC',12,'pageId',$collectionId);
-        return view('admin.pages.operation.director.index',compact('data','collection'));
+        return view('admin.pages.pages.director.index',compact('data','collection'));
     }
 
     /**
@@ -43,7 +43,7 @@ class DirectorController extends Controller
     public function create()
     {
         $pageId = $this->director->where(['type'=>'Director'])[0]->id;
-        return view('admin.pages.operation.director.create',compact('pageId'));
+        return view('admin.pages.pages.director.create',compact('pageId'));
     }
 
     /**
@@ -87,7 +87,7 @@ class DirectorController extends Controller
             'descAr'=>$request->descAr,
         ];
         $data = $this->pageData->store($requestData);
-        return redirect()->route('admin.operation.director.index')->with('success','Board of Director Data created successfully.');
+        return redirect()->route('admin.pages.director.index')->with('success','Board of Director Data created successfully.');
     }
 
     /**
@@ -105,7 +105,7 @@ class DirectorController extends Controller
     {
         $data = $this->pageData->show($id);
         $pageId = $this->director->where(['type'=>'Director'])[0]->id;
-        return view('admin.pages.operation.director.edit',compact('data','pageId'));
+        return view('admin.pages.pages.director.edit',compact('data','pageId'));
     }
 
     /**
@@ -154,7 +154,7 @@ class DirectorController extends Controller
             'descAr'=>$request->descAr,
         ];
         $data = $this->pageData->update($id,$requestData);
-        return redirect()->route('admin.operation.director.index')->with('success','Board of Director Data updated successfully.');
+        return redirect()->route('admin.pages.director.index')->with('success','Board of Director Data updated successfully.');
     }
 
     /**
@@ -163,7 +163,7 @@ class DirectorController extends Controller
     public function destroy(string $id)
     {
         $this->pageData->destroy($id);
-        return redirect()->route('admin.operation.director.index')->with('success','Board of Director Data deleted successfully.');
+        return redirect()->route('admin.pages.director.index')->with('success','Board of Director Data deleted successfully.');
     }
 
     /**
@@ -186,6 +186,6 @@ class DirectorController extends Controller
         // ]
         );
         $data = $this->director->update($id,$request->all());
-        return redirect()->route('admin.operation.director.index')->with('success','Board of Director updated successfully.');
+        return redirect()->route('admin.pages.director.index')->with('success','Board of Director updated successfully.');
     }
 }

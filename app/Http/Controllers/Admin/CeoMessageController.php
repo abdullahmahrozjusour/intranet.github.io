@@ -28,7 +28,7 @@ class CeoMessageController extends Controller
     public function index()
     {
         $collection = $this->page->where(['type'=>Type::TYPE_CEO_MESSAGE]);
-        return view('admin.pages.operation.ceoMessage.index',compact('collection'));
+        return view('admin.pages.home.ceoMessage.index',compact('collection'));
     }
 
     /**
@@ -77,7 +77,7 @@ class CeoMessageController extends Controller
         // ]
         );
         $data = $this->page->update($id,$request->all());
-        return redirect()->route('admin.operation.ceoMessage.index')->with('success','Ceo Message updated successfully.');
+        return redirect()->route('admin.home.ceoMessage.index')->with('success','Ceo Message updated successfully.');
     }
 
     /**

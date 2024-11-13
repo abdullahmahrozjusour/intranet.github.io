@@ -26,7 +26,7 @@ class EventController extends Controller
     public function index()
     {
         $data = $this->event->paginateWithOrder('created_at','DESC',12);
-        return view('admin.pages.configuration.event.index',compact('data'));
+        return view('admin.pages.home.event.index',compact('data'));
     }
 
     /**
@@ -34,7 +34,7 @@ class EventController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.configuration.event.create');
+        return view('admin.pages.home.event.create');
     }
 
     /**
@@ -57,7 +57,7 @@ class EventController extends Controller
         // ]
         );
         $data = $this->event->store($request->all());
-        return redirect()->route('admin.configuration.event.index')->with('success','Event created successfully.');
+        return redirect()->route('admin.home.event.index')->with('success','Event created successfully.');
     }
 
     /**
@@ -74,7 +74,7 @@ class EventController extends Controller
     public function edit(string $id)
     {
         $data = $this->event->show($id);
-        return view('admin.pages.configuration.event.edit',compact('data'));
+        return view('admin.pages.home.event.edit',compact('data'));
     }
 
     /**
@@ -97,7 +97,7 @@ class EventController extends Controller
         // ]
         );
         $data = $this->event->update($id,$request->all());
-        return redirect()->route('admin.configuration.event.index')->with('success','Event updated successfully.');
+        return redirect()->route('admin.home.event.index')->with('success','Event updated successfully.');
     }
 
     /**
@@ -106,6 +106,6 @@ class EventController extends Controller
     public function destroy(string $id)
     {
         $this->event->destroy($id);
-        return redirect()->route('admin.configuration.event.index')->with('success','Event deleted successfully.');
+        return redirect()->route('admin.home.event.index')->with('success','Event deleted successfully.');
     }
 }

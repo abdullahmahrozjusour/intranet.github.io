@@ -27,7 +27,7 @@ class UsefulContactController extends Controller
     public function index()
     {
         $data = $this->usefulContact->paginateWithOrder('created_at','DESC',12);
-        return view('admin.pages.administration.usefulContact.index',compact('data'));
+        return view('admin.pages.pages.usefulContact.index',compact('data'));
     }
 
     /**
@@ -35,7 +35,7 @@ class UsefulContactController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.administration.usefulContact.create');
+        return view('admin.pages.pages.usefulContact.create');
     }
 
     /**
@@ -58,7 +58,7 @@ class UsefulContactController extends Controller
         // ]
         );
         $data = $this->usefulContact->store($request->all());
-        return redirect()->route('admin.administration.usefulContact.index')->with('success','Useful Contact created successfully.');
+        return redirect()->route('admin.pages.usefulContact.index')->with('success','Useful Contact created successfully.');
     }
 
     /**
@@ -75,7 +75,7 @@ class UsefulContactController extends Controller
     public function edit(string $id)
     {
         $data = $this->usefulContact->show($id);
-        return view('admin.pages.administration.usefulContact.edit',compact('data'));
+        return view('admin.pages.pages.usefulContact.edit',compact('data'));
     }
 
     /**
@@ -98,7 +98,7 @@ class UsefulContactController extends Controller
         // ]
         );
         $data = $this->usefulContact->update($id,$request->all());
-        return redirect()->route('admin.administration.usefulContact.index')->with('success','Useful Contact updated successfully.');
+        return redirect()->route('admin.pages.usefulContact.index')->with('success','Useful Contact updated successfully.');
     }
 
     /**
@@ -107,6 +107,6 @@ class UsefulContactController extends Controller
     public function destroy(string $id)
     {
         $this->usefulContact->destroy($id);
-        return redirect()->route('admin.administration.usefulContact.index')->with('success','Useful Contact deleted successfully.');
+        return redirect()->route('admin.pages.usefulContact.index')->with('success','Useful Contact deleted successfully.');
     }
 }

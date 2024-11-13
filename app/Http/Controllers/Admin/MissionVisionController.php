@@ -34,7 +34,7 @@ class MissionVisionController extends Controller
         $collection = $this->missionVision->where(['type'=>Type::TYPE_MISSION_VISION]);
         $collectionId = $collection[0]->id;
         $data = $this->pageData->paginateWithOrderWhere('created_at','DESC',12,'pageId',$collectionId);
-        return view('admin.pages.operation.missionVision.index',compact('data','collection'));
+        return view('admin.pages.pages.missionVision.index',compact('data','collection'));
     }
 
     /**
@@ -43,7 +43,7 @@ class MissionVisionController extends Controller
     public function create()
     {
         $pageId = $this->missionVision->where(['type'=>'Mission Vision'])[0]->id;
-        // return view('admin.pages.operation.missionVision.create',compact('pageId'));
+        // return view('admin.pages.pages.missionVision.create',compact('pageId'));
     }
 
     /**
@@ -79,7 +79,7 @@ class MissionVisionController extends Controller
             'descAr'=>$request->descAr,
         ];
         $data = $this->pageData->store($requestData);
-        return redirect()->route('admin.operation.missionVision.index')->with('success','Mission & Vision Data created successfully.');
+        return redirect()->route('admin.pages.missionVision.index')->with('success','Mission & Vision Data created successfully.');
     }
 
     /**
@@ -97,7 +97,7 @@ class MissionVisionController extends Controller
     {
         $data = $this->pageData->show($id);
         $pageId = $this->missionVision->where(['type'=>'Mission Vision'])[0]->id;
-        return view('admin.pages.operation.missionVision.edit',compact('data','pageId'));
+        return view('admin.pages.pages.missionVision.edit',compact('data','pageId'));
     }
 
     /**
@@ -138,7 +138,7 @@ class MissionVisionController extends Controller
             'descAr'=>$request->descAr,
         ];
         $data = $this->pageData->update($id,$requestData);
-        return redirect()->route('admin.operation.missionVision.index')->with('success','Mission & Vision Data updated successfully.');
+        return redirect()->route('admin.pages.missionVision.index')->with('success','Mission & Vision Data updated successfully.');
     }
 
     /**
@@ -147,7 +147,7 @@ class MissionVisionController extends Controller
     public function destroy(string $id)
     {
         $this->pageData->destroy($id);
-        return redirect()->route('admin.operation.missionVision.index')->with('success','Mission & Vision Data deleted successfully.');
+        return redirect()->route('admin.pages.missionVision.index')->with('success','Mission & Vision Data deleted successfully.');
     }
 
     /**
@@ -168,6 +168,6 @@ class MissionVisionController extends Controller
         // ]
         );
         $data = $this->missionVision->update($id,$request->all());
-        return redirect()->route('admin.operation.missionVision.index')->with('success','Mission & Vision updated successfully.');
+        return redirect()->route('admin.pages.missionVision.index')->with('success','Mission & Vision updated successfully.');
     }
 }

@@ -27,7 +27,7 @@ class DownloadCenterController extends Controller
     public function index()
     {
         $data = $this->downloadCenter->paginateWithOrder('created_at','DESC',12);
-        return view('admin.pages.configuration.downloadCenter.index',compact('data'));
+        return view('admin.pages.pages.downloadCenter.index',compact('data'));
     }
 
     /**
@@ -35,7 +35,7 @@ class DownloadCenterController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.configuration.downloadCenter.create');
+        return view('admin.pages.pages.downloadCenter.create');
     }
 
     /**
@@ -72,7 +72,7 @@ class DownloadCenterController extends Controller
                 'status'=>$request->status,
             ];
             $data = $this->downloadCenter->store($requestData);
-            return redirect()->route('admin.configuration.downloadCenter.index')->with('success','Download Center created successfully.');
+            return redirect()->route('admin.pages.downloadCenter.index')->with('success','Download Center created successfully.');
         }
         return back()->with('error','No document found');
     }
@@ -91,7 +91,7 @@ class DownloadCenterController extends Controller
     public function edit(string $id)
     {
         $data = $this->downloadCenter->show($id);
-        return view('admin.pages.configuration.downloadCenter.edit',compact('data'));
+        return view('admin.pages.pages.downloadCenter.edit',compact('data'));
     }
 
     /**
@@ -128,7 +128,7 @@ class DownloadCenterController extends Controller
                 'status'=>$request->status,
             ];
             $data = $this->downloadCenter->update($id,$requestData);
-            return redirect()->route('admin.configuration.downloadCenter.index')->with('success','Download Center updated successfully.');
+            return redirect()->route('admin.pages.downloadCenter.index')->with('success','Download Center updated successfully.');
         }
         return back()->with('error','No document found');
     }
@@ -139,6 +139,6 @@ class DownloadCenterController extends Controller
     public function destroy(string $id)
     {
         $this->downloadCenter->destroy($id);
-        return redirect()->route('admin.configuration.downloadCenter.index')->with('success','Download Center deleted successfully.');
+        return redirect()->route('admin.pages.downloadCenter.index')->with('success','Download Center deleted successfully.');
     }
 }

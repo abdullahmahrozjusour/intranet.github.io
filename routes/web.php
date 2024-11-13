@@ -27,26 +27,26 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin'], function () {
     Route::middleware('auth')->group(function () {
         Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-        Route::group(['as' => 'configuration.', 'prefix' => 'configuration'], function () {
+        Route::group(['as' => 'home.', 'prefix' => 'home'], function () {
+            include('admin/ceoMessage.php');
             include('admin/announcement.php');
             include('admin/link.php');
             include('admin/event.php');
             include('admin/modal.php');
-            include('admin/downloadCenter.php');
-            include('admin/organization.php');
         });
 
         Route::group(['as' => 'administration.', 'prefix' => 'administration'], function () {
             include('admin/user.php');
-            include('admin/usefulContact.php');
-            include('admin/contact.php');
             include('admin/role.php');
         });
 
-        Route::group(['as' => 'operation.', 'prefix' => 'operation'], function () {
-            include('admin/ceoMessage.php');
+        Route::group(['as' => 'pages.', 'prefix' => 'pages'], function () {
             include('admin/missionVision.php');
             include('admin/director.php');
+            include('admin/downloadCenter.php');
+            include('admin/organization.php');
+            include('admin/usefulContact.php');
+            include('admin/contact.php');
         });
 
         Route::post('logout', [AuthController::class, 'logout'])->name('logout');

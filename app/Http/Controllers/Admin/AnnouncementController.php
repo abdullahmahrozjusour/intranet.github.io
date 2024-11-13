@@ -26,7 +26,7 @@ class AnnouncementController extends Controller
     public function index()
     {
         $data = $this->announcement->paginateWithOrder('created_at','DESC',12);
-        return view('admin.pages.configuration.announcement.index',compact('data'));
+        return view('admin.pages.home.announcement.index',compact('data'));
     }
 
     /**
@@ -34,7 +34,7 @@ class AnnouncementController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.configuration.announcement.create');
+        return view('admin.pages.home.announcement.create');
     }
 
     /**
@@ -57,7 +57,7 @@ class AnnouncementController extends Controller
         // ]
         );
         $data = $this->announcement->store($request->all());
-        return redirect()->route('admin.configuration.announcement.index')->with('success','Announcement created successfully.');
+        return redirect()->route('admin.home.announcement.index')->with('success','Announcement created successfully.');
     }
 
     /**
@@ -74,7 +74,7 @@ class AnnouncementController extends Controller
     public function edit(string $id)
     {
         $data = $this->announcement->show($id);
-        return view('admin.pages.configuration.announcement.edit',compact('data'));
+        return view('admin.pages.home.announcement.edit',compact('data'));
     }
 
     /**
@@ -97,7 +97,7 @@ class AnnouncementController extends Controller
         // ]
         );
         $data = $this->announcement->update($id,$request->all());
-        return redirect()->route('admin.configuration.announcement.index')->with('success','Announcement updated successfully.');
+        return redirect()->route('admin.home.announcement.index')->with('success','Announcement updated successfully.');
     }
 
     /**
@@ -106,6 +106,6 @@ class AnnouncementController extends Controller
     public function destroy(string $id)
     {
         $this->announcement->destroy($id);
-        return redirect()->route('admin.configuration.announcement.index')->with('success','Announcement deleted successfully.');
+        return redirect()->route('admin.home.announcement.index')->with('success','Announcement deleted successfully.');
     }
 }

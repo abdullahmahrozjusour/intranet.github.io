@@ -27,7 +27,7 @@ class OrganizationController extends Controller
     public function index()
     {
         $data = $this->organization->getAllDataWithRelation('parent','created_at','DESC',12);
-        return view('admin.pages.configuration.organization.index',compact('data'));
+        return view('admin.pages.pages.organization.index',compact('data'));
     }
 
     /**
@@ -36,7 +36,7 @@ class OrganizationController extends Controller
     public function create()
     {
         $collection = $this->organization->index();
-        return view('admin.pages.configuration.organization.create',compact('collection'));
+        return view('admin.pages.pages.organization.create',compact('collection'));
     }
 
     /**
@@ -72,7 +72,7 @@ class OrganizationController extends Controller
             'image'=>$file
         ];
         $data = $this->organization->store($requestData);
-        return redirect()->route('admin.configuration.organization.index')->with('success','Organization created successfully.');
+        return redirect()->route('admin.pages.organization.index')->with('success','Organization created successfully.');
     }
 
     /**
@@ -90,7 +90,7 @@ class OrganizationController extends Controller
     {
         $data = $this->organization->show($id);
         $collection = $this->organization->index();
-        return view('admin.pages.configuration.organization.edit',compact('data','collection'));
+        return view('admin.pages.pages.organization.edit',compact('data','collection'));
     }
 
     /**
@@ -126,7 +126,7 @@ class OrganizationController extends Controller
             'image'=>$file
         ];
         $data = $this->organization->update($id,$requestData);
-        return redirect()->route('admin.configuration.organization.index')->with('success','Organization updated successfully.');
+        return redirect()->route('admin.pages.organization.index')->with('success','Organization updated successfully.');
     }
 
     /**
@@ -135,6 +135,6 @@ class OrganizationController extends Controller
     public function destroy(string $id)
     {
         $this->organization->destroy($id);
-        return redirect()->route('admin.configuration.organization.index')->with('success','Organization deleted successfully.');
+        return redirect()->route('admin.pages.organization.index')->with('success','Organization deleted successfully.');
     }
 }

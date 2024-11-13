@@ -26,7 +26,7 @@ class ModalController extends Controller
     public function index()
     {
         $data = $this->modal->paginateWithOrderNotCEO('created_at','DESC',12);
-        return view('admin.pages.configuration.modal.index',compact('data'));
+        return view('admin.pages.home.modal.index',compact('data'));
     }
 
     /**
@@ -34,7 +34,7 @@ class ModalController extends Controller
      */
     public function create()
     {
-        // return view('admin.pages.configuration.modal.create');
+        // return view('admin.pages.home.modal.create');
     }
 
     /**
@@ -55,7 +55,7 @@ class ModalController extends Controller
         // ]
         );
         $data = $this->modal->store($request->all());
-        return redirect()->route('admin.configuration.modal.index')->with('success','Modal Page created successfully.');
+        return redirect()->route('admin.home.modal.index')->with('success','Modal Page created successfully.');
     }
 
     /**
@@ -72,7 +72,7 @@ class ModalController extends Controller
     public function edit(string $id)
     {
         $data = $this->modal->show($id);
-        return view('admin.pages.configuration.modal.edit',compact('data'));
+        return view('admin.pages.home.modal.edit',compact('data'));
     }
 
     /**
@@ -93,7 +93,7 @@ class ModalController extends Controller
         // ]
         );
         $data = $this->modal->update($id,$request->all());
-        return redirect()->route('admin.configuration.modal.index')->with('success','Modal Page updated successfully.');
+        return redirect()->route('admin.home.modal.index')->with('success','Modal Page updated successfully.');
     }
 
     /**
@@ -102,6 +102,6 @@ class ModalController extends Controller
     public function destroy(string $id)
     {
         $this->modal->destroy($id);
-        return redirect()->route('admin.configuration.modal.index')->with('success','Modal Page deleted successfully.');
+        return redirect()->route('admin.home.modal.index')->with('success','Modal Page deleted successfully.');
     }
 }
