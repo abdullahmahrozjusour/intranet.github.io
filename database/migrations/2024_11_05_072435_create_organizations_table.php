@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('nameAr')->nullable();
             $table->string('designationEn');
             $table->string('designationAr')->nullable();
+            $table->text('image')->nullable();
             $table->integer('parentId')->nullable();
             $table->string('status')->default('Active');
             $table->timestamps();
