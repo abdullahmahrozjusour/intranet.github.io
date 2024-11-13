@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="{{ asset('theme/media/images/favicon.ico') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/slick.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/jquery-ui.css') }}" />
     <script src="{{ asset('assets/js/tailwindcss.js') }}"></script>
