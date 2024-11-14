@@ -48,7 +48,8 @@
 
                                     <tr>
                                         <td class="text-start ps-0">
-                                            <span class="text-gray-600 fw-bold fs-6">{{ $key + 1 }}</span>
+                                            <span class="text-gray-600 fw-bold fs-6">{{ ($data->currentPage() - 1) *
+                                                $data->perPage() + $loop->iteration }}</span>
                                         </td>
 
                                         <td class="text-start ps-0">
@@ -129,6 +130,17 @@
                                                         </div>
                                                     </div>
                                                     <!--end::Heading-->
+
+                                                    <!--begin::Menu item-->
+                                                    @can('audit-contact')
+                                                    <div class="menu-item px-3">
+                                                        <a href="{{ route('admin.administration.contact.audit',[$value->id]) }}"
+                                                            class="menu-link px-3">
+                                                            Audit
+                                                        </a>
+                                                    </div>
+                                                    @endcan
+                                                    <!--end::Menu item-->
 
                                                     <!--begin::Menu item-->
                                                     @can('delete-contact')

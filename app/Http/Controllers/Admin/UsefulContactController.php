@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Helpers\ImageHelper;
 use App\Http\Controllers\Controller;
+use App\Models\Audit;
+use App\Models\UsefulContact;
 use App\Repositories\UsefulContact\UsefulContactInterface;
 use Illuminate\Http\Request;
 
@@ -19,6 +21,7 @@ class UsefulContactController extends Controller
         $this->middleware('permission:create-useful-contact', ['only' => ['create','store']]);
         $this->middleware('permission:edit-useful-contact', ['only' => ['edit','update']]);
         $this->middleware('permission:delete-useful-contact', ['only' => ['destroy']]);
+        $this->middleware('permission:audit-useful-contact', ['only' => ['audit']]);
     }
 
     /**
@@ -108,5 +111,20 @@ class UsefulContactController extends Controller
     {
         $this->usefulContact->destroy($id);
         return redirect()->route('admin.pages.usefulContact.index')->with('success','Useful Contact deleted successfully.');
+    }
+
+    public function audit($id)
+    {
+        $data = Audit::with('user:id,nameEn,nameAr')
+        ->orWhere(function ($query) use ($id) {
+            $query->where('auditable_id', $id)
+            ->where('auditable_type',UsefulContact::class);
+        })
+        ->orderBy('created_at','DESC')
+        ->paginate(10);
+
+        $name = 'Useful Contact';
+
+        return view('admin.pages.administration.audit.index', compact('data','name'));
     }
 }

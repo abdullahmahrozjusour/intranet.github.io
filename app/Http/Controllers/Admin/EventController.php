@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Audit;
+use App\Models\Event;
 use App\Repositories\Event\EventInterface;
 use Illuminate\Http\Request;
 
@@ -18,6 +20,7 @@ class EventController extends Controller
         $this->middleware('permission:create-event', ['only' => ['create','store']]);
         $this->middleware('permission:edit-event', ['only' => ['edit','update']]);
         $this->middleware('permission:delete-event', ['only' => ['destroy']]);
+        $this->middleware('permission:audit-event', ['only' => ['audit']]);
     }
 
     /**
@@ -107,5 +110,20 @@ class EventController extends Controller
     {
         $this->event->destroy($id);
         return redirect()->route('admin.home.event.index')->with('success','Event deleted successfully.');
+    }
+
+    public function audit($id)
+    {
+        $data = Audit::with('user:id,nameEn,nameAr')
+        ->orWhere(function ($query) use ($id) {
+            $query->where('auditable_id', $id)
+            ->where('auditable_type',Event::class);
+        })
+        ->orderBy('created_at','DESC')
+        ->paginate(10);
+
+        $name = 'Event';
+
+        return view('admin.pages.administration.audit.index', compact('data','name'));
     }
 }

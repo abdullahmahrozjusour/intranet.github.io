@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreRoleRequest;
 use App\Http\Requests\UpdateRoleRequest;
+use App\Models\Audit;
 use App\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Illuminate\View\View;
@@ -37,6 +38,7 @@ class RoleController extends Controller
         $this->middleware('permission:create-role', ['only' => ['create','store']]);
         $this->middleware('permission:edit-role', ['only' => ['edit','update']]);
         $this->middleware('permission:delete-role', ['only' => ['destroy']]);
+        $this->middleware('permission:audit-role', ['only' => ['audit']]);
     }
     /**
      * Display a listing of the resource.
@@ -109,7 +111,7 @@ class RoleController extends Controller
     public function edit(Role $role)
     {
         if($role->name=='Super Admin'){
-            return back()->with('success','SUPER ADMIN ROLE CAN NOT BE EDITABLE');
+            return back()->with('success','Super Admin role cannot be editable');
         }
 
         $rolePermissions = DB::table("role_has_permissions")->where("role_id",$role->id)
@@ -156,7 +158,7 @@ class RoleController extends Controller
     public function destroy(Role $role): RedirectResponse
     {
         if($role->name=='Super Admin'){
-            return back()->with('success','SUPER ADMIN ROLE CAN NOT BE DELETED');
+            return back()->with('success','Super Admin role cannot be deleteable');
         }
         // if(auth()->user()->hasRole($role->name)){
         //     abort(403, 'CAN NOT DELETE SELF ASSIGNED ROLE');
@@ -165,5 +167,20 @@ class RoleController extends Controller
         $role->syncPermissions([]);
         return redirect()->route('admin.administration.role.index')
                 ->withSuccess('Role is deleted successfully.');
+    }
+
+    public function audit($id)
+    {
+        $data = Audit::with('user:id,nameEn,nameAr')
+        ->orWhere(function ($query) use ($id) {
+            $query->where('auditable_id', $id)
+            ->where('auditable_type',Role::class);
+        })
+        ->orderBy('created_at','DESC')
+        ->paginate(10);
+
+        $name = 'Role';
+
+        return view('admin.pages.administration.audit.index', compact('data','name'));
     }
 }

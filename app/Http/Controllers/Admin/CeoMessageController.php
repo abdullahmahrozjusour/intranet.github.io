@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Constants\Type;
 use App\Helpers\ImageHelper;
 use App\Http\Controllers\Controller;
+use App\Models\Audit;
+use App\Models\Page;
 use App\Repositories\CeoMessage\CeoMessageInterface;
 use Illuminate\Http\Request;
 
@@ -20,6 +22,7 @@ class CeoMessageController extends Controller
         // $this->middleware('permission:create-ceo-message', ['only' => ['create','store']]);
         $this->middleware('permission:edit-ceo-message', ['only' => ['edit','update']]);
         // $this->middleware('permission:delete-ceo-message', ['only' => ['destroy']]);
+        $this->middleware('permission:audit-ceo-message', ['only' => ['audit']]);
     }
 
     /**
@@ -85,5 +88,20 @@ class CeoMessageController extends Controller
      */
     public function destroy(string $id)
     {
+    }
+
+    public function audit($id)
+    {
+        $data = Audit::with('user:id,nameEn,nameAr')
+        ->orWhere(function ($query) use ($id) {
+            $query->where('auditable_id', $id)
+            ->where('auditable_type',Page::class);
+        })
+        ->orderBy('created_at','DESC')
+        ->paginate(10);
+
+        $name = 'Ceo Message';
+
+        return view('admin.pages.administration.audit.index', compact('data','name'));
     }
 }

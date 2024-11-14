@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Helpers\ImageHelper;
 use App\Http\Controllers\Controller;
+use App\Models\Audit;
+use App\Models\DownloadCenter;
 use App\Repositories\DownloadCenter\DownloadCenterInterface;
 use Illuminate\Http\Request;
 
@@ -19,6 +21,7 @@ class DownloadCenterController extends Controller
         $this->middleware('permission:create-download-center', ['only' => ['create','store']]);
         $this->middleware('permission:edit-download-center', ['only' => ['edit','update']]);
         $this->middleware('permission:delete-download-center', ['only' => ['destroy']]);
+        $this->middleware('permission:audit-download-center', ['only' => ['audit']]);
     }
 
     /**
@@ -140,5 +143,20 @@ class DownloadCenterController extends Controller
     {
         $this->downloadCenter->destroy($id);
         return redirect()->route('admin.pages.downloadCenter.index')->with('success','Download Center deleted successfully.');
+    }
+
+    public function audit($id)
+    {
+        $data = Audit::with('user:id,nameEn,nameAr')
+        ->orWhere(function ($query) use ($id) {
+            $query->where('auditable_id', $id)
+            ->where('auditable_type',DownloadCenter::class);
+        })
+        ->orderBy('created_at','DESC')
+        ->paginate(10);
+
+        $name = 'Download Center';
+
+        return view('admin.pages.administration.audit.index', compact('data','name'));
     }
 }

@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Constants\Type;
 use App\Helpers\ImageHelper;
 use App\Http\Controllers\Controller;
+use App\Models\Audit;
+use App\Models\Page;
+use App\Models\PageData;
 use App\Repositories\MissionVision\MissionVisionInterface;
 use App\Repositories\PageData\PageDataInterface;
 use Illuminate\Http\Request;
@@ -22,8 +25,10 @@ class MissionVisionController extends Controller
         $this->middleware('permission:view-mission-and-vision', ['only' => ['index']]);
         // $this->middleware('permission:create-mission-and-vision', ['only' => ['create','store']]);
         $this->middleware('permission:edit-mission-and-vision', ['only' => ['edit','update']]);
-        $this->middleware('permission:update-mission-and-vision', ['only' => ['updateData']]);
+        $this->middleware('permission:edit-main-mission-and-vision', ['only' => ['updateData']]);
         $this->middleware('permission:delete-mission-and-vision', ['only' => ['destroy']]);
+        $this->middleware('permission:audit-mission-and-vision', ['only' => ['audit']]);
+        $this->middleware('permission:audit-main-mission-and-vision', ['only' => ['auditMain']]);
     }
 
     /**
@@ -169,5 +174,35 @@ class MissionVisionController extends Controller
         );
         $data = $this->missionVision->update($id,$request->all());
         return redirect()->route('admin.pages.missionVision.index')->with('success','Mission & Vision updated successfully.');
+    }
+
+    public function audit($id)
+    {
+        $data = Audit::with('user:id,nameEn,nameAr')
+        ->orWhere(function ($query) use ($id) {
+            $query->where('auditable_id', $id)
+            ->where('auditable_type',PageData::class);
+        })
+        ->orderBy('created_at','DESC')
+        ->paginate(10);
+
+        $name = 'Mission & Vision';
+
+        return view('admin.pages.administration.audit.index', compact('data','name'));
+    }
+
+    public function auditMain($id)
+    {
+        $data = Audit::with('user:id,nameEn,nameAr')
+        ->orWhere(function ($query) use ($id) {
+            $query->where('auditable_id', $id)
+            ->where('auditable_type',Page::class);
+        })
+        ->orderBy('created_at','DESC')
+        ->paginate(10);
+
+        $name = 'Mission & Vision';
+
+        return view('admin.pages.administration.audit.index', compact('data','name'));
     }
 }

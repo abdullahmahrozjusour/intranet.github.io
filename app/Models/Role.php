@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use OwenIt\Auditing\Contracts\Auditable;
 use Spatie\Permission\Contracts\Role as RoleContract;
 use Spatie\Permission\Exceptions\GuardDoesNotMatch;
 use Spatie\Permission\Exceptions\PermissionDoesNotExist;
@@ -18,10 +19,11 @@ use Spatie\Permission\Traits\RefreshesPermissionCache;
  * @property ?\Illuminate\Support\Carbon $created_at
  * @property ?\Illuminate\Support\Carbon $updated_at
  */
-class Role extends Model implements RoleContract
+class Role extends Model implements RoleContract, Auditable
 {
     use HasPermissions;
     use RefreshesPermissionCache;
+    use \OwenIt\Auditing\Auditable;
 
     protected $table = 'roles';
     protected $guarded = [];

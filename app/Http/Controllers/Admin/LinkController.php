@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Audit;
+use App\Models\Link;
 use App\Repositories\Link\LinkInterface;
 use Illuminate\Http\Request;
 
@@ -18,6 +20,7 @@ class LinkController extends Controller
         $this->middleware('permission:create-link', ['only' => ['create','store']]);
         $this->middleware('permission:edit-link', ['only' => ['edit','update']]);
         $this->middleware('permission:delete-link', ['only' => ['destroy']]);
+        $this->middleware('permission:audit-link', ['only' => ['audit']]);
     }
 
     /**
@@ -99,5 +102,20 @@ class LinkController extends Controller
     {
         $this->link->destroy($id);
         return redirect()->route('admin.home.link.index')->with('success','Link deleted successfully.');
+    }
+
+    public function audit($id)
+    {
+        $data = Audit::with('user:id,nameEn,nameAr')
+        ->orWhere(function ($query) use ($id) {
+            $query->where('auditable_id', $id)
+            ->where('auditable_type',Link::class);
+        })
+        ->orderBy('created_at','DESC')
+        ->paginate(10);
+
+        $name = 'Link';
+
+        return view('admin.pages.administration.audit.index', compact('data','name'));
     }
 }

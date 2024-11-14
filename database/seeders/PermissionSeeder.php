@@ -25,6 +25,11 @@ class PermissionSeeder extends Seeder
                 'guard_name'=>'web'
             ],
             [
+                'name'=>'audit-ceo-message',
+                'value'=>'ceo-message',
+                'guard_name'=>'web'
+            ],
+            [
                 'name'=>'view-mission-and-vision',
                 'value'=>'mission-and-vision',
                 'guard_name'=>'web'
@@ -40,12 +45,22 @@ class PermissionSeeder extends Seeder
                 'guard_name'=>'web'
             ],
             [
-                'name'=>'update-mission-and-vision',
+                'name'=>'edit-main-mission-and-vision',
                 'value'=>'mission-and-vision',
                 'guard_name'=>'web'
             ],
             [
                 'name'=>'delete-mission-and-vision',
+                'value'=>'mission-and-vision',
+                'guard_name'=>'web'
+            ],
+            [
+                'name'=>'audit-mission-and-vision',
+                'value'=>'mission-and-vision',
+                'guard_name'=>'web'
+            ],
+            [
+                'name'=>'audit-main-mission-and-vision',
                 'value'=>'mission-and-vision',
                 'guard_name'=>'web'
             ],
@@ -65,12 +80,22 @@ class PermissionSeeder extends Seeder
                 'guard_name'=>'web'
             ],
             [
-                'name'=>'update-board-of-director',
+                'name'=>'edit-main-board-of-director',
                 'value'=>'board-of-director',
                 'guard_name'=>'web'
             ],
             [
                 'name'=>'delete-board-of-director',
+                'value'=>'board-of-director',
+                'guard_name'=>'web'
+            ],
+            [
+                'name'=>'audit-board-of-director',
+                'value'=>'board-of-director',
+                'guard_name'=>'web'
+            ],
+            [
+                'name'=>'audit-main-board-of-director',
                 'value'=>'board-of-director',
                 'guard_name'=>'web'
             ],
@@ -95,6 +120,11 @@ class PermissionSeeder extends Seeder
                 'guard_name'=>'web'
             ],
             [
+                'name'=>'audit-announcement',
+                'value'=>'announcement',
+                'guard_name'=>'web'
+            ],
+            [
                 'name'=>'view-link',
                 'value'=>'link',
                 'guard_name'=>'web'
@@ -111,6 +141,11 @@ class PermissionSeeder extends Seeder
             ],
             [
                 'name'=>'delete-link',
+                'value'=>'link',
+                'guard_name'=>'web'
+            ],
+            [
+                'name'=>'audit-link',
                 'value'=>'link',
                 'guard_name'=>'web'
             ],
@@ -135,6 +170,11 @@ class PermissionSeeder extends Seeder
                 'guard_name'=>'web'
             ],
             [
+                'name'=>'audit-event',
+                'value'=>'event',
+                'guard_name'=>'web'
+            ],
+            [
                 'name'=>'view-modal-page',
                 'value'=>'modal-page',
                 'guard_name'=>'web'
@@ -155,6 +195,11 @@ class PermissionSeeder extends Seeder
             //     'guard_name'=>'web'
             // ],
             [
+                'name'=>'audit-modal-page',
+                'value'=>'modal-page',
+                'guard_name'=>'web'
+            ],
+            [
                 'name'=>'view-download-center',
                 'value'=>'download-center',
                 'guard_name'=>'web'
@@ -171,6 +216,11 @@ class PermissionSeeder extends Seeder
             ],
             [
                 'name'=>'delete-download-center',
+                'value'=>'download-center',
+                'guard_name'=>'web'
+            ],
+            [
+                'name'=>'audit-download-center',
                 'value'=>'download-center',
                 'guard_name'=>'web'
             ],
@@ -195,6 +245,11 @@ class PermissionSeeder extends Seeder
                 'guard_name'=>'web'
             ],
             [
+                'name'=>'audit-organization',
+                'value'=>'organization',
+                'guard_name'=>'web'
+            ],
+            [
                 'name'=>'view-user',
                 'value'=>'user',
                 'guard_name'=>'web'
@@ -211,6 +266,11 @@ class PermissionSeeder extends Seeder
             ],
             [
                 'name'=>'delete-user',
+                'value'=>'user',
+                'guard_name'=>'web'
+            ],
+            [
+                'name'=>'audit-user',
                 'value'=>'user',
                 'guard_name'=>'web'
             ],
@@ -235,6 +295,11 @@ class PermissionSeeder extends Seeder
                 'guard_name'=>'web'
             ],
             [
+                'name'=>'audit-role',
+                'value'=>'role',
+                'guard_name'=>'web'
+            ],
+            [
                 'name'=>'view-useful-contact',
                 'value'=>'useful-contact',
                 'guard_name'=>'web'
@@ -251,6 +316,11 @@ class PermissionSeeder extends Seeder
             ],
             [
                 'name'=>'delete-useful-contact',
+                'value'=>'useful-contact',
+                'guard_name'=>'web'
+            ],
+            [
+                'name'=>'audit-useful-contact',
                 'value'=>'useful-contact',
                 'guard_name'=>'web'
             ],
@@ -272,6 +342,16 @@ class PermissionSeeder extends Seeder
             [
                 'name'=>'delete-contact',
                 'value'=>'contact',
+                'guard_name'=>'web'
+            ],
+            [
+                'name'=>'audit-contact',
+                'value'=>'contact',
+                'guard_name'=>'web'
+            ],
+            [
+                'name'=>'audit-view',
+                'value'=>'audit',
                 'guard_name'=>'web'
             ],
         ];

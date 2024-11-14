@@ -73,6 +73,22 @@ class RoleSeeder extends Seeder
             // 'create-contact',
             // 'edit-contact',
             'delete-contact',
+            'audit-ceo-message',
+            'audit-mission-and-vision',
+            'audit-main-mission-and-vision',
+            'audit-board-of-director',
+            'audit-main-board-of-director',
+            'audit-announcement',
+            'audit-link',
+            'audit-event',
+            'audit-modal-page',
+            'audit-download-center',
+            'audit-organization',
+            'audit-user',
+            'audit-role',
+            'audit-useful-contact',
+            'audit-contact',
+            'audit-view'
         ]);
     }
 }

@@ -5,6 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Constants\Type;
 use App\Helpers\ImageHelper;
 use App\Http\Controllers\Controller;
+use App\Models\Announcement;
+use App\Models\Audit;
+use App\Models\Page;
+use App\Models\PageData;
 use App\Repositories\Director\DirectorInterface;
 use App\Repositories\PageData\PageDataInterface;
 use Illuminate\Http\Request;
@@ -22,8 +26,10 @@ class DirectorController extends Controller
         $this->middleware('permission:view-board-of-director', ['only' => ['index']]);
         $this->middleware('permission:create-board-of-director', ['only' => ['create','store']]);
         $this->middleware('permission:edit-board-of-director', ['only' => ['edit','update']]);
-        $this->middleware('permission:update-board-of-director', ['only' => ['updateData']]);
+        $this->middleware('permission:edit-main-board-of-director', ['only' => ['updateData']]);
         $this->middleware('permission:delete-board-of-director', ['only' => ['destroy']]);
+        $this->middleware('permission:audit-board-of-director', ['only' => ['audit']]);
+        $this->middleware('permission:audit-main-board-of-director', ['only' => ['auditMain']]);
     }
 
     /**
@@ -187,5 +193,35 @@ class DirectorController extends Controller
         );
         $data = $this->director->update($id,$request->all());
         return redirect()->route('admin.pages.director.index')->with('success','Board of Director updated successfully.');
+    }
+
+    public function audit($id)
+    {
+        $data = Audit::with('user:id,nameEn,nameAr')
+        ->orWhere(function ($query) use ($id) {
+            $query->where('auditable_id', $id)
+            ->where('auditable_type',PageData::class);
+        })
+        ->orderBy('created_at','DESC')
+        ->paginate(10);
+
+        $name = 'Board of Director';
+
+        return view('admin.pages.administration.audit.index', compact('data','name'));
+    }
+
+    public function auditMain($id)
+    {
+        $data = Audit::with('user:id,nameEn,nameAr')
+        ->orWhere(function ($query) use ($id) {
+            $query->where('auditable_id', $id)
+            ->where('auditable_type',Page::class);
+        })
+        ->orderBy('created_at','DESC')
+        ->paginate(10);
+
+        $name = 'Board of Director';
+
+        return view('admin.pages.administration.audit.index', compact('data','name'));
     }
 }
