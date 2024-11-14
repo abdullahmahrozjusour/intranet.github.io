@@ -61,13 +61,8 @@ class WebController extends Controller
     {
         $data = [];
 
-        $modalType = [Type::TYPE_POLICIES, Type::TYPE_PROCEDURES];
-        $columnType = 'type';
-        foreach ($modalType as $key => $value) {
-            $data[$value] = $this->modal->getModalPage($columnType,$value);
-        }
-
         $data['ceoMessage'] = $this->ceoMessage->where(['type'=>Type::TYPE_CEO_MESSAGE]);
+        $columnType = 'type';
 
         $columnStatus = 'status';
         $statusActive = Status::STATUS_ACTIVE;
