@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Helpers\ImageHelper;
 use App\Http\Controllers\Controller;
+use App\Models\Audit;
+use App\Models\Contact;
 use App\Repositories\Contact\ContactInterface;
 use Illuminate\Http\Request;
 
@@ -19,6 +21,7 @@ class ContactController extends Controller
         // $this->middleware('permission:create-contact', ['only' => ['create','store']]);
         // $this->middleware('permission:edit-contact', ['only' => ['edit','update']]);
         $this->middleware('permission:delete-contact', ['only' => ['destroy']]);
+        $this->middleware('permission:audit-contact', ['only' => ['audit']]);
     }
 
     /**
@@ -73,5 +76,20 @@ class ContactController extends Controller
     {
         $this->contact->destroy($id);
         return redirect()->route('admin.administration.contact.index')->with('success','Contact deleted successfully.');
+    }
+
+    public function audit($id)
+    {
+        $data = Audit::with('user:id,nameEn,nameAr')
+        ->orWhere(function ($query) use ($id) {
+            $query->where('auditable_id', $id)
+            ->where('auditable_type',Contact::class);
+        })
+        ->orderBy('created_at','DESC')
+        ->paginate(10);
+
+        $name = 'Contact';
+
+        return view('admin.pages.administration.audit.index', compact('data','name'));
     }
 }

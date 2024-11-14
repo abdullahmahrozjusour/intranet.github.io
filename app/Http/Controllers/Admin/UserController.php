@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Helpers\ImageHelper;
 use App\Http\Controllers\Controller;
+use App\Models\Audit;
 use App\Models\Role;
+use App\Models\User;
 use App\Repositories\User\UserInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -39,6 +41,7 @@ class UserController extends Controller
         $this->middleware('permission:create-user', ['only' => ['create','store']]);
         $this->middleware('permission:edit-user', ['only' => ['edit','update']]);
         $this->middleware('permission:delete-user', ['only' => ['destroy']]);
+        $this->middleware('permission:audit-user', ['only' => ['audit']]);
     }
 
     /**
@@ -122,6 +125,11 @@ class UserController extends Controller
     public function edit(string $id)
     {
         $data = $this->user->show($id);
+
+        if($data->hasRole('Super Admin')){
+            return back()->with('error','Super Admin user role cannot be editable');
+        }
+
         $userPermissions = DB::table("model_has_permissions")->where("model_id",$data->id)
         ->get()
         ->pluck('permission_id')
@@ -200,14 +208,29 @@ class UserController extends Controller
     public function destroy(string $id)
     {
         $user = $this->user->show($id);
-        if ($user->hasRole('Super Admin'))
-        {
-            return back()->with('success','SUPER ADMIN ROLE USERS CAN NOT BE DELETED');
+
+        if($user->hasRole('Super Admin')){
+            return back()->with('error','Super Admin user role cannot be deleteable');
         }
 
         $user->syncRoles([]);
         $user->syncPermissions([]);
         $this->user->destroy($id);
         return redirect()->route('admin.administration.user.index')->with('success','User deleted successfully.');
+    }
+
+    public function audit($id)
+    {
+        $data = Audit::with('user:id,nameEn,nameAr')
+        ->orWhere(function ($query) use ($id) {
+            $query->where('auditable_id', $id)
+            ->where('auditable_type',User::class);
+        })
+        ->orderBy('created_at','DESC')
+        ->paginate(10);
+
+        $name = 'User';
+
+        return view('admin.pages.administration.audit.index', compact('data','name'));
     }
 }

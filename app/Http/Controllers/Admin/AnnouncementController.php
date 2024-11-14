@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Announcement;
+use App\Models\Audit;
 use App\Repositories\Announcement\AnnouncementInterface;
 use Illuminate\Http\Request;
 
@@ -18,6 +20,7 @@ class AnnouncementController extends Controller
         $this->middleware('permission:create-announcement', ['only' => ['create','store']]);
         $this->middleware('permission:edit-announcement', ['only' => ['edit','update']]);
         $this->middleware('permission:delete-announcement', ['only' => ['destroy']]);
+        $this->middleware('permission:audit-announcement', ['only' => ['audit']]);
     }
 
     /**
@@ -107,5 +110,20 @@ class AnnouncementController extends Controller
     {
         $this->announcement->destroy($id);
         return redirect()->route('admin.home.announcement.index')->with('success','Announcement deleted successfully.');
+    }
+
+    public function audit($id)
+    {
+        $data = Audit::with('user:id,nameEn,nameAr')
+        ->orWhere(function ($query) use ($id) {
+            $query->where('auditable_id', $id)
+            ->where('auditable_type',Announcement::class);
+        })
+        ->orderBy('created_at','DESC')
+        ->paginate(10);
+
+        $name = 'Announcement';
+
+        return view('admin.pages.administration.audit.index', compact('data','name'));
     }
 }

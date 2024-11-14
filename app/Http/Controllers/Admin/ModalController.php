@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Audit;
+use App\Models\Modal;
 use App\Repositories\Modal\ModalInterface;
 use Illuminate\Http\Request;
 
@@ -18,6 +20,7 @@ class ModalController extends Controller
         // $this->middleware('permission:create-modal-page', ['only' => ['create','store']]);
         $this->middleware('permission:edit-modal-page', ['only' => ['edit','update']]);
         // $this->middleware('permission:delete-modal-page', ['only' => ['destroy']]);
+        $this->middleware('permission:audit-modal-page', ['only' => ['audit']]);
     }
 
     /**
@@ -103,5 +106,20 @@ class ModalController extends Controller
     {
         $this->modal->destroy($id);
         return redirect()->route('admin.home.modal.index')->with('success','Modal Page deleted successfully.');
+    }
+
+    public function audit($id)
+    {
+        $data = Audit::with('user:id,nameEn,nameAr')
+        ->orWhere(function ($query) use ($id) {
+            $query->where('auditable_id', $id)
+            ->where('auditable_type',Modal::class);
+        })
+        ->orderBy('created_at','DESC')
+        ->paginate(10);
+
+        $name = 'Modal Page';
+
+        return view('admin.pages.administration.audit.index', compact('data','name'));
     }
 }

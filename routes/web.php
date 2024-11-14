@@ -26,6 +26,7 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin'], function () {
 
     Route::middleware('auth')->group(function () {
         Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+        Route::get('audit/{id}/{name}', [DashboardController::class, 'audit'])->name('audit.show');
 
         Route::group(['as' => 'home.', 'prefix' => 'home'], function () {
             include('admin/ceoMessage.php');

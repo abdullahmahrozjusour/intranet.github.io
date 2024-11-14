@@ -6,11 +6,13 @@ use App\Constants\Status;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use OwenIt\Auditing\Contracts\Auditable;
 
-class Page extends Model
+class Page extends Model implements Auditable
 {
     use HasFactory;
     use SoftDeletes;
+    use \OwenIt\Auditing\Auditable;
     protected $table = 'pages';
     protected $guarded = [];
 

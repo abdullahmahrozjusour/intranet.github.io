@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Helpers\ImageHelper;
 use App\Http\Controllers\Controller;
+use App\Models\Audit;
+use App\Models\Organization;
 use App\Repositories\Organization\OrganizationInterface;
 use Illuminate\Http\Request;
 
@@ -19,6 +21,7 @@ class OrganizationController extends Controller
         $this->middleware('permission:create-organization', ['only' => ['create','store']]);
         $this->middleware('permission:edit-organization', ['only' => ['edit','update']]);
         $this->middleware('permission:delete-organization', ['only' => ['destroy']]);
+        $this->middleware('permission:audit-organization', ['only' => ['audit']]);
     }
 
     /**
@@ -136,5 +139,20 @@ class OrganizationController extends Controller
     {
         $this->organization->destroy($id);
         return redirect()->route('admin.pages.organization.index')->with('success','Organization deleted successfully.');
+    }
+
+    public function audit($id)
+    {
+        $data = Audit::with('user:id,nameEn,nameAr')
+        ->orWhere(function ($query) use ($id) {
+            $query->where('auditable_id', $id)
+            ->where('auditable_type',Organization::class);
+        })
+        ->orderBy('created_at','DESC')
+        ->paginate(10);
+
+        $name = 'Link';
+
+        return view('admin.pages.administration.audit.index', compact('data','name'));
     }
 }
