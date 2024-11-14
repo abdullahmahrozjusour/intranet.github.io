@@ -16,7 +16,7 @@ body {
 }
 
 .header-home {
-    background: url(../imgs/header-pattern.png) #21295B no-repeat bottom center;
+    background: url(../imgs/header-pattern.png) #202e5d no-repeat bottom center;
 }
 
 .container {
@@ -103,7 +103,7 @@ header {
 
                     &.active {
                         a {
-                            background-color: #91193b;
+                            background-color: #8d1942;
                             color: #fff;
                         }
                     }
@@ -149,7 +149,7 @@ header {
 
     &+.cap-layer {
         /* display: none;   */
-        background-color: #91193b;
+        background-color: #8d1942;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -189,7 +189,7 @@ html .ui-button.ui-state-disabled:hover,
 html .ui-button.ui-state-disabled:active {
     border-radius: 3px;
     background: hsl(232.63deg 45.6% 24.51% / 31%);
-    border-color: #21295B;
+    border-color: #202e5d;
 }
 
 #datepicker .ui-datepicker-inline {
@@ -199,7 +199,7 @@ html .ui-button.ui-state-disabled:active {
 
 .ui-widget-header {
     background: hsl(232.63deg 45.6% 24.51% / 31%);
-    border-color: #21295B;
+    border-color: #202e5d;
 }
 
 .c-blink {
@@ -217,19 +217,19 @@ html .ui-button.ui-state-disabled:active {
         bottom: 0;
         top: 0;
         animation: rotation 0.7s linear 0.2s infinite;
-        background: linear-gradient(var(--gradient-angle), #91193b, #3f0012, #91193b91);
+        background: linear-gradient(var(--gradient-angle), #8d1942, #3f0012, #8d194291);
         border-radius: 0.55rem;
     }
 }
 
 @keyframes blink {
     0% {
-        background-color: #21295B;
+        background-color: #202e5d;
         color: white;
     }
 
     25% {
-        background-color: #91193B;
+        background-color: #8d1942;
         color: white;
     }
 
@@ -239,12 +239,12 @@ html .ui-button.ui-state-disabled:active {
     }
 
     75% {
-        background-color: #21295B;
+        background-color: #202e5d;
         color: white;
     }
 
     100% {
-        background-color: #91193B;
+        background-color: #8d1942;
         color: white;
     }
 }
@@ -271,6 +271,6 @@ html .ui-button.ui-state-disabled:active {
 a.ui-button:active,
 .ui-button:active,
 .ui-button.ui-state-active:hover {
-    background-color: #91193B !important;
+    background-color: #8d1942 !important;
     color: #fff !important;
 }
