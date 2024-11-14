@@ -9,10 +9,15 @@
                 <div class="mt-6 text-lg">
                     {!! html_entity_decode(Str::words($data['ceoMessage'][0]['descEn'], 26, '...')) !!}
                 </div>
-                <a class="btn-blue mt-4 modal-in" href="#ceoMsg">
-                    <span>Read More</span>
-                    <img src="{{ asset('assets/imgs/double-arrrow.svg') }}" alt="">
-                </a>
+                
+                <div class="flex gap-2 ">
+                    <a class="btn-blue mt-4 modal-in" href="#ceoMsg">
+                        <span>Read More</span>
+                        <img src="{{ asset('assets/imgs/double-arrrow.svg') }}" alt="">
+                    </a>
+                    {{-- <a href="#policyModal" class="btn-white modal-in">{{ $data['Policies']['titleEn'] }}</a>
+                    <a href="#Procedure" class="btn-blue modal-in">{{ $data['Procedures']['titleEn'] }}</a> --}}
+                </div>
             </div>
             <div class="md:max-w-[415px] w-[30%] hidden lg:block">
                 <img src="{{ asset('assets/imgs/ceo.png') }}" class="max-w-[80%]" alt="">
@@ -299,7 +304,7 @@
                     </div>
                 </div>
                 <div class="md:max-w-[870px] md:w-[55%] w-full bg-black/25 p-4 rounded-lg gap-4 grid grid-cols-2">
-                    <h3 class="sm:text-2xl text-xl col-span-2 font-semibold">View Jusour policies and procedures</h3>
+                    {{-- <h3 class="sm:text-2xl text-xl col-span-2 font-semibold">View Jusour policies and procedures</h3> --}}
                     <div id="weather" class="flex p-4 rounded-lg gap-6">
                         <div>
                             <span>Partly Cloudy</span>
@@ -313,13 +318,10 @@
                             <span class="block font-normal">Sunday</span>
                         </div>
                     </div>
-                    <div class="flex gap-2 self-center justify-end">
-                        <a href="#policyModal" class="btn-white modal-in">{{ $data['Policies']['titleEn'] }}</a>
-                        <a href="#Procedure" class="btn-blue modal-in">{{ $data['Procedures']['titleEn'] }}</a>
-                    </div>
+                    
                 </div>
             </div>
         </div>
     </div>
-    @include('components.web.modals',['ceoMessage'=>$data['ceoMessage'][0],'policies'=>$data['Policies'],'procedures'=>$data['Procedures']])
+    
 @endsection

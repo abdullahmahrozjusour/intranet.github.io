@@ -34,7 +34,11 @@ body {
     font-size: 12px;
     line-height: 14px;
 }
-
+.btn-flex{
+    flex-wrap: wrap;
+    max-width: 175px;
+    justify-content: center;
+}
 .news {
     width: 100%;
 
