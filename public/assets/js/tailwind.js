@@ -4,8 +4,8 @@ tailwind.config = {
         extend: {
             colors: {
                 white: '#ffffff',
-                primary: '#21295B',
-                secondary: '#91193B',
+                primary: '#202e5d',
+                secondary: '#8d1942',
                 black: '#000000'
             }
         }
