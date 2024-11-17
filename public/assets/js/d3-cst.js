@@ -486,7 +486,7 @@ function drawOrganizationChart(params) {
                 item.unit.value +
                 "</button>";
             strVar +=
-                '      <h4 class="tags-wrapper">             <span class="title"><i class="fa fa-tags" aria-hidden="true"></i>';
+                '      <h4 class="tags-wrapper" style="visibility: hidden">             <span class="title"><i class="fa fa-tags" aria-hidden="true"></i>';
             strVar += "        ";
             strVar +=
                 '        </span>           <ul class="tags">' +
