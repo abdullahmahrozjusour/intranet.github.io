@@ -51,7 +51,7 @@
             <h2 class="font-bold lg:text-5xl text-3xl text-white">Useful Contacts</h2>
         </div>
         <div class="flex md:flex-nowrap flex-wrap gap-6 py-8 ">
-            <div
+            <div style="display: none"
                 class="contact-form bg-white lg:py-6 lg:px-10 p-4 rounded-xl shadow-md w-full max-w-[600px] shrink-0 grow-0">
 
                 <form action="{{ route('contact.store') }}" method="post">
@@ -124,7 +124,7 @@
             </div>
             <div>
                 <h3 class="text-2xl font-medium text-white mb-4">Useful Contacts</h3>
-                <div class="grid sm:grid-cols-2 gap-6">
+                <div class="grid sm:grid-cols-4 gap-6">
                     @foreach ($data['useful'] as $item)
                     <div class="flex flex-col gap-1">
                         <h4 class="font-bold text-base text-secondary">{{ $item['nameEn'] }}</h4>

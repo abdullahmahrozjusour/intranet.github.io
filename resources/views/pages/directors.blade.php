@@ -30,7 +30,7 @@
                         @endphp
                                 <div class="flex gap-6 sm:flex-nowrap flex-wrap flex-row">
                                     <div
-                                        class="border-2 border-secondary h-[200px] w-[200px] basis-[200px] grow-0 shrink-0 rounded-full overflow-hidden">
+                                        class="border-2 border-secondary h-[200px] w-[200px] basis-[200px] grow-0 shrink-0   overflow-hidden">
                                         <img src="{{ $item['logo'] }}" class="h-full w-full object-cover object-center" alt="{{ $item['logo'] }}">
                                     </div>
                                     <div class="text-white">

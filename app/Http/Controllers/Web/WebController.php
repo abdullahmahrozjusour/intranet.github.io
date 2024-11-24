@@ -132,4 +132,13 @@ class WebController extends Controller
         $data = $this->contact->store($request->all());
         return back()->with('success','General Inquiry submitted successfully');
     }
+
+    public function policy()
+    { 
+        return view('pages.policy');
+    }
+    public function procedure()
+    { 
+        return view('pages.procedure');
+    }
 }

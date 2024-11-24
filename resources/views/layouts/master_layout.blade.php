@@ -24,104 +24,167 @@
 
 <body>
     @if (url('/'))
-    <div class="header-home bg-[#21295B]">
-        @endif
-        <header class="py-6">
-            <div class="container-in">
-                <div class="flex justify-between  lg:flex-nowrap flex-wrap gap-2 lg:gap-0">
-                    <div class="logo">
-                        <a href="">
-                            <img src="{{ url('assets/imgs/logo.png') }}" class="lg:max-h-14 max-h-12" alt="">
-                        </a>
-                    </div>
-                    <div class="nav">
-                        <ul class="menu order-2 lg:order-1" id="menu">
-                            <li class="@if (\Request::is('/')) active @endif"><a href="{{ route('home') }}">Home</a>
-                            </li>
-                            <li class="@if (\Request::is('organization')) active @endif"><a
-                                    href="{{ route('organization') }}">Organization</a></li>
-                            <li class="@if (\Request::is('ourMission')) active @endif"><a
-                                    href="{{ route('ourMission') }}">Our mission </a></li>
-                            <li class="@if (\Request::is('boardOfDirector')) active @endif"><a
-                                    href="{{ route('boardOfDirector') }}">Board of Directors</a></li>
-                            <li class="@if (\Request::is('usefulContacts')) active @endif"><a
-                                    href="{{ route('usefulContacts') }}">Useful Contacts </a></li>
-                        </ul>
-                        <div class="search relative order-1 lg:order-2 autocomplete-container">
-                            <span class="absolute top-2 left-3">
-                                <img src="{{ url('assets/imgs/search.svg') }}" alt="">
-                            </span>
-                            <input type="text" id="autocomplete-input"
-                                class="h-[39px] w-[380px] bg-transparent pl-12 text-white border-2 border-white rounded-3xl"
-                                placeholder="Search Directory">
-                            <div id="suggestions" class="suggestions bg-white absolute top-full  w-full left-0 right-0">
-                            </div>
+        <div class="header-home bg-[#21295B]">
+    @endif
+    <header class="py-6">
+        <div class="container-in">
+            <div class="flex justify-between  lg:flex-nowrap flex-wrap gap-2 lg:gap-0">
+                <div class="logo">
+                    <a href="">
+                        <img src="{{ url('assets/imgs/logo.png') }}" class="lg:max-h-14 max-h-12" alt="">
+                    </a>
+                </div>
+                <div class="nav">
+                    <ul class="menu order-2 lg:order-1" id="menu">
+                        <li class="@if (\Request::is('/')) active @endif"><a
+                                href="{{ route('home') }}">Home</a>
+                        </li>
+                        <li class="@if (\Request::is('organization')) active @endif"><a
+                                href="{{ route('organization') }}">Organization</a></li>
+                        <li class="@if (\Request::is('ourMission')) active @endif"><a
+                                href="{{ route('ourMission') }}">Our mission </a></li>
+                        <li class="@if (\Request::is('boardOfDirector')) active @endif"><a
+                                href="{{ route('boardOfDirector') }}">Board of Directors</a></li>
+                        <li class="@if (\Request::is('usefulContacts')) active @endif"><a
+                                href="{{ route('usefulContacts') }}">Contacts</a></li>
+                    </ul>
+                    <div class="search relative order-1 lg:order-2 autocomplete-container">
+                        <span class="absolute top-2 left-3">
+                            <img src="{{ url('assets/imgs/search.svg') }}" alt="">
+                        </span>
+                        <input type="text" id="autocomplete-input"
+                            class="h-[39px] w-[380px] bg-transparent pl-12 text-white border-2 border-white rounded-3xl"
+                            placeholder="Search Directory">
+                        <div id="suggestions" class="suggestions bg-white absolute top-full  w-full left-0 right-0">
                         </div>
                     </div>
-                    <div class="flex gap-2 btn-flex">
-                        <a class="btn-blue" href="{{ route('downloadCenter') }}">
-                            <img src="{{ url('assets/imgs/download.svg') }}" alt="">
-                            <span>Download Center</span>
-                        </a>
+                </div>
+                <div class="flex gap-2 btn-flex">
+                    <a class="btn-blue" href="{{ route('downloadCenter') }}">
+                        <img src="{{ url('assets/imgs/download.svg') }}" alt="">
+                        <span>Download Center</span>
+                    </a>
 
-                        <a href="#menu" class="nav-menu-link lg:hidden text-white text-xl">
-                            <i class="fa-solid fa-bars"></i>
-                        </a>
-                        <div class="flex gap-1">
-                            @if($policyAndProcedure['Policies'])<a href="#policyModal" class="btn-white modal-in">{{
+
+                    {{-- <div class="flex gap-1">
+                            @if ($policyAndProcedure['Policies'])<a href="#policyModal" class="btn-white modal-in">{{
                                 $policyAndProcedure['Policies']['titleEn'] }}</a> @endif
-                            @if($policyAndProcedure['Procedures'])<a href="#Procedure" class="btn-blue modal-in">{{
+                            @if ($policyAndProcedure['Procedures'])<a href="#Procedure" class="btn-blue modal-in">{{
                                 $policyAndProcedure['Procedures']['titleEn'] }}</a> @endif
-                        </div>
-                    </div>
+                        </div> --}}
+                    <a class="btn-white whitespace-nowrap modal-in" href="#policesProceduresModal"
+                        href="{{ route('downloadCenter') }}">
+                        Policies & Procedures
+                    </a>
+                    <a href="#menu" class="nav-menu-link lg:hidden text-white text-xl">
+                        <i class="fa-solid fa-bars"></i>
+                    </a>
                 </div>
             </div>
-        </header>
-        @yield('content')
-        @include('components.web.modals',['policies'=>$policyAndProcedure['Policies'],'procedures'=>$policyAndProcedure['Procedures']])
-        <footer class="py-4">
-            <div class="container-in">
-                <div class="flex flex-wrap md:flex-nowrap gap-2 sm:justify-between justify-center text-white">
-                    <div class="text-sm text-center md:text-left">&copy; 2024 Qatar Manpower Solutions Company (Jusour),
-                        All
-                        Right Reserved</div>
-                    <div class="flex gap-4 flex-wrap sm:flex-nowrap justify-center items-center">
-                        <a href="mailto:fo@jusour.qa">
-                            <i class="fa-regular fa-envelope"></i>
-                            info@jusour.qa
-                        </a>
-                        <a href="tel:+97444011044">
-                            <i class="fa-solid fa-phone"></i>
-                            +974 44011044
-                        </a>
-                        <div class="flex text-white gap-2 text-xl">
-                            <a href="https://www.facebook.com/jusourqatar" target="_blank"><i
-                                    class="fa-brands fa-facebook"></i></a>
-                            <a href="https://x.com/Jusour_qa" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
-                            <a href="https://www.linkedin.com/in/jusourqa" target="_blank"><i
-                                    class="fa-brands fa-linkedin"></i></a>
-                        </div>
-
+        </div>
+    </header>
+    @yield('content')
+    @include('components.web.modals', [
+        'policies' => $policyAndProcedure['Policies'],
+        'procedures' => $policyAndProcedure['Procedures'],
+    ])
+    <footer class="py-4">
+        <div class="container-in">
+            <div class="flex flex-wrap md:flex-nowrap gap-2 sm:justify-between justify-center text-white">
+                <div class="text-sm text-center md:text-left">&copy; 2024 Qatar Manpower Solutions Company (Jusour),
+                    All
+                    Right Reserved</div>
+                <div class="flex gap-4 flex-wrap sm:flex-nowrap justify-center items-center">
+                    <a href="mailto:fo@jusour.qa">
+                        <i class="fa-regular fa-envelope"></i>
+                        info@jusour.qa
+                    </a>
+                    <a href="tel:+97444011044">
+                        <i class="fa-solid fa-phone"></i>
+                        +974 44011044
+                    </a>
+                    <div class="flex text-white gap-2 text-xl">
+                        <a href="https://www.facebook.com/jusourqatar" target="_blank"><i
+                                class="fa-brands fa-facebook"></i></a>
+                        <a href="https://x.com/Jusour_qa" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="https://www.linkedin.com/in/jusourqa" target="_blank"><i
+                                class="fa-brands fa-linkedin"></i></a>
                     </div>
-                </div>
-        </footer>
 
-        <script type="text/javascript" src="{{ asset('assets/js/jquery.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('assets/js/slick.min.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('assets/js/jquery-ui.js') }}"></script>
-        <script src="{{ asset('theme/js/select2.min.js') }}" nonce="intranet"></script>
-        <script type="text/javascript" src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js'>
-        </script>
-        <script type="text/javascript" src="{{ asset('assets/js/script.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('assets/js/index.js') }}"></script>
-        <script>
-            $(document).ready(function() {
+                </div>
+            </div>
+    </footer>
+    <!-- Modal for CEO Message -->
+    <div class="fixed left-0 right-0 top-0 bottom-0 h-full w-full bg-black/50 overflow-x-hidden overflow-y-auto hidden"
+        id="policesProceduresModal">
+        <div class="overlay-modal fixed left-0 right-0 top-0 bottom-0 h-full w-full bg-black/50"></div>
+        <div class="max-w-[550px] w-full mx-auto rounded-lg overflow-hidden relative ">
+            <div class="bg-secondary relative text-center font-semibold text-2xl flex justify-center p-2 text-white">
+                Policies & Procedures
+                <a class="text-white absolute right-4 close-in" href="#policesProceduresModal"><i
+                        class="fa-solid fa-xmark"></i></a>
+            </div>
+            <div class="bg-modal">
+                <div class="px-8 py-4 content-modal">
+
+                    <div class="mb-1 mt-5 text-xl font-semibold">Information technology</div>
+                    <div class="flex gap-4">
+                        <a href="{{ route('policy') }}" class="btn-blue">Policies</a>
+                        <a href="{{ route('procedure') }}" class="btn-white">Procedures</a>
+                    </div>
+
+                    <div class="mb-1 mt-5 text-xl font-semibold">Legal</div>
+                    <div class="flex gap-4">
+                        <a href="{{ route('policy') }}" class="btn-blue">Policies</a>
+                        <a href="{{ route('procedure') }}" class="btn-white">Procedures</a>
+                    </div>
+
+                    <div class="mb-1 mt-5 text-xl font-semibold">Audit</div>
+                    <div class="flex gap-4">
+                        <a href="{{ route('policy') }}" class="btn-blue">Policies</a>
+                        <a href="{{ route('procedure') }}" class="btn-white">Procedures</a>
+                    </div>
+
+                    <div class="mb-1 mt-5 text-xl font-semibold">Procurement</div>
+                    <div class="flex gap-4">
+                        <a href="{{ route('policy') }}" class="btn-blue">Policies</a>
+                        <a href="{{ route('procedure') }}" class="btn-white">Procedures</a>
+                    </div>
+
+                    <div class="mb-1 mt-5 text-xl font-semibold">Human Resources</div>
+                    <div class="flex gap-4">
+                        <a href="{{ route('policy') }}" class="btn-blue">Policies</a>
+                        <a href="{{ route('procedure') }}" class="btn-white">Procedures</a>
+                    </div>
+
+                    <div class="mb-1 mt-5 text-xl font-semibold">General Services</div>
+                    <div class="flex gap-4">
+                        <a href="{{ route('policy') }}" class="btn-blue">Policies</a>
+                        <a href="{{ route('procedure') }}" class="btn-white">Procedures</a>
+                    </div>
+
+                </div>
+                <div class="border-t border-t-black/25 px-8 py-2 flex justify-end">
+                    <a class="btn-white close-in" href="#policesProceduresModal">Close</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="{{ asset('assets/js/jquery.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/slick.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/jquery-ui.js') }}"></script>
+    <script src="{{ asset('theme/js/select2.min.js') }}" nonce="intranet"></script>
+    <script type="text/javascript" src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js'></script>
+    <script type="text/javascript" src="{{ asset('assets/js/script.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/index.js') }}"></script>
+    <script>
+        $(document).ready(function() {
             $('.select2').select2({
                 placeholder: 'Select a country'
             });
         });
-        </script>
-        @yield('javaScript')
+    </script>
+    @yield('javaScript')
 
 </body>
 
