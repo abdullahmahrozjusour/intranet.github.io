@@ -10,7 +10,7 @@
 
     .container-in {@apply mx-auto max-w-[1200px] px-4;}
     .nav{@apply flex flex-col items-center gap-4}
-    .menu{@apply m-0 p-0 lg:flex hidden gap-3 items-center; justify-content: center;
+    .menu{@apply m-0 p-0 lg:flex hidden gap-4 items-center; justify-content: center;
         li{
             a{
                 @apply text-white font-medium;

@@ -116,7 +116,7 @@ header {
         li {
             a {
                 font-weight: 600;
-                letter-spacing: 2px;
+                letter-spacing: 1px;
                 font-family: verdana;
 
                 @media (max-width: 1199px) {

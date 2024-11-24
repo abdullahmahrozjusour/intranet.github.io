@@ -367,7 +367,7 @@ function drawOrganizationChart(params) {
                     x: source.x0,
                     y: source.y0
                 };
-                return diagonal({
+                return diaonal({
                     source: o,
                     target: o
                 });
@@ -385,7 +385,7 @@ function drawOrganizationChart(params) {
                 var o = {
                     x: source.x,
                     y: source.y
-                };
+                };g
                 return diagonal({
                     source: o,
                     target: o
@@ -439,7 +439,7 @@ function drawOrganizationChart(params) {
             svg.attr("transform", "translate(" + new_x + "," + new_y + ")");
             zoomBehaviours.translate([new_x, new_y]);
             zoomBehaviours.scale(1);
-        }
+        }   
 
         /*################  TOOLTIP  #############################*/
 
@@ -906,6 +906,7 @@ function drawOrganizationChart(params) {
             d._children.forEach(function(ch) {
                 ch.parent = d;
                 locateRecursive(ch, id);
+                
             });
         } else if (d.children) {
             d.children.forEach(function(ch) {
