@@ -36,8 +36,11 @@ body {
 }
 .btn-flex{
     flex-wrap: wrap;
-    max-width: 175px;
+    
     justify-content: center;
+    @media screen and (min-width: 1024px) {
+        max-width: 175px;
+    }
 }
 .news {
     width: 100%;
@@ -63,6 +66,7 @@ body {
 
 .bg-bubble {
     background: url(../imgs/service-bg.png) no-repeat bottom right;
+    min-height: calc(100vh - 150px);
 }
 
 .news-carousel .slick-slide img {
