@@ -278,3 +278,7 @@ a.ui-button:active,
     background-color: #8d1942 !important;
     color: #fff !important;
 }
+#suggestions{
+    max-height: 300px;
+    overflow: auto;
+}
