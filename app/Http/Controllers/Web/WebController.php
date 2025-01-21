@@ -15,9 +15,11 @@ use App\Repositories\DownloadCenter\DownloadCenterInterface;
 use App\Repositories\Event\EventInterface;
 use App\Repositories\Link\LinkInterface;
 use App\Repositories\Modal\ModalInterface;
+use App\Repositories\Organization\OrganizationInterface;
 use App\Repositories\UsefulContact\UsefulContactInterface;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class WebController extends Controller
 {
@@ -31,6 +33,7 @@ class WebController extends Controller
     protected $contact;
     protected $download;
     protected $ceoMessage;
+    protected $organization;
 
     public function __construct(
         ModalInterface $modal,
@@ -42,7 +45,8 @@ class WebController extends Controller
         UsefulContactInterface $useful,
         ContactInterface $contact,
         DownloadCenterInterface $download,
-        CeoMessageInterface $ceoMessage
+        CeoMessageInterface $ceoMessage,
+        OrganizationInterface $organization
     )
     {
         $this->modal = $modal;
@@ -55,6 +59,7 @@ class WebController extends Controller
         $this->contact = $contact;
         $this->download = $download;
         $this->ceoMessage = $ceoMessage;
+        $this->organization = $organization;
     }
 
     public function index()
@@ -81,6 +86,23 @@ class WebController extends Controller
 
     public function organization()
     {
+        $organ = $this->organization->getSingleDataWithMultiRelation(['children.children.children.children.children.children.children.children.children.children'],'id','DESC');
+        $data = [];
+        if($organ){
+            $data = $this->populateData($organ);
+        }
+        // Define file path
+        $filePath = 'public/json/org.json'; // Replace with actual path
+
+        // Delete the existing JSON file if it exists
+        if (Storage::exists($filePath)) {
+            Storage::delete($filePath);
+        }
+
+        // Create a new JSON file and save the data
+        Storage::put($filePath, json_encode($data));
+        // echo '<pre>'; print_r($data); echo '</pre>'; die();
+
         return view('pages.organization');
     }
 
@@ -134,11 +156,48 @@ class WebController extends Controller
     }
 
     public function policy()
-    { 
+    {
         return view('pages.policy');
     }
     public function procedure()
-    { 
+    {
         return view('pages.procedure');
+    }
+
+    private function populateData($organ)
+    {
+        $data = [];
+        if (config('app.locale') == 'ar') {
+            $data['name'] = $organ->nameAr;
+            $data['positionName'] = $organ->designationAr;
+        } else {
+            $data['name'] = $organ->nameEn;
+            $data['positionName'] = $organ->designationEn;
+        }
+
+        if (file_exists(public_path('storage/uploads/picture/' . $organ->image))) {
+            $data['imageUrl'] = url('storage/uploads/picture/' . $organ->image);
+        } elseif ($organ->id == 1) {
+            $data['imageUrl'] = url('assets/imgs/ceo.png');
+        } else {
+            $data['imageUrl'] = url('assets/imgs/avatar.png');
+        }
+
+        $data['area'] = '';
+        $data['profileUrl'] = $data['imageUrl'];
+        $data['office'] = '';
+        $data['tags'] = '';
+        $data['isLoggedUser'] = '';
+        $data['unit'] = [];
+
+        // Recursively populate children
+        if (isset($organ->children[0])) {
+            $data['children'] = [];
+            foreach ($organ->children as $child) {
+                $data['children'][] = $this->populateData($child); // Recursive call
+            }
+        }
+
+        return $data;
     }
 }

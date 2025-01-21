@@ -9,4 +9,5 @@ use App\Repositories\Core\CoreInterface;
 
 interface OrganizationInterface extends CoreInterface {
     public function getAllDataWithRelation($relation = [], $orderName, $orderValue, $paginate);
+    public function getSingleDataWithMultiRelation($relation = [], $orderName, $orderValue);
 }

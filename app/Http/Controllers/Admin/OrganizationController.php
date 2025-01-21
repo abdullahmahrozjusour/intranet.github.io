@@ -137,6 +137,10 @@ class OrganizationController extends Controller
      */
     public function destroy(string $id)
     {
+        $data = $this->organization->show($id);
+        if(empty($data->parentId)){
+            return back()->with('success','This organization cannot be deletable.');
+        }
         $this->organization->destroy($id);
         return redirect()->route('admin.pages.organization.index')->with('success','Organization deleted successfully.');
     }

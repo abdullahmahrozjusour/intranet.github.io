@@ -1,6 +1,6 @@
 var params = {
     selector: "#svgChart",
-    dataLoadUrl: "../json/org.json",
+    dataLoadUrl: "../../storage/json/org.json",
     chartWidth: window.innerWidth - 40,
     chartHeight: window.innerHeight - 40,
     funcs: {
@@ -18,7 +18,7 @@ var params = {
     data: null
 };
 
-d3.json(params.dataLoadUrl, function(data) {
+d3.json(params.dataLoadUrl, function (data) {
     params.data = data;
     params.pristinaData = JSON.parse(JSON.stringify(data));
 
@@ -75,7 +75,7 @@ function drawOrganizationChart(params) {
     var tree = d3.layout
         .tree()
         .nodeSize([attrs.nodeWidth + 40, attrs.nodeHeight]);
-    var diagonal = d3.svg.diagonal().projection(function(d) {
+    var diagonal = d3.svg.diagonal().projection(function (d) {
         debugger;
         return [d.x + attrs.nodeWidth / 2, d.y + attrs.nodeHeight / 2];
     });
@@ -108,7 +108,7 @@ function drawOrganizationChart(params) {
         var uniq = 1;
         addPropertyRecursive(
             "uniqueIdentifier",
-            function(v) {
+            function (v) {
                 return uniq++;
             },
             attrs.root
@@ -135,12 +135,12 @@ function drawOrganizationChart(params) {
             links = tree.links(nodes);
 
         // Normalize for fixed-depth.
-        nodes.forEach(function(d) {
+        nodes.forEach(function (d) {
             d.y = d.depth * attrs.linkLineSize;
         });
 
         // Update the nodes…
-        var node = svg.selectAll("g.node").data(nodes, function(d) {
+        var node = svg.selectAll("g.node").data(nodes, function (d) {
             return d.id || (d.id = ++attrs.index);
         });
 
@@ -149,7 +149,7 @@ function drawOrganizationChart(params) {
             .enter()
             .append("g")
             .attr("class", "node")
-            .attr("transform", function(d) {
+            .attr("transform", function (d) {
                 return "translate(" + source.x0 + "," + source.y0 + ")";
             });
 
@@ -159,22 +159,22 @@ function drawOrganizationChart(params) {
             .append("rect")
             .attr("width", attrs.nodeWidth)
             .attr("height", attrs.nodeHeight)
-            .attr("data-node-group-id", function(d) {
+            .attr("data-node-group-id", function (d) {
                 return d.uniqueIdentifier;
             })
-            .attr("class", function(d) {
+            .attr("class", function (d) {
                 var res = "";
                 if (d.isLoggedUser) res += "nodeRepresentsCurrentUser ";
                 res +=
                     d._children || d.children ?
-                    "nodeHasChildren" :
-                    "nodeDoesNotHaveChildren";
+                        "nodeHasChildren" :
+                        "nodeDoesNotHaveChildren";
                 return res;
             });
 
         var collapsiblesWrapper = nodeEnter
             .append("g")
-            .attr("data-id", function(v) {
+            .attr("data-id", function (v) {
                 return v.uniqueIdentifier;
             });
 
@@ -185,7 +185,7 @@ function drawOrganizationChart(params) {
             .attr("fill", "black")
             .attr("x", attrs.nodeWidth - attrs.collapseCircleRadius)
             .attr("y", attrs.nodeHeight - 7)
-            .attr("width", function(d) {
+            .attr("width", function (d) {
                 if (d.children || d._children) return attrs.collapseCircleRadius;
                 return 0;
             });
@@ -199,7 +199,7 @@ function drawOrganizationChart(params) {
 
         //hide collapse rect when node does not have children
         collapsibles
-            .attr("r", function(d) {
+            .attr("r", function (d) {
                 if (d.children || d._children) return attrs.collapseCircleRadius;
                 return 0;
             })
@@ -215,7 +215,7 @@ function drawOrganizationChart(params) {
             .style("font-size", attrs.collapsibleFontSize)
             .attr("text-anchor", "middle")
             .style("font-family", "FontAwesome")
-            .text(function(d) {
+            .text(function (d) {
                 return d.collapseText;
             });
 
@@ -227,7 +227,7 @@ function drawOrganizationChart(params) {
             .attr("y", attrs.nodePadding + 10)
             .attr("class", "emp-name")
             .attr("text-anchor", "left")
-            .text(function(d) {
+            .text(function (d) {
                 return d.name.trim();
             })
             .call(wrap, attrs.nodeWidth);
@@ -239,7 +239,7 @@ function drawOrganizationChart(params) {
             .attr("class", "emp-position-name")
             .attr("dy", ".35em")
             .attr("text-anchor", "left")
-            .text(function(d) {
+            .text(function (d) {
                 var position = d.positionName.substring(0, 27);
                 if (position.length < d.positionName.length) {
                     position = position.substring(0, 24) + "...";
@@ -255,7 +255,7 @@ function drawOrganizationChart(params) {
             .attr("dy", ".35em")
             .attr("text-anchor", "left")
 
-            .text(function(d) {
+            .text(function (d) {
                 return d.area;
             });
 
@@ -266,7 +266,7 @@ function drawOrganizationChart(params) {
             .attr("class", "emp-count-icon")
             .attr("text-anchor", "left")
             .style("font-family", "FontAwesome")
-            .text(function(d) {
+            .text(function (d) {
                 if (d.children || d._children) return attrs.userIcon;
             });
 
@@ -277,7 +277,7 @@ function drawOrganizationChart(params) {
             .attr("class", "emp-count")
             .attr("text-anchor", "left")
 
-            .text(function(d) {
+            .text(function (d) {
                 if (d.children) return d.children.length;
                 if (d._children) return d._children.length;
                 return;
@@ -304,7 +304,7 @@ function drawOrganizationChart(params) {
             .attr("width", dynamic.nodeImageWidth)
             .attr("height", dynamic.nodeImageHeight - 4)
             .attr("clip-path", "url(#clip)")
-            .attr("xlink:href", function(v) {
+            .attr("xlink:href", function (v) {
                 return v.imageUrl;
             });
 
@@ -312,7 +312,7 @@ function drawOrganizationChart(params) {
         var nodeUpdate = node
             .transition()
             .duration(attrs.duration)
-            .attr("transform", function(d) {
+            .attr("transform", function (d) {
                 return "translate(" + d.x + "," + d.y + ")";
             });
 
@@ -322,13 +322,13 @@ function drawOrganizationChart(params) {
             .attr("width", attrs.nodeWidth)
             .attr("height", attrs.nodeHeight)
             .attr("rx", 3)
-            .attr("stroke", function(d) {
+            .attr("stroke", function (d) {
                 if (param && d.uniqueIdentifier == param.locate) {
                     return "#a1ceed";
                 }
                 return attrs.nodeStroke;
             })
-            .attr("stroke-width", function(d) {
+            .attr("stroke-width", function (d) {
                 if (param && d.uniqueIdentifier == param.locate) {
                     return 6;
                 }
@@ -340,7 +340,7 @@ function drawOrganizationChart(params) {
             .exit()
             .transition()
             .duration(attrs.duration)
-            .attr("transform", function(d) {
+            .attr("transform", function (d) {
                 return "translate(" + source.x + "," + source.y + ")";
             })
             .remove();
@@ -351,7 +351,7 @@ function drawOrganizationChart(params) {
             .attr("height", attrs.nodeHeight);
 
         // Update the links…
-        var link = svg.selectAll("path.link").data(links, function(d) {
+        var link = svg.selectAll("path.link").data(links, function (d) {
             return d.target.id;
         });
 
@@ -362,7 +362,7 @@ function drawOrganizationChart(params) {
             .attr("class", "link")
             .attr("x", attrs.nodeWidth / 2)
             .attr("y", attrs.nodeHeight / 2)
-            .attr("d", function(d) {
+            .attr("d", function (d) {
                 var o = {
                     x: source.x0,
                     y: source.y0
@@ -381,11 +381,11 @@ function drawOrganizationChart(params) {
             .exit()
             .transition()
             .duration(attrs.duration)
-            .attr("d", function(d) {
+            .attr("d", function (d) {
                 var o = {
                     x: source.x,
                     y: source.y
-                };g
+                }; g
                 return diagonal({
                     source: o,
                     target: o
@@ -394,7 +394,7 @@ function drawOrganizationChart(params) {
             .remove();
 
         // Stash the old positions for transition.
-        nodes.forEach(function(d) {
+        nodes.forEach(function (d) {
             d.x0 = d.x;
             d.y0 = d.y;
         });
@@ -403,7 +403,7 @@ function drawOrganizationChart(params) {
             var x;
             var y;
 
-            nodes.forEach(function(d) {
+            nodes.forEach(function (d) {
                 if (d.uniqueIdentifier == param.locate) {
                     x = d.x;
                     y = d.y;
@@ -424,7 +424,7 @@ function drawOrganizationChart(params) {
             var x;
             var y;
 
-            nodes.forEach(function(d) {
+            nodes.forEach(function (d) {
                 if (d.isLoggedUser) {
                     x = d.x;
                     y = d.y;
@@ -439,14 +439,14 @@ function drawOrganizationChart(params) {
             svg.attr("transform", "translate(" + new_x + "," + new_y + ")");
             zoomBehaviours.translate([new_x, new_y]);
             zoomBehaviours.scale(1);
-        }   
+        }
 
         /*################  TOOLTIP  #############################*/
 
         function getTagsFromCommaSeparatedStrings(tags) {
             return tags
                 .split(",")
-                .map(function(v) {
+                .map(function (v) {
                     return '<li><div class="tag">' + v + "</div></li>  ";
                 })
                 .join("");
@@ -543,7 +543,7 @@ function drawOrganizationChart(params) {
             return this == d3.event.target;
         }
 
-        d3.select("body").on("click", function() {
+        d3.select("body").on("click", function () {
             var outside = tooltip.filter(equalToEventTarget).empty();
             if (outside) {
                 tooltip.style("opacity", "0").style("display", "none");
@@ -555,7 +555,7 @@ function drawOrganizationChart(params) {
     function click(d) {
         d3.select(this)
             .select("text")
-            .text(function(dv) {
+            .text(function (dv) {
                 if (dv.collapseText == attrs.EXPAND_SYMBOL) {
                     dv.collapseText = attrs.COLLAPSE_SYMBOL;
                 } else {
@@ -589,7 +589,7 @@ function drawOrganizationChart(params) {
 
     // #############################   Function Area #######################
     function wrap(text, width) {
-        text.each(function() {
+        text.each(function () {
             var text = d3.select(this),
                 words = text.text().split(/\s+/).reverse(),
                 word,
@@ -600,11 +600,11 @@ function drawOrganizationChart(params) {
                 y = text.attr("y"),
                 dy = 0, //parseFloat(text.attr("dy")),
                 tspan = text
-                .text(null)
-                .append("tspan")
-                .attr("x", x)
-                .attr("y", y)
-                .attr("dy", dy + "em");
+                    .text(null)
+                    .append("tspan")
+                    .attr("x", x)
+                    .attr("y", y)
+                    .attr("dy", dy + "em");
             while ((word = words.pop())) {
                 line.push(word);
                 tspan.text(line.join(" "));
@@ -631,12 +631,12 @@ function drawOrganizationChart(params) {
             element[propertyName] = propertyValueFunction(element);
         }
         if (element.children) {
-            element.children.forEach(function(v) {
+            element.children.forEach(function (v) {
                 addPropertyRecursive(propertyName, propertyValueFunction, v);
             });
         }
         if (element._children) {
-            element._children.forEach(function(v) {
+            element._children.forEach(function (v) {
                 addPropertyRecursive(propertyName, propertyValueFunction, v);
             });
         }
@@ -698,7 +698,7 @@ function drawOrganizationChart(params) {
         function countChilds(node) {
             var childs = node.children ? node.children : node._children;
             if (childs) {
-                childs.forEach(function(v) {
+                childs.forEach(function (v) {
                     count++;
                     countChilds(v);
                 });
@@ -707,7 +707,7 @@ function drawOrganizationChart(params) {
     }
 
     function reflectResults(results) {
-        var htmlStringArray = results.map(function(result) {
+        var htmlStringArray = results.map(function (result) {
             var strVar = "";
             strVar += '         <div class="list-item">';
             strVar += "          <a >";
@@ -760,7 +760,7 @@ function drawOrganizationChart(params) {
     function listen() {
         var input = get(".user-search-box .search-input");
 
-        input.addEventListener("input", function() {
+        input.addEventListener("input", function () {
             var value = input.value ? input.value.trim() : "";
             if (value.length < 3) {
                 params.funcs.clearResult();
@@ -783,7 +783,7 @@ function drawOrganizationChart(params) {
             .transition()
             .duration(250)
             .style("width", "0px")
-            .each("end", function() {
+            .each("end", function () {
                 params.funcs.clearResult();
                 clear(".search-input");
             });
@@ -808,7 +808,7 @@ function drawOrganizationChart(params) {
 
             var childUsers = user.children ? user.children : user._children;
             if (childUsers) {
-                childUsers.forEach(function(childUser) {
+                childUsers.forEach(function (childUser) {
                     recursivelyFindIn(childUser, searchText);
                 });
             }
@@ -887,12 +887,12 @@ function drawOrganizationChart(params) {
         if (d.isLoggedUser) {
             expandParents(d);
         } else if (d._children) {
-            d._children.forEach(function(ch) {
+            d._children.forEach(function (ch) {
                 ch.parent = d;
                 findmySelf(ch);
             });
         } else if (d.children) {
-            d.children.forEach(function(ch) {
+            d.children.forEach(function (ch) {
                 ch.parent = d;
                 findmySelf(ch);
             });
@@ -903,13 +903,13 @@ function drawOrganizationChart(params) {
         if (d.uniqueIdentifier == id) {
             expandParents(d);
         } else if (d._children) {
-            d._children.forEach(function(ch) {
+            d._children.forEach(function (ch) {
                 ch.parent = d;
                 locateRecursive(ch, id);
-                
+
             });
         } else if (d.children) {
-            d.children.forEach(function(ch) {
+            d.children.forEach(function (ch) {
                 ch.parent = d;
                 locateRecursive(ch, id);
             });
@@ -986,7 +986,7 @@ function drawOrganizationChart(params) {
         }
         if (attrs.root.children) {
             attrs.root.children.forEach(collapse);
-            attrs.root.children.forEach(function(ch) {
+            attrs.root.children.forEach(function (ch) {
                 locateRecursive(ch, id);
             });
         }
@@ -1009,9 +1009,9 @@ function drawOrganizationChart(params) {
     }
 
     function display(selectors, displayProp) {
-        selectors.forEach(function(selector) {
+        selectors.forEach(function (selector) {
             var elements = getAll(selector);
-            elements.forEach(function(element) {
+            elements.forEach(function (element) {
                 element.style.display = displayProp;
             });
         });
@@ -1019,7 +1019,7 @@ function drawOrganizationChart(params) {
 
     function set(selector, value) {
         var elements = getAll(selector);
-        elements.forEach(function(element) {
+        elements.forEach(function (element) {
             element.innerHTML = value;
             element.value = value;
         });
