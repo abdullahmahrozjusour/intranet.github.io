@@ -56,7 +56,6 @@
                     @else
                     <div class="border-secondary border-2 px-4 py-2 text-secondary text-lg rounded-lg font-semibold">
                         No Announcements Listed !
-                        <span class="block text-xs text-gray-600 font-medium">lorem ipsum dollar ismit de span</span>
                     </div>
                     @endif
 
@@ -233,7 +232,7 @@
                     @foreach ($services as $key => $item)
                     <div class="px-4">
                         <div class="offer-item relative">
-                            <img src={{ $item['logo'] }} class="max-w-full" alt="{{ $item['service_slug'] }}">
+                            <img src={{ $item['banner'] }} class="max-w-full" alt="{{ $item['service_slug'] }}">
 
                         </div>
                         <a href="{{ $item['service_link'] }}" target="_blank" class="cap-layer">

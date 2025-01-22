@@ -28,7 +28,7 @@ class RoleController extends Controller
         'user',
         'role',
         'useful-contact',
-        'contact',
+        // 'contact',
     ];
 
     public function __construct()

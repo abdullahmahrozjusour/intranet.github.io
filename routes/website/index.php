@@ -11,5 +11,5 @@ Route::get('/boardOfDirector', [WebController::class, 'boardOfDirector'])->name(
 Route::get('/usefulContacts', [WebController::class, 'usefulContacts'])->name('usefulContacts');
 Route::get('/downloadCenter', [WebController::class, 'downloadCenter'])->name('downloadCenter');
 Route::post('/contact/store', [WebController::class, 'contact'])->name('contact.store');
-Route::get('/policy', [WebController::class, 'policy'])->name('policy');
-Route::get('/procedure', [WebController::class, 'procedure'])->name('procedure');
+Route::get('/{type}/policy', [WebController::class, 'policy'])->name('policy');
+Route::get('/{type}/procedure', [WebController::class, 'procedure'])->name('procedure');

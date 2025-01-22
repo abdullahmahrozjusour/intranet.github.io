@@ -29,7 +29,7 @@ class UserController extends Controller
         'user',
         'role',
         'useful-contact',
-        'contact',
+        // 'contact',
     ];
     protected $user;
 

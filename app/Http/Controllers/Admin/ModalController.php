@@ -17,9 +17,9 @@ class ModalController extends Controller
         $this->modal = $modal;
         $this->middleware('auth');
         $this->middleware('permission:view-modal-page', ['only' => ['index']]);
-        // $this->middleware('permission:create-modal-page', ['only' => ['create','store']]);
+        $this->middleware('permission:create-modal-page', ['only' => ['create','store']]);
         $this->middleware('permission:edit-modal-page', ['only' => ['edit','update']]);
-        // $this->middleware('permission:delete-modal-page', ['only' => ['destroy']]);
+        $this->middleware('permission:delete-modal-page', ['only' => ['destroy']]);
         $this->middleware('permission:audit-modal-page', ['only' => ['audit']]);
     }
 
@@ -37,7 +37,7 @@ class ModalController extends Controller
      */
     public function create()
     {
-        // return view('admin.pages.home.modal.create');
+        return view('admin.pages.home.modal.create');
     }
 
     /**
@@ -46,6 +46,7 @@ class ModalController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'type'=>'required|max:50', //|alpha_num
             'titleEn'=>'required|max:255', //|alpha_num
             'titleAr'=>'nullable|max:255', //|regex:/^[\p{Arabic}0-9\s-]+$/u
             'status'=>'required',
@@ -84,6 +85,7 @@ class ModalController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
+            'type'=>'required|max:50', //|alpha_num
             'titleEn'=>'required|max:255', //|alpha_num
             'titleAr'=>'nullable|max:255', //|regex:/^[\p{Arabic}0-9\s-]+$/u
             'status'=>'required',

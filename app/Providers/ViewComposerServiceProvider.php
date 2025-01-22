@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Constants\Status;
 use App\Constants\Type;
 use App\Models\Modal;
 use Illuminate\Http\Request;
@@ -34,13 +35,10 @@ class ViewComposerServiceProvider extends ServiceProvider
 
         View::composer(['layouts.master_layout'], function ($view){
 
-            $modalType = [Type::TYPE_POLICIES, Type::TYPE_PROCEDURES];
-            $columnType = 'type';
-            foreach ($modalType as $key => $value) {
-                $data[$value] = Modal::where($columnType,$value)->first();
-            }
+            $modalData = Modal::where('status',Status::STATUS_ACTIVE)->get()
+            ->groupBy('type')->toArray();
 
-            $view->with('policyAndProcedure', $data);
+            $view->with('modalData', $modalData);
         });
 
     }

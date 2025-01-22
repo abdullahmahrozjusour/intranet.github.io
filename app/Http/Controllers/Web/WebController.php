@@ -6,6 +6,7 @@ use App\Constants\Type;
 use App\Constants\Status;
 use App\Http\Controllers\Controller;
 use App\Models\Country;
+use App\Models\Modal;
 use App\Repositories\MissionVision\MissionVisionInterface;
 use App\Repositories\Announcement\AnnouncementInterface;
 use App\Repositories\CeoMessage\CeoMessageInterface;
@@ -155,13 +156,15 @@ class WebController extends Controller
         return back()->with('success','General Inquiry submitted successfully');
     }
 
-    public function policy()
+    public function policy($type)
     {
-        return view('pages.policy');
+        $modal = Modal::where('type',$type)->where('titleEn','Policies')->first();
+        return view('pages.policy',compact('modal'));
     }
-    public function procedure()
+    public function procedure($type)
     {
-        return view('pages.procedure');
+        $modal = Modal::where('type',$type)->where('titleEn','Procedures')->first();
+        return view('pages.procedure',compact('modal'));
     }
 
     private function populateData($organ)

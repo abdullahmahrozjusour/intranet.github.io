@@ -19,10 +19,12 @@
                         <!--end::Title-->
 
                         <!--begin::Toolbar-->
-                        {{-- <div class="card-toolbar">
+                        @can('create-modal-page')
+                        <div class="card-toolbar">
                             <a href="{{ route('admin.home.modal.create') }}" class="btn btn-sm btn-light">Add New Modal
                                 Page</a>
-                        </div> --}}
+                        </div>
+                        @endcan
                         <!--end::Toolbar-->
                     </div>
                     <!--end::Header-->
@@ -37,6 +39,7 @@
                                 <thead>
                                     <tr class="fs-7 fw-bold text-gray-500 border-bottom-0">
                                         <th class="p-0 pb-3 min-w-50px text-start">#</th>
+                                        <th class="p-0 pb-3 min-w-175px text-start">TYPE</th>
                                         <th class="p-0 pb-3 min-w-175px text-start">TITLE</th>
                                         <th class="p-0 pb-3 min-w-175px text-start pe-12">STATUS</th>
                                         <th class="p-0 pb-3 min-w-175px text-start pe-12">CREATED AT</th>
@@ -53,6 +56,16 @@
                                         <td class="text-start ps-0">
                                             <span class="text-gray-600 fw-bold fs-6">{{ ($data->currentPage() - 1) *
                                                 $data->perPage() + $loop->iteration }}</span>
+                                        </td>
+
+                                        <td class="text-start ps-0">
+                                            <div class="d-flex align-items-center">
+                                                <div class="d-flex justify-content-start flex-column">
+                                                    <a href="#"
+                                                        class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">{{
+                                                        $value->type }}</a>
+                                                </div>
+                                            </div>
                                         </td>
 
                                         <td class="text-start ps-0">
@@ -136,7 +149,8 @@
                                                     <!--end::Menu item-->
 
                                                     <!--begin::Menu item-->
-                                                    {{-- <div class="menu-item px-3">
+                                                    @can('delete-modal-page')
+                                                    <div class="menu-item px-3">
                                                         <form
                                                             action="{{ route('admin.home.modal.destroy',[$value->id]) }}"
                                                             method="post" class="w-100">
@@ -146,7 +160,8 @@
                                                                 Delete
                                                             </button>
                                                         </form>
-                                                    </div> --}}
+                                                    </div>
+                                                    @endcan
                                                     <!--end::Menu item-->
                                                 </div>
                                                 <!--end::Menu 3-->

@@ -179,21 +179,21 @@ class PermissionSeeder extends Seeder
                 'value'=>'modal-page',
                 'guard_name'=>'web'
             ],
-            // [
-            //     'name'=>'create-modal-page',
-            //     'value'=>'modal-page',
-            //     'guard_name'=>'web'
-            // ],
+            [
+                'name'=>'create-modal-page',
+                'value'=>'modal-page',
+                'guard_name'=>'web'
+            ],
             [
                 'name'=>'edit-modal-page',
                 'value'=>'modal-page',
                 'guard_name'=>'web'
             ],
-            // [
-            //     'name'=>'delete-modal-page',
-            //     'value'=>'modal-page',
-            //     'guard_name'=>'web'
-            // ],
+            [
+                'name'=>'delete-modal-page',
+                'value'=>'modal-page',
+                'guard_name'=>'web'
+            ],
             [
                 'name'=>'audit-modal-page',
                 'value'=>'modal-page',
