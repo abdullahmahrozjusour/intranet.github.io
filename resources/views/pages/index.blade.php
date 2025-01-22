@@ -230,62 +230,17 @@
                 <button class="onprev text-white text-2xl px-2 absolute left-0 top-0 bottom-0 z-10"><i
                         class="fa-solid fa-chevron-left"></i></button>
                 <div class="carousel-offer w-full px-8">
+                    @foreach ($services as $key => $item)
                     <div class="px-4">
                         <div class="offer-item relative">
-                            <img src="https://services.jusour.qa/storage/images/service/JSR-1710690601-65f7112927177.png"
-                                class="max-w-full" alt="">
+                            <img src={{ $item['logo'] }} class="max-w-full" alt="{{ $item['service_slug'] }}">
 
                         </div>
-                        <a href="https://services.jusour.qa/en/service/shakespeare-international-academy"
-                            target="_blank" class="cap-layer">
-                            <span class="relative font-bold text-lg ">Shakespeare International
-                                Academy</span>
+                        <a href="{{ $item['service_link'] }}" target="_blank" class="cap-layer">
+                            <span class="relative font-bold text-lg ">{{$item['service_name']}}</span>
                         </a>
                     </div>
-                    <div class="px-4">
-                        <div class="offer-item relative">
-                            <img src="https://services.jusour.qa/storage/images/service/JSR-1710691080-65f7130801895.png"
-                                class="max-w-full" alt="">
-
-                        </div>
-                        <a href="https://services.jusour.qa/en/service/al-ahli-hospital" target="_blank"
-                            class="cap-layer ">
-                            <span class="relative font-bold text-lg ">Al-Ahli Hospital</span>
-                        </a>
-                    </div>
-                    <div class="px-4">
-                        <div class="offer-item relative">
-                            <img src="https://services.jusour.qa/storage/images/service/JSR-1710691051-65f712eb9ea71.jpeg"
-                                class="max-w-full" alt="">
-
-                        </div>
-                        <a href="https://services.jusour.qa/en/service/doha-clinic-hospital" target="_blank"
-                            class="cap-layer ">
-                            <span class="relative font-bold text-lg ">Doha Clinic Hospital</span>
-                        </a>
-                    </div>
-                    <div class="px-4">
-                        <div class="offer-item relative">
-                            <img src="https://services.jusour.qa/storage/images/service/JSR-1710690996-65f712b45519c.jpg"
-                                class="max-w-full" alt="">
-
-                        </div>
-                        <a href="https://services.jusour.qa/en/service/qshield" target="_blank" class="cap-layer ">
-                            <span class="relative font-bold text-lg ">QShield</span>
-                        </a>
-                    </div>
-                    <div class="px-4">
-                        <div class="offer-item relative">
-                            <img src="https://services.jusour.qa/storage/images/service/JSR-1710691080-65f7130801895.png"
-                                class="max-w-full" alt="">
-
-                        </div>
-                        <a href="https://services.jusour.qa/en/service/shakespeare-international-academy"
-                            target="_blank" class="cap-layer ">
-                            <span class="relative font-bold text-lg ">Shakespeare International
-                                Academy</span>
-                        </a>
-                    </div>
+                    @endforeach
                 </div>
                 <button class="onext text-white text-2xl px-2 absolute right-0 top-0 bottom-0"><i
                         class="fa-solid fa-chevron-right"></i></button>

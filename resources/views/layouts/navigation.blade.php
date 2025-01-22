@@ -453,7 +453,7 @@
                                     </div>
                                     @endcan
                                     @can('view-contact')
-                                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                                    {{-- <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                                         <!--begin:Menu link-->
                                         <div class="menu-item">
                                             <!--begin:Menu link-->
@@ -468,7 +468,7 @@
                                             <!--end:Menu link-->
                                         </div>
                                         <!--end:Menu item-->
-                                    </div>
+                                    </div> --}}
                                     @endcan
                                 </div>
                             </div>
