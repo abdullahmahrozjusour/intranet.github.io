@@ -114,7 +114,7 @@ class EventController extends Controller
 
     public function audit($id)
     {
-        $data = Audit::with('user:id,nameEn,nameAr')
+        $data = Audit::with('user:id,nameEn,nameAr,lnameEn,lnameAr')
         ->orWhere(function ($query) use ($id) {
             $query->where('auditable_id', $id)
             ->where('auditable_type',Event::class);

@@ -16,6 +16,7 @@ use App\Repositories\DownloadCenter\DownloadCenterInterface;
 use App\Repositories\Event\EventInterface;
 use App\Repositories\Link\LinkInterface;
 use App\Repositories\Modal\ModalInterface;
+use App\Repositories\News\NewsInterface;
 use App\Repositories\Organization\OrganizationInterface;
 use App\Repositories\UsefulContact\UsefulContactInterface;
 use Carbon\Carbon;
@@ -35,6 +36,7 @@ class WebController extends Controller
     protected $download;
     protected $ceoMessage;
     protected $organization;
+    protected $news;
 
     public function __construct(
         ModalInterface $modal,
@@ -47,7 +49,8 @@ class WebController extends Controller
         ContactInterface $contact,
         DownloadCenterInterface $download,
         CeoMessageInterface $ceoMessage,
-        OrganizationInterface $organization
+        OrganizationInterface $organization,
+        NewsInterface $news,
     )
     {
         $this->modal = $modal;
@@ -61,6 +64,7 @@ class WebController extends Controller
         $this->download = $download;
         $this->ceoMessage = $ceoMessage;
         $this->organization = $organization;
+        $this->news = $news;
     }
 
     public function index()
@@ -81,6 +85,9 @@ class WebController extends Controller
         $data['events'] = $this->event->getUpComingEvents($columnDate,$currentDate,$columnTime,$currentTime,$columnStatus,$statusActive);
 
         $data['announcements'] = $this->announcement->getUpComingAnnouncements($columnDate,$currentDate,$columnStatus,$statusActive,$columnType);
+
+        $oneDayBefore = Carbon::now()->subDay()->format('Y-m-d');
+        $data['news'] = $this->news->getAllNewNews($columnStatus,$statusActive,$columnDate,$oneDayBefore);
 
         return view('pages.index',compact('data'));
     }

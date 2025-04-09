@@ -83,7 +83,32 @@
                 </div>
             </div>
             <div class="news-carousel">
+                @if(!empty($data['news']))
+                @foreach ($data['news'] as $item)
                 <div class="cl-item p-2">
+                    <div class="rounded-lg shadow-md">
+                        <div class="img">
+                            <img src="{{ asset('storage/uploads/news/'.$item['image']) }}" alt="">
+                        </div>
+                        <div class="cl-content px-4 py-2 bg-white">
+                            <span class="text-secondary font-bold text-xs">{{
+                                \Carbon\Carbon::parse($item['date'])->format('M d, Y') }}</span>
+                            <div class="font-semibold leading-4">{{$item['titleEn']}}</div>
+                            <a href="{{ $item['link'] }}"
+                                class="mt-1 text-secondary text-sm font-medium flex items-center gap-2">
+                                <span>Read More</span>
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+                @else
+                <div class="border-secondary border-2 px-4 py-2 text-secondary text-lg rounded-lg font-semibold">
+                    No News Listed !
+                </div>
+                @endif
+                {{-- <div class="cl-item p-2">
                     <div class="rounded-lg shadow-md">
                         <div class="img">
                             <img src="{{ asset('assets/imgs/news-1.jpg') }}" alt="">
@@ -150,24 +175,7 @@
                             </a>
                         </div>
                     </div>
-                </div>
-                <div class="cl-item p-2">
-                    <div class="rounded-lg shadow-md">
-                        <div class="img">
-                            <img src="{{ asset('assets/imgs/news-1.jpg') }}" alt="">
-                        </div>
-                        <div class="cl-content px-4 py-2 bg-white">
-                            <span class="text-secondary font-bold text-xs">Sep 22, 2024</span>
-                            <div class="font-semibold leading-4">Jusour, in partnership with Mada - Qatar Assistive
-                                Technology
-                                Center</div>
-                            <a href="" class="mt-1 text-secondary text-sm font-medium flex items-center gap-2">
-                                <span>Read More</span>
-                                <i class="fa-solid fa-chevron-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>

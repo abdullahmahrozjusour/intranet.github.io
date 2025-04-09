@@ -278,6 +278,23 @@
                                         <!--end:Menu item-->
                                     </div>
                                     @endcan
+                                    @can('view-news')
+                                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                                        <!--begin:Menu link-->
+                                        <div class="menu-item">
+                                            <!--begin:Menu link-->
+                                            <a class="menu-link" href="{{ route('admin.home.news.index') }}">
+                                                <span class="menu-icon">
+                                                    <i class="fa-solid fa-newspaper">
+                                                    </i>
+                                                </span>
+                                                <span class="menu-title">News</span>
+                                            </a>
+                                            <!--end:Menu link-->
+                                        </div>
+                                        <!--end:Menu item-->
+                                    </div>
+                                    @endcan
                                     @can('view-modal-page')
                                     <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                                         <!--begin:Menu link-->

@@ -18,6 +18,7 @@ class AppServiceProvider extends ServiceProvider
             "Announcement" => ["Announcement"],
             "Link" => ["Link"],
             "Event" => ["Event"],
+            "News" => ["News"],
             "Modal" => ["Modal"],
             "DownloadCenter" => ["DownloadCenter"],
             "Organization" => ["Organization"],

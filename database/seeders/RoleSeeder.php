@@ -37,6 +37,10 @@ class RoleSeeder extends Seeder
             'create-announcement',
             'edit-announcement',
             'delete-announcement',
+            'view-news',
+            'create-news',
+            'edit-news',
+            'delete-news',
             'view-link',
             'create-link',
             'edit-link',
@@ -79,6 +83,7 @@ class RoleSeeder extends Seeder
             'audit-board-of-director',
             'audit-main-board-of-director',
             'audit-announcement',
+            'audit-news',
             'audit-link',
             'audit-event',
             'audit-modal-page',
@@ -90,5 +95,49 @@ class RoleSeeder extends Seeder
             'audit-contact',
             'audit-view'
         ]);
+        $roles = [
+            'Human Resource (HR)',
+            'Finance',
+            'General Services',
+            'Procurement',
+            'Information Technology (IT)',
+            'Marketing and communication',
+            'Operations',
+            'Operations Business Development',
+            'CEO office',
+            'Audit',
+            'Strategy',
+            'Legal',
+        ];
+        foreach ($roles as $key => $value) {
+            $newadmins = Role::updateOrCreate(['name' => $value]);
+            $newadmins->givePermissionTo([]);
+            $newadmins->givePermissionTo([
+                'view-announcement',
+                'create-announcement',
+                'edit-announcement',
+                'view-news',
+                'create-news',
+                'edit-news',
+                'view-event',
+                'create-event',
+                'edit-event',
+                'view-download-center',
+                'create-download-center',
+                'edit-download-center',
+                'view-organization',
+                'create-organization',
+                'edit-organization',
+                'view-useful-contact',
+                'create-useful-contact',
+                'edit-useful-contact',
+                'audit-announcement',
+                'audit-news',
+                'audit-event',
+                'audit-download-center',
+                'audit-organization',
+                'audit-useful-contact',
+            ]);
+        }
     }
 }

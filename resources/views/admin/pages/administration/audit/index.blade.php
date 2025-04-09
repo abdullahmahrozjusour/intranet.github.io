@@ -50,7 +50,8 @@
                                             $data->perPage() + $loop->iteration !!}
                                         </td>
                                         <td>{!!
-                                            $value->user?->nameEn ?? 'By it self'
+                                            $value->user?->nameEn ? $value->user->nameEn.' '.$value->user->lnameEn : 'By
+                                            it self'
                                             !!}</td>
                                         <td class="text-capitalize">
                                             {!! $value->event !!}

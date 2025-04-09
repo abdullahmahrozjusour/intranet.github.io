@@ -125,6 +125,31 @@ class PermissionSeeder extends Seeder
                 'guard_name'=>'web'
             ],
             [
+                'name'=>'view-news',
+                'value'=>'news',
+                'guard_name'=>'web'
+            ],
+            [
+                'name'=>'create-news',
+                'value'=>'news',
+                'guard_name'=>'web'
+            ],
+            [
+                'name'=>'edit-news',
+                'value'=>'news',
+                'guard_name'=>'web'
+            ],
+            [
+                'name'=>'delete-news',
+                'value'=>'news',
+                'guard_name'=>'web'
+            ],
+            [
+                'name'=>'audit-news',
+                'value'=>'news',
+                'guard_name'=>'web'
+            ],
+            [
                 'name'=>'view-link',
                 'value'=>'link',
                 'guard_name'=>'web'

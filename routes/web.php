@@ -33,6 +33,7 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin'], function () {
             include('admin/announcement.php');
             include('admin/link.php');
             include('admin/event.php');
+            include('admin/news.php');
             include('admin/modal.php');
         });
 
