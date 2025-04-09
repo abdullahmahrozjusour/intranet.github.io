@@ -21,6 +21,7 @@ class UserController extends Controller
         'mission-and-vision',
         'board-of-director',
         'announcement',
+        'news',
         'link',
         'event',
         'modal-page',

@@ -22,6 +22,7 @@ class RoleController extends Controller
         'announcement',
         'link',
         'event',
+        'news',
         'modal-page',
         'download-center',
         'organization',
