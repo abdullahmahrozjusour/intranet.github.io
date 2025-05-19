@@ -13,3 +13,6 @@ Route::get('/downloadCenter', [WebController::class, 'downloadCenter'])->name('d
 Route::post('/contact/store', [WebController::class, 'contact'])->name('contact.store');
 Route::get('/{type}/policy', [WebController::class, 'policy'])->name('policy');
 Route::get('/{type}/procedure', [WebController::class, 'procedure'])->name('procedure');
+Route::get('/form', function () {
+    return view('pages/form');
+})->name('form');
