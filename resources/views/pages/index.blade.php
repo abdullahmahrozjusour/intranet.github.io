@@ -20,7 +20,7 @@
             </div>
         </div>
         <div class="md:max-w-[415px] w-[30%] hidden lg:block">
-            <img src="{{ asset('assets/imgs/ceo.png') }}" class="max-w-[80%]" alt="">
+            {{-- <img src="{{ asset('assets/imgs/ceo.png') }}" class="max-w-[80%]" alt=""> --}}
         </div>
         <div class="lg:max-w-[350px] md:max-w-[300px] md:w-[50%] relative min-h-[370px]">
             <div class="bg-white rounded-lg max-w-[350px] md:ml-auto w-full mx-auto md:absolute top-20">
