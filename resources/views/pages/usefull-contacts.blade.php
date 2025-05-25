@@ -50,7 +50,7 @@
         <div class="header-title lg:h-40 h-20 flex justify-center items-center">
             <h2 class="font-bold lg:text-5xl text-3xl text-white">Useful Contacts</h2>
         </div>
-        <div class="flex md:flex-nowrap flex-wrap gap-6 py-8 ">
+        <div class="flex md:flex-nowrap flex-wrap gap-6 py-8 bg-black/25 p-20 min-h-[500px] rounded-lg">
             <div style="display: none"
                 class="contact-form bg-white lg:py-6 lg:px-10 p-4 rounded-xl shadow-md w-full max-w-[600px] shrink-0 grow-0">
 
