@@ -13,4 +13,5 @@ Route::get('/downloadCenter', [WebController::class, 'downloadCenter'])->name('d
 Route::post('/contact/store', [WebController::class, 'contact'])->name('contact.store');
 Route::get('/{type}/policy', [WebController::class, 'policy'])->name('policy');
 Route::get('/{type}/procedure', [WebController::class, 'procedure'])->name('procedure');
-Route::get('/request/{slug}', [WebController::class, 'formDynamic'])->name('form');
+Route::get('/request/{slug}', [WebController::class, 'requestForm'])->name('request');
+Route::post('/request/{slug}/submit', [WebController::class, 'requestFormSubmit'])->name('request.submit');

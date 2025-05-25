@@ -26,7 +26,7 @@ use Illuminate\Support\Facades\Storage;
 
 class WebController extends Controller
 {
-    const CR_NUMBER_COMPANY = 'CR-{YYMM}-{000000}';
+    const REQUEST_NUMBER = 'FR-{YYMM}-{000000}';
     protected $modal;
     protected $link;
     protected $event;
@@ -216,17 +216,33 @@ class WebController extends Controller
         return $data;
     }
 
-    public function formDynamic($slug = 'graphic-design')
+    public function requestForm($slug = 'graphic-design')
     {
         $totalRequest = $this->request->getLastRequest();
         $requestId = 1001;
-        if(isset($totalRequest->id)){
-            $requestId = $requestId + $totalRequest->id + 1
+        if (isset($totalRequest->id)) {
+            $requestId = $requestId + $totalRequest->id;
         }
-        $merchantIdNumber = sprintf('%06d', ($merchantId + $company->id + 1));
-        $merchantIdArr['merchant_id'] = str_replace(['{YYMM}', '{000000}'], [Carbon::now()->format('ym'), $merchantIdNumber], self::CR_NUMBER_COMPANY);
+        $requestIdNumber = str_replace(['{YYMM}', '{000000}'], [Carbon::now()->format('ym'), sprintf('%06d', $requestId)], self::REQUEST_NUMBER);
         if ($slug == 'graphic-design') {
-            return view('pages.form');
+            return view('pages.form', compact('requestIdNumber', 'slug'));
+        }
+    }
+
+    public function requestFormSubmit(Request $request, $slug)
+    {
+        try {
+            $requestMetaData = $request->except(['_token', 'requestId']);
+            $requestData = [
+                'requestId' => $request->requestId,
+                'meta' => json_encode([$requestMetaData]),
+                'type' => $slug,
+            ];
+
+            $data = $this->request->store($requestData);
+            return back()->with('success', 'Request has submitted successfully');
+        } catch (\Throwable $th) {
+            return back()->with('error', $th->getMessage());
         }
     }
 }

@@ -17,7 +17,7 @@ class RequestRepository extends CoreRepository implements RequestInterface
     public function getLastRequest()
     {
         return $this->model
-            ->orderBy('created_by', 'DESC')
+            ->orderBy('created_at', 'DESC')
             ->first();
     }
 }
