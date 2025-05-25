@@ -31,7 +31,7 @@ class UsefulContactSeeder extends Seeder
             [
                 'id'=>2,
                 'nameEn'=>'Marketing and Communication',
-                'nameAr'=>'العلاقات العامة',
+                'nameAr'=>'التسويق و الاتصالات',
                 'addressEn'=>'14th floor , Doha Tower',
                 'addressAr'=>'14th الطابق، برج الدوحة',
                 'email'=>'communication@jusour.qa',
