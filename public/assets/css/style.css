@@ -287,3 +287,60 @@ a.ui-button:active,
     max-height: 300px;
     overflow: auto;
 }
+
+.d-flex {
+    display: flex !important;
+}
+
+.justify-content-between {
+    justify-content: space-between !important;
+}
+
+.border-red {
+    border: 1px solid rgb(141 25 66) !important;
+}
+
+.align-items-center {
+    align-items: center !important;
+}
+
+.in-checkbox input:checked+label:after {
+    top: 0;
+}
+
+.success {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 99;
+}
+
+.success .toast {
+    width: 350px;
+    max-width: 100%;
+    font-size: .875rem;
+    pointer-events: auto;
+    background-color: rgba(255, 255, 255, 1);
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, .1);
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
+    border-radius: .25rem;
+}
+
+.success .toast .toast-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between !important;
+    padding: .5rem .75rem;
+    color: #fff;
+    background-color: #198754;
+    background-clip: padding-box;
+    border-bottom: 1px solid rgba(0, 0, 0, .05);
+    border-top-left-radius: calc(.25rem - 1px);
+    border-top-right-radius: calc(.25rem - 1px);
+}
+
+.success .toast .toast-body {
+    padding: .75rem;
+    word-wrap: break-word;
+}

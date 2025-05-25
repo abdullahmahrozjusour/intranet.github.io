@@ -30,6 +30,7 @@ class AppServiceProvider extends ServiceProvider
             "CeoMessage" => ["CeoMessage"],
             "PageData" => ["PageData"],
             "User" => ["User"],
+            "Request" => ["Request"],
         ];
         foreach ($repoArray as $_dir => $_names) {
             foreach ($_names as $_eachName) {
@@ -39,7 +40,6 @@ class AppServiceProvider extends ServiceProvider
                 );
                 $this->app->alias("App\Repositories\\" . $_dir . "\\" . $_eachName . "Interface", $_eachName);
             }
-
         }
     }
 
@@ -48,10 +48,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        if(\Request::segment(1) == 'admin'){
+        if (\Request::segment(1) == 'admin') {
             Paginator::useBootstrapFive();
-        }
-        else{
+        } else {
             Paginator::useTailwind();
         }
     }

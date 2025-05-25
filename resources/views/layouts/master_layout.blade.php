@@ -46,6 +46,8 @@
                                     href="{{ route('boardOfDirector') }}">Board of Directors</a></li>
                             <li class="@if (\Request::is('usefulContacts')) active @endif"><a
                                     href="{{ route('usefulContacts') }}">Contacts</a></li>
+                            {{-- <li class="@if (\Request::segment(1) == 'request') active @endif"><a
+                                    href="{{ route('request',['graphic-design']) }}">Request</a></li> --}}
                         </ul>
                         <div class="search relative order-1 lg:order-2 autocomplete-container">
                             <span class="absolute top-2 left-3">
@@ -161,6 +163,19 @@
         </script>
         @yield('javaScript')
 
+        @if(Session::has('success'))
+        <div class="success">
+            <div class="toast">
+                <div class="toast-header">
+                    <strong>Success</strong>
+                    <small>{{ now()->diffForHumans() }}</small>
+                </div>
+                <div class="toast-body">
+                    {{ Session::get('success') }}
+                </div>
+            </div>
+        </div>
+        @endif
 </body>
 
 </html>

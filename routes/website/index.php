@@ -31,3 +31,5 @@ Route::get('/unsubscribe', function (Request $request) {
 
 })->name('unsubscribe');
 
+Route::get('/request/{slug}', [WebController::class, 'requestForm'])->name('request');
+Route::post('/request/{slug}/submit', [WebController::class, 'requestFormSubmit'])->name('request.submit');

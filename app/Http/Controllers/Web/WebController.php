@@ -18,6 +18,7 @@ use App\Repositories\Link\LinkInterface;
 use App\Repositories\Modal\ModalInterface;
 use App\Repositories\News\NewsInterface;
 use App\Repositories\Organization\OrganizationInterface;
+use App\Repositories\Request\RequestInterface;
 use App\Repositories\UsefulContact\UsefulContactInterface;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -25,6 +26,7 @@ use Illuminate\Support\Facades\Storage;
 
 class WebController extends Controller
 {
+    const REQUEST_NUMBER = 'FR-{YYMM}-{000000}';
     protected $modal;
     protected $link;
     protected $event;
@@ -37,6 +39,7 @@ class WebController extends Controller
     protected $ceoMessage;
     protected $organization;
     protected $news;
+    protected $request;
 
     public function __construct(
         ModalInterface $modal,
@@ -51,8 +54,8 @@ class WebController extends Controller
         CeoMessageInterface $ceoMessage,
         OrganizationInterface $organization,
         NewsInterface $news,
-    )
-    {
+        RequestInterface $request,
+    ) {
         $this->modal = $modal;
         $this->link = $link;
         $this->event = $event;
@@ -65,38 +68,39 @@ class WebController extends Controller
         $this->ceoMessage = $ceoMessage;
         $this->organization = $organization;
         $this->news = $news;
+        $this->request = $request;
     }
 
     public function index()
     {
         $data = [];
 
-        $data['ceoMessage'] = $this->ceoMessage->where(['type'=>Type::TYPE_CEO_MESSAGE]);
+        $data['ceoMessage'] = $this->ceoMessage->where(['type' => Type::TYPE_CEO_MESSAGE]);
         $columnType = 'type';
 
         $columnStatus = 'status';
         $statusActive = Status::STATUS_ACTIVE;
-        $data['links'] = $this->link->where([$columnStatus=>$statusActive]);
+        $data['links'] = $this->link->where([$columnStatus => $statusActive]);
 
         $columnDate = 'date';
         $columnTime = 'time';
         $currentDate = Carbon::now()->format('Y-m-d');
         $currentTime = Carbon::now()->format('H:i:s');
-        $data['events'] = $this->event->getUpComingEvents($columnDate,$currentDate,$columnTime,$currentTime,$columnStatus,$statusActive);
+        $data['events'] = $this->event->getUpComingEvents($columnDate, $currentDate, $columnTime, $currentTime, $columnStatus, $statusActive);
 
-        $data['announcements'] = $this->announcement->getUpComingAnnouncements($columnDate,$currentDate,$columnStatus,$statusActive,$columnType);
+        $data['announcements'] = $this->announcement->getUpComingAnnouncements($columnDate, $currentDate, $columnStatus, $statusActive, $columnType);
 
         $oneDayBefore = Carbon::now()->subDay()->format('Y-m-d');
-        $data['news'] = $this->news->getAllNewNews($columnStatus,$statusActive,$columnDate,$oneDayBefore);
+        $data['news'] = $this->news->getAllNewNews($columnStatus, $statusActive, $columnDate, $oneDayBefore);
 
-        return view('pages.index',compact('data'));
+        return view('pages.index', compact('data'));
     }
 
     public function organization()
     {
-        $organ = $this->organization->getSingleDataWithMultiRelation(['children.children.children.children.children.children.children.children.children.children'],'id','DESC');
+        $organ = $this->organization->getSingleDataWithMultiRelation(['children.children.children.children.children.children.children.children.children.children'], 'id', 'DESC');
         $data = [];
-        if($organ){
+        if ($organ) {
             $data = $this->populateData($organ);
         }
         // Define file path
@@ -118,60 +122,61 @@ class WebController extends Controller
     {
         $relation = ['data'];
         $data = $this->missionVision->getOurMissionVisionData($relation);
-        return view('pages.our-mission',compact('data'));
+        return view('pages.our-mission', compact('data'));
     }
 
     public function boardOfDirector()
     {
         $relation = ['data'];
 
-        $data = $this->director->getOurDirectorDataWithCount($relation,'data')->toArray();
+        $data = $this->director->getOurDirectorDataWithCount($relation, 'data')->toArray();
 
         $data['data'] = array_chunk($data['data'], 2);
 
-        return view('pages.directors',compact('data'));
+        return view('pages.directors', compact('data'));
     }
 
     public function usefulContacts()
     {
         $columnStatus = 'status';
         $statusActive = Status::STATUS_ACTIVE;
-        $data['useful'] = $this->useful->where([$columnStatus=>$statusActive]);
-        $data['countries'] = Country::orderBy('name','ASC')->get()->toArray();
-        return view('pages.usefull-contacts',compact('data'));
+        $data['useful'] = $this->useful->where([$columnStatus => $statusActive]);
+        $data['countries'] = Country::orderBy('name', 'ASC')->get()->toArray();
+        return view('pages.usefull-contacts', compact('data'));
     }
 
     public function downloadCenter()
     {
         $columnStatus = 'status';
         $statusActive = Status::STATUS_ACTIVE;
-        $data = $this->download->whereWithPaginateAndOrderByCreatedDESC([$columnStatus=>$statusActive],18);
-        return view('pages.download-center',compact('data'));
+        $data = $this->download->whereWithPaginateAndOrderByCreatedDESC([$columnStatus => $statusActive], 18);
+        return view('pages.download-center', compact('data'));
     }
 
     public function contact(Request $request)
     {
         $request->validate([
-            'name'=>'required|max:255',
-            'email'=>'required|email|max:255',
-            'phone'=>'required',
-            'subject'=>'nullable|max:255',
-            'message'=>'required'
+            'name' => 'required|max:255',
+            'email' => 'required|email|max:255',
+            'phone' => 'required',
+            'subject' => 'nullable|max:255',
+            'message' => 'required'
         ]);
 
         $data = $this->contact->store($request->all());
-        return back()->with('success','General Inquiry submitted successfully');
+        return back()->with('success', 'General Inquiry submitted successfully');
     }
 
     public function policy($type)
     {
-        $modal = Modal::where('type',$type)->where('titleEn','Policies')->first();
-        return view('pages.policy',compact('modal'));
+        $modal = Modal::where('type', $type)->where('titleEn', 'Policies')->first();
+        return view('pages.policy', compact('modal'));
     }
+
     public function procedure($type)
     {
-        $modal = Modal::where('type',$type)->where('titleEn','Procedures')->first();
-        return view('pages.procedure',compact('modal'));
+        $modal = Modal::where('type', $type)->where('titleEn', 'Procedures')->first();
+        return view('pages.procedure', compact('modal'));
     }
 
     private function populateData($organ)
@@ -209,5 +214,35 @@ class WebController extends Controller
         }
 
         return $data;
+    }
+
+    public function requestForm($slug = 'graphic-design')
+    {
+        $totalRequest = $this->request->getLastRequest();
+        $requestId = 1001;
+        if (isset($totalRequest->id)) {
+            $requestId = $requestId + $totalRequest->id;
+        }
+        $requestIdNumber = str_replace(['{YYMM}', '{000000}'], [Carbon::now()->format('ym'), sprintf('%06d', $requestId)], self::REQUEST_NUMBER);
+        if ($slug == 'graphic-design') {
+            return view('pages.form', compact('requestIdNumber', 'slug'));
+        }
+    }
+
+    public function requestFormSubmit(Request $request, $slug)
+    {
+        try {
+            $requestMetaData = $request->except(['_token', 'requestId']);
+            $requestData = [
+                'requestId' => $request->requestId,
+                'meta' => json_encode([$requestMetaData]),
+                'type' => $slug,
+            ];
+
+            $data = $this->request->store($requestData);
+            return back()->with('success', 'Request has submitted successfully');
+        } catch (\Throwable $th) {
+            return back()->with('error', $th->getMessage());
+        }
     }
 }
