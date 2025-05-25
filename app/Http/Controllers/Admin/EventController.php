@@ -68,7 +68,7 @@ class EventController extends Controller
             //     route('home'),
                 
             // );
-            (new SendNewsletterJob( $event->nameEn, route('home')))->handle();
+            (new SendNewsletterJob( $event->nameEn. 'Event', route('home')))->handle();
         } catch(\Exception $e) {
             Log::error($e->getMessage());
         }
@@ -111,7 +111,17 @@ class EventController extends Controller
         //     'descAr.regex'=>'The desc ar field must only contain arabic letters and numbers.'
         // ]
         );
-        $data = $this->event->update($id,$request->all());
+        $event = $this->event->update($id,$request->all());
+        try {
+            // SendNewsletterJob::dispatch(
+            //     $event->nameEn,
+            //     route('home'),
+                
+            // );
+            (new SendNewsletterJob( $event->nameEn. 'Event', route('home')))->handle();
+        } catch(\Exception $e) {
+            Log::error($e->getMessage());
+        }
         return redirect()->route('admin.home.event.index')->with('success','Event updated successfully.');
     }
 

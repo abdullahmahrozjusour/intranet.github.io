@@ -5,12 +5,14 @@ namespace App\Http\Controllers\Admin;
 use App\Constants\Type;
 use App\Helpers\ImageHelper;
 use App\Http\Controllers\Controller;
+use App\Jobs\SendNewsletterJob;
 use App\Models\Audit;
 use App\Models\Page;
 use App\Models\PageData;
 use App\Repositories\MissionVision\MissionVisionInterface;
 use App\Repositories\PageData\PageDataInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class MissionVisionController extends Controller
 {
@@ -84,6 +86,16 @@ class MissionVisionController extends Controller
             'descAr'=>$request->descAr,
         ];
         $data = $this->pageData->store($requestData);
+        try {
+            // SendNewsletterJob::dispatch(
+            //     $event->nameEn,
+            //     route('home'),
+                
+            // );
+            (new SendNewsletterJob( 'Our Mission & Vision', route('home')))->handle();
+        } catch(\Exception $e) {
+            Log::error($e->getMessage());
+        }
         return redirect()->route('admin.pages.missionVision.index')->with('success','Mission & Vision Data created successfully.');
     }
 
@@ -143,6 +155,16 @@ class MissionVisionController extends Controller
             'descAr'=>$request->descAr,
         ];
         $data = $this->pageData->update($id,$requestData);
+        try {
+            // SendNewsletterJob::dispatch(
+            //     $event->nameEn,
+            //     route('home'),
+                
+            // );
+            (new SendNewsletterJob( 'Our Mission & Vision', route('home')))->handle();
+        } catch(\Exception $e) {
+            Log::error($e->getMessage());
+        }
         return redirect()->route('admin.pages.missionVision.index')->with('success','Mission & Vision Data updated successfully.');
     }
 

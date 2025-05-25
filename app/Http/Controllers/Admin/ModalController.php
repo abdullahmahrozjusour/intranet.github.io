@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\SendNewsletterJob;
 use App\Models\Audit;
 use App\Models\Modal;
 use App\Repositories\Modal\ModalInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class ModalController extends Controller
 {
@@ -59,6 +61,16 @@ class ModalController extends Controller
         // ]
         );
         $data = $this->modal->store($request->all());
+        try {
+            // SendNewsletterJob::dispatch(
+            //     $event->nameEn,
+            //     route('home'),
+                
+            // );
+            (new SendNewsletterJob( 'Policies & Procedures for'. $data->type, route('home')))->handle();
+        } catch(\Exception $e) {
+            Log::error($e->getMessage());
+        }
         return redirect()->route('admin.home.modal.index')->with('success','Modal Page created successfully.');
     }
 
@@ -98,6 +110,16 @@ class ModalController extends Controller
         // ]
         );
         $data = $this->modal->update($id,$request->all());
+        try {
+            // SendNewsletterJob::dispatch(
+            //     $event->nameEn,
+            //     route('home'),
+                
+            // );
+            (new SendNewsletterJob( 'Policies & Procedures for'. $data->type, route('home')))->handle();
+        } catch(\Exception $e) {
+            Log::error($e->getMessage());
+        }
         return redirect()->route('admin.home.modal.index')->with('success','Modal Page updated successfully.');
     }
 

@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\SendNewsletterJob;
 use App\Models\Announcement;
 use App\Models\Audit;
 use App\Repositories\Announcement\AnnouncementInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class AnnouncementController extends Controller
 {
@@ -60,6 +62,16 @@ class AnnouncementController extends Controller
         // ]
         );
         $data = $this->announcement->store($request->all());
+        try {
+            // SendNewsletterJob::dispatch(
+            //     $event->nameEn,
+            //     route('home'),
+                
+            // );
+            (new SendNewsletterJob( $data->titleEn, route('home')))->handle();
+        } catch(\Exception $e) {
+            Log::error($e->getMessage());
+        }
         return redirect()->route('admin.home.announcement.index')->with('success','Announcement created successfully.');
     }
 
@@ -100,6 +112,16 @@ class AnnouncementController extends Controller
         // ]
         );
         $data = $this->announcement->update($id,$request->all());
+        try {
+            // SendNewsletterJob::dispatch(
+            //     $event->nameEn,
+            //     route('home'),
+                
+            // );
+            (new SendNewsletterJob( $data->titleEn, route('home')))->handle();
+        } catch(\Exception $e) {
+            Log::error($e->getMessage());
+        }
         return redirect()->route('admin.home.announcement.index')->with('success','Announcement updated successfully.');
     }
 
