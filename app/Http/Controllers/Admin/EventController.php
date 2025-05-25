@@ -7,6 +7,8 @@ use App\Models\Audit;
 use App\Models\Event;
 use App\Repositories\Event\EventInterface;
 use Illuminate\Http\Request;
+use App\Jobs\SendNewsletterJob;
+use Illuminate\Support\Facades\Log;
 
 class EventController extends Controller
 {
@@ -59,7 +61,17 @@ class EventController extends Controller
         //     'descAr.regex'=>'The desc ar field must only contain arabic letters and numbers.'
         // ]
         );
-        $data = $this->event->store($request->all());
+        $event = $this->event->store($request->all());
+        try {
+            // SendNewsletterJob::dispatch(
+            //     $event->nameEn,
+            //     route('home'),
+                
+            // );
+            (new SendNewsletterJob( $event->nameEn, route('home')))->handle();
+        } catch(\Exception $e) {
+            Log::error($e->getMessage());
+        }
         return redirect()->route('admin.home.event.index')->with('success','Event created successfully.');
     }
 

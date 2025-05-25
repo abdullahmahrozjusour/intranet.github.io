@@ -36,13 +36,14 @@ return [
     'mailers' => [
         'smtp' => [
             'transport' => 'smtp',
-            'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+            'url' => env('MAIL_URL'),
+            'host' => env('MAIL_HOST', 'smtp.mandrillapp.com'),
             'port' => env('MAIL_PORT', 587),
             'encryption' => env('MAIL_ENCRYPTION', 'tls'),
-            'username' => env('MAIL_USERNAME'),
+            'username' => env('MAIL_USERNAME', 'Jusour'),
             'password' => env('MAIL_PASSWORD'),
             'timeout' => null,
-            'local_domain' => env('MAIL_EHLO_DOMAIN'),
+            'local_domain' => env("MAIL_DOMAIN", 'jusour.qa'),
         ],
 
         'ses' => [

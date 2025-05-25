@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="bg-primary py-4">
-        <div class="container-in">
+        <div class="container">
             <div class="bg-white px-6 py-4 shadow-lg  rounded-lg max-w-[1000px] mx-auto">
                 <div class="title max-w-[800px] ">
                     <div class="font-semibold text-xl text-secondary">GRAPHIC DESIGN REQUEST</div>

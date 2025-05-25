@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="bg-bubble bg-primary">
-        <div class="container-in">
+        <div class="container">
             <h3 class="font-bold text-3xl lg:text-4xl text-white text-center mb-4 pt-14">
                 {!! html_entity_decode($data['titleEn']) !!}
             </h3>

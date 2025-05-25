@@ -30,7 +30,7 @@ class UsefulContactSeeder extends Seeder
             ],
             [
                 'id'=>2,
-                'nameEn'=>'Public Relations',
+                'nameEn'=>'Marketing and Communication',
                 'nameAr'=>'العلاقات العامة',
                 'addressEn'=>'14th floor , Doha Tower',
                 'addressAr'=>'14th الطابق، برج الدوحة',

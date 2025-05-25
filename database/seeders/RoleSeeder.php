@@ -93,7 +93,10 @@ class RoleSeeder extends Seeder
             'audit-role',
             'audit-useful-contact',
             'audit-contact',
-            'audit-view'
+            'audit-view',
+            'view-subscriber',
+            'delete-subscriber',
+            'audit-subscriber',
         ]);
         $roles = [
             'Human Resource (HR)',

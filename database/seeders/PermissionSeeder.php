@@ -379,6 +379,21 @@ class PermissionSeeder extends Seeder
                 'value'=>'audit',
                 'guard_name'=>'web'
             ],
+            [
+                'name'=>'view-subscriber',
+                'value'=>'subscriber',
+                'guard_name'=>'web'
+            ],
+            [
+                'name'=>'delete-subscriber',
+                'value'=>'subscriber',
+                'guard_name'=>'web'
+            ],
+            [
+                'name'=>'audit-subscriber',
+                'value'=>'subscriber',
+                'guard_name'=>'web'
+            ],
         ];
 
         // DB::table('model_has_permissions')->delete();

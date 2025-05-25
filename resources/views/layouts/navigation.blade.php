@@ -469,6 +469,25 @@
                                         <!--end:Menu item-->
                                     </div>
                                     @endcan
+
+                                    @can('view-subscriber')
+                                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                                        <!--begin:Menu link-->
+                                        <div class="menu-item">
+                                            <!--begin:Menu link-->
+                                            <a class="menu-link" href="{{ route('admin.administration.subscriber.index') }}">
+                                                <span class="menu-icon">
+                                                    <i class="fa-solid fa-user-shield">
+                                                    </i>
+                                                </span>
+                                                <span class="menu-title">Subscribers</span>
+                                            </a>
+                                            <!--end:Menu link-->
+                                        </div>
+                                        <!--end:Menu item-->
+                                    </div>
+                                    @endcan
+
                                     @can('view-contact')
                                     {{-- <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                                         <!--begin:Menu link-->

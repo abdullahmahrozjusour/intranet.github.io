@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="bg-primary">
-        <div class="container-in">
+        <div class="container">
             <div class="flex justify-between flex-wrap md:flex-nowrap items-center py-6">
                 <div class="md:max-w-[50%] text-white">
                     <div class="text-3xl ">{!! html_entity_decode($data['titleEn']) !!}</div>
@@ -16,7 +16,7 @@
         </div>
         @foreach ($data['data'] as $key => $value)
             <div class="py-6 @if($key % 2 === 0) bg-black/25 @endif">
-                <div class="container-in">
+                <div class="container">
                     <div class="grid lg:grid-cols-2 gap-8">
                         @foreach ($value as $item)
                         @php

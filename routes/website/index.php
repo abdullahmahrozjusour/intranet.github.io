@@ -1,7 +1,12 @@
 <?php
 
 use App\Http\Controllers\Web\WebController;
+use App\Http\Controllers\Web\NewsletterController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
+use App\Models\Subscriber;
+
+
 
 Route::get('/', [WebController::class, 'index'])->name('');
 Route::get('/', [WebController::class, 'index'])->name('home');
@@ -16,3 +21,13 @@ Route::get('/{type}/procedure', [WebController::class, 'procedure'])->name('proc
 Route::get('/form', function () {
     return view('pages/form');
 })->name('form');
+
+Route::post('/newsletter/subscribe', [NewsletterController::class, 'subscribe'])->name('newsletter.subscribe');
+
+Route::get('/unsubscribe', function (Request $request) {
+    $email = $request->query('email');
+    Subscriber::where('email', $email)->delete();
+    return 'You have been unsubscribed.';
+
+})->name('unsubscribe');
+

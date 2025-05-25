@@ -46,14 +46,14 @@ body {
 }
 
 .news {
-    width: 100%;
+    width: 70%;
 
     @media screen and (min-width: 768px) {
         width: calc(100% - 300px);
     }
 
     @media screen and (min-width: 1024px) {
-        width: calc(100% - 350px);
+        width: calc(100% - 450px);
     }
 }
 

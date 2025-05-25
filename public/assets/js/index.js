@@ -1,14 +1,14 @@
 
 var offers = $('.carousel-offer').slick({
     infinite: true,
-    slidesToShow: 4,
-    slidesToScroll: 4,
+    slidesToShow: 5,
+    slidesToScroll: 5,
     arrows: false,
     responsive: [{
         breakpoint: 1200,
         settings: {
-            slidesToShow: 3,
-            slidesToScroll: 3,
+            slidesToShow: 4,
+            slidesToScroll: 4,
         }
     },
     {
@@ -30,8 +30,8 @@ var offers = $('.carousel-offer').slick({
 });
 var slick = $('.news-carousel').slick({
     infinite: true,
-    slidesToShow: 3,
-    slidesToScroll: 3,
+    slidesToShow: 4,
+    slidesToScroll: 4,
     arrows: false,
     responsive: [{
         breakpoint: 1024,

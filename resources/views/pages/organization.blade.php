@@ -13,7 +13,7 @@
         </div>
     </div>
     <div class="py-8">
-        <div class="container-in">
+        <div class="container">
             <h1 class="level-1 rectangle">
                 <img src="{{ asset('assets/imgs/ali.jpg') }}" alt="">
                 CEO <span>VP of Engineering</span>

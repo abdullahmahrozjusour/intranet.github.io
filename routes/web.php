@@ -41,6 +41,7 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin'], function () {
             include('admin/user.php');
             include('admin/role.php');
             include('admin/contact.php');
+            include('admin/subscriber.php');
         });
 
         Route::group(['as' => 'pages.', 'prefix' => 'pages'], function () {

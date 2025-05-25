@@ -1,17 +1,12 @@
 {
   "resources/css/app.css": {
-    "file": "assets/app-0bd249ab.css",
+    "file": "assets/app-4ed993c7.js",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
   "resources/js/app.js": {
-    "file": "assets/app-0dfe298d.js",
+    "file": "assets/app-4ec864e5.js",
     "isEntry": true,
     "src": "resources/js/app.js"
-  },
-  "resources/js/pages/operation/company/add-company-form.js": {
-    "file": "assets/add-company-form-f589f0ae.js",
-    "isEntry": true,
-    "src": "resources/js/pages/operation/company/add-company-form.js"
   }
 }

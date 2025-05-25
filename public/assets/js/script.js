@@ -548,10 +548,21 @@ $(document).ready(function () {
         $(id).slideToggle();
     })
 
-    $('.toggle-button').on('click', function (e) {
-        e.preventDefault()
-        var id = $(this).attr('href')
-        $(this).find('.fa-chevron-down').toggleClass('rotate-180')
+   $('.toggle-button').on('click', function (e) {
+        e.preventDefault();
+
+        var id = $(this).attr('href');
+
+        // Hide all others
+        $('.toggle-button').not(this).find('.fa-chevron-down').removeClass('rotate-180'); // remove rotation from others
+        $('.toggle-button').not(this).each(function () {
+            var otherId = $(this).attr('href');
+            $(otherId).slideUp('fast');
+        });
+
+        // Toggle current
+        $(this).find('.fa-chevron-down').toggleClass('rotate-180');
         $(id).slideToggle('fast');
-    })
+    });
+
 })

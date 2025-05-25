@@ -27,7 +27,7 @@
     <div class="header-home bg-[#21295B]">
         @endif
         <header class="py-6">
-            <div class="container-in">
+            <div class="container">
                 <div class="flex justify-between  lg:flex-nowrap flex-wrap gap-2 lg:gap-0">
                     <div class="logo">
                         <a href="">
@@ -87,7 +87,7 @@
         'procedures' => $modalData['Information Technology'][1],
         ])
         <footer class="py-4">
-            <div class="container-in">
+            <div class="container">
                 <div class="flex flex-wrap md:flex-nowrap gap-2 sm:justify-between justify-center text-white">
                     <div class="text-sm text-center md:text-left">&copy; 2024 Qatar Manpower Solutions Company (Jusour),
                         All

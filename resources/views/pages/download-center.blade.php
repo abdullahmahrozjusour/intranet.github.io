@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="bg-bubble bg-primary">
-        <div class="container-in">
+        <div class="container">
             <div class="toolbar mb-6">
                 <h3 class="text-2xl text-white font-bold">Use-Full Forms And Downloads</h3>
                 <div class="flex gap-2">
