@@ -75,6 +75,7 @@ class OrganizationController extends Controller
             'image'=>$file
         ];
         $data = $this->organization->store($requestData);
+        
         return redirect()->route('admin.pages.organization.index')->with('success','Organization created successfully.');
     }
 

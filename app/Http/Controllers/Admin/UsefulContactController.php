@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Helpers\ImageHelper;
 use App\Http\Controllers\Controller;
+use App\Jobs\SendNewsletterJob;
 use App\Models\Audit;
 use App\Models\UsefulContact;
 use App\Repositories\UsefulContact\UsefulContactInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class UsefulContactController extends Controller
 {
@@ -61,6 +63,16 @@ class UsefulContactController extends Controller
         // ]
         );
         $data = $this->usefulContact->store($request->all());
+         try {
+            // SendNewsletterJob::dispatch(
+            //     $event->nameEn,
+            //     route('home'),
+                
+            // );
+            (new SendNewsletterJob( $data->nameEn. 'Contact', route('home')))->handle();
+        } catch(\Exception $e) {
+            Log::error($e->getMessage());
+        }
         return redirect()->route('admin.pages.usefulContact.index')->with('success','Useful Contact created successfully.');
     }
 
@@ -101,6 +113,16 @@ class UsefulContactController extends Controller
         // ]
         );
         $data = $this->usefulContact->update($id,$request->all());
+        try {
+            // SendNewsletterJob::dispatch(
+            //     $event->nameEn,
+            //     route('home'),
+                
+            // );
+            (new SendNewsletterJob( $data->nameEn. 'Contact', route('home')))->handle();
+        } catch(\Exception $e) {
+            Log::error($e->getMessage());
+        }
         return redirect()->route('admin.pages.usefulContact.index')->with('success','Useful Contact updated successfully.');
     }
 

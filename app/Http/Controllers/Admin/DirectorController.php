@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Constants\Type;
 use App\Helpers\ImageHelper;
 use App\Http\Controllers\Controller;
+use App\Jobs\SendNewsletterJob;
 use App\Models\Announcement;
 use App\Models\Audit;
 use App\Models\Page;
@@ -12,6 +13,7 @@ use App\Models\PageData;
 use App\Repositories\Director\DirectorInterface;
 use App\Repositories\PageData\PageDataInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class DirectorController extends Controller
 {
@@ -93,6 +95,16 @@ class DirectorController extends Controller
             'descAr'=>$request->descAr,
         ];
         $data = $this->pageData->store($requestData);
+        try {
+            // SendNewsletterJob::dispatch(
+            //     $event->nameEn,
+            //     route('home'),
+                
+            // );
+            (new SendNewsletterJob( 'Board of Members', route('home')))->handle();
+        } catch(\Exception $e) {
+            Log::error($e->getMessage());
+        }
         return redirect()->route('admin.pages.director.index')->with('success','Board of Director Data created successfully.');
     }
 
@@ -160,6 +172,16 @@ class DirectorController extends Controller
             'descAr'=>$request->descAr,
         ];
         $data = $this->pageData->update($id,$requestData);
+        try {
+            // SendNewsletterJob::dispatch(
+            //     $event->nameEn,
+            //     route('home'),
+                
+            // );
+            (new SendNewsletterJob( 'Board of Members', route('home')))->handle();
+        } catch(\Exception $e) {
+            Log::error($e->getMessage());
+        }
         return redirect()->route('admin.pages.director.index')->with('success','Board of Director Data updated successfully.');
     }
 
@@ -192,6 +214,16 @@ class DirectorController extends Controller
         // ]
         );
         $data = $this->director->update($id,$request->all());
+        try {
+            // SendNewsletterJob::dispatch(
+            //     $event->nameEn,
+            //     route('home'),
+                
+            // );
+            (new SendNewsletterJob( $data->titleEn, route('home')))->handle();
+        } catch(\Exception $e) {
+            Log::error($e->getMessage());
+        }
         return redirect()->route('admin.pages.director.index')->with('success','Board of Director updated successfully.');
     }
 

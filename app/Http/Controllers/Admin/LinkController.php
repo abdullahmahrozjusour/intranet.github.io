@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\SendNewsletterJob;
 use App\Models\Audit;
 use App\Models\Link;
 use App\Repositories\Link\LinkInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class LinkController extends Controller
 {
@@ -56,6 +58,16 @@ class LinkController extends Controller
         // ]
         );
         $data = $this->link->store($request->all());
+        try {
+            // SendNewsletterJob::dispatch(
+            //     $event->nameEn,
+            //     route('home'),
+                
+            // );
+            (new SendNewsletterJob( 'Useful Links', route('home')))->handle();
+        } catch(\Exception $e) {
+            Log::error($e->getMessage());
+        }
         return redirect()->route('admin.home.link.index')->with('success','Link created successfully.');
     }
 
@@ -92,6 +104,16 @@ class LinkController extends Controller
         // ]
         );
         $data = $this->link->update($id,$request->all());
+        try {
+            // SendNewsletterJob::dispatch(
+            //     $event->nameEn,
+            //     route('home'),
+                
+            // );
+            (new SendNewsletterJob( 'Useful Links', route('home')))->handle();
+        } catch(\Exception $e) {
+            Log::error($e->getMessage());
+        }
         return redirect()->route('admin.home.link.index')->with('success','Link updated successfully.');
     }
 

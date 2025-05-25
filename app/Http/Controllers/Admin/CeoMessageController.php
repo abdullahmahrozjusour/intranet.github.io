@@ -5,10 +5,12 @@ namespace App\Http\Controllers\Admin;
 use App\Constants\Type;
 use App\Helpers\ImageHelper;
 use App\Http\Controllers\Controller;
+use App\Jobs\SendNewsletterJob;
 use App\Models\Audit;
 use App\Models\Page;
 use App\Repositories\CeoMessage\CeoMessageInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class CeoMessageController extends Controller
 {
@@ -80,6 +82,16 @@ class CeoMessageController extends Controller
         // ]
         );
         $data = $this->page->update($id,$request->all());
+        try {
+            // SendNewsletterJob::dispatch(
+            //     $event->nameEn,
+            //     route('home'),
+                
+            // );
+            (new SendNewsletterJob( $data->titleEn, route('home')))->handle();
+        } catch(\Exception $e) {
+            Log::error($e->getMessage());
+        }
         return redirect()->route('admin.home.ceoMessage.index')->with('success','Ceo Message updated successfully.');
     }
 

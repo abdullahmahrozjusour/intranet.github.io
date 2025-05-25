@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Helpers\ImageHelper;
 use App\Http\Controllers\Controller;
+use App\Jobs\SendNewsletterJob;
 use App\Models\Audit;
 use App\Models\DownloadCenter;
 use App\Repositories\DownloadCenter\DownloadCenterInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class DownloadCenterController extends Controller
 {
@@ -75,6 +77,16 @@ class DownloadCenterController extends Controller
                 'status'=>$request->status,
             ];
             $data = $this->downloadCenter->store($requestData);
+            try {
+                // SendNewsletterJob::dispatch(
+                //     $event->nameEn,
+                //     route('home'),
+                    
+                // );
+                (new SendNewsletterJob( 'Download Center', route('home')))->handle();
+            } catch(\Exception $e) {
+                Log::error($e->getMessage());
+            }
             return redirect()->route('admin.pages.downloadCenter.index')->with('success','Download Center created successfully.');
         }
         return back()->with('error','No document found');
@@ -131,6 +143,16 @@ class DownloadCenterController extends Controller
                 'status'=>$request->status,
             ];
             $data = $this->downloadCenter->update($id,$requestData);
+            try {
+                // SendNewsletterJob::dispatch(
+                //     $event->nameEn,
+                //     route('home'),
+                    
+                // );
+                (new SendNewsletterJob( 'Download Center', route('home')))->handle();
+            } catch(\Exception $e) {
+                Log::error($e->getMessage());
+            }
             return redirect()->route('admin.pages.downloadCenter.index')->with('success','Download Center updated successfully.');
         }
         return back()->with('error','No document found');

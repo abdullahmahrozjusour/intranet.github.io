@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Helpers\ImageHelper;
 use App\Http\Controllers\Controller;
+use App\Jobs\SendNewsletterJob;
 use App\Models\Audit;
 use App\Models\News;
 use App\Repositories\News\NewsInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class NewsController extends Controller
 {
@@ -68,6 +70,16 @@ class NewsController extends Controller
             'image'=>$file
         ];
         $data = $this->news->store($requestData);
+        try {
+            // SendNewsletterJob::dispatch(
+            //     $event->nameEn,
+            //     route('home'),
+                
+            // );
+            (new SendNewsletterJob( 'Jusour news', route('home')))->handle();
+        } catch(\Exception $e) {
+            Log::error($e->getMessage());
+        }
         return redirect()->route('admin.home.news.index')->with('success','News created successfully.');
     }
 
@@ -115,6 +127,16 @@ class NewsController extends Controller
             'image'=>$file
         ];
         $data = $this->news->update($id,$requestData);
+        try {
+            // SendNewsletterJob::dispatch(
+            //     $event->nameEn,
+            //     route('home'),
+                
+            // );
+            (new SendNewsletterJob( 'Jusour news', route('home')))->handle();
+        } catch(\Exception $e) {
+            Log::error($e->getMessage());
+        }
         return redirect()->route('admin.home.news.index')->with('success','News updated successfully.');
     }
 
