@@ -93,7 +93,7 @@
                         <div class="cl-content px-4 py-2 bg-white">
                             <span class="text-secondary font-bold text-xs">{{
                                 \Carbon\Carbon::parse($item['date'])->format('M d, Y') }}</span>
-                            <div class="font-semibold leading-4">{{$item['titleEn']}}</div>
+                            <div class="font-semibold leading-4 truncate whitespace-nowrap overflow-hidden">{{$item['titleEn']}}</div>
                             <a href="{{ $item['link'] }}"
                                 class="mt-1 text-secondary text-sm font-medium flex items-center gap-2">
                                 <span>Read More</span>
