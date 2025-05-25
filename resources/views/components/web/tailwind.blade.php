@@ -137,10 +137,15 @@
 
     .in-checkbox {
         position: relative;
+
+        &.ch-ar label::before {
+            right: 0;
+            left: inherit;
+        }
     }
 
     .in-checkbox label {
-        padding-left: 20px;
+        padding-inline-start: 20px;
         @apply text-sm;
 
         &:before {
@@ -152,7 +157,9 @@
             border: 2px solid #333;
             border-radius: 3px;
         }
+
     }
+
 
     .in-checkbox input:checked+label:after {
         /* @apply bg-primary; */
