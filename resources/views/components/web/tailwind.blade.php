@@ -138,10 +138,19 @@
     .in-checkbox {
         position: relative;
 
-        &.ch-ar label::before {
-            right: 0;
-            left: inherit;
+        &.ch-ar {
+            label::before {
+                right: 0;
+                left: inherit;
+            }
+
+            input:checked+label:after {
+                left: inherit;
+                right: 0
+            }
         }
+
+
     }
 
     .in-checkbox label {
