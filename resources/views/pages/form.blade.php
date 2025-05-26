@@ -7,36 +7,50 @@
                 @csrf
                 <input type="hidden" name="type" value="{{ $slug }}">
                 <div class="bg-white px-6 py-4 shadow-lg  rounded-lg max-w-[1000px] mx-auto">
-                    <div class="title max-w-[800px] ">
-                        <div class="font-semibold text-xl text-secondary">GRAPHIC DESIGN REQUEST</div>
-                        <div class="font-semibold text-xl text-secondary">إسـتـــمـــارة طلـــــب تصـمـــيــــم </div>
-                        <div class="grid grid-cols-4 gap-4 text-left mt-4 items-end">
-                            <div class="form-group mt-2">
-                                <label for="requestDate">Date Request / تاريخ تقديم الطلب</label>
-                                <input type="date" class="in-input" value="{{ now()->format('Y-m-d') }}" id="requestDate"
-                                    name="requestDate">
+                    <div class="title max-w-[500px] border-2 rounded-lg border-primary mx-auto p-6">
+                        <div class="font-semibold text-xl text-secondary text-center">إسـتـــمـــارة طلـــــب تصـمـــيــــم
+                        </div>
+                        <div class="font-semibold text-xl text-secondary text-center">GRAPHIC DESIGN REQUEST</div>
+
+                        <div class="grid grid-cols-2 gap-4 text-left mt-4 ">
+                            <div class=" col-span-2 mt-2 flex form-group">
+                                <label for="requestDate" class="flex justify-between"><span>Date Request</span> <span>تاريخ
+                                        تقديم الطلب</span></label>
+                                <input type="date" class="in-input w-full" value="{{ now()->format('Y-m-d') }}"
+                                    id="requestDate" name="requestDate">
                             </div>
-                            <div class="form-group mt-2">
-                                <label for="requestId">No. Requests / رقم الطلب</label>
-                                <input type="text" class="in-input" value="{{ $requestIdNumber }}" id="requestId"
-                                    name="requestId" readonly>
-                            </div>
+
                             <div class="col-span-2">
-                                <div>Type of the request / الطــــــــلب طـــبيــــــــعة </div>
-                                <div class="grid grid-cols-2 gap-4 mt-1">
-                                    <div class="in-checkbox">
-                                        <input type="checkbox" name="subscribe" value="urgent" id="urgent"
-                                            class="subscribe">
-                                        <label for="urgent">Urgent / عاجــــل</label>
+                                <div class="flex justify-between"><span>Type of the request</span> <span>الطــــــــلب
+                                        طـــبيــــــــعة</span> </div>
+                                <div class="grid grid-cols-1 gap-4 mt-1">
+                                    <div class="flex items-center justify-between w-[150px] mx-auto">
+                                        <label for="urgent">Urgent </label>
+                                        <div class="in-checkbox">
+                                            <input type="checkbox" name="subscribe" value="urgent" id="urgent"
+                                                data-id="justification" class="subscribe">
+                                            <label for="urgent"></label>
+                                        </div>
+                                        <label for="urgent"> عاجــــل</label>
                                     </div>
-                                    <div class="in-checkbox">
-                                        <input type="checkbox" name="subscribe" value="normal" id="normal"
-                                            class="subscribe">
-                                        <label for="normal">Normal / عــــادي</label>
+                                    <div class="flex items-center justify-between w-[150px] mx-auto">
+                                        <label for="normal">Normal</label>
+                                        <div class="in-checkbox">
+                                            <input type="checkbox" name="subscribe" value="normal" id="normal"
+                                                data-id="justification" class="subscribe">
+                                            <label for="normal"> </label>
+                                        </div>
+                                        <label for="normal">عــــادي</label>
                                     </div>
                                 </div>
                             </div>
-                            
+                            <div></div>
+                            <div class="form-group mt-2">
+                                <label for="requestId" class="flex justify-between"><span>No. Requests</span> <span>رقم
+                                        الطلب</span></label>
+                                <input type="text" class="in-input" value="{{ $requestIdNumber }}" id="requestId"
+                                    name="requestId" readonly>
+                            </div>
                         </div>
                     </div>
                     <div
@@ -114,15 +128,17 @@
                         </div>
                     </div>
 
-                    <div
-                        class="bg-primary mt-4 px-4 py-2 font-medium text-md rounded-md text-white flex items-center justify-between gap-2">
-                        <span>Justification for the Urgent Request </span> <span>العاجل الطلب مبررات</span>
-                    </div>
-                    <div class="grid grid-cols-1 gap-4 mt-2">
-                        <div class="form-group">
-                            {{-- <label for="justificationForTheUrgentRequest">Justification for the Urgent Request</label> --}}
-                            <textarea class="in-input" id="justificationForTheUrgentRequest" name="justificationForTheUrgentRequest"
-                                cols="2" row="2" placeholder="Justification for the Urgent Request"></textarea>
+                    <div id="justification" style="display: none">
+                        <div
+                            class="bg-primary mt-4 px-4 py-2 font-medium text-md rounded-md text-white flex items-center justify-between gap-2">
+                            <span>Justification for the Urgent Request </span> <span>العاجل الطلب مبررات</span>
+                        </div>
+                        <div class="grid grid-cols-1 gap-4 mt-2">
+                            <div class="form-group">
+                                {{-- <label for="justificationForTheUrgentRequest">Justification for the Urgent Request</label> --}}
+                                <textarea class="in-input" id="justificationForTheUrgentRequest" name="justificationForTheUrgentRequest"
+                                    cols="2" row="2" placeholder="Justification for the Urgent Request"></textarea>
+                            </div>
                         </div>
                     </div>
 
@@ -192,9 +208,10 @@
                                 المتطلبات.
                             </small>
                         </div>
-                        <div class="col-span-2 grid grid-cols-3 gap-3 border border-gray-500 rounded-md p-4 bg-gray-50">
+                        <div dir="rtl"
+                            class="col-span-2 grid grid-cols-3 gap-3 border border-gray-500 rounded-md p-4 bg-gray-50">
                             <div class="col-span-2">
-                                <div class="in-checkbox">
+                                <div class="in-checkbox ch-ar">
                                     <input type="checkbox" name="popup[type]" value="1" id="popup">
                                     <label for="popup" class="flex">Pop-up <br> خلفية (بوب-آب) </label>
                                 </div>
@@ -207,24 +224,25 @@
                             </div>
                             <div class="flex flex-col gap-2">
                                 <div>Specifications <br> المواصفات</div>
-                                <div class="in-checkbox">
+                                <div class="in-checkbox ch-ar">
                                     <input type="checkbox" name="popup[size]" value="3x2 curved frame" id="3x2">
                                     <label for="3x2" class="flex">3x2 curved frame </label>
                                 </div>
-                                <div class="in-checkbox">
+                                <div class="in-checkbox ch-ar">
                                     <input type="checkbox" name="popup[size]" value="3x3 curved frame" id="3x3">
                                     <label for="3x3" class="flex">3x3 curved frame </label>
                                     <img src="" alt="">
                                 </div>
-                                <div class="in-checkbox">
+                                <div class="in-checkbox ch-ar">
                                     <input type="checkbox" name="popup[size]" value="3x4 curved frame" id="3x4">
                                     <label for="3x4" class="flex">3x4 curved frame </label>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-span-2 grid grid-cols-3 gap-3 border border-gray-500 rounded-md p-4 bg-gray-50">
+                        <div dir="rtl"
+                            class="col-span-2 grid grid-cols-3 gap-3 border border-gray-500 rounded-md p-4 bg-gray-50">
                             <div class="col-span-2">
-                                <div class="in-checkbox">
+                                <div class="in-checkbox ch-ar">
                                     <input type="checkbox" name="notebook[type]" value="1" id="notebook">
                                     <label for="notebook" class="flex">Notebook <br> تصميم دفاتر الملاحظات </label>
                                 </div>
@@ -238,14 +256,14 @@
                             </div>
                             <div class="flex flex-col gap-2">
                                 <div>Specifications <br> المواصفات</div>
-                                <div class="in-checkbox">
+                                <div class="in-checkbox ch-ar">
                                     <input type="checkbox" name="notebook[size]" value="A4 Vertical" id="verticalA4">
                                     <label for="verticalA4" class="block">
                                         A4 <br>
                                         Vertical طولي
                                     </label>
                                 </div>
-                                <div class="in-checkbox">
+                                <div class="in-checkbox ch-ar">
                                     <input type="checkbox" name="notebook[size]" value="A4 Horizontal"
                                         id="horizontalA4">
                                     <label for="horizontalA4" class="block">
@@ -253,14 +271,14 @@
                                         Horizontal عرضي
                                     </label>
                                 </div>
-                                <div class="in-checkbox">
+                                <div class="in-checkbox ch-ar">
                                     <input type="checkbox" name="notebook[size]" value="A5 Vertical" id="verticalA5">
                                     <label for="verticalA5" class="block">
                                         A5 <br>
                                         Vertical طولي
                                     </label>
                                 </div>
-                                <div class="in-checkbox">
+                                <div class="in-checkbox ch-ar">
                                     <input type="checkbox" name="notebook[size]" value="A5 Horizontal"
                                         id="horizontalA5">
                                     <label for="horizontalA5" class="block">
@@ -270,9 +288,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-span-2 grid grid-cols-3 gap-3 border border-gray-500 rounded-md p-4 bg-gray-50">
+                        <div dir="rtl"
+                            class="col-span-2 grid grid-cols-3 gap-3 border border-gray-500 rounded-md p-4 bg-gray-50">
                             <div class="col-span-2">
-                                <div class="in-checkbox">
+                                <div class="in-checkbox ch-ar">
                                     <input type="checkbox" name="flyer[type]" value="1" id="flyer">
                                     <label for="flyer" class="flex">Flyer <br> تصميم ورقة إعلانية (فلاير) </label>
                                 </div>
@@ -286,25 +305,25 @@
                             </div>
                             <div class="flex flex-col gap-2">
                                 <div>Specifications <br> المواصفات</div>
-                                <div class="in-checkbox">
+                                <div class="in-checkbox ch-ar">
                                     <input type="checkbox" name="flyer[size]" value="Vertical" id="vertical">
                                     <label for="vertical" class="block">
                                         Vertical طولي
                                     </label>
                                 </div>
-                                <div class="in-checkbox">
+                                <div class="in-checkbox ch-ar">
                                     <input type="checkbox" name="flyer[size]" value="Horizontal" id="horizontal">
                                     <label for="horizontal" class="block">
                                         Horizontal عرضي
                                     </label>
                                 </div>
-                                <div class="in-checkbox">
+                                <div class="in-checkbox ch-ar">
                                     <input type="checkbox" name="flyer[size]" value="Folded1" id="folded1">
                                     <label for="folded1" class="block">
                                         Folded مطوية
                                     </label>
                                 </div>
-                                <div class="in-checkbox">
+                                <div class="in-checkbox ch-ar">
                                     <input type="checkbox" name="flyer[size]" value="Folded2" id="folded2">
                                     <label for="folded2" class="block">
                                         Folded مطوية
@@ -312,9 +331,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-span-2 grid grid-cols-3 gap-3 border border-gray-500 rounded-md p-4 bg-gray-50">
+                        <div dir="rtl"
+                            class="col-span-2 grid grid-cols-3 gap-3 border border-gray-500 rounded-md p-4 bg-gray-50">
                             <div class="col-span-2">
-                                <div class="in-checkbox">
+                                <div class="in-checkbox ch-ar">
                                     <input type="checkbox" name="rollUp[type]" value="1" id="rollUp">
                                     <label for="rollUp" class="flex">Roll-up <br> رول - آب</label>
                                 </div>
@@ -328,7 +348,7 @@
                             </div>
                             <div class="flex flex-col gap-2">
                                 <div>Specifications <br> المواصفات</div>
-                                <div class="in-checkbox">
+                                <div class="in-checkbox ch-ar">
                                     <input type="checkbox" name="rollUp[size]" value="w100H200" id="w100H200">
                                     <label for="w100H200" class="block">
                                         العرض 100 سم <br>
@@ -337,7 +357,7 @@
                                         X Height 200 cm
                                     </label>
                                 </div>
-                                <div class="in-checkbox">
+                                <div class="in-checkbox ch-ar">
                                     <input type="checkbox" name="rollUp[size]" value="w85H200" id="w85H200">
                                     <label for="w85H200" class="block">
                                         العرض 85 سم <br>
@@ -348,9 +368,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-span-2 grid grid-cols-3 gap-3 border border-gray-500 rounded-md p-4 bg-gray-50">
+                        <div dir="rtl"
+                            class="col-span-2 grid grid-cols-3 gap-3 border border-gray-500 rounded-md p-4 bg-gray-50">
                             <div class="col-span-2">
-                                <div class="in-checkbox">
+                                <div class="in-checkbox ch-ar">
                                     <input type="checkbox" name="brochure[type]" value="1" id="brochure">
                                     <label for="brochure" class="flex">Brochure <br> كتيب</label>
                                 </div>
@@ -364,20 +385,20 @@
                             </div>
                             <div class="flex flex-col gap-2">
                                 <div>Specifications <br> المواصفات</div>
-                                <div class="in-checkbox">
+                                <div class="in-checkbox ch-ar">
                                     <input type="checkbox" name="brochure[size]" value="Vertical" id="verticalBrochure">
                                     <label for="verticalBrochure" class="block">
                                         Vertical طولي
                                     </label>
                                 </div>
-                                <div class="in-checkbox">
+                                <div class="in-checkbox ch-ar">
                                     <input type="checkbox" name="brochure[size]" value="Horizontal"
                                         id="horizontalBrochure">
                                     <label for="horizontalBrochure" class="block">
                                         Horizontal عرضي
                                     </label>
                                 </div>
-                                <div class="in-checkbox">
+                                <div class="in-checkbox ch-ar">
                                     <input type="checkbox" name="brochure[size]" value="Number of pages"
                                         id="noOfPageBrochure">
                                     <label for="noOfPageBrochure" class="block">
@@ -385,7 +406,7 @@
                                         عدد الصفحات
                                     </label>
                                 </div>
-                                <div class="in-checkbox">
+                                <div class="in-checkbox ch-ar">
                                     <input type="checkbox" name="brochure[size]" value="Size" id="sizeBrochure">
                                     <label for="sizeBrochure" class="block">
                                         Size
@@ -394,9 +415,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-span-2 grid grid-cols-3 gap-3 border border-gray-500 rounded-md p-4 bg-gray-50">
+                        <div dir="rtl"
+                            class="col-span-2 grid grid-cols-3 gap-3 border border-gray-500 rounded-md p-4 bg-gray-50">
                             <div class="col-span-2">
-                                <div class="in-checkbox">
+                                <div class="in-checkbox ch-ar">
                                     <input type="checkbox" name="banner[type]" value="1" id="banner">
                                     <label for="banner" class="flex">Banner <br>خلفية (بانر) </label>
                                 </div>
@@ -410,25 +432,25 @@
                             </div>
                             <div class="flex flex-col gap-2">
                                 <div>Specifications <br> المواصفات</div>
-                                <div class="in-checkbox">
+                                <div class="in-checkbox ch-ar">
                                     <input type="checkbox" name="banner[size]" value="Printed" id="printed">
                                     <label for="printed" class="block">
                                         Printed مطبوعة
                                     </label>
                                 </div>
-                                <div class="in-checkbox">
+                                <div class="in-checkbox ch-ar">
                                     <input type="checkbox" name="banner[size]" value="Digital" id="digital">
                                     <label for="digital" class="block">
                                         Digital إليكترونية
                                     </label>
                                 </div>
-                                <div class="in-checkbox">
+                                <div class="in-checkbox ch-ar">
                                     <input type="checkbox" name="banner[size]" value="Height" id="height">
                                     <label for="height" class="block">
                                         Height الارتفاع
                                     </label>
                                 </div>
-                                <div class="in-checkbox">
+                                <div class="in-checkbox ch-ar">
                                     <input type="checkbox" name="banner[size]" value="Width" id="width">
                                     <label for="width" class="block">
                                         Width العرض
@@ -436,22 +458,23 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-span-2 grid grid-cols-3 gap-3 border border-gray-500 rounded-md p-4 bg-gray-50">
+                        <div dir="rtl"
+                            class="col-span-2 grid grid-cols-3 gap-3 border border-gray-500 rounded-md p-4 bg-gray-50">
                             <div class="col-span-2">
                                 <div class="d-flex justify-content-between">
-                                    <div class="in-checkbox">
+                                    <div class="in-checkbox ch-ar">
                                         <input type="checkbox" name="folderbusinessCardotherDesign[folderType]"
                                             value="1" id="folder">
                                         <label for="folder" class="flex">Folder <br> ملف</label>
                                     </div>
-                                    <div class="in-checkbox">
+                                    <div class="in-checkbox ch-ar">
                                         <input type="checkbox" name="folderbusinessCardotherDesign[businessCardType]"
                                             value="1" id="businessCard">
                                         <label for="businessCard" class="flex">business card
                                             <br> بطاقة عمل
                                         </label>
                                     </div>
-                                    <div class="in-checkbox">
+                                    <div class="in-checkbox ch-ar">
                                         <input type="checkbox" name="folderbusinessCardotherDesign[otherDesignType]"
                                             value="1" id="otherDesign">
                                         <label for="otherDesign" class="flex">Other Designs
@@ -469,9 +492,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-span-2 grid grid-cols-3 gap-3 border border-gray-500 rounded-md p-4 bg-gray-50">
+                        <div dir="rtl"
+                            class="col-span-2 grid grid-cols-3 gap-3 border border-gray-500 rounded-md p-4 bg-gray-50">
                             <div class="col-span-2">
-                                <div class="in-checkbox">
+                                <div class="in-checkbox ch-ar">
                                     <input type="checkbox" name="uniformDesign[type]" value="1" id="uniformDesign">
                                     <label for="uniformDesign" class="flex">Uniform Design
                                         <br>تصميم الملابس
@@ -487,19 +511,19 @@
                             </div>
                             <div class="flex flex-col gap-2">
                                 <div>Specifications <br> المواصفات</div>
-                                <div class="in-checkbox">
+                                <div class="in-checkbox ch-ar">
                                     <input type="checkbox" name="uniformDesign[size]" value="Shirt" id="shirt">
                                     <label for="shirt" class="block">
                                         Shirt
                                     </label>
                                 </div>
-                                <div class="in-checkbox">
+                                <div class="in-checkbox ch-ar">
                                     <input type="checkbox" name="uniformDesign[size]" value="Cap" id="cap">
                                     <label for="cap" class="block">
                                         Cap
                                     </label>
                                 </div>
-                                <div class="in-checkbox">
+                                <div class="in-checkbox ch-ar">
                                     <input type="checkbox" name="uniformDesign[size]" value="T-shirt" id="tshirt">
                                     <label for="tshirt" class="block">
                                         T-shirt
@@ -565,7 +589,8 @@
                     </div>
                     <div class="grid grid-cols-1 gap-4 mt-2">
                         <div class="form-group">
-                            <label for="requestNumber" class="flex justify-between"><span>Request number</span> <span>رقم الطلب </span></label>
+                            <label for="requestNumber" class="flex justify-between"><span>Request number</span> <span>رقم
+                                    الطلب </span></label>
                             <textarea class="in-input" cols="2" row="2" name="requestNumber" id="requestNumber">{{ $requestIdNumber }}</textarea>
                         </div>
                     </div>
@@ -601,6 +626,20 @@
                 $('.subscribe').prop('checked', false);
                 $(this).prop('checked', true);
             })
+
+
+            $(document).on('change', 'input[name="subscribe"]', function() {
+                let id = $(this).attr('data-id')
+                if ($(this).val() == 'urgent') {
+                    console.log(id)
+                    $("#" + id).show()
+                }
+                if ($(this).val() == 'normal') {
+                    console.log(id)
+                    $("#" + id).hide()
+                }
+            })
+
         })
     </script>
 @endsection
