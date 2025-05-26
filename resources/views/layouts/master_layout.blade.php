@@ -30,7 +30,7 @@
             <div class="container">
                 <div class="flex justify-between  lg:flex-nowrap flex-wrap gap-2 lg:gap-0">
                     <div class="logo">
-                        <a href="">
+                        <a href="{{ route('home') }}">
                             <img src="{{ url('assets/imgs/logo.png') }}" class="lg:max-h-14 max-h-12" alt="">
                         </a>
                     </div>
@@ -46,6 +46,7 @@
                                     href="{{ route('boardOfDirector') }}">Board of Directors</a></li>
                             <li class="@if (\Request::is('usefulContacts')) active @endif"><a
                                     href="{{ route('usefulContacts') }}">Contacts</a></li>
+                                    <li class=""><a href="/request/graphic-design">Froms</a></li>
                             {{-- <li class="@if (\Request::segment(1) == 'request') active @endif"><a
                                     href="{{ route('request',['graphic-design']) }}">Request</a></li> --}}
                         </ul>
