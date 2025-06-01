@@ -44,6 +44,10 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin'], function () {
             include('admin/subscriber.php');
         });
 
+        Route::group(['as' => 'request.', 'prefix' => 'request'], function () {
+            include('admin/request.php');
+        });
+
         Route::group(['as' => 'pages.', 'prefix' => 'pages'], function () {
             include('admin/missionVision.php');
             include('admin/director.php');

@@ -22,6 +22,10 @@ Route::get('/form', function () {
     return view('pages/form');
 })->name('form');
 
+// Route::get('/newsletter', function () {
+//     return view('emails/newsletter');
+// })->name('newsletter');
+
 Route::post('/newsletter/subscribe', [NewsletterController::class, 'subscribe'])->name('newsletter.subscribe');
 
 Route::get('/unsubscribe', function (Request $request) {

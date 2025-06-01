@@ -110,6 +110,9 @@ class UserSeeder extends Seeder
             'view-subscriber',
             'delete-subscriber',
             'audit-subscriber',
+            'view-request',
+            'audit-request',
+            'edit-request',
         ]);
     }
 }

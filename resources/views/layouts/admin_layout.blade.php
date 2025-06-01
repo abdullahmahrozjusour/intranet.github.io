@@ -108,6 +108,7 @@
     </svg>
 
     <script src="{{ asset('theme/js/custom/apps/ecommerce/catalog/save-product.js') }}" nonce="intranet"></script>
+     @yield('javaScript')
 </body>
 
 </html>

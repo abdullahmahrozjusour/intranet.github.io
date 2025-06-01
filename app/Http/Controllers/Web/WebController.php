@@ -231,6 +231,24 @@ class WebController extends Controller
 
     public function requestFormSubmit(Request $request, $slug)
     {
+        $request->validate([
+            'requestDate'=>'required|max:255', 
+            'requestId'=>'nullable|max:255',
+            'requestType'=>'required',
+            'applicantName'=>'required',
+            'applicantContactNumber'=>'nullable|max:255',
+            'applicantEmail'=>'nullable|max:255', 
+            'department'=>'',
+            'newRequest'=>'',
+            'modificationRequestOfPreviousDesign'=>'',
+            'deliveryDate'=>'',
+            'justificationForTheUrgentRequest'=>'',
+            'purposeOfTheRequest'=>'',
+            'requestType'=>'',
+            'brief'=>'',
+            'areYouEmployee'=>'',
+        ],);
+
         try {
             $requestMetaData = $request->except(['_token', 'requestId']);
             $requestData = [

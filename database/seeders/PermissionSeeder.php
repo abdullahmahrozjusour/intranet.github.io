@@ -394,6 +394,21 @@ class PermissionSeeder extends Seeder
                 'value'=>'subscriber',
                 'guard_name'=>'web'
             ],
+            [
+                'name'=>'view-request',
+                'value'=>'request',
+                'guard_name'=>'web'
+            ],
+            [
+                'name'=>'audit-request',
+                'value'=>'request',
+                'guard_name'=>'web'
+            ],
+            [
+                'name'=>'edit-request',
+                'value'=>'request',
+                'guard_name'=>'web'
+            ],
         ];
 
         // DB::table('model_has_permissions')->delete();
