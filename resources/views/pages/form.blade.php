@@ -5,16 +5,17 @@
         <div class="container">
             <div class="flex gap-6 justify-center">
                 <div class="w-[300px]">
-                    <div class="bg-white px-6 py-4 shadow-lg  rounded-lg p-6 w-full">
-                        <h2 class="text-secondary text-lg font-medium">Marketing Forms</h2>
-                        <ul>
-                            <li><a href="" class="text-blue-500">Graphic design request </a></li>
-                            <li><a href="" class="text-blue-500">Graphic design request </a></li>
-                            <li><a href="" class="text-blue-500">Graphic design request </a></li>
+                    <div class="bg-white   shadow-lg  rounded-lg  w-full sticky top-4">
+                        <h2 class="text-white text-lg font-medium bg-secondary px-5 py-1">Marketing Forms</h2>
+                        <ul class="p-6">
+                            <li><a href="" class="text-secondary">Graphic design request </a></li>
+                            <li><a href="" class="text-secondary">Cermony Form </a></li>
+                            <li><a href="" class="text-secondary">Internal Events </a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="max-w-[1000px]">
+                    <a href="{{route('form-pdf') }}" class="btn-blue max-w-20 flex justify-center mb-4 ml-auto" target="_blank" >Print</a>
                     <form action="{{ route('request.submit', [$slug]) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="type" value="{{ $slug }}">

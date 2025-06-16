@@ -21,6 +21,9 @@ Route::get('/{type}/procedure', [WebController::class, 'procedure'])->name('proc
 Route::get('/form', function () {
     return view('pages/form');
 })->name('form');
+Route::get('/form-pdf', function () {
+    return view('pages/form-pdf');
+})->name('form-pdf');
 
 Route::post('/newsletter/subscribe', [NewsletterController::class, 'subscribe'])->name('newsletter.subscribe');
 
