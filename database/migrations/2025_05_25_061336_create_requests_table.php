@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('requestId');
             $table->longText('meta');
             $table->string('type');
-            $table->string('status')->default('Active');
+            $table->string('status')->default('Pending');
             $table->timestamps();
         });
     }
