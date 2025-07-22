@@ -16,27 +16,27 @@
             <div class="mb-1 font-semibold font-shubuk">الطالب:</div>
             <div class="bg-gray-100 py-3 px-4 grid grid-cols-2 gap-2 rounded-lg">
 
-                <div class="flex items-center gap-2">
+                <div class="  gap-2">
                     <label for="" class="whitespace-nowrap">الاسم الكامل:</label>
                     <input type="input" class="in-input w-full">
                 </div>
-                <div class="flex items-center gap-2">
+                <div class="  gap-2">
                     <label for="" class="whitespace-nowrap">الرقم الوظيفي:</label>
                     <input type="input" class="in-input w-full">
                 </div>
-                <div class="flex items-center gap-2">
+                <div class="  gap-2">
                     <label for="" class="whitespace-nowrap">القسم:</label>
                     <input type="input" class="in-input w-full">
                 </div>
-                <div class="flex items-center gap-2">
+                <div class="  gap-2">
                     <label for="" class="whitespace-nowrap">المسمى الوظيفي:</label>
                     <input type="input" class="in-input w-full">
                 </div>
-                <div class="flex items-center gap-2">
+                <div class="  gap-2">
                     <label for="" class="whitespace-nowrap">رقم الاتصال: </label>
                     <input type="input" class="in-input w-full">
                 </div>
-                <div class="flex items-center gap-2">
+                <div class="  gap-2">
                     <label for="" class="whitespace-nowrap">الادارة:</label>
                     <input type="input" class="in-input w-full">
                 </div>
@@ -260,7 +260,7 @@
                     </div>
 
 
-                    <div class="grid grid-cols-2 gap-2">
+                    <div class="grid grid-cols-1 gap-2">
                         <div>
                             <div class="mb-1 font-semibold font-shubuk">رئيس قطاع الدعم المؤسسي  </div>
                             <div
@@ -289,7 +289,7 @@
                         </div>
                     </div>
 
-                     <div class="bg-gray-100 py-3 px-4 grid grid-cols-2 gap-2 rounded-lg">
+                     <div class="bg-gray-100 py-3 px-4 grid grid-cols-2 gap-2 rounded-lg mt-4">
 
                         <div class="form-group ">
                             <label for="" class="whitespace-nowrap">التوقيع:</label>

@@ -46,7 +46,7 @@
                                     href="{{ route('boardOfDirector') }}">Board of Directors</a></li>
                             <li class="@if (\Request::is('usefulContacts')) active @endif"><a
                                     href="{{ route('usefulContacts') }}">Contacts</a></li>
-                                    <li class=""><a href="/request/graphic-design">Froms</a></li>
+                                    <li class=""><a href="/request/graphic-design">Forms</a></li>
                             {{-- <li class="@if (\Request::segment(1) == 'request') active @endif"><a
                                     href="{{ route('request',['graphic-design']) }}">Request</a></li> --}}
                         </ul>
