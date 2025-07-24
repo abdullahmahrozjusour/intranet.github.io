@@ -1,7 +1,24 @@
+@if ($errors->any())
+    <div class="text-red-500">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+{{-- @if (session('success'))
+    <div class="text-green-600">{{ session('success') }}</div>
+@endif
+
+@if (session('error'))
+    <div class="text-red-600">{{ session('error') }}</div>
+@endif --}}
 <form action="{{ route('change.submit', [$slug]) }}" method="POST" enctype="multipart/form-data">
     @csrf
-    <input type="hidden" name="type" value="{{ $slug }}">
-
+    {{-- <input type="hidden" name="type" value="{{ $slug }}"> --}}
+    <input type="hidden" name="tab" class="activeTab" value="changeReq">
+    <input type="hidden" value="{{ $requestIdNumber }}" name="requestId">
     <div class=" px-6 py-4   mx-auto max-w-[700px]  ">
 
 
@@ -46,7 +63,7 @@
                     <label for="medium">Medium</label>
                 </div>
                 <div class="radioButton">
-                    <input type="radio" name="risks" value="2" id="low">
+                    <input type="radio" name="risks" value="3" id="low">
                     <label for="low">Low</label>
                 </div>
             </div>
@@ -72,11 +89,11 @@
                 <div class="col-span-3 grid grid-cols-2 gap-4">
                     <div class="flex items-center gap-2">
                         <label for="">Date:</label>
-                        <input type="date" class="in-input w-full">
+                        <input type="date" class="in-input w-full" name="date">
                     </div>
                     <div class="flex items-center gap-2">
                         <label for="">Time:</label>
-                        <input type="time" class="in-input w-full">
+                        <input type="time" class="in-input w-full" name="time">
                     </div>
                 </div>
             </div>
@@ -112,19 +129,19 @@
                 <div class="col-span-3 grid grid-cols-2 gap-4">
                     <div class="flex items-center gap-2">
                         <label for="">Cancelled</label>
-                        <input type="input" class="in-input w-full">
+                        <input type="input" class="in-input w-full" name="cancel">
                     </div>
                     <div class="flex items-center gap-2">
                         <label for="">Completed</label>
-                        <input type="input" class="in-input w-full">
+                        <input type="input" class="in-input w-full" name="completed">
                     </div>
                     <div class="flex items-center gap-2">
                         <label for="">Postponed</label>
-                        <input type="input" class="in-input w-full">
+                        <input type="input" class="in-input w-full" name="postponed">
                     </div>
                     <div class="flex items-center gap-2">
                         <label for="" class="whitespace-nowrap">Fall back</label>
-                        <input type="input" class="in-input w-full">
+                        <input type="input" class="in-input w-full" name="fallBack">
                     </div>
 
                 </div>

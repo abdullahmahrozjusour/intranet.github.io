@@ -21,9 +21,9 @@ class RequestController extends Controller
     {
         $this->request = $request;
         $this->middleware('auth');
-        $this->middleware('permission:view-request', ['only' => ['index']]);
-        $this->middleware('permission:edit-request', ['only' => ['edit','update']]);
-        $this->middleware('permission:audit-request', ['only' => ['audit']]);
+        // $this->middleware('permission:view-request', ['only' => ['index']]);
+        // $this->middleware('permission:edit-request', ['only' => ['edit','update']]);
+        // $this->middleware('permission:audit-request', ['only' => ['audit']]);
     }
 
     /**
@@ -33,10 +33,10 @@ class RequestController extends Controller
     {
         $data = $this->request->paginateWithOrder('created_at','DESC',12);
         foreach($data as $key => $value) {
-            $meta = json_decode($value->meta, true)[0];
+            $meta = json_decode($value->meta, true);
             foreach( $meta as $key2 => $value2) {
                 $data[$key][$key2] = $value2;
-            }
+            } 
         }
         return view('admin.pages.request.request.index',compact('data'));
     }
@@ -69,7 +69,7 @@ class RequestController extends Controller
     public function edit(string $id)
     {
         $data = $this->request->show($id);
-        $meta = json_decode($data->meta, true)[0];
+        $meta = json_decode($data->meta, true) ;
         foreach( $meta as $key2 => $value2) {
             $data[$key2] = $value2;
         }

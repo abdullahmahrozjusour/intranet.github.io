@@ -1,7 +1,25 @@
-{{-- <form action="{{ route('request.submit', [$slug]) }}" method="POST" enctype="multipart/form-data"> --}}
-<form>
+@if ($errors->any())
+    <div class="text-red-500">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+{{-- @if (session('success'))
+    <div class="text-green-600">{{ session('success') }}</div>
+@endif
+
+@if (session('error'))
+    <div class="text-red-600">{{ session('error') }}</div>
+@endif --}}
+<form action="{{ route('request.submit', [$slug]) }}" method="POST" enctype="multipart/form-data">
     @csrf
-    <input type="hidden" name="type" value="{{ $slug }}">
+    {{-- <input type="hidden" name="type" value="{{ $slug }}"> --}}
+    <input type="hidden" name="tab" class="activeTab" value="graphicDesing">
+    <input type="hidden" value="{{ $requestIdNumber }}" name="requestId">
+
 
     <div class="  px-6 py-4    mx-auto">
         <div class="title border-2 rounded-lg border-primary mx-auto p-6">
@@ -18,7 +36,7 @@
                         <label for="requestDate" class="flex justify-between"><span>Date Request</span>
                             <span class="font-shubuk">تاريخ
                                 تقديم الطلب</span></label>
-                        <input type="input" class="in-input w-full" value="2025-05-26" disabled id="requestDate"
+                        <input type="input" class="in-input w-full" value="2025-05-26"  id="requestDate"
                             name="requestDate">
                     </div>
                 </div>

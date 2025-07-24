@@ -54,7 +54,7 @@ class OrganizationController extends Controller
             'parentName'=>'required',
             'designationEn'=>'required|max:255', //|alpha_num
             'designationAr'=>'nullable|max:255', //|regex:/^[\p{Arabic}0-9\s-]+$/u
-            'image'=>'required|max:2048|mimes:jpg,svg,webp,png,jpeg', //|regex:/^[\p{Arabic}0-9\s-]+$/u
+            'image'=>'max:2048|mimes:jpg,svg,webp,png,jpeg', //|regex:/^[\p{Arabic}0-9\s-]+$/u
         ],
         // [
         //     'nameAr.regex'=>'The title ar field must only contain arabic letters and numbers.',
@@ -109,7 +109,7 @@ class OrganizationController extends Controller
             'parentName'=>'required',
             'designationEn'=>'required|max:255', //|alpha_num
             'designationAr'=>'nullable|max:255', //|regex:/^[\p{Arabic}0-9\s-]+$/u
-            'image'=>'required|max:2048|mimes:jpg,svg,webp,png,jpeg', //|regex:/^[\p{Arabic}0-9\s-]+$/u
+            'image'=>'max:2048|mimes:jpg,svg,webp,png,jpeg', //|regex:/^[\p{Arabic}0-9\s-]+$/u
         ],
         // [
         //     'nameAr.regex'=>'The title ar field must only contain arabic letters and numbers.',

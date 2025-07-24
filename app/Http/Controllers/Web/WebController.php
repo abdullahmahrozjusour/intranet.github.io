@@ -23,6 +23,8 @@ use App\Repositories\UsefulContact\UsefulContactInterface;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Validator;
 
 class WebController extends Controller
 {
@@ -218,6 +220,7 @@ class WebController extends Controller
 
     public function requestForm($slug = 'graphic-design')
     {
+
         $totalRequest = $this->request->getLastRequest();
         $requestId = 1001;
         if (isset($totalRequest->id)) {
@@ -231,36 +234,174 @@ class WebController extends Controller
 
     public function requestFormSubmit(Request $request, $slug)
     {
+        $type = $request->input('tab');
         $request->validate([
-            'requestDate'=>'required|max:255', 
-            'requestId'=>'nullable|max:255',
-            'requestType'=>'required',
-            'applicantName'=>'required',
-            'applicantContactNumber'=>'nullable|max:255',
-            'applicantEmail'=>'nullable|max:255', 
-            'department'=>'',
-            'newRequest'=>'',
-            'modificationRequestOfPreviousDesign'=>'',
-            'deliveryDate'=>'',
-            'justificationForTheUrgentRequest'=>'',
-            'purposeOfTheRequest'=>'',
-            'requestType'=>'',
-            'brief'=>'',
-            'areYouEmployee'=>'',
+            'requestDate' => 'required|max:255',
+            'requestId' => 'nullable|max:255',
+            'requestType' => 'required',
+            'applicantName' => 'required',
+            'applicantContactNumber' => 'nullable|max:255',
+            'applicantEmail' => 'nullable|max:255',
+            'department' => '',
+            'newRequest' => '',
+            'modificationRequestOfPreviousDesign' => '',
+            'deliveryDate' => '',
+            'justificationForTheUrgentRequest' => '',
+            'purposeOfTheRequest' => '',
+            'requestType' => '',
+            'brief' => '',
+            'areYouEmployee' => '',
         ],);
 
         try {
             $requestMetaData = $request->except(['_token', 'requestId']);
+            Log::debug('Meta to Store:', $requestMetaData);
+
             $requestData = [
-                'requestId' => $request->requestId,
-                'meta' => json_encode([$requestMetaData]),
-                'type' => $slug,
+                'requestId' => $request->input('requestId'),
+                'meta' => json_encode($requestMetaData),
+                'type' =>  $type,
             ];
 
+            // dd($requestData);
+            Log::debug('Storing Request:', $requestData);
+
             $data = $this->request->store($requestData);
-            return back()->with('success', 'Request has submitted successfully');
+
+            return redirect()
+                ->route('request.form', [$slug])
+                ->withFragment('#graphicDesing')
+                ->with('success', 'Request submitted successfully.');
         } catch (\Throwable $th) {
-            return back()->with('error', $th->getMessage());
+            Log::error('Submit Error: ' . $th->getMessage());
+
+            return redirect()
+                ->to(url()->previous() . '#graphicDesing')
+                ->withInput()
+                ->with('error', 'Something went wrong: ' . $th->getMessage());
+        }
+    }
+
+
+    public function changRequestSubmit(Request $request, $slug)
+    {
+        // Log::debug('Form Submitted:', $request->all());
+        $type = $request->input('tab');
+        $request->validate([
+            'namechange' => 'required',
+            'nameMaker' => 'required',
+            'nameChecker' => 'required',
+            'brief' => 'required',
+            'risks' => 'required|in:1,2,3',
+            'scenarios' => 'required',
+            'process' => 'required',
+            'date' => 'required|date',
+            'time' => 'required|date_format:H:i',
+            'department' => 'required',
+            'signature' => 'required',
+            'aprDepartment' => 'required',
+            'aprSignature' => 'required',
+            'cancel' => 'required',
+            'completed' => 'required',
+            'postponed' => 'required',
+            'fallBack' => 'required',
+        ]);
+
+        try {
+            $requestMetaData = $request->except(['_token', 'requestId']);
+            // Log::debug('Meta to Store:', $requestMetaData);
+
+            $requestData = [
+                'requestId' => $request->input('requestId'),
+                'meta' => json_encode($requestMetaData),
+                'type' =>  $type,
+            ];
+
+            // dd($requestData);
+            // Log::debug('Storing Request:', $requestData);
+
+            $data = $this->request->store($requestData);
+
+            return redirect()
+                ->route('request.form', [$slug])
+                ->withFragment('changeReq')
+                ->with('success', 'Request submitted successfully.');
+        } catch (\Throwable $th) {
+            Log::error('Submit Error: ' . $th->getMessage());
+
+            return redirect()
+                ->to(url()->previous() . '#changeReq')
+                ->with('error', 'Something went wrong: ' . $th->getMessage());
+        }
+    }
+
+
+    public function itRequestSubmit(Request $request, $slug)
+    {
+        // Log::debug('Form Submitted:', $request->all());
+        $type = $request->input('tab');
+        $request->validate([
+            'fullname' => 'required',
+            'empID' => 'required',
+            'department' => 'required',
+            'jobTitle' => 'required',
+            'contact' => 'required',
+            'administration' => 'required',
+            'status' => '',
+            'equipment' => '',
+            'applications' => '',
+            'communication' => '',
+            'addtional' => '',
+            's_name' => 'required',
+            's_job' => 'required',
+            's_sign' => 'required',
+            's_date' => 'required',
+            'supportSector' => '',
+            'comments' => '',
+            'date' => 'required|date',
+            'signature' => '',
+            'acknowledgment_name' => '',
+            'acknowledgment_job' => '',
+            'acknowledgment_management' => '',
+            'acknowledgment_date' => '',
+            'acknowledgment_Signature' => '',
+            'IS_name' => '',
+            'IS_title' => '',
+            'IS_management' => '',
+            'IS_date' => '',
+            'IS_sign'=> '',
+            'infor_name'=> '',
+            'infor_job'=> '',
+            'infor_date'=> '',
+            'infor_sign'=> '',
+            'infor_comments'=> '',
+        ]);
+
+        try {
+            $requestMetaData = $request->except(['_token', 'requestId']);
+            // Log::debug('Meta to Store:', $requestMetaData);
+
+            $requestData = [
+                'requestId' => $request->input('requestId'),
+                'meta' => json_encode($requestMetaData),
+                'type' =>  $type,
+            ];
+
+            // dd($requestData);
+            // Log::debug('Storing Request:', $requestData);
+
+            $data = $this->request->store($requestData);
+
+            return redirect()
+                ->route('request.form', [$slug])
+                ->withFragment('changeReq')
+                ->with('success', 'Request submitted successfully.');
+        } catch (\Throwable $th) {
+            Log::error('Submit Error: ' . $th->getMessage());
+
+            return redirect()
+                ->to(url()->previous() . '#changeReq')
+                ->with('error', 'Something went wrong: ' . $th->getMessage());
         }
     }
 }

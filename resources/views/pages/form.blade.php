@@ -1,6 +1,6 @@
 @extends('layouts.master_layout')
 
-@section('content')
+@section('content') 
     <div class="bg-primary py-4">
         <div class="container">
             <div class="flex gap-6 justify-center">
@@ -16,14 +16,14 @@
                 </div>
 
                 <div class="w-[1000px] bg-white shadow-lg  rounded-lg">
-                    <div id="graphicDesing" class="w-full" >
+                    <div id="graphicDesing" class="w-full">
                         @include('pages.forms.graphic-design')
                     </div>
-                    <div id="changeReq" style="display: none"  >
+                    <div id="changeReq" style="display: none">
                         @include('pages.forms.change-request')
                     </div>
                     <div id="ItForm" style="display: none">
-                         @include('pages.forms.it-form')
+                        @include('pages.forms.it-form')
                     </div>
 
                 </div>
@@ -87,20 +87,25 @@
                 $('.subscribe').prop('checked', false);
                 $(this).prop('checked', true);
             })
-            // $(document).on('change', '#prevReq', function(){
-            //     $('#prevReq').prop('checked', false);
-            //     $(this).prop('checked', true);
-            // })
 
-            // $('.tab-req').on('click', function() {
-            //     let id = $(this).attr('href')
-            //     $(id).toggleClass('a')
-            // })
+            function activateTabByHash(hash) {
+                if (hash) {
+                    var $tab = $('.tab-req[href="' + hash + '"]');
+                    if ($tab.length) {
+                        $tab.trigger('click');
+                    }
+                }
+            }
+
 
             $('.tab-req').on('click', function(e) {
-                e.preventDefault();
 
                 var id = $(this).attr('href');
+
+                var tabName = id.substring(1); // remove '#'
+
+                $('#activeTab').val(tabName); // update hidden input
+
 
                 $('.tab-req').not(this).removeClass(
                     'text-secondary');
@@ -111,7 +116,10 @@
 
                 $(this).toggleClass('text-secondary');
                 $(id).show();
+                history.replaceState(null, null, id);
+
             });
+            activateTabByHash(window.location.hash);
 
             $(document).on('change', 'input[name="urgencyType"]', function() {
                 let id = $(this).data('id');

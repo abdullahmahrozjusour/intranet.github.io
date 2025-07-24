@@ -32,8 +32,10 @@ Route::get('/unsubscribe', function (Request $request) {
     $email = $request->query('email');
     Subscriber::where('email', $email)->delete();
     return 'You have been unsubscribed.';
-
 })->name('unsubscribe');
 
 Route::get('/request/{slug}', [WebController::class, 'requestForm'])->name('request');
 Route::post('/request/{slug}/submit', [WebController::class, 'requestFormSubmit'])->name('request.submit');
+Route::post('/change-request/{slug}/submit', [WebController::class, 'changRequestSubmit'])->name('change.submit');
+Route::post('/it-request/{slug}/submit', [WebController::class, 'itRequestSubmit'])->name('itRequest.submit');
+
