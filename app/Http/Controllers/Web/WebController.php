@@ -180,7 +180,7 @@ class WebController extends Controller
         $modal = Modal::where('type', $type)->where('titleEn', 'Procedures')->first();
         return view('pages.procedure', compact('modal'));
     }
-
+    
     private function populateData($organ)
     {
         $data = [];
@@ -234,7 +234,6 @@ class WebController extends Controller
 
     public function requestFormSubmit(Request $request, $slug)
     {
-        $type = $request->input('tab');
         $request->validate([
             'requestDate' => 'required|max:255',
             'requestId' => 'nullable|max:255',
@@ -255,30 +254,16 @@ class WebController extends Controller
 
         try {
             $requestMetaData = $request->except(['_token', 'requestId']);
-            Log::debug('Meta to Store:', $requestMetaData);
-
             $requestData = [
-                'requestId' => $request->input('requestId'),
-                'meta' => json_encode($requestMetaData),
-                'type' =>  $type,
+                'requestId' => $request->requestId,
+                'meta' => json_encode([$requestMetaData]),
+                'type' => $slug,
             ];
 
-            // dd($requestData);
-            Log::debug('Storing Request:', $requestData);
-
             $data = $this->request->store($requestData);
-
-            return redirect()
-                ->route('request.form', [$slug])
-                ->withFragment('#graphicDesing')
-                ->with('success', 'Request submitted successfully.');
+            return back()->with('success', 'Request has submitted successfully');
         } catch (\Throwable $th) {
-            Log::error('Submit Error: ' . $th->getMessage());
-
-            return redirect()
-                ->to(url()->previous() . '#graphicDesing')
-                ->withInput()
-                ->with('error', 'Something went wrong: ' . $th->getMessage());
+            return back()->with('error', $th->getMessage());
         }
     }
 
@@ -309,29 +294,16 @@ class WebController extends Controller
 
         try {
             $requestMetaData = $request->except(['_token', 'requestId']);
-            // Log::debug('Meta to Store:', $requestMetaData);
-
             $requestData = [
-                'requestId' => $request->input('requestId'),
-                'meta' => json_encode($requestMetaData),
-                'type' =>  $type,
+                'requestId' => $request->requestId,
+                'meta' => json_encode([$requestMetaData]),
+                'type' => $slug,
             ];
 
-            // dd($requestData);
-            // Log::debug('Storing Request:', $requestData);
-
             $data = $this->request->store($requestData);
-
-            return redirect()
-                ->route('request.form', [$slug])
-                ->withFragment('changeReq')
-                ->with('success', 'Request submitted successfully.');
+            return back()->with('success', 'Request has submitted successfully');
         } catch (\Throwable $th) {
-            Log::error('Submit Error: ' . $th->getMessage());
-
-            return redirect()
-                ->to(url()->previous() . '#changeReq')
-                ->with('error', 'Something went wrong: ' . $th->getMessage());
+            return back()->with('error', $th->getMessage());
         }
     }
 
@@ -369,39 +341,26 @@ class WebController extends Controller
             'IS_title' => '',
             'IS_management' => '',
             'IS_date' => '',
-            'IS_sign'=> '',
-            'infor_name'=> '',
-            'infor_job'=> '',
-            'infor_date'=> '',
-            'infor_sign'=> '',
-            'infor_comments'=> '',
+            'IS_sign' => '',
+            'infor_name' => '',
+            'infor_job' => '',
+            'infor_date' => '',
+            'infor_sign' => '',
+            'infor_comments' => '',
         ]);
 
         try {
             $requestMetaData = $request->except(['_token', 'requestId']);
-            // Log::debug('Meta to Store:', $requestMetaData);
-
             $requestData = [
-                'requestId' => $request->input('requestId'),
-                'meta' => json_encode($requestMetaData),
-                'type' =>  $type,
+                'requestId' => $request->requestId,
+                'meta' => json_encode([$requestMetaData]),
+                'type' => $slug,
             ];
 
-            // dd($requestData);
-            // Log::debug('Storing Request:', $requestData);
-
             $data = $this->request->store($requestData);
-
-            return redirect()
-                ->route('request.form', [$slug])
-                ->withFragment('changeReq')
-                ->with('success', 'Request submitted successfully.');
+            return back()->with('success', 'Request has submitted successfully');
         } catch (\Throwable $th) {
-            Log::error('Submit Error: ' . $th->getMessage());
-
-            return redirect()
-                ->to(url()->previous() . '#changeReq')
-                ->with('error', 'Something went wrong: ' . $th->getMessage());
+            return back()->with('error', $th->getMessage());
         }
     }
 }
