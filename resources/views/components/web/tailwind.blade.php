@@ -143,8 +143,8 @@
             display: flex;
 
             label {
-                font-size: 11px;
-                line-height: 11px;
+                font-size: 14px;
+                line-height: 14px;
                 min-height: 19px;
                 align-items: center;
 
@@ -164,9 +164,7 @@
                 bottom: 0;
                 margin: auto;
             }
-        }
-
-
+        } 
     }
 
     .in-checkbox label {

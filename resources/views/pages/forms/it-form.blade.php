@@ -17,27 +17,27 @@
             <div class="bg-gray-100 py-3 px-4 grid grid-cols-2 gap-2 rounded-lg">
 
                 <div class="  gap-2">
-                    <label for="fullname" class="whitespace-nowrap">الاسم الكامل:</label>
+                    <label for="fullname" class="whitespace-nowrap font-shubuk">الاسم الكامل:</label>
                     <input type="input" class="in-input w-full" name="fullname">
                 </div>
                 <div class="gap-2">
-                    <label for="empID" class="whitespace-nowrap">الرقم الوظيفي:</label>
+                    <label for="empID" class="whitespace-nowrap font-shubuk">الرقم الوظيفي:</label>
                     <input type="input" class="in-input w-full" name="empID">
                 </div>
                 <div class="gap-2">
-                    <label for="department" class="whitespace-nowrap">القسم:</label>
+                    <label for="department" class="whitespace-nowrap font-shubuk">القسم:</label>
                     <input type="input" class="in-input w-full" name="department">
                 </div>
                 <div class="  gap-2">
-                    <label for="jobTitle" class="whitespace-nowrap">المسمى الوظيفي:</label>
+                    <label for="jobTitle" class="whitespace-nowrap font-shubuk">المسمى الوظيفي:</label>
                     <input type="input" class="in-input w-full" name="jobTitle">
                 </div>
                 <div class="  gap-2">
-                    <label for="contact" class="whitespace-nowrap">رقم الاتصال: </label>
+                    <label for="contact" class="whitespace-nowrap font-shubuk">رقم الاتصال: </label>
                     <input type="phone" class="in-input w-full" name="contact">
                 </div>
                 <div class="  gap-2">
-                    <label for="administration" class="whitespace-nowrap">الادارة:</label>
+                    <label for="administration" class="whitespace-nowrap font-shubuk">الادارة:</label>
                     <input type="input" class="in-input w-full" name="administration">
                 </div>
             </div>
@@ -104,7 +104,7 @@
                 </div>
                 <div class="in-checkbox ch-ar">
                     <input type="checkbox" name="equipment[]" value="Laptop" id="Laptop">
-                    <label for="Laptop" class="block"><span class="font-shubuk"> Laptop </span>
+                    <label for="Laptop" class="block"><span class=""> Laptop </span>
                         <br> </label>
                 </div>
             </div>
@@ -118,7 +118,7 @@
                 </div>
                 <div class="in-checkbox ch-ar">
                     <input type="checkbox" name="applications[]" value="ERP" id="ERP">
-                    <label for="ERP" class="block"><span class="font-shubuk">ERP </span>
+                    <label for="ERP" class="block"><span class="">ERP </span>
                         <br> </label>
                 </div>
                 <div class="in-checkbox ch-ar">
@@ -143,7 +143,7 @@
                 </div>
                 <div class="in-checkbox ch-ar">
                     <input type="checkbox" name="applications[]" value="Adobe Acrobat PRO" id="Acrobat">
-                    <label for="Acrobat" class="block"><span class="font-shubuk">Adobe Acrobat PRO </span>
+                    <label for="Acrobat" class="block"><span class="">Adobe Acrobat PRO </span>
                         <br> </label>
                 </div>
                 <div class="in-checkbox ch-ar">
@@ -177,7 +177,7 @@
             <div class="grid grid-cols-3 gap-4  justify-between bg-gray-100 py-3 px-4 rounded-lg">
                 <div class="in-checkbox ch-ar">
                     <input type="checkbox" name="communication[]" value="VPN" id="VPN">
-                    <label for="VPN" class="block"><span class="font-shubuk">VPN </span>
+                    <label for="VPN" class="block"><span class=" ">VPN </span>
                         <br> </label>
                 </div>
                 <div class="in-checkbox ch-ar">
@@ -242,19 +242,19 @@
                     <div class="bg-gray-100 py-3 px-4 grid grid-cols-2 gap-2 rounded-lg">
 
                         <div class="form-group ">
-                            <label for="s_name" class="whitespace-nowrap">الاسم:</label>
+                            <label for="s_name" class="whitespace-nowrap font-shubuk">الاسم:</label>
                             <input type="input" class="in-input w-full" name="s_name">
                         </div>
                         <div class="form-group ">
-                            <label for="s_job" class="whitespace-nowrap">المسمى الوظيفي:</label>
+                            <label for="s_job" class="whitespace-nowrap font-shubuk">المسمى الوظيفي:</label>
                             <input type="input" class="in-input w-full" name="s_job">
                         </div>
                         <div class="form-group ">
-                            <label for="s_sign" class="whitespace-nowrap">التوقيع:</label>
+                            <label for="s_sign" class="whitespace-nowrap font-shubuk">التوقيع:</label>
                             <input type="input" class="in-input w-full" name="s_sign">
                         </div>
                         <div class="form-group ">
-                            <label for="s_date" class="whitespace-nowrap">التاريخ:</label>
+                            <label for="s_date" class="whitespace-nowrap font-shubuk">التاريخ:</label>
                             <input type="date" class="in-input w-full" name="s_date">
                         </div>
                     </div>
@@ -262,7 +262,7 @@
 
                     <div class="grid grid-cols-1 gap-2">
                         <div>
-                            <div class="mb-1 font-semibold font-shubuk mt-4">رئيس قطاع الدعم المؤسسي </div>
+                            <div class="mb-1 font-semibold font-shubuk mt-4 font-shubuk">رئيس قطاع الدعم المؤسسي </div>
                             <div
                                 class="grid grid-cols-2 gap-2 bg-gray-100 py-3 px-4 rounded-lg h-[calc(100% - 1.8rem)]">
                                 <div class="in-checkbox ch-ar">
@@ -292,62 +292,62 @@
                     <div class="bg-gray-100 py-3 px-4 grid grid-cols-2 gap-2 rounded-lg mt-4">
 
                         <div class="form-group ">
-                            <label for="" class="whitespace-nowrap">التوقيع:</label>
+                            <label for="" class="whitespace-nowrap font-shubuk">التوقيع:</label>
                             <input type="date" class="in-input w-full" name="date">
                         </div>
                         <div class="form-group ">
-                            <label for="" class="whitespace-nowrap">التاريخ:</label>
+                            <label for="" class="whitespace-nowrap font-shubuk">التاريخ:</label>
                             <input type="input" class="in-input w-full" name="signature">
                         </div>
                     </div>
                 </div>
                 <div>
-                    <div class="mb-1 font-semibold font-shubuk">إقرار بالاستلام</div>
+                    <div class="mb-1 font-semibold font-shubuk font-shubuk">إقرار بالاستلام</div>
                     <div class="bg-gray-100 py-3 px-4 grid grid-cols-2 gap-2 rounded-lg">
 
                         <div class="form-group ">
-                            <label for="acknowledgment_name" class="whitespace-nowrap">الاسم:</label>
+                            <label for="acknowledgment_name" class="whitespace-nowrap font-shubuk">الاسم:</label>
                             <input type="input" class="in-input w-full" name="acknowledgment_name">
                         </div>
                         <div class="form-group ">
-                            <label for="acknowledgment_job" class="whitespace-nowrap">المسمى الوظيفي:</label>
+                            <label for="acknowledgment_job" class="whitespace-nowrap font-shubuk">المسمى الوظيفي:</label>
                             <input type="input" class="in-input w-full" name="acknowledgment_job">
                         </div>
                         <div class="form-group ">
-                            <label for="acknowledgment_management" class="whitespace-nowrap">الإدارة:</label>
+                            <label for="acknowledgment_management" class="whitespace-nowrap font-shubuk">الإدارة:</label>
                             <input type="input" class="in-input w-full" name="acknowledgment_management">
                         </div>
                         <div class="form-group ">
-                            <label for="acknowledgment_date" class="whitespace-nowrap">التاريخ:</label>
+                            <label for="acknowledgment_date" class="whitespace-nowrap font-shubuk">التاريخ:</label>
                             <input type="date" class="in-input w-full" name="acknowledgment_date">
                         </div>
                         <div class="form-group ">
-                            <label for="" class="whitespace-nowrap">التوقيع:</label>
+                            <label for="" class="whitespace-nowrap font-shubuk">التوقيع:</label>
                             <input type="input" class="in-input w-full" name="acknowledgment_Signature">
                         </div>
                     </div>
 
-                    <div class="mb-1 font-semibold font-shubuk mt-4">التكنولوجيا ونظم المعلومات</div>
+                    <div class="mb-1 font-semibold font-shubuk mt-4 font-shubuk">التكنولوجيا ونظم المعلومات</div>
                     <div class="bg-gray-100 py-3 px-4 grid grid-cols-2 gap-2 rounded-lg">
 
                         <div class="form-group ">
-                            <label for="" class="whitespace-nowrap">الاسم:</label>
+                            <label for="" class="whitespace-nowrap font-shubuk">الاسم:</label>
                             <input type="input" class="in-input w-full" name="IS_name">
                         </div>
                         <div class="form-group ">
-                            <label for="" class="whitespace-nowrap">المسمى الوظيفي:</label>
+                            <label for="" class="whitespace-nowrap font-shubuk">المسمى الوظيفي:</label>
                             <input type="input" class="in-input w-full" name="IS_title">
                         </div>
                         <div class="form-group ">
-                            <label for="IS_management" class="whitespace-nowrap">الإدارة:</label>
+                            <label for="IS_management" class="whitespace-nowrap font-shubuk">الإدارة:</label>
                             <input type="input" class="in-input w-full" name="IS_management">
                         </div>
                         <div class="form-group ">
-                            <label for="" class="whitespace-nowrap">التاريخ:</label>
+                            <label for="" class="whitespace-nowrap font-shubuk">التاريخ:</label>
                             <input type="date" class="in-input w-full" name="IS_date">
                         </div>
                         <div class="form-group ">
-                            <label for="" class="whitespace-nowrap">التوقيع:</label>
+                            <label for="" class="whitespace-nowrap font-shubuk">التوقيع:</label>
                             <input type="input" class="in-input w-full" name="IS_sign">
                         </div>
                     </div>
@@ -367,19 +367,19 @@
                     <div class="bg-gray-100 py-3 px-4 grid grid-cols-2 gap-2 rounded-lg">
 
                         <div class="form-group ">
-                            <label for="" class="whitespace-nowrap">الاسم:</label>
+                            <label for="" class="whitespace-nowrap font-shubuk">الاسم:</label>
                             <input type="input" class="in-input w-full" name="infor_name">
                         </div>
                         <div class="form-group ">
-                            <label for="" class="whitespace-nowrap">المسمى الوظيفي:</label>
+                            <label for="" class="whitespace-nowrap font-shubuk">المسمى الوظيفي:</label>
                             <input type="input" class="in-input w-full" name="infor_job">
                         </div>
                         <div class="form-group ">
-                            <label for="" class="whitespace-nowrap">التاريخ:</label>
+                            <label for="" class="whitespace-nowrap font-shubuk">التاريخ:</label>
                             <input type="date" class="in-input w-full" name="infor_date">
                         </div>
                         <div class="form-group ">
-                            <label for="" class="whitespace-nowrap">التوقيع:</label>
+                            <label for="" class="whitespace-nowrap font-shubuk">التوقيع:</label>
                             <input type="input" class="in-input w-full" name="infor_sign">
                         </div>
                     </div>
