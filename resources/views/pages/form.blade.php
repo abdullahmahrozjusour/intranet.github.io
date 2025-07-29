@@ -1,6 +1,6 @@
 @extends('layouts.master_layout')
 
-@section('content') 
+@section('content')
     <div class="bg-primary py-4">
         <div class="container">
             <div class="flex gap-6 justify-center">
@@ -206,5 +206,18 @@
             var date = new Date()
             $('#requestDate').val(date.toLocaleDateString())
         })
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const hash = window.location.hash;
+
+            if (hash) {
+                const tabLink = document.querySelector(`a[href="${hash}"]`);
+                if (tabLink) {
+                    tabLink.click(); // Bootstrap or custom tab click
+                }
+            }
+        });
     </script>
 @endsection

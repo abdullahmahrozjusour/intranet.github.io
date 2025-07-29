@@ -180,7 +180,7 @@ class WebController extends Controller
         $modal = Modal::where('type', $type)->where('titleEn', 'Procedures')->first();
         return view('pages.procedure', compact('modal'));
     }
-    
+
     private function populateData($organ)
     {
         $data = [];
@@ -232,8 +232,33 @@ class WebController extends Controller
         }
     }
 
+    public function storeRequest($request, $slug,)
+    {
+        try {
+            $requestMetaData = $request->except(['_token', 'requestId']);
+            $requestData = [
+                'requestId' => $request->requestId,
+                'meta' => json_encode($requestMetaData),
+                'type' => $slug,
+            ];
+
+            $data = $this->request->store($requestData);
+
+            // Redirect back with tab hash
+            return redirect(url()->previous() . '#' . $slug)
+                ->with('success', 'Request has been submitted successfully');
+        } catch (\Throwable $th) {
+            // Redirect back with error and tab hash
+            return redirect(url()->previous() . '#' . $slug)
+                ->with('error', $th->getMessage());
+        }
+    }
+
+
     public function requestFormSubmit(Request $request, $slug)
     {
+        $type = $request->input('tab');
+
         $request->validate([
             'requestDate' => 'required|max:255',
             'requestId' => 'nullable|max:255',
@@ -252,19 +277,7 @@ class WebController extends Controller
             'areYouEmployee' => '',
         ],);
 
-        try {
-            $requestMetaData = $request->except(['_token', 'requestId']);
-            $requestData = [
-                'requestId' => $request->requestId,
-                'meta' => json_encode([$requestMetaData]),
-                'type' => $slug,
-            ];
-
-            $data = $this->request->store($requestData);
-            return back()->with('success', 'Request has submitted successfully');
-        } catch (\Throwable $th) {
-            return back()->with('error', $th->getMessage());
-        }
+        return $this->storeRequest($request, $type);
     }
 
 
@@ -292,19 +305,7 @@ class WebController extends Controller
             'fallBack' => 'required',
         ]);
 
-        try {
-            $requestMetaData = $request->except(['_token', 'requestId']);
-            $requestData = [
-                'requestId' => $request->requestId,
-                'meta' => json_encode([$requestMetaData]),
-                'type' => $slug,
-            ];
-
-            $data = $this->request->store($requestData);
-            return back()->with('success', 'Request has submitted successfully');
-        } catch (\Throwable $th) {
-            return back()->with('error', $th->getMessage());
-        }
+        return $this->storeRequest($request, $type);
     }
 
 
@@ -349,18 +350,6 @@ class WebController extends Controller
             'infor_comments' => '',
         ]);
 
-        try {
-            $requestMetaData = $request->except(['_token', 'requestId']);
-            $requestData = [
-                'requestId' => $request->requestId,
-                'meta' => json_encode([$requestMetaData]),
-                'type' => $slug,
-            ];
-
-            $data = $this->request->store($requestData);
-            return back()->with('success', 'Request has submitted successfully');
-        } catch (\Throwable $th) {
-            return back()->with('error', $th->getMessage());
-        }
+        return $this->storeRequest($request, $type);
     }
 }

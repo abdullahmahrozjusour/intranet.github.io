@@ -1,17 +1,35 @@
 <style type="text/tailwindcss">
+    /* Calendar */
+    .fc {
+        .fc-toolbar.fc-header-toolbar {
+            @apply bg-secondary text-white px-3 py-2;
+
+            .fc-toolbar-title {
+                @apply font-bold text-2xl;
+            }
+        }
+
+        .fc-button-primary {
+            --fc-button-bg-color: transparent;
+            --fc-button-border-color: #fff;
+            --fc-button-text-color: #fff;
+            border-radius: 50%;
+            border-width: 2px;
+            padding: 3px;
+        }
+    }
 
     .form-group {
         @apply flex flex-col;
     }
 
     .in-input {
-        @apply border border-gray-400 rounded-md px-3 py-1 h-[38px];
+        @apply border border-gray-400 rounded-md px-3 py-1 h-[35px];
 
         &:focus,
         &:focus-visible {
             @apply border-primary outline-primary;
         }
-
     }
 
     textarea.in-input {
@@ -38,23 +56,38 @@
         position: relative;
 
         &.ch-ar {
-            label::before {
-                right: 0;
-                left: inherit;
+            direction: rtl;
+            display: flex;
+
+            label {
+                font-size: 14px;
+                line-height: 14px;
+                min-height: 19px;
+                align-items: center;
+
+                &::before {
+                    right: 0;
+                    left: inherit;
+                    top: 0;
+                    bottom: 0;
+                    margin: auto;
+                }
             }
 
             input:checked+label:after {
                 left: inherit;
-                right: 0
+                right: 0;
+                top: 0;
+                bottom: 0;
+                margin: auto;
             }
         }
-
-
     }
 
     .in-checkbox label {
         padding-inline-start: 20px;
         @apply text-sm;
+        line-height: 1rem;
 
         &:before {
             content: '';
@@ -64,7 +97,7 @@
             width: 17px;
             border: 2px solid #333;
             border-radius: 3px;
-            top:2px;
+            top: 2px;
         }
 
     }
@@ -76,8 +109,29 @@
         left: 0;
         height: 17px;
         width: 17px;
-        top:2px;
+        top: 2px;
         background: no-repeat center url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiB4PSIwIiB5PSIwIiB2aWV3Qm94PSIwIDAgMjQgMjQiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUxMiA1MTIiIHhtbDpzcGFjZT0icHJlc2VydmUiIGNsYXNzPSIiPjxnPjxwYXRoIGQ9Ik0xOC43IDcuMmMtLjQtLjQtMS0uNC0xLjQgMGwtNy41IDcuNS0zLjEtMy4xYy0uNC0uNC0xLS40LTEuNCAwcy0uNCAxIDAgMS40bDMuOCAzLjhjLjIuMi40LjMuNy4zcy41LS4xLjctLjNsOC4yLTguMmMuNC0uNC40LTEgMC0xLjR6IiBmaWxsPSIjMDAwMDAwIiBvcGFjaXR5PSIxIiBkYXRhLW9yaWdpbmFsPSIjMDAwMDAwIj48L3BhdGg+PC9nPjwvc3ZnPg==");
         background-size: 18px;
+    }
+
+    .radioButton {
+        input {
+            opacity: 0;
+            height: 0px;
+            width: 0px;
+            display: none;
+
+            &:checked {
+
+                /* opacity: 1; */
+                &+label {
+                    @apply bg-secondary text-white;
+                }
+            }
+        }
+
+        label {
+            @apply px-4 py-2 rounded-md bg-slate-200 text-secondary cursor-pointer w-full;
+        }
     }
 </style>

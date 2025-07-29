@@ -67,8 +67,7 @@
             margin-bottom: 1rem;
 
             li {
-                font-size: 14px;
-
+                font-size: 14px;    
                 strong {
                     @apply text-sm;
                 }
@@ -112,7 +111,6 @@
         &:focus-visible {
             @apply border-primary outline-primary;
         }
-
     }
 
     textarea.in-input {
@@ -164,7 +162,7 @@
                 bottom: 0;
                 margin: auto;
             }
-        } 
+        }
     }
 
     .in-checkbox label {
@@ -187,8 +185,6 @@
 
 
     .in-checkbox input:checked+label:after {
-        /* @apply bg-primary; */
-
         content: '';
         position: absolute;
         left: 0;
@@ -199,25 +195,24 @@
         background-size: 18px;
     }
 
-    .radioButton{
-        input{
+    .radioButton {
+        input {
             opacity: 0;
             height: 0px;
             width: 0px;
             display: none;
-            &:checked{
+
+            &:checked {
+
                 /* opacity: 1; */
-                &+label{
+                &+label {
                     @apply bg-secondary text-white;
                 }
             }
         }
-        label{
-            @apply px-4 py-2 rounded-md bg-slate-200 text-secondary cursor-pointer  w-full;   
+
+        label {
+            @apply px-4 py-2 rounded-md bg-slate-200 text-secondary cursor-pointer w-full;
         }
     }
-
-    /* .in-checkbox input::checked + label:after {
-       
-    } */
 </style>

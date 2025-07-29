@@ -28,11 +28,46 @@
 
                         <!--begin::Body-->
                         <div class="card-body pt-6">
-                            <form action="{{ route('admin.request.request.update',[$data->id]) }}" method="post" class="form d-flex flex-column flex-lg-row fv-plugins-bootstrap5 fv-plugins-framework" enctype="multipart/form-data">
+                            <form action="{{ route('admin.request.request.update', [$data->id]) }}" method="post"
+                                class="form d-flex flex-column flex-lg-row fv-plugins-bootstrap5 fv-plugins-framework"
+                                enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
-                                @include('admin.pages.request.request.form',['data'=>$data, 'head'=>'Edit', 'required'=>''])
+                                @switch($data->type)
+                                    @case('graphic-design')
+                                        @include('admin.pages.request.forms.form', [
+                                            'data' => $data,
+                                            'head' => 'Edit',
+                                            'required' => '',
+                                        ])
+                                    @break
+
+                                    @case('changeReq')
+                                        @include('admin.pages.request.forms.change-request', [
+                                            'data' => $data,
+                                            'head' => 'Edit',
+                                            'required' => '',
+                                        ])
+                                    @break
+
+                                    @case('ItForm')
+                                        @include('admin.pages.request.forms.it-request', [
+                                            'data' => $data,
+                                            'head' => 'Edit',
+                                            'required' => '',
+                                        ])
+                                    @break
+
+                                    @default
+                                        @include('admin.pages.request.forms.form', [
+                                            'data' => $data,
+                                            'head' => 'Edit',
+                                            'required' => '',
+                                        ])
+                                @endswitch
+
                             </form>
+
                         </div>
                         <!--end: Card Body-->
                     </div>
